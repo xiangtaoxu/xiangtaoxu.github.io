@@ -12,5 +12,4 @@ links:
   github: https://github.com/camjay99
 ---
 
-I am interesting in the application of remote sensing and ecological modeling to conservation. I am currently working on a method to distinguish defoliation from other disturbances (e.g., logging) using remote sensing data.
-
+I am interested in the use of remote sensing in indentifying the extent and intensity of defoliation, as well as predicting the drivers and long-term impacts of spongy moth outbreaks.

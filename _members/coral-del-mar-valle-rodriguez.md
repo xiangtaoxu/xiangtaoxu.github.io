@@ -1,15 +1,19 @@
 ---
 name: Coral del Mar Valle-Rodríguez
 image: /images/coralvallerodriguez.jpg
-description: Plant resiliency and disturbance
-role: technician
+description: Plant resiliency and disturbance in the tropics
+role: phd
 aliases: 
-  - Coral Valle
-  - Coral VR
-  - CVR
+ - Coral del Mar Valle Rodríguez
+ - Coral del Mar Valle-Rodríguez
+ - C.V.R.
+ - C. Valle-Rodríguez
+
 links: 
   email: cv273@cornell.edu
   twitter: CoraldelMarVR
+  github: coraldelmarvr
+  orcid: https://orcid.org/0009-0003-8440-583X
 ---
 
-I am interested in understanding the role and changes of plant resiliency and disturbance effects across ecosystems. I am very passionate about making science accessible through effective communication. As technician, I am contributing to the rainfall exclusion experiment at El Yunque, Puerto Rico. 
+I am highly interested in using remote sensing techniques to study changes in forest composition and plant behavior due to climate change in the tropics.
