@@ -12,7 +12,7 @@ Welcome to the BioM2 lab in the [Department of Ecology and Evolutionary Biology 
 
 {%
     include slideshow.html
-
+    
     image1="images/slides/El_Yunque_Group.jpg"
     caption1="2023 Field trip to El Verde research station in Luquillo Puerto Rico (including Xiangtao Xu, Cameron Coles, and Yixin Ma)"
 

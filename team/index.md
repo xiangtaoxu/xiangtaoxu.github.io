@@ -9,8 +9,8 @@ nav:
 
 {%
   include figure.html
-  image="images/group_photo_2022F.JPG"
-  caption="Xu lab before Corson Hall, 2022 Fall"
+  image="images/group_photo_2023F.jpeg"
+  caption="Xu lab before Corson Hall, 2023 Fall"
   link="team"
   width="600px"
 %}
