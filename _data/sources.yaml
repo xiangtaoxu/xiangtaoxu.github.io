@@ -1,7 +1,29 @@
+- id: doi:10.1111/ele.14215
+  date: 2023-4-20
+  members:
+    - Xiangtao Xu
+    - Yixin Ma
+  tags:
+    - Functional Ecology
+    - Remote sensing
+    - TLS
+
+- id: doi:10.5194/bg-20-2117-2023
+  date: 2023-06-14
+  members:
+    - Xiangtao Xu
+  tags:
+    - Drought
+    - Forest moratlity
+    - ED2
+
 - id: doi:10.1126/sciadv.add5667
   date: 2023-1-18
   members:
     - Xiangtao Xu
+  tags:
+    - Functional Ecology
+    - Eco-Evo Optimality
 
 - id: doi:10.1111/gcb.16046
   date: 2022-3-1

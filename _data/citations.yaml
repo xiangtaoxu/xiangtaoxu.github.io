@@ -1,5 +1,59 @@
 # GENERATED AUTOMATICALLY, DO NOT EDIT
 
+- id: doi:10.1111/ele.14215
+  title: 'Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology
+    with new technology'
+  authors:
+  - Xi Yang
+  - Rong Li
+  - Andrew Jablonski
+  - Atticus Stovall
+  - Jongmin Kim
+  - Koong Yi
+  - Yixin Ma
+  - Daniel Beverly
+  - Richard Phillips
+  - Kim Novick
+  - Xiangtao Xu
+  - Manuel Lerdau
+  publisher: Ecology Letters
+  date: '2023-04-20'
+  link: https://doi.org/gsh5qt
+  members:
+  - Xiangtao Xu
+  - Yixin Ma
+  tags:
+  - Functional Ecology
+  - Remote sensing
+  - TLS
+- id: doi:10.5194/bg-20-2117-2023
+  title: 'Exploring the impacts of unprecedented climate extremes on forest ecosystems:
+    hypotheses to guide modeling and experimental studies'
+  authors:
+  - Jennifer A. Holm
+  - David M. Medvigy
+  - Benjamin Smith
+  - Jeffrey S. Dukes
+  - Claus Beier
+  - Mikhail Mishurov
+  - Xiangtao Xu
+  - Jeremy W. Lichstein
+  - Craig D. Allen
+  - Klaus S. Larsen
+  - Yiqi Luo
+  - Cari Ficken
+  - William T. Pockman
+  - William R. L. Anderegg
+  - Anja Rammig
+  publisher: Biogeosciences
+  date: 1900-1-1
+  link: https://doi.org/gsqq3s
+  members:
+  - Xiangtao Xu
+  tags:
+  - Drought
+  - Forest moratlity
+  - ED2
 - id: doi:10.1126/sciadv.add5667
   title: Leaf economics fundamentals explained by optimality principles
   authors:
@@ -17,6 +71,9 @@
   link: https://doi.org/grnvjx
   members:
   - Xiangtao Xu
+  tags:
+  - Functional Ecology
+  - Eco-Evo Optimality
 - id: doi:10.1111/gcb.16046
   title: "Reduced ecosystem resilience quantifies fine\u2010scale heterogeneity in\
     \ tropical forest mortality responses to drought"
