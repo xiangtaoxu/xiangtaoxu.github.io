@@ -1,1 +1,1 @@
-Sitemap: http://xiangtaoxu.eeb.cornell.edu/lab-website-new/sitemap.xml
+Sitemap: https://xiangtaoxu.github.io/sitemap.xml
