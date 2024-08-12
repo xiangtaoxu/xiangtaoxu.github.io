@@ -1,4 +1,4 @@
-Visit **[xiangtaoxu.github.io](https://xiangtaoxu.github.io)** 🚀
+Visit **[xiangtaoxu.eeb.cornell.edu](https://xiangtaoxu.eeb.cornell.edu)** 🚀
 
 <h1 align="center">Lab Website Template</h1>
 <p align="center">
