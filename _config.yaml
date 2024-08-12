@@ -1,19 +1,23 @@
 # site properties and page defaults
-title: xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab.
-subtitle: 
-description: 
-header: images/background.jpg
-footer: images/background.jpg
+title: BioM2 Lab
+subtitle: Biosphere Modeling and Monitoring
+description: Advance predictive understanding of terrestrial biosphere dynamics through modeling and observations across ecological scales.
+header: images/lab-website-background-top.jpg
+footer: images/lab-website-background-bottom.jpg
 proofer: false
+
+domain: biom2-lab.github.io
+url: https://biom2-lab.github.io
+baseurl: /
 
 # site social media and other links
 links:
-  email: contact@xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab..com
-  orcid: 0000-0001-8713-9213
-  google-scholar: ETJoidYAAAAJ
-  github: xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab.
-  twitter: xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab.
-  youtube: xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab.
+  email: xx286@cornell.edu
+  orcid: 0000-0002-9402-9474
+  google-scholar: fAorsowAAAAJ
+  github: BioM2-Lab
+  #twitter: YourLabHandle
+  #youtube: YourLabChannel
 
 ### jekyll settings
 
@@ -34,6 +38,7 @@ defaults:
       type: "posts"
     values:
       layout: post
+
 
 collections:
   # generate page for each member

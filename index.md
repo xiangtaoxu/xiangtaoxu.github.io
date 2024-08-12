@@ -1,81 +1,30 @@
 ---
 ---
 
-# xiangtaoxuDESCRIPTION=An engaging 1-3 sentence description of your lab.'s Website
+{% capture text %}
+
+Welcome to the BioM2 lab in the [Department of Ecology and Evolutionary Biology at Cornell](https://ecologyandevolution.cornell.edu/)! We use both _in situ_ and _in silico_ approaches to understand principles underlying diversity and heterogeneity in forest ecosystems and how these principles drive spatial and temporal dynamics of the terrestrial biosphere. Particularly, we adopt a [ModEx](https://ess.science.energy.gov/modex/) approach that integrates process-based modeling and model-guided experiments. We also investigate ecological patterns emerging from novel multi-scale remote sensing products with machine learning.
+
+Reach out for research opportunities **[HERE](team/index.md)**!
+
+{% endcapture %}
+
+{%
+  include feature.html
+  image="images/lab_logo_wide.png"
+  link="research"
+  title="Predicting Dynamics From Individual Tree to Landscape"
+  text=text
+%}
 
 
 
 {% include section.html %}
 
-## Highlights
+# Latest News
 
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="research"
-  text="See our publications"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
+{% capture content %}
+<!-- only include the most recent 6 news -->
+{% include latest_list.html data="posts" component="post-excerpt" filters="category: news" limit=6 %}
 {% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="research"
-  title="Our Research"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="projects"
-  text="Browse our projects"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="projects"
-  title="Our Projects"
-  flip=true
-  style="bare"
-  text=text
-%}
-
-{% capture text %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
-{%
-  include button.html
-  link="team"
-  text="Meet our team"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/photo.jpg"
-  link="team"
-  title="Our Team"
-  text=text
-%}
+{% include grid.html content=content %}

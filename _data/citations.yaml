@@ -1,247 +1,599 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
-- id: doi:10.1093/nar/gkad1082
-  title: "The Monarch Initiative in 2024: an analytic platform integrating phenotypes,\
-    \ genes\_and diseases across species"
+- id: doi:10.1111/gcb.17463
+  title: "Two sub\u2010annual timescales and coupling modes for terrestrial water\
+    \ and carbon cycles"
   authors:
-  - Tim E Putman
-  - Kevin Schaper
-  - Nicolas Matentzoglu
-  - "Vincent\_P Rubinetti"
-  - "Faisal\_S Alquaddoomi"
-  - Corey Cox
-  - J Harry Caufield
-  - Glass Elsarboukh
-  - Sarah Gehrke
-  - Harshad Hegde
-  - "Justin\_T Reese"
-  - Ian Braun
-  - "Richard\_M Bruskiewich"
-  - Luca Cappelletti
-  - Seth Carbon
-  - "Anita\_R Caron"
-  - "Lauren\_E Chan"
-  - "Christopher\_G Chute"
-  - "Katherina\_G Cortes"
-  - "Vin\xEDcius De\_Souza"
-  - Tommaso Fontana
-  - "Nomi\_L Harris"
-  - "Emily\_L Hartley"
-  - Eric Hurwitz
-  - "Julius\_O B Jacobsen"
-  - Madan Krishnamurthy
-  - "Bryan\_J Laraway"
-  - "James\_A McLaughlin"
-  - "Julie\_A McMurry"
-  - "Sierra\_A T Moxon"
-  - "Kathleen\_R Mullen"
-  - "Shawn\_T O\u2019Neil"
-  - "Kent\_A Shefchek"
-  - Ray Stefancsik
-  - Sabrina Toro
-  - "Nicole\_A Vasilevsky"
-  - "Ramona\_L Walls"
-  - "Patricia\_L Whetzel"
-  - David Osumi-Sutherland
-  - Damian Smedley
-  - "Peter\_N Robinson"
-  - "Christopher\_J Mungall"
-  - "Melissa\_A Haendel"
-  - "Monica\_C Munoz-Torres"
-  publisher: Nucleic Acids Research
-  date: '2023-11-24'
-  link: https://doi.org/gs6kmr
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1101/2023.10.11.560955
-  title: Integration of 168,000 samples reveals global patterns of the human gut microbiome
-  authors:
-  - Richard J. Abdill
-  - Samantha P. Graham
-  - Vincent Rubinetti
-  - Frank W. Albert
-  - Casey S. Greene
-  - Sean Davis
-  - Ran Blekhman
-  publisher: Cold Spring Harbor Laboratory
-  date: '2023-10-11'
-  link: https://doi.org/gsvf5z
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1093/nar/gkad289
-  title: 'MyGeneset.info: an interactive and programmatic platform for community-curated
-    and user-created collections of genes'
-  authors:
-  - Ricardo Avila
-  - Vincent Rubinetti
-  - Xinghua Zhou
-  - Dongbo Hu
-  - Zhongchao Qian
-  - Marco Alvarado Cano
-  - Everaldo Rodolpho
-  - Ginger Tsueng
-  - Casey Greene
-  - Chunlei Wu
-  publisher: Nucleic Acids Research
-  date: '2023-04-18'
-  link: https://doi.org/gr5hb5
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1101/2023.01.05.522941
-  title: Hetnet connectivity search provides rapid insights into how two biomedical
-    entities are related
-  authors:
-  - Daniel S. Himmelstein
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Kyle Kloster
-  - Benjamin J. Heil
-  - Faisal Alquaddoomi
-  - Dongbo Hu
-  - David N. Nicholson
-  - Yun Hao
-  - Blair D. Sullivan
-  - Michael W. Nagle
-  - Casey S. Greene
-  publisher: Cold Spring Harbor Laboratory
-  date: '2023-01-07'
-  link: https://doi.org/grmcb9
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1093/gigascience/giad047
-  title: Hetnet connectivity search provides rapid insights into how biomedical entities
-    are related
-  authors:
-  - Daniel S Himmelstein
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Kyle Kloster
-  - Benjamin J Heil
-  - Faisal Alquaddoomi
-  - Dongbo Hu
-  - David N Nicholson
-  - Yun Hao
-  - Blair D Sullivan
-  - Michael W Nagle
-  - Casey S Greene
-  publisher: GigaScience
-  date: '2022-12-28'
-  link: https://doi.org/gsd85n
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1101/2022.02.18.461833
-  title: 'MolEvolvR: A web-app for characterizing proteins using molecular evolution
-    and phylogeny'
-  authors:
-  - Jacob D Krol
-  - Joseph T Burke
-  - Samuel Z Chen
-  - Lo M Sosinski
-  - Faisal S Alquaddoomi
-  - Evan P Brenner
-  - Ethan P Wolfe
-  - Vincent P Rubinetti
-  - Shaddai Amolitos
-  - Kellen M Reason
-  - John B Johnston
-  - Janani Ravi
-  publisher: Cold Spring Harbor Laboratory
-  date: '2022-02-22'
-  link: https://doi.org/gstx7j
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1186/s13059-020-02021-3
-  title: Compressing gene expression data using multiple latent space dimensionalities
-    learns complementary biological representations
-  authors:
-  - Gregory P. Way
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Daniel S. Himmelstein
-  - Casey S. Greene
-  publisher: Genome Biology
-  date: '2020-05-11'
-  link: https://doi.org/gg2mjh
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1371/journal.pcbi.1007128
-  title: Open collaborative writing with Manubot
-  authors:
-  - Daniel S. Himmelstein
-  - Vincent Rubinetti
-  - David R. Slochower
-  - Dongbo Hu
-  - Venkat S. Malladi
-  - Casey S. Greene
-  - Anthony Gitter
-  publisher: PLOS Computational Biology
-  date: '2020-12-04'
-  link: https://doi.org/c7np
-  orcid: 0000-0002-4655-3773
-  plugin: sources.py
-  file: sources.yaml
+  - "Daniel J. Short\_Gianotti"
+  - Kaighin A. McColl
+  - Andrew F. Feldman
+  - Xiangtao Xu
+  - Dara Entekhabi
+  publisher: Global Change Biology
+  date: '2024-08-09'
+  link: https://doi.org/gt6s44
   type: paper
-  description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed
-    do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  image: https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&rev=2
-  buttons:
-  - type: manubot
-    link: https://greenelab.github.io/meta-review/
-  - type: source
-    text: Manuscript Source
-    link: https://github.com/greenelab/meta-review
-  - type: website
-    link: http://manubot.org/
+  image: https://onlinelibrary.wiley.com/cms/asset/3994054d-ac0c-493f-aab0-6c30409f9094/gcb17463-fig-0002-m.jpg
+  members:
+  - Xiangtao Xu
   tags:
-  - open science
-  - collaboration
-  repo: greenelab/meta-review
-- id: doi:10.1101/573782
-  title: Sequential compression of gene expression across dimensionalities and methods
-    reveals no single best method or dimensionality
-  authors:
-  - Gregory P. Way
-  - Michael Zietz
-  - Vincent Rubinetti
-  - Daniel S. Himmelstein
-  - Casey S. Greene
-  publisher: Cold Spring Harbor Laboratory
-  date: '2019-03-11'
-  link: https://doi.org/gfxjxf
-  orcid: 0000-0002-4655-3773
-  plugin: orcid.py
-  file: orcid.yaml
-- id: doi:10.1016/j.csbj.2020.05.017
-  title: Constructing knowledge graphs and their biomedical applications
-  authors:
-  - David N. Nicholson
-  - Casey S. Greene
-  publisher: Computational and Structural Biotechnology Journal
-  date: '2020-01-01'
-  link: https://doi.org/gg7m48
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg
+  - Ecohydrology
   plugin: sources.py
   file: sources.yaml
-- id: doi:10.7554/eLife.32822
-  title: Sci-Hub provides access to nearly all scholarly literature
+- id: doi:10.34133/plantphenomics.0179
+  title: 'AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture
+    in Orchards'
   authors:
-  - Daniel S Himmelstein
-  - Ariel Rodriguez Romero
-  - Jacob G Levernier
-  - Thomas Anthony Munro
-  - Stephen Reid McLaughlin
-  - Bastian Greshake Tzovaras
-  - Casey S Greene
-  publisher: eLife
-  date: '2018-03-01'
-  link: https://doi.org/ckcj
-  image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
+  - Tian Qiu
+  - Tao Wang
+  - Tao Han
+  - Kaspar Kuehn
+  - Lailiang Cheng
+  - Cheng Meng
+  - Xiangtao Xu
+  - Kenong Xu
+  - Jiang Yu
+  publisher: Plant Phenomics
+  date: '2024-05-08'
+  link: https://doi.org/gt6scn
+  type: paper
+  image: https://spj.science.org/cms/10.34133/plantphenomics.0179/asset/6b661479-27b0-41b8-8371-8afc6ca7301c/assets/graphic/plantphenomics.0179.fig.001.jpg
+  members:
+  - Xiangtao Xu
+  - Tao Han
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/j.fmre.2023.12.011
+  title: Global photosynthetic capacity jointly determined by enzyme kinetics and
+    eco-evo-environmental drivers
+  authors:
+  - Zhengbing Yan
+  - Matteo Detto
+  - Zhengfei Guo
+  - Nicholas G. Smith
+  - Han Wang
+  - Loren P. Albert
+  - Xiangtao Xu
+  - Ziyu Lin
+  - Shuwen Liu
+  - Yingyi Zhao
+  - Shuli Chen
+  - Timothy C. Bonebrake
+  - Jin Wu
+  publisher: Fundamental Research
+  date: '2024-02-06'
+  link: https://doi.org/gt6scp
+  type: paper
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S2667325824000281-ga1.jpg
+  members:
+  - Xiangtao Xu
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/gcb.17075
+  title: "Constraining long\u2010term model predictions for woody growth using tropical\
+    \ tree rings"
+  authors:
+  - Xiangtao Xu
+  - Peter van der Sleen
+  - Peter Groenendijk
+  - Mart Vlam
+  - David Medvigy
+  - Paul Moorcroft
+  - Daniel Petticord
+  - Yixin Ma
+  - Pieter A. Zuidema
+  publisher: Global Change Biology
+  date: '2024-01-01'
+  link: https://doi.org/gt6scq
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/ed099a2f-4a88-4c0a-8240-00f8f0dd6d21/gcb.v30.1.cover.jpg
+  members:
+  - Xiangtao Xu
+  - Yixin Ma
+  - Daniel F. Petticord
+  tags:
+  - ED2
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/j.scib.2023.10.016
+  title: Observed impacts of large wind farms on grassland carbon cycling
+  authors:
+  - Donghai Wu
+  - Steven M. Grodsky
+  - Wenfang Xu
+  - Naijing Liu
+  - Rafael M. Almeida
+  - Liming Zhou
+  - Lee M. Miller
+  - Somnath Baidya Roy
+  - Geng Xia
+  - Anurag A. Agrawal
+  - Benjamin Z. Houlton
+  - Alexander S. Flecker
+  - Xiangtao Xu
+  publisher: Science Bulletin
+  date: '2023-12-19'
+  link: https://doi.org/gt6scr
+  type: paper
+  image: https://www.sciengine.com/figures/figures-ad36eaa4f05648238fd7ed8009f67c7e-Graphical%20Abstract.jpg
+  members:
+  - Xiangtao Xu
+  - Donghai Wu
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/ele.14215
+  title: 'Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology
+    with new technology'
+  authors:
+  - Xi Yang
+  - Rong Li
+  - Andrew Jablonski
+  - Atticus Stovall
+  - Jongmin Kim
+  - Koong Yi
+  - Yixin Ma
+  - Daniel Beverly
+  - Richard Phillips
+  - Kim Novick
+  - Xiangtao Xu
+  - Manuel Lerdau
+  publisher: Ecology Letters
+  date: '2023-04-20'
+  link: https://doi.org/gsh5qt
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/69472254-32d9-4587-8050-43392e1a2eda/ele14215-fig-0002-m.png
+  members:
+  - Xiangtao Xu
+  - Yixin Ma
+  tags:
+  - Functional Ecology
+  - TLS
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.5194/bg-20-2117-2023
+  title: 'Exploring the impacts of unprecedented climate extremes on forest ecosystems:
+    hypotheses to guide modeling and experimental studies'
+  authors:
+  - Jennifer A. Holm
+  - David M. Medvigy
+  - Benjamin Smith
+  - Jeffrey S. Dukes
+  - Claus Beier
+  - Mikhail Mishurov
+  - Xiangtao Xu
+  - Jeremy W. Lichstein
+  - Craig D. Allen
+  - Klaus S. Larsen
+  - Yiqi Luo
+  - Cari Ficken
+  - William T. Pockman
+  - William R. L. Anderegg
+  - Anja Rammig
+  publisher: Biogeosciences
+  date: '2023-06-14'
+  link: https://doi.org/gsqq3s
+  type: paper
+  image: https://bg.copernicus.org/articles/20/2117/2023/bg-20-2117-2023-f01-thumb.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - Drought
+  - Tree mortality
+  - ED2
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1126/sciadv.add5667
+  title: Leaf economics fundamentals explained by optimality principles
+  authors:
+  - Han Wang
+  - I. Colin Prentice
+  - Ian J. Wright
+  - David I. Warton
+  - Shengchao Qiao
+  - Xiangtao Xu
+  - Jian Zhou
+  - Kihachiro Kikuzawa
+  - Nils Chr. Stenseth
+  publisher: Science Advances
+  date: '2023-01-18'
+  link: https://doi.org/grnvjx
+  type: paper
+  image: https://www.science.org/cms/asset/36a2a62d-0e74-4cca-a069-279b7646ca24/sciadv.2023.9.issue-3.largecover.jpg
+  members:
+  - Xiangtao Xu
+  tags:
+  - Functional Ecology
+  - Eco-Evo Optimality
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/gcb.16046
+  title: "Reduced ecosystem resilience quantifies fine\u2010scale heterogeneity in\
+    \ tropical forest mortality responses to drought"
+  authors:
+  - Donghai Wu
+  - German Vargas G.
+  - Jennifer S. Powers
+  - Nate G. McDowell
+  - Justin M. Becknell
+  - "Daniel P\xE9rez\u2010Aviles"
+  - David Medvigy
+  - Yanlan Liu
+  - Gabriel G. Katul
+  - "Julio C\xE9sar Calvo\u2010Alvarado"
+  - "Ana Calvo\u2010Obando"
+  - "Arturo Sanchez\u2010Azofeifa"
+  - Xiangtao Xu
+  publisher: Global Change Biology
+  date: '2022-03-01'
+  link: https://doi.org/gntmbv
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/042eb14c-2513-4972-a3be-5a6ae50edac4/gcb.v28.6.cover.jpg
+  members:
+  - Xiangtao Xu
+  - Donghai Wu
+  tags:
+  - Remote sensing
+  - Tree mortality
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1371/journal.pbio.3001322
+  title: "Natural experiments and long-term monitoring are critical to understand\
+    \ and predict marine host\u2013microbe ecology and evolution"
+  authors:
+  - Matthieu Leray
+  - Laetitia G. E. Wilkins
+  - Amy Apprill
+  - Holly M. Bik
+  - Friederike Clever
+  - Sean R. Connolly
+  - "Marina E. De Le\xF3n"
+  - J. Emmett Duffy
+  - "Le\xEFla Ezzat"
+  - Sarah Gignoux-Wolfsohn
+  - Edward Allen Herre
+  - Jonathan Z. Kaye
+  - David I. Kline
+  - Jordan G. Kueneman
+  - Melissa K. McCormick
+  - W. Owen McMillan
+  - "Aaron O\u2019Dea"
+  - Tiago J. Pereira
+  - Jillian M. Petersen
+  - Daniel F. Petticord
+  - Mark E. Torchin
+  - Rebecca Vega Thurber
+  - Elin Videvall
+  - William T. Wcislo
+  - Benedict Yuen
+  - Jonathan A. Eisen
+  publisher: PLOS Biology
+  date: '2021-08-19'
+  link: https://doi.org/grr53x
+  type: paper
+  members:
+  - Daniel F. Petticord
+  tags:
+  - Marine ecology
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/gcb.15872
+  title: Detecting forest response to droughts with global observations of vegetation
+    water content
+  authors:
+  - Alexandra G. Konings
+  - Sassan S. Saatchi
+  - Christian Frankenberg
+  - Michael Keller
+  - Victor Leshyk
+  - William R. L. Anderegg
+  - Vincent Humphrey
+  - Ashley M. Matheny
+  - Anna Trugman
+  - Lawren Sack
+  - Elizabeth Agee
+  - Mallory L. Barnes
+  - Oliver Binks
+  - "Kerry Cawse\u2010Nicholson"
+  - Bradley O. Christoffersen
+  - Dara Entekhabi
+  - Pierre Gentine
+  - Nataniel M. Holtzman
+  - Gabriel G. Katul
+  - Yanlan Liu
+  - Marcos Longo
+  - "Jordi Martinez\u2010Vilalta"
+  - Nate McDowell
+  - Patrick Meir
+  - Maurizio Mencuccini
+  - Assaad Mrad
+  - Kimberly A. Novick
+  - Rafael S. Oliveira
+  - Paul Siqueira
+  - "Susan C. Steele\u2010Dunne"
+  - David R. Thompson
+  - Yujie Wang
+  - Richard Wehr
+  - Jeffrey D. Wood
+  - Xiangtao Xu
+  - Pieter A. Zuidema
+  publisher: Global Change Biology
+  date: '2021-09-03'
+  link: https://doi.org/gmsfnx
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/f7d637c2-4488-4969-8e74-d3425c96fcfc/gcb15872-fig-0003-m.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - Tree mortality
+  - Remote sensing
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/ele.13879
+  title: Plant input does not exert stronger control on topsoil carbon persistence
+    than climate in alpine grasslands
+  authors:
+  - Donghai Wu
+  - Xiangtao Xu
+  - Haicheng Zhang
+  publisher: Ecology Letters
+  date: '2021-09-12'
+  link: https://doi.org/grr53z
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/833d8a1c-38a0-4bdf-a4f2-79eb158daf91/ele.v24.11.cover.jpg
+  members:
+  - Xiangtao Xu
+  - Donghai Wu
+  tags:
+  - Soil carbon turnover
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1029/2020JG005976
+  title: "Recovery: Fast and Slow\u2014Vegetation Response During the 2012\u20132016\
+    \ California Drought"
+  authors:
+  - Xi Yang
+  - Xiangtao Xu
+  - Atticus Stovall
+  - Min Chen
+  - "Jung\u2010Eun Lee"
+  publisher: 'Journal of Geophysical Research: Biogeosciences'
+  date: '2021-04-01'
+  link: https://doi.org/gkmr4d
+  type: paper
+  image: https://agupubs.onlinelibrary.wiley.com/cms/asset/cb4bf941-0093-4c82-a056-0c3b4e4e3de7/jgrg21864-fig-0001-m.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - Remote sensing
+  - Tree mortality
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/nph.17254
+  title: Leaf surface water, not plant water stress, drives diurnal variation in tropical
+    forest canopy water content
+  authors:
+  - Xiangtao Xu
+  - Alexandra G. Konings
+  - Marcos Longo
+  - Andrew Feldman
+  - Liang Xu
+  - Sassan Saatchi
+  - Donghai Wu
+  - Jin Wu
+  - Paul Moorcroft
+  publisher: New Phytologist
+  date: '2021-06-01'
+  link: https://doi.org/gkkjqv
+  type: paper
+  image: https://nph.onlinelibrary.wiley.com/pb-assets/assets/page/journal/14698137/14698137/2023/Oct/remotesensingNPH-1698765549.png
+  members:
+  - Xiangtao Xu
+  - Donghai Wu
+  tags:
+  - Remote sensing
+  - Tropical ecology
+  - ED2
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/1365-2745.13540
+  title: 'Unraveling the relative role of light and water competition between lianas
+    and trees in tropical forests: A vegetation model analysis'
+  authors:
+  - "F\xE9licien Meunier"
+  - Hans Verbeeck
+  - Betsy Cowdery
+  - Stefan A. Schnitzer
+  - "Chris M. Smith\u2010Martin"
+  - Jennifer S. Powers
+  - Xiangtao Xu
+  - Martijn Slot
+  - Hannes P. T. De Deurwaerder
+  - Matteo Detto
+  - Damien Bonal
+  - Marcos Longo
+  - Louis S. Santiago
+  - Michael Dietze
+  publisher: Journal of Ecology
+  date: '2021-03-03'
+  link: https://doi.org/grz554
+  type: paper
+  image: https://besjournals.onlinelibrary.wiley.com/cms/asset/fb1ab1ec-6328-4505-8532-00f080809c8d/jec13540-fig-0001-m.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - ED2
+  - Tropical ecology
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1016/j.isprsjprs.2020.10.017
+  title: Monitoring tree-crown scale autumn leaf phenology in a temperate forest with
+    an integration of PlanetScope and drone remote sensing observations
+  authors:
+  - Shengbiao Wu
+  - Jing Wang
+  - Zhengbing Yan
+  - Guangqin Song
+  - Yang Chen
+  - Qin Ma
+  - Meifeng Deng
+  - Yuntao Wu
+  - Yingyi Zhao
+  - Zhengfei Guo
+  - Zuoqiang Yuan
+  - Guanhua Dai
+  - Xiangtao Xu
+  - Xi Yang
+  - Yanjun Su
+  - Lingli Liu
+  - Jin Wu
+  publisher: ISPRS Journal of Photogrammetry and Remote Sensing
+  date: '2021-01-15'
+  link: https://doi.org/gkmnwt
+  type: paper
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0924271620X00128-cov150h.gif
+  members:
+  - Xiangtao Xu
+  tags:
+  - Phenology
+  - Remote sensing
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1007/s40641-020-00168-6
+  title: 'Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges
+    Under Global Change'
+  authors:
+  - Xiangtao Xu
+  - Anna T. Trugman
+  publisher: Current Climate Change Reports
+  date: '2021-01-12'
+  link: https://doi.org/gh7qbj
+  type: paper
+  image: https://media.springernature.com/w316/springer-static/cover-hires/journal/40641?as=webp
+  members:
+  - Xiangtao Xu
+  tags:
+  - Review
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/gcb.15224
+  title: Accelerated terrestrial ecosystem carbon turnover and its drivers
+  authors:
+  - Donghai Wu
+  - Shilong Piao
+  - Dan Zhu
+  - Xuhui Wang
+  - Philippe Ciais
+  - Ana Bastos
+  - Xiangtao Xu
+  - Wenfang Xu
+  publisher: Global Change Biology
+  date: '2020-08-30'
+  link: https://doi.org/gkmnwx
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/02e87cc9-8afc-40c5-b78e-f3edcdd5d6b0/gcb.v26.9.cover.jpg
+  members:
+  - Xiangtao Xu
+  - Donghai Wu
+  tags:
+  - Carbon turnover
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/nph.16712
+  title: Optimal leaf life strategies determine <i>V</i><sub>c,max</sub> dynamic during
+    ontogeny
+  authors:
+  - Matteo Detto
+  - Xiangtao Xu
+  publisher: New Phytologist
+  date: '2020-06-22'
+  link: https://doi.org/ghjsdd
+  type: paper
+  image: https://nph.onlinelibrary.wiley.com/cms/asset/247029f2-d0a5-4958-99fb-690c77cd1108/nph16712-fig-0001-m.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - Phenology
+  - Optimality principles
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/gcb.15037
+  title: A catastrophic tropical drought kills hydraulically vulnerable tree species
+  authors:
+  - Jennifer S. Powers
+  - German Vargas G.
+  - Timothy J. Brodribb
+  - Naomi B. Schwartz
+  - "Daniel P\xE9rez\u2010Aviles"
+  - "Chris M. Smith\u2010Martin"
+  - Justin M. Becknell
+  - Filippo Aureli
+  - Roger Blanco
+  - "Erick Calder\xF3n\u2010Morales"
+  - "Julio C. Calvo\u2010Alvarado"
+  - "Ana Julieta Calvo\u2010Obando"
+  - "Mar\xEDa Marta Chavarr\xEDa"
+  - "Dorian Carvajal\u2010Vanegas"
+  - "C\xE9sar D. Jim\xE9nez\u2010Rodr\xEDguez"
+  - Evin Murillo Chacon
+  - Colleen M. Schaffner
+  - Leland K. Werden
+  - Xiangtao Xu
+  - David Medvigy
+  publisher: Global Change Biology
+  date: '2020-03-23'
+  link: https://doi.org/gkmnw3
+  type: paper
+  image: https://onlinelibrary.wiley.com/cms/asset/8fa7c833-2587-456a-9ecc-c5f84a876ca1/gcb.v26.5.cover.jpg
+  members:
+  - Xiangtao Xu
+  tags:
+  - Tropical ecology
+  - Tree mortality
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1111/nph.16275
+  title: Allometric scaling laws linking biomass and rooting depth vary across ontogeny
+    and functional groups in tropical dry forest lianas and trees
+  authors:
+  - "Chris M. Smith\u2010Martin"
+  - Xiangtao Xu
+  - David Medvigy
+  - Stefan A. Schnitzer
+  - Jennifer S. Powers
+  publisher: New Phytologist
+  date: '2020-01-24'
+  link: https://doi.org/gkmnw6
+  type: paper
+  image: https://nph.onlinelibrary.wiley.com/cms/asset/2ecf3c4e-0f4e-46d6-b066-fb26715e4b19/nph16275-fig-0004-m.png
+  members:
+  - Xiangtao Xu
+  tags:
+  - Tropical ecology
+  - Allometry
+  - Root
+  - ED2
+  plugin: sources.py
+  file: sources.yaml
+- id: doi:10.1038/s41467-019-13656-7
+  title: Tropical carbon sink accelerated by symbiotic dinitrogen fixation
+  authors:
+  - Jennifer H. Levy-Varon
+  - Sarah A. Batterman
+  - David Medvigy
+  - Xiangtao Xu
+  - Jefferson S. Hall
+  - Michiel van Breugel
+  - Lars O. Hedin
+  publisher: Nature Communications
+  date: '2019-12-02'
+  link: https://doi.org/gkmnw7
+  type: paper
+  image: https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-019-13656-7/MediaObjects/41467_2019_13656_Fig2_HTML.png?as=webp
+  members:
+  - Xiangtao Xu
+  tags:
+  - Tropical ecology
+  - Nitrogen fixation
+  - ED2
   plugin: sources.py
   file: sources.yaml

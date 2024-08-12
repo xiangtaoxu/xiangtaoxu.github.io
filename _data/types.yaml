@@ -19,8 +19,20 @@ undergrad:
   description: Undergraduate Student
 
 programmer:
-  icon: fa-solid fa-code
+  icon: fa-solid fa-desktop
   description: Programmer
+
+tech:
+  icon: fa-solid fa-hammer
+  description: Technician
+
+visit:
+  icon: fa-solid fa-plane
+  description: Visiting Scholar and Student
+
+alumni:
+  icon: fa-solid fa-award
+  description: Lab Alumni
 
 mascot:
   icon: fa-solid fa-dog

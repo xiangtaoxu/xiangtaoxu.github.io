@@ -4,7 +4,7 @@
 // colors
 [data-dark="false"] {
   --primary: #0795d9;
-  --secondary: #7dd3fc;
+  --secondary: #CFFAFE;
   --text: #000000;
   --background: #ffffff;
   --background-alt: #fafafa;
@@ -15,7 +15,7 @@
 }
 [data-dark="true"] {
   --primary: #0795d9;
-  --secondary: #075985;
+  --secondary: #CFFAFE;
   --text: #ffffff;
   --background: #181818;
   --background-alt: #1c1c1c;
@@ -27,7 +27,7 @@
 
 :root {
   // font families
-  --title: "Barlow", sans-serif;
+  --title: "Anton", sans-serif;
   --heading: "Barlow", sans-serif;
   --body: "Barlow", sans-serif;
   --code: "Roboto Mono", monospace;
@@ -35,7 +35,7 @@
   // font sizes
   --large: 1.2rem;
   --xl: 1.4rem;
-  --xxl: 1.6rem;
+  --xxl: 2.0rem;
 
   // font weights
   --thin: 200;
@@ -44,8 +44,8 @@
   --bold: 600;
 
   // text line spacing
-  --spacing: 2;
-  --compact: 1.5;
+  --spacing: 1.5;
+  --compact: 1.25;
 
   // effects
   --rounded: 3px;

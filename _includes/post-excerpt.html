@@ -46,6 +46,7 @@
         | default: post.excerpt
         | default: ""
         | strip_html
+        | truncate: 150, "..."
       %}
       {% assign search = post.content
         | strip_html 

@@ -1,23 +1,219 @@
-- id: doi:10.1371/journal.pcbi.1007128
+- id: doi:10.1111/gcb.17463
   type: paper
-  description: Lorem ipsum _dolor_ **sit amet**, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  date: 2020-12-4
-  image: https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&rev=2
-  buttons:
-    - type: manubot
-      link: https://greenelab.github.io/meta-review/
-    - type: source
-      text: Manuscript Source
-      link: https://github.com/greenelab/meta-review
-    - type: website
-      link: http://manubot.org/
+  date: 2024-08-09
+  image: https://onlinelibrary.wiley.com/cms/asset/3994054d-ac0c-493f-aab0-6c30409f9094/gcb17463-fig-0002-m.jpg
+  members:
+    - Xiangtao Xu
   tags:
-    - open science
-    - collaboration
-  repo: greenelab/meta-review
+    - Ecohydrology
+    
+- id: doi:10.34133/plantphenomics.0179
+  type: paper
+  date: 2024-05-08
+  image: https://spj.science.org/cms/10.34133/plantphenomics.0179/asset/6b661479-27b0-41b8-8371-8afc6ca7301c/assets/graphic/plantphenomics.0179.fig.001.jpg
+  members:
+    - Xiangtao Xu
+    - Tao Han
+    
+- id: doi:10.1016/j.fmre.2023.12.011
+  type: paper
+  date: 2024-02-06
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S2667325824000281-ga1.jpg
+  members:
+    - Xiangtao Xu
 
-- id: doi:10.1016/j.csbj.2020.05.017
-  image: https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg
+- id: doi:10.1111/gcb.17075
+  type: paper
+  date: 2024-01-01
+  image: https://onlinelibrary.wiley.com/cms/asset/ed099a2f-4a88-4c0a-8240-00f8f0dd6d21/gcb.v30.1.cover.jpg
+  members:
+    - Xiangtao Xu
+    - Yixin Ma
+    - Daniel F. Petticord
+  tags:
+    - ED2
 
-- id: doi:10.7554/eLife.32822
-  image: https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp
+
+- id: doi:10.1016/j.scib.2023.10.016
+  type: paper
+  date: 2023-12-19
+  image: https://www.sciengine.com/figures/figures-ad36eaa4f05648238fd7ed8009f67c7e-Graphical%20Abstract.jpg
+  members:
+    - Xiangtao Xu
+    - Donghai Wu
+
+- id: doi:10.1111/ele.14215
+  type: paper
+  date: 2023-4-20
+  image: https://onlinelibrary.wiley.com/cms/asset/69472254-32d9-4587-8050-43392e1a2eda/ele14215-fig-0002-m.png
+  members:
+    - Xiangtao Xu
+    - Yixin Ma
+  tags:
+    - Functional Ecology
+    - TLS
+
+- id: doi:10.5194/bg-20-2117-2023
+  date: 2023-06-14
+  type: paper
+  image: https://bg.copernicus.org/articles/20/2117/2023/bg-20-2117-2023-f01-thumb.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - Drought
+    - Tree mortality
+    - ED2
+
+- id: doi:10.1126/sciadv.add5667
+  type: paper
+  date: 2023-1-18
+  image: https://www.science.org/cms/asset/36a2a62d-0e74-4cca-a069-279b7646ca24/sciadv.2023.9.issue-3.largecover.jpg
+  members:
+    - Xiangtao Xu
+  tags:
+    - Functional Ecology
+    - Eco-Evo Optimality
+
+- id: doi:10.1111/gcb.16046
+  type: paper
+  date: 2022-3-1
+  image: https://onlinelibrary.wiley.com/cms/asset/042eb14c-2513-4972-a3be-5a6ae50edac4/gcb.v28.6.cover.jpg
+  members:
+    - Xiangtao Xu
+    - Donghai Wu
+  tags:
+    - Remote sensing
+    - Tree mortality
+
+- id: doi:10.1371/journal.pbio.3001322
+  type: paper
+  date: 2021-8-19
+  members:
+    - Daniel F. Petticord
+  tags:
+    - Marine ecology
+
+- id: doi:10.1111/gcb.15872
+  type: paper
+  date: 2021-9-3
+  image: https://onlinelibrary.wiley.com/cms/asset/f7d637c2-4488-4969-8e74-d3425c96fcfc/gcb15872-fig-0003-m.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - Tree mortality
+    - Remote sensing
+
+- id: doi:10.1111/ele.13879
+  type: paper
+  date: 2021-9-12
+  image: https://onlinelibrary.wiley.com/cms/asset/833d8a1c-38a0-4bdf-a4f2-79eb158daf91/ele.v24.11.cover.jpg
+  members:
+    - Xiangtao Xu
+    - Donghai Wu
+  tags:
+    - Soil carbon turnover
+
+- id: doi:10.1029/2020JG005976
+  type: paper
+  date: 2021-4-1
+  image: https://agupubs.onlinelibrary.wiley.com/cms/asset/cb4bf941-0093-4c82-a056-0c3b4e4e3de7/jgrg21864-fig-0001-m.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - Remote sensing
+    - Tree mortality
+
+- id: doi:10.1111/nph.17254
+  type: paper
+  date: 2021-6-1
+  image: https://nph.onlinelibrary.wiley.com/pb-assets/assets/page/journal/14698137/14698137/2023/Oct/remotesensingNPH-1698765549.png
+  members:
+    - Xiangtao Xu
+    - Donghai Wu
+  tags:
+    - Remote sensing
+    - Tropical ecology
+    - ED2
+
+- id: doi:10.1111/1365-2745.13540
+  type: paper
+  date: 2021-3-3
+  image: https://besjournals.onlinelibrary.wiley.com/cms/asset/fb1ab1ec-6328-4505-8532-00f080809c8d/jec13540-fig-0001-m.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - ED2
+    - Tropical ecology
+
+- id: doi:10.1016/j.isprsjprs.2020.10.017
+  type: paper
+  date: 2021-1-15
+  image: https://ars.els-cdn.com/content/image/1-s2.0-S0924271620X00128-cov150h.gif
+  members:
+    - Xiangtao Xu
+  tags:
+    - Phenology
+    - Remote sensing
+
+- id: doi:10.1007/s40641-020-00168-6
+  type: paper
+  date: 2021-1-12
+  image: https://media.springernature.com/w316/springer-static/cover-hires/journal/40641?as=webp
+  members:
+    - Xiangtao Xu
+  tags:
+    - Review
+
+- id: doi:10.1111/gcb.15224
+  type: paper
+  date: 2020-8-30
+  image: https://onlinelibrary.wiley.com/cms/asset/02e87cc9-8afc-40c5-b78e-f3edcdd5d6b0/gcb.v26.9.cover.jpg
+  members:
+    - Xiangtao Xu
+    - Donghai Wu
+  tags:
+    - Carbon turnover
+
+- id: doi:10.1111/nph.16712
+  type: paper
+  date: 2020-6-22
+  image: https://nph.onlinelibrary.wiley.com/cms/asset/247029f2-d0a5-4958-99fb-690c77cd1108/nph16712-fig-0001-m.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - Phenology
+    - Optimality principles
+
+- id: doi:10.1111/gcb.15037
+  type: paper
+  date: 2020-3-23
+  image: https://onlinelibrary.wiley.com/cms/asset/8fa7c833-2587-456a-9ecc-c5f84a876ca1/gcb.v26.5.cover.jpg
+  members:
+    - Xiangtao Xu
+  tags:
+    - Tropical ecology
+    - Tree mortality
+
+- id: doi:10.1111/nph.16275
+  type: paper
+  date: 2020-1-24
+  image: https://nph.onlinelibrary.wiley.com/cms/asset/2ecf3c4e-0f4e-46d6-b066-fb26715e4b19/nph16275-fig-0004-m.png
+  members:
+    - Xiangtao Xu
+  tags:
+    - Tropical ecology
+    - Allometry
+    - Root
+    - ED2
+
+- id: doi:10.1038/s41467-019-13656-7
+  type: paper
+  date: 2019-12-2
+  image: https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-019-13656-7/MediaObjects/41467_2019_13656_Fig2_HTML.png?as=webp
+  members:
+    - Xiangtao Xu
+  tags:
+    - Tropical ecology
+    - Nitrogen fixation
+    - ED2
+

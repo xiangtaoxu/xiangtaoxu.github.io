@@ -1,13 +1,21 @@
-- title: Cool Dataset
-  subtitle: a subtitle
-  group: featured
-  image: images/photo.jpg
-  link: https://github.com/
-  description: Lorem ipsum _dolor sit amet_, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  repo: greenelab/lab-website-template
-  tags:
-    - resource
+- title: CoDiFI
+  subtitle: Cornell Digital Forestry Initiative
+  group: more
+  image: images/projects/CoDiFI.jpg
+  # link: https://github.com/
+  description: This project creates a next-generation forestry research hub that provides resources and expertise for integrating novel remote sensing (e.g. drone, lidar, etc.) and computational techniques with conventional forestry measurements across a range of departments at Cornell
+  
+  #repo: greenelab/lab-website-template
+  #tags:
+  #  - tropical_forest
 
+- title: 3D Apple Orchard
+  #subtitle: 
+  group: more
+  image: images/projects/CIDA_3DApple.jpg
+  # link: https://github.com/
+  description: In collaboration with computer scientists, This project quantifyies 3D vegetative growth and light environment for orchard trees with terrestrial lidar and computational modeling. The project is funded by Cornell Institute of Digital Agriculture (CIDA)
+ 
 - title: Cool Package
   subtitle: a subtitle
   group: featured
