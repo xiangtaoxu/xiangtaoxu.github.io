@@ -1,3 +1,14 @@
+- id: doi:10.1016/j.foreco.2024.122211
+  type: paper
+  date: 2024-10-01
+  image: images/news/2024-08-19-news.jpg
+  members:
+    - Xiangtao Xu
+    - Nick Cranmer
+  tags:
+    - TLS
+    - Forestry
+
 - id: doi:10.1111/gcb.17463
   type: paper
   date: 2024-08-09
