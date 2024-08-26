@@ -5,7 +5,7 @@
 
 Welcome to the BioM2 lab in the [Department of Ecology and Evolutionary Biology at Cornell](https://ecologyandevolution.cornell.edu/)! We use both _in situ_ and _in silico_ approaches to understand principles underlying diversity and heterogeneity in forest ecosystems and how these principles drive spatial and temporal dynamics of the terrestrial biosphere. Particularly, we adopt a [ModEx](https://ess.science.energy.gov/modex/) approach that integrates process-based modeling and model-guided experiments. We also investigate ecological patterns emerging from novel multi-scale remote sensing products with machine learning.
 
-Reach out for research opportunities **[HERE](team/index.md)**!
+Reach out for research opportunities **[HERE](./team)**!
 
 {% endcapture %}
 
