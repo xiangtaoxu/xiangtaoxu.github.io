@@ -1,0 +1,5733 @@
+<!DOCTYPE html>
+<html lang="en" data-dark="false">
+  <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--
+  put your analytics (e.g. Google Analytics) tracking code here
+-->
+
+  <!--
+  put your search engine verification (e.g. Google Search Console) tag here
+-->
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Testbed | BioM2 Lab</title>
+
+<link rel="icon" href="/preview/pr-3/images/icon.png">
+
+<meta name="title" content="Testbed">
+<meta name="description" content="Biosphere Modeling and Monitoring. Advance predictive understanding of terrestrial biosphere dynamics through modeling and observations across ecological scales.">
+
+<meta property="og:title" content="Testbed">
+<meta property="og:site_title" content="BioM2 Lab">
+<meta property="og:description" content="Biosphere Modeling and Monitoring. Advance predictive understanding of terrestrial biosphere dynamics through modeling and observations across ecological scales.">
+<meta property="og:url" content="https://biom2-lab.github.io/preview/pr-3">
+<meta property="og:image" content="/preview/pr-3/images/share.jpg">
+<meta property="og:locale" content="en_US">
+
+<meta property="twitter:title" content="Testbed">
+<meta property="twitter:description" content="Biosphere Modeling and Monitoring. Advance predictive understanding of terrestrial biosphere dynamics through modeling and observations across ecological scales.">
+<meta property="twitter:url" content="https://biom2-lab.github.io/preview/pr-3">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:image" content="/preview/pr-3/images/share.jpg">
+
+
+  <meta property="og:type" content="website">
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "WebSite",
+    
+    "name": "Testbed",
+    "description": "Biosphere Modeling and Monitoring. Advance predictive understanding of terrestrial biosphere dynamics through modeling and observations across ecological scales.",
+    "headline": "Testbed",
+    "publisher": {
+      "@type": "Organization",
+      "logo": { "@type": "ImageObject", "url": "/preview/pr-3/images/icon.png" }
+    },
+    "url": "https://biom2-lab.github.io/preview/pr-3"
+  }
+</script>
+
+<link rel="alternate" type="application/rss+xml" href="https://biom2-lab.github.io/preview/pr-3/feed.xml">
+
+  <!-- Google Fonts -->
+<!-- automatically get url from fonts used in theme file -->
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?display=swap&&family=Anton:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Barlow:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600&amp;family=Roboto+Mono:ital,wght@0,200;0,400;0,500;0,600;1,200;1,400;1,500;1,600" rel="stylesheet">
+
+<!-- Font Awesome icons (load asynchronously due to size) -->
+
+<link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet" media="none" onload="this.removeAttribute('media'); this.onload = null;">
+<noscript>
+  <link href="https://use.fontawesome.com/releases/v6.5.0/css/all.css" rel="stylesheet">
+</noscript>
+
+  <!-- third party styles -->
+<!-- https://stylishthemes.github.io/Syntax-Themes/pygments/ -->
+<link href="https://cdn.jsdelivr.net/gh/StylishThemes/Syntax-Themes/pygments/css-github/pygments-tomorrow-night-eighties.css" rel="stylesheet">
+
+<!-- include all sass in styles folder -->
+
+
+  
+    <link href="/preview/pr-3/_styles/-theme.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/alert.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/all.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/anchor.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/background.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/body.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/bold.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/button.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/card.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/checkbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/citation.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/code.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/cols.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/dark-toggle.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/feature.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/figure.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/float.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/font.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/footer.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/form.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/grid.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/header.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/heading.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/highlight.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/icon.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/image.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/link.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/list.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/main.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/paragraph.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/portrait.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/post-excerpt.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/post-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/post-nav.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/quote.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/rule.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/search-box.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/search-info.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/section.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/slideshow.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/table.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/tags.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/textbox.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/tooltip.css" rel="stylesheet">
+  
+
+  
+    <link href="/preview/pr-3/_styles/util.css" rel="stylesheet">
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+<!-- include all css in styles folder -->
+
+
+
+  <!-- third party scripts -->
+<script src="https://unpkg.com/@popperjs/core@2" defer></script>
+<script src="https://unpkg.com/tippy.js@6" defer></script>
+<script src="https://unpkg.com/mark.js@8" defer></script>
+
+<!-- include all js in scripts folder -->
+
+
+  <script src="/preview/pr-3/_scripts/anchors.js"></script>
+
+  <script src="/preview/pr-3/_scripts/dark-mode.js"></script>
+
+  <script src="/preview/pr-3/_scripts/fetch-tags.js"></script>
+
+  <script src="/preview/pr-3/_scripts/search.js"></script>
+
+  <script src="/preview/pr-3/_scripts/site-search.js"></script>
+
+  <script src="/preview/pr-3/_scripts/slideshow.js"></script>
+
+  <script src="/preview/pr-3/_scripts/table-wrap.js"></script>
+
+  <script src="/preview/pr-3/_scripts/tooltip.js"></script>
+
+
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+  <body>
+    
+
+
+
+
+
+
+
+<header class="background" style="--image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg')" data-dark="false">
+  <a href="/preview/pr-3/" class="home">
+    
+    
+      <span class="title-text" data-tooltip="Home">
+        
+          <span class="title">BioM2 Lab</span>
+        
+        
+          <span class="subtitle">Biosphere Modeling and Monitoring</span>
+        
+      </span>
+    
+  </a>
+
+  <input class="nav-toggle" type="checkbox" aria-label="show/hide nav">
+
+  <nav>
+    
+    
+      
+        <a href="/preview/pr-3/team/" data-tooltip="About our team">
+          Team
+        </a>
+      
+    
+      
+        <a href="/preview/pr-3/projects/" data-tooltip="Projects, grants, and more">
+          Projects
+        </a>
+      
+    
+      
+        <a href="/preview/pr-3/research/" data-tooltip="Published works">
+          Publications
+        </a>
+      
+    
+      
+        <a href="/preview/pr-3/news/" data-tooltip="Updates and archive">
+          News
+        </a>
+      
+    
+  </nav>
+</header>
+
+    <main>
+      <!--
+  modify main content of page:
+  - add section breaks
+  - attach section properties
+  - filter out blank sections
+-->
+
+
+
+
+
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <h1 id="testbed">Testbed</h1>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h1 id="basic-formatting">Basic formatting</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p><a href="https://some-website.org/">External link</a></p>
+
+<p><a href="team">Internal link</a></p>
+
+<p><em>italic text</em></p>
+
+<p><strong>bold text</strong></p>
+
+<p><del>strike-through text</del></p>
+
+<p><br>
+<br>
+Text with extra blank lines above and below
+<br>
+<br></p>
+
+<ul>
+  <li>list item a</li>
+  <li>list item b</li>
+  <li>list item c</li>
+</ul>
+
+<ol>
+  <li>ordered list item 1</li>
+  <li>ordered list item 2</li>
+  <li>ordered list item 3</li>
+</ol>
+
+<!--  -->
+
+<ol>
+  <li>top level list item
+    <ul>
+      <li>nested list item
+        <ol>
+          <li>even deeper nested list item</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ol>
+
+<p>Plain image:</p>
+
+<p><img src="/images/photo.jpg" alt="plain image"></p>
+
+<h1 id="heading-1">Heading 1</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<h2 id="heading-2">Heading 2</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<h3 id="heading-3">Heading 3</h3>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<h4 id="heading-4">Heading 4</h4>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<h5 id="heading-5">Heading 5</h5>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<h6 id="heading-6">Heading 6</h6>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+<hr>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">TABLE</th>
+      <th style="text-align: center">Game 1</th>
+      <th style="text-align: center">Game 2</th>
+      <th style="text-align: center">Game 3</th>
+      <th style="text-align: right">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">Anna</td>
+      <td style="text-align: center">144</td>
+      <td style="text-align: center">123</td>
+      <td style="text-align: center">218</td>
+      <td style="text-align: right">485</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Bill</td>
+      <td style="text-align: center">90</td>
+      <td style="text-align: center">175</td>
+      <td style="text-align: center">120</td>
+      <td style="text-align: right">385</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">Cara</td>
+      <td style="text-align: center">102</td>
+      <td style="text-align: center">214</td>
+      <td style="text-align: center">233</td>
+      <td style="text-align: right">549</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>It was the best of times it was the worst of times.
+It was the age of wisdom, it was the age of foolishness.
+It was the spring of hope, it was the winter of despair.</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// some code with syntax highlighting</span>
+<span class="kd">const</span> <span class="nx">popup</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">"</span><span class="s2">#popup</span><span class="dl">"</span><span class="p">);</span>
+<span class="nx">popup</span><span class="p">.</span><span class="nx">style</span><span class="p">.</span><span class="nx">width</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">100%</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">popup</span><span class="p">.</span><span class="nx">innerText</span> <span class="o">=</span>
+  <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This sentence has <code class="language-plaintext highlighter-rouge">inline code</code>, useful for making references to variables, packages, versions, etc. within a sentence.</p>
+
+<p class="left">Lorem ipsum dolor sit amet.</p>
+<p class="center">Consectetur adipiscing elit.</p>
+<p class="right">Sed do eiusmod tempor incididunt.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h1 id="jekyll-spaceship">Jekyll Spaceship</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: right">Stage</th>
+      <th style="text-align: right">Direct Products</th>
+      <th style="text-align: right">ATP Yields</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: right" rowspan="2">Glycolysis
+<br>
+</td>
+      <td style="text-align: right">2 ATP</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      
+      <td style="text-align: right">2 NADH</td>
+      <td style="text-align: right">3–5 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">Pyruvaye oxidation</td>
+      <td style="text-align: right">2 NADH</td>
+      <td style="text-align: right">5 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right" rowspan="3">Citric acid cycle
+<br><br>
+</td>
+      <td style="text-align: right">2 ATP</td>
+      <td style="text-align: right"> </td>
+    </tr>
+    <tr>
+      
+      <td style="text-align: right">6 NADH</td>
+      <td style="text-align: right">15 ATP</td>
+    </tr>
+    <tr>
+      
+      <td style="text-align: right">2 FADH</td>
+      <td style="text-align: right">3 ATP</td>
+    </tr>
+    <tr>
+      <td style="text-align: right">30–32 ATP</td>
+      <td style="text-align: right"> </td>
+      <td style="text-align: right"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>$ a * b = c ^ b $</p>
+
+<p>$ 2^{\frac{n-1}{3}} $</p>
+
+<p>$ \int_a^b f(x)\,dx. $</p>
+
+<p><img class="mermaid" src="https://mermaid.ink/svg/eyJjb2RlIjoicGllIHRpdGxlIFBldHMgYWRvcHRlZCBieSB2b2x1bnRlZXJzXG5cIkRvZ3NcIiA6IDM4NlxuXCJDYXRzXCIgOiA4NVxuXCJSYXRzXCIgOiAzNSIsIm1lcm1haWQiOm51bGx9"></p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h1 id="components">Components</h1>
+
+<h2 id="section">Section</h2>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="1" style="--image: url('/preview/pr-3/images/background.jpg')">
+    <!--
+  background: images/background.jpg;
+  dark: ;
+  size: 1;
+-->
+
+<p>Section, <code class="language-plaintext highlighter-rouge">background</code></p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="1" data-dark="true">
+    <!--
+  background: ;
+  dark: true;
+  size: 1;
+-->
+
+<p>Section, <code class="language-plaintext highlighter-rouge">dark=true</code></p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="2" data-dark="true" style="--image: url('/preview/pr-3/images/background.jpg')">
+    <!--
+  background: images/background.jpg;
+  dark: true;
+  size: 2;
+-->
+
+<p>Section, <code class="language-plaintext highlighter-rouge">background</code> <code class="language-plaintext highlighter-rouge">dark=true</code></p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="wide">
+    <!--
+  background: ;
+  dark: ;
+  size: wide;
+-->
+
+<p>Section, <code class="language-plaintext highlighter-rouge">size=wide</code></p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="full">
+    <!--
+  background: ;
+  dark: ;
+  size: full;
+-->
+
+<p>Section, <code class="language-plaintext highlighter-rouge">size=full</code> w/ figure</p>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="figure link">
+    <img src="https://images.rawpixel.com/image_1000/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L2ZsMjYyODgwODcyMjYtaW1hZ2VfMS1rb3k1Zzkxay5qcGc.jpg" style="
+        width: 100%;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="figure">Figure</h2>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="_Lorem_ **ipsum**.">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="_Lorem_ **ipsum**." loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>.
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="_Lorem_ **ipsum**. `px` width">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: 400px;
+        max-height: unset;
+      " alt="_Lorem_ **ipsum**. `px` width" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">px</code> width
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="_Lorem_ **ipsum**. `%` width">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: 50%;
+        max-height: unset;
+      " alt="_Lorem_ **ipsum**. `%` width" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">%</code> width
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="_Lorem_ **ipsum**. `px` height">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: 200px;
+      " alt="_Lorem_ **ipsum**. `px` height" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">px</code> height
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="_Lorem_ **ipsum**. `px` width, svg">
+    <img src="/preview/pr-3/images/fallback.svg" style="
+        width: 400px;
+        max-height: unset;
+      " alt="_Lorem_ **ipsum**. `px` width, svg" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">px</code> width, svg
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="_Lorem_ **ipsum**. `%` width, svg">
+    <img src="/preview/pr-3/images/fallback.svg" style="
+        width: 50%;
+        max-height: unset;
+      " alt="_Lorem_ **ipsum**. `%` width, svg" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">%</code> width, svg
+
+    </figcaption>
+  
+</figure>
+
+<figure class="figure">
+  <a href="/preview/pr-3/team" class="figure-image" aria-label="_Lorem_ **ipsum**. `px` height, svg">
+    <img src="/preview/pr-3/images/fallback.svg" style="
+        width: auto;
+        max-height: 200px;
+      " alt="_Lorem_ **ipsum**. `px` height, svg" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      <em>Lorem</em> <strong>ipsum</strong>. <code class="language-plaintext highlighter-rouge">px</code> height, svg
+
+    </figcaption>
+  
+</figure>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="button">Button</h2>
+
+<div class="button-wrapper">
+    <a class="button" href="/preview/pr-3" data-tooltip="GitHub" data-style="" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+        <span>GitHub</span>
+      
+    </a>
+  </div>
+
+<div class="button-wrapper">
+    <a class="button" href="/preview/pr-3" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+        <span>GitHub</span>
+      
+    </a>
+  </div>
+
+<div class="button-wrapper">
+    <a class="button" href="/preview/pr-3" data-tooltip="Override tooltip" data-style="" aria-label="Override tooltip">
+      <i class="icon fa-brands fa-youtube"></i>
+      
+        <span>Override Text</span>
+      
+    </a>
+  </div>
+
+<div class="button-wrapper">
+    <a class="button" href="/preview/pr-3" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+<div class="button-wrapper">
+    <a class="button" href="https://github.com/github-handle" data-tooltip="GitHub" data-style="" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="icon">Icon</h2>
+
+<p><i class="icon fa-solid fa-bacteria"></i>
+<i class="icon fa-solid fa-virus"></i>
+<i class="icon fa-solid fa-flask"></i>
+<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-450 -250 900 500">  <g transform="scale(0.9)">    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        M -125 125         L -125 -125        L 0 45        L 125 -125        L 125 125      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        M -200 -250        L -330 0         L -200 250      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        m 200 250         L 330 0        L 200 -250      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="50" d="        M -330 0        L -370 0      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="50" d="        M 330 0        L 370 0      "></path>    <circle cx="-455" cy="0" r="30" fill="none" stroke="currentColor" stroke-width="30"></circle>    <circle cx="455" cy="0" r="30" fill="none" stroke="currentColor" stroke-width="30"></circle>  </g></svg></span></p>
+
+<p><i class="icon fa-brands fa-github"></i> Lorem
+<i class="icon fa-solid fa-microscope"></i> Ipsum
+<span class="icon"><svg xmlns="http://www.w3.org/2000/svg" viewbox="-450 -250 900 500">  <g transform="scale(0.9)">    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        M -125 125         L -125 -125        L 0 45        L 125 -125        L 125 125      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        M -200 -250        L -330 0         L -200 250      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="50" d="        m 200 250         L 330 0        L 200 -250      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="50" d="        M -330 0        L -370 0      "></path>    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="50" d="        M 330 0        L 370 0      "></path>    <circle cx="-455" cy="0" r="30" fill="none" stroke="currentColor" stroke-width="30"></circle>    <circle cx="455" cy="0" r="30" fill="none" stroke="currentColor" stroke-width="30"></circle>  </g></svg></span> Dolor</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="feature">Feature</h2>
+
+<div class="feature">
+  <a href="/preview/pr-3/team" class="feature-image" aria-label="Title">
+    <img src="/preview/pr-3/images/icon.png" loading="lazy" alt="Title" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  <div class="feature-text">
+    
+      <p class="feature-title">Title</p>
+    
+    
+<p><em>Lorem</em> <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="feature" data-flip="">
+  <a class="feature-image" aria-label="Title">
+    <img src="/preview/pr-3/images/icon.png" loading="lazy" alt="Title" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  <div class="feature-text">
+    
+      <p class="feature-title">Title</p>
+    
+    
+<p><em>Lorem</em> <strong>ipsum</strong> dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="feature">
+  <a href="/preview/pr-3/team" class="feature-image" aria-label="feature link">
+    <img src="" loading="lazy" alt="feature image" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  <div class="feature-text">
+    
+    
+
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="list">List</h2>
+
+<h3 id="list-citations">List citations</h3>
+
+<h3 id="2024">2024</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt7gk4" class="citation-title">
+        Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Nicholas Cranmer, Tao Han, Brett Chedzoy, Peter J. Smallidge, Colin Beier, Lucas Johnson, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Forest Ecology and Management</span>
+         · 
+        <span class="citation-date">01 Oct 2024</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.foreco.2024.122211</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6s44" class="citation-title">
+        Two sub‐annual timescales and coupling modes for terrestrial water and carbon cycles
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Daniel J. Short Gianotti, Kaighin A. McColl, Andrew F. Feldman, Xiangtao Xu, Dara Entekhabi
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">09 Aug 2024</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.17463</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scn" class="citation-title">
+        AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in Orchards
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Tian Qiu, Tao Wang, Tao Han, Kaspar Kuehn, Lailiang Cheng, Cheng Meng, Xiangtao Xu, Kenong Xu, Jiang Yu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Plant Phenomics</span>
+         · 
+        <span class="citation-date">08 May 2024</span>
+         · 
+        <span class="citation-id">doi:10.34133/plantphenomics.0179</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scp" class="citation-title">
+        Global photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental drivers
+      </a>
+
+      <div class="citation-authors" data-tooltip="Zhengbing Yan, Matteo Detto, Zhengfei Guo, Nicholas G. Smith, Han Wang, Loren P. Albert, Xiangtao Xu, Ziyu Lin, Shuwen Liu, Yingyi Zhao, Shuli Chen, Timothy C. Bonebrake, Jin Wu " tabindex="0">
+        Zhengbing Yan, Matteo Detto, Zhengfei Guo, Nicholas G. Smith, Han Wang, …, Shuwen Liu, Yingyi Zhao, Shuli Chen, Timothy C. Bonebrake, Jin Wu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Fundamental Research</span>
+         · 
+        <span class="citation-date">06 Feb 2024</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.fmre.2023.12.011</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scq" class="citation-title">
+        Constraining long‐term model predictions for woody growth using tropical tree rings
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Peter van der Sleen, Peter Groenendijk, Mart Vlam, David Medvigy, Paul Moorcroft, Daniel Petticord, Yixin Ma, Pieter A. Zuidema
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">01 Jan 2024</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.17075</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2023">2023</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scr" class="citation-title">
+        Observed impacts of large wind farms on grassland carbon cycling
+      </a>
+
+      <div class="citation-authors" data-tooltip="Donghai Wu, Steven M. Grodsky, Wenfang Xu, Naijing Liu, Rafael M. Almeida, Liming Zhou, Lee M. Miller, Somnath Baidya Roy, Geng Xia, Anurag A. Agrawal, Benjamin Z. Houlton, Alexander S. Flecker, Xiangtao Xu " tabindex="0">
+        Donghai Wu, Steven M. Grodsky, Wenfang Xu, Naijing Liu, Rafael M. Almeida, …, Geng Xia, Anurag A. Agrawal, Benjamin Z. Houlton, Alexander S. Flecker, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Science Bulletin</span>
+         · 
+        <span class="citation-date">19 Dec 2023</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.scib.2023.10.016</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gsqq3s" class="citation-title">
+        Exploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to guide modeling and experimental studies
+      </a>
+
+      <div class="citation-authors" data-tooltip="Jennifer A. Holm, David M. Medvigy, Benjamin Smith, Jeffrey S. Dukes, Claus Beier, Mikhail Mishurov, Xiangtao Xu, Jeremy W. Lichstein, Craig D. Allen, Klaus S. Larsen, Yiqi Luo, Cari Ficken, William T. Pockman, William R. L. Anderegg, Anja Rammig " tabindex="0">
+        Jennifer A. Holm, David M. Medvigy, Benjamin Smith, Jeffrey S. Dukes, Claus Beier, …, Yiqi Luo, Cari Ficken, William T. Pockman, William R. L. Anderegg, Anja Rammig
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Biogeosciences</span>
+         · 
+        <span class="citation-date">14 Jun 2023</span>
+         · 
+        <span class="citation-id">doi:10.5194/bg-20-2117-2023</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gsh5qt" class="citation-title">
+        Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technology
+      </a>
+
+      <div class="citation-authors" data-tooltip="Xi Yang, Rong Li, Andrew Jablonski, Atticus Stovall, Jongmin Kim, Koong Yi, Yixin Ma, Daniel Beverly, Richard Phillips, Kim Novick, Xiangtao Xu, Manuel Lerdau " tabindex="0">
+        Xi Yang, Rong Li, Andrew Jablonski, Atticus Stovall, Jongmin Kim, …, Daniel Beverly, Richard Phillips, Kim Novick, Xiangtao Xu, Manuel Lerdau
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Ecology Letters</span>
+         · 
+        <span class="citation-date">20 Apr 2023</span>
+         · 
+        <span class="citation-id">doi:10.1111/ele.14215</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grnvjx" class="citation-title">
+        Leaf economics fundamentals explained by optimality principles
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Han Wang, I. Colin Prentice, Ian J. Wright, David I. Warton, Shengchao Qiao, Xiangtao Xu, Jian Zhou, Kihachiro Kikuzawa, Nils Chr. Stenseth
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Science Advances</span>
+         · 
+        <span class="citation-date">18 Jan 2023</span>
+         · 
+        <span class="citation-id">doi:10.1126/sciadv.add5667</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2022">2022</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gntmbv" class="citation-title">
+        Reduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality responses to drought
+      </a>
+
+      <div class="citation-authors" data-tooltip="Donghai Wu, German Vargas G., Jennifer S. Powers, Nate G. McDowell, Justin M. Becknell, Daniel Pérez‐Aviles, David Medvigy, Yanlan Liu, Gabriel G. Katul, Julio César Calvo‐Alvarado, Ana Calvo‐Obando, Arturo Sanchez‐Azofeifa, Xiangtao Xu " tabindex="0">
+        Donghai Wu, German Vargas G., Jennifer S. Powers, Nate G. McDowell, Justin M. Becknell, …, Gabriel G. Katul, Julio César Calvo‐Alvarado, Ana Calvo‐Obando, Arturo Sanchez‐Azofeifa, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">01 Mar 2022</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.16046</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2021">2021</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grr53z" class="citation-title">
+        Plant input does not exert stronger control on topsoil carbon persistence than climate in alpine grasslands
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Donghai Wu, Xiangtao Xu, Haicheng Zhang
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Ecology Letters</span>
+         · 
+        <span class="citation-date">12 Sep 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/ele.13879</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gmsfnx" class="citation-title">
+        Detecting forest response to droughts with global observations of vegetation water content
+      </a>
+
+      <div class="citation-authors" data-tooltip="Alexandra G. Konings, Sassan S. Saatchi, Christian Frankenberg, Michael Keller, Victor Leshyk, William R. L. Anderegg, Vincent Humphrey, Ashley M. Matheny, Anna Trugman, Lawren Sack, Elizabeth Agee, Mallory L. Barnes, Oliver Binks, Kerry Cawse‐Nicholson, Bradley O. Christoffersen, Dara Entekhabi, Pierre Gentine, Nataniel M. Holtzman, Gabriel G. Katul, Yanlan Liu, Marcos Longo, Jordi Martinez‐Vilalta, Nate McDowell, Patrick Meir, Maurizio Mencuccini, Assaad Mrad, Kimberly A. Novick, Rafael S. Oliveira, Paul Siqueira, Susan C. Steele‐Dunne, David R. Thompson, Yujie Wang, Richard Wehr, Jeffrey D. Wood, Xiangtao Xu, Pieter A. Zuidema " tabindex="0">
+        Alexandra G. Konings, Sassan S. Saatchi, Christian Frankenberg, Michael Keller, Victor Leshyk, …, Yujie Wang, Richard Wehr, Jeffrey D. Wood, Xiangtao Xu, Pieter A. Zuidema
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">03 Sep 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15872</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grr53x" class="citation-title">
+        Natural experiments and long-term monitoring are critical to understand and predict marine host–microbe ecology and evolution
+      </a>
+
+      <div class="citation-authors" data-tooltip="Matthieu Leray, Laetitia G. E. Wilkins, Amy Apprill, Holly M. Bik, Friederike Clever, Sean R. Connolly, Marina E. De León, J. Emmett Duffy, Leïla Ezzat, Sarah Gignoux-Wolfsohn, Edward Allen Herre, Jonathan Z. Kaye, David I. Kline, Jordan G. Kueneman, Melissa K. McCormick, W. Owen McMillan, Aaron O’Dea, Tiago J. Pereira, Jillian M. Petersen, Daniel F. Petticord, Mark E. Torchin, Rebecca Vega Thurber, Elin Videvall, William T. Wcislo, Benedict Yuen, Jonathan A. Eisen " tabindex="0">
+        Matthieu Leray, Laetitia G. E. Wilkins, Amy Apprill, Holly M. Bik, Friederike Clever, …, Rebecca Vega Thurber, Elin Videvall, William T. Wcislo, Benedict Yuen, Jonathan A. Eisen
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">PLOS Biology</span>
+         · 
+        <span class="citation-date">19 Aug 2021</span>
+         · 
+        <span class="citation-id">doi:10.1371/journal.pbio.3001322</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkkjqv" class="citation-title">
+        Leaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy water content
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Alexandra G. Konings, Marcos Longo, Andrew Feldman, Liang Xu, Sassan Saatchi, Donghai Wu, Jin Wu, Paul Moorcroft
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">01 Jun 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.17254</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmr4d" class="citation-title">
+        Recovery: Fast and Slow—Vegetation Response During the 2012–2016 California Drought
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xi Yang, Xiangtao Xu, Atticus Stovall, Min Chen, Jung‐Eun Lee
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Journal of Geophysical Research: Biogeosciences</span>
+         · 
+        <span class="citation-date">01 Apr 2021</span>
+         · 
+        <span class="citation-id">doi:10.1029/2020JG005976</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grz554" class="citation-title">
+        Unraveling the relative role of light and water competition between lianas and trees in tropical forests: A vegetation model analysis
+      </a>
+
+      <div class="citation-authors" data-tooltip="Félicien Meunier, Hans Verbeeck, Betsy Cowdery, Stefan A. Schnitzer, Chris M. Smith‐Martin, Jennifer S. Powers, Xiangtao Xu, Martijn Slot, Hannes P. T. De Deurwaerder, Matteo Detto, Damien Bonal, Marcos Longo, Louis S. Santiago, Michael Dietze " tabindex="0">
+        Félicien Meunier, Hans Verbeeck, Betsy Cowdery, Stefan A. Schnitzer, Chris M. Smith‐Martin, …, Matteo Detto, Damien Bonal, Marcos Longo, Louis S. Santiago, Michael Dietze
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Journal of Ecology</span>
+         · 
+        <span class="citation-date">03 Mar 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/1365-2745.13540</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnwt" class="citation-title">
+        Monitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of PlanetScope and drone remote sensing observations
+      </a>
+
+      <div class="citation-authors" data-tooltip="Shengbiao Wu, Jing Wang, Zhengbing Yan, Guangqin Song, Yang Chen, Qin Ma, Meifeng Deng, Yuntao Wu, Yingyi Zhao, Zhengfei Guo, Zuoqiang Yuan, Guanhua Dai, Xiangtao Xu, Xi Yang, Yanjun Su, Lingli Liu, Jin Wu " tabindex="0">
+        Shengbiao Wu, Jing Wang, Zhengbing Yan, Guangqin Song, Yang Chen, …, Xiangtao Xu, Xi Yang, Yanjun Su, Lingli Liu, Jin Wu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">ISPRS Journal of Photogrammetry and Remote Sensing</span>
+         · 
+        <span class="citation-date">15 Jan 2021</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.isprsjprs.2020.10.017</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gh7qbj" class="citation-title">
+        Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global Change
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Anna T. Trugman
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Current Climate Change Reports</span>
+         · 
+        <span class="citation-date">12 Jan 2021</span>
+         · 
+        <span class="citation-id">doi:10.1007/s40641-020-00168-6</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2020">2020</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnwx" class="citation-title">
+        Accelerated terrestrial ecosystem carbon turnover and its drivers
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Donghai Wu, Shilong Piao, Dan Zhu, Xuhui Wang, Philippe Ciais, Ana Bastos, Xiangtao Xu, Wenfang Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">30 Aug 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15224</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/ghjsdd" class="citation-title">
+        Optimal leaf life strategies determine <i>V</i><sub>c,max</sub> dynamic during ontogeny
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Matteo Detto, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">22 Jun 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.16712</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw3" class="citation-title">
+        A catastrophic tropical drought kills hydraulically vulnerable tree species
+      </a>
+
+      <div class="citation-authors" data-tooltip="Jennifer S. Powers, German Vargas G., Timothy J. Brodribb, Naomi B. Schwartz, Daniel Pérez‐Aviles, Chris M. Smith‐Martin, Justin M. Becknell, Filippo Aureli, Roger Blanco, Erick Calderón‐Morales, Julio C. Calvo‐Alvarado, Ana Julieta Calvo‐Obando, María Marta Chavarría, Dorian Carvajal‐Vanegas, César D. Jiménez‐Rodríguez, Evin Murillo Chacon, Colleen M. Schaffner, Leland K. Werden, Xiangtao Xu, David Medvigy " tabindex="0">
+        Jennifer S. Powers, German Vargas G., Timothy J. Brodribb, Naomi B. Schwartz, Daniel Pérez‐Aviles, …, Evin Murillo Chacon, Colleen M. Schaffner, Leland K. Werden, Xiangtao Xu, David Medvigy
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">23 Mar 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15037</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw6" class="citation-title">
+        Allometric scaling laws linking biomass and rooting depth vary across ontogeny and functional groups in tropical dry forest lianas and trees
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Chris M. Smith‐Martin, Xiangtao Xu, David Medvigy, Stefan A. Schnitzer, Jennifer S. Powers
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">24 Jan 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.16275</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2019">2019</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw7" class="citation-title">
+        Tropical carbon sink accelerated by symbiotic dinitrogen fixation
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Jennifer H. Levy-Varon, Sarah A. Batterman, David Medvigy, Xiangtao Xu, Jefferson S. Hall, Michiel van Breugel, Lars O. Hedin
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Nature Communications</span>
+         · 
+        <span class="citation-date">02 Dec 2019</span>
+         · 
+        <span class="citation-id">doi:10.1038/s41467-019-13656-7</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<h3 id="list-projects">List projects</h3>
+
+<div class="card" data-style="">
+  <a aria-label="CoDiFI" class="card-image">
+    <img src="/preview/pr-3/images/projects/CoDiFI.jpg" alt="CoDiFI" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a class="card-title">
+        CoDiFI
+    </a>
+    
+
+    
+      <span class="card-subtitle">Cornell Digital Forestry Initiative</span>
+    
+
+    
+      <p>
+        This project creates a next-generation forestry research hub that provides resources and expertise for integrating novel remote sensing (e.g. drone, lidar, etc.) and computational techniques with conventional forestry measurements across a range of departments at Cornell
+
+      </p>
+    
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="">
+  <a aria-label="3D Apple Orchard" class="card-image">
+    <img src="/preview/pr-3/images/projects/CIDA_3DApple.jpg" alt="3D Apple Orchard" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a class="card-title">
+        3D Apple Orchard
+    </a>
+    
+
+    
+
+    
+      <p>
+        In collaboration with computer scientists, This project quantifyies 3D vegetative growth and light environment for orchard trees with terrestrial lidar and computational modeling. The project is funded by Cornell Institute of Digital Agriculture (CIDA)
+
+      </p>
+    
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="">
+  <a href="https://github.com/" aria-label="Cool Package" class="card-image">
+    <img src="/preview/pr-3/images/photo.jpg" alt="Cool Package" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="https://github.com/" class="card-title">
+        Cool Package
+    </a>
+    
+
+    
+      <span class="card-subtitle">a subtitle</span>
+    
+
+    
+      <p>
+        Lorem ipsum <em>dolor sit amet</em>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20resource%22" class="tag" data-tooltip='Show items with the tag "resource"'>
+        resource
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="">
+  <a href="https://github.com/" aria-label="Cool Tutorial" class="card-image">
+    <img src="/preview/pr-3/images/photo.jpg" alt="Cool Tutorial" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="https://github.com/" class="card-title">
+        Cool Tutorial
+    </a>
+    
+
+    
+      <span class="card-subtitle">a subtitle</span>
+    
+
+    
+      <p>
+        Lorem ipsum <em>dolor sit amet</em>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20resource%22" class="tag" data-tooltip='Show items with the tag "resource"'>
+        resource
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20publication%22" class="tag" data-tooltip='Show items with the tag "publication"'>
+        publication
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="">
+  <a href="https://github.com/" aria-label="Cool Web App" class="card-image">
+    <img src="/preview/pr-3/images/photo.jpg" alt="Cool Web App" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="https://github.com/" class="card-title">
+        Cool Web App
+    </a>
+    
+
+    
+      <span class="card-subtitle">a subtitle</span>
+    
+
+    
+      <p>
+        Lorem ipsum <em>dolor sit amet</em>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="">
+  <a href="https://github.com/" aria-label="Cool Web Server" class="card-image">
+    <img src="/preview/pr-3/images/photo.jpg" alt="Cool Web Server" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="https://github.com/" class="card-title">
+        Cool Web Server
+    </a>
+    
+
+    
+      <span class="card-subtitle">a subtitle</span>
+    
+
+    
+      <p>
+        Lorem ipsum <em>dolor sit amet</em>, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20software%22" class="tag" data-tooltip='Show items with the tag "software"'>
+        software
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+<hr>
+
+<h3 id="list-team-members">List team members</h3>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/Daniel-Petticord.html" class="portrait" data-style="" aria-label="Daniel Petticord">
+    
+      <i class="icon fa-solid fa-graduation-cap"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/dan-petticord.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Daniel Petticord
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        EEB PhD candidate
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/aaron-sams.html" class="portrait" data-style="" aria-label="Aaron Sams">
+    
+      <i class="icon fa-solid fa-desktop"></i>
+    
+
+    <img src="https://media.licdn.com/dms/image/D4E03AQFH_AxmIvU-Og/profile-displayphoto-shrink_800_800/0/1700674033550?e=1729123200&v=beta&t=_sLJinXQKmh5nDQDiAnFcOIB6_DGqmjTyPM_7oii4Pw" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Aaron Sams
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Part-time Programmer
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/cameron-coles.html" class="portrait" data-style="" aria-label="Cameron Coles">
+    
+      <i class="icon fa-solid fa-graduation-cap"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/cameron-coles.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Cameron Coles
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        EEB PhD student
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/coral-del-mar-valle-rodriguez.html" class="portrait" data-style="" aria-label="Coral del Mar Valle-Rodríguez">
+    
+      <i class="icon fa-solid fa-graduation-cap"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/coral-valle-rodriguez.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Coral del Mar Valle-Rodríguez
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        EEB PhD Student
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/donghai-wu.html" class="portrait" data-style="" aria-label="Donghai Wu">
+    
+      <i class="icon fa-solid fa-award"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/donghai-wu.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Donghai Wu
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Postdoc from 2019 to 2022. Currently Staff Scientist at South China Botanical Garden
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/dylan-van-bramer.html" class="portrait" data-style="" aria-label="Dylan Van Bramer">
+    
+      <i class="icon fa-solid fa-user-graduate"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/dylan-van-bramer.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Dylan Van Bramer
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Undergraduate, Computer Science
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/maddie-watson.html" class="portrait" data-style="" aria-label="Maddie Watson">
+    
+      <i class="icon fa-solid fa-award"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/maddie-watson.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Maddie Watson
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Summer Research Intern
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/nicholas-cranmer.html" class="portrait" data-style="" aria-label="Nicholas Cranmer">
+    
+      <i class="icon fa-solid fa-graduation-cap"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/nicholas-cranmer.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Nicholas Cranmer
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        EEB PhD student
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/sabrina-chow.html" class="portrait" data-style="" aria-label="Sabrina Chow">
+    
+      <i class="icon fa-solid fa-user-graduate"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/sabrina-chow.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Sabrina Chow
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Undergraduate, Computational Biology
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/tao-han.html" class="portrait" data-style="" aria-label="Tao Han">
+    
+      <i class="icon fa-solid fa-glasses"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/tao-han.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Tao Han
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Postdoctoral Researcher
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/xiangtao-xu.html" class="portrait" data-style="" aria-label="Xiangtao Xu">
+    
+      <i class="icon fa-solid fa-microscope"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/xiangtao-xu.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Xiangtao Xu
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Assistant Professor, EEB Cornell.
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/xiaoting-li.html" class="portrait" data-style="" aria-label="Xiaoting Li">
+    
+      <i class="icon fa-solid fa-award"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/xiaoting-li.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Xiaoting Li
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        Visiting Student from 2022-2023
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a href="/preview/pr-3/members/yixin-ma.html" class="portrait" data-style="" aria-label="Yixin Ma">
+    
+      <i class="icon fa-solid fa-graduation-cap"></i>
+    
+
+    <img src="/preview/pr-3/images/portraits/yixin-ma.jpg" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Yixin Ma
+      </span>
+    
+
+    
+      <span class="portrait-description">
+        EEB PhD candidate
+      </span>
+    
+
+    
+  </a>
+</div>
+
+<hr>
+
+<h3 id="list-blog-posts">List blog posts</h3>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/09/05/news.html">Cameron passes his A-exam!</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>September 05, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="We are thrilled to announce that Cameron has successfully passed his A Exam  Join us in congratulating Cameron on this outstanding achievement ">
+        We are thrilled to announce that Cameron has successfully passed his A Exam! Join us in congratulating Cameron on this outstanding achievement!
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/08/19/news.html" class="post-excerpt-image" aria-label="New Paper published on Forest Ecology and Management">
+        <img src="/preview/pr-3/images/news/2024-08-19-news.jpg" alt="New Paper published on Forest Ecology and Management" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/19/news.html">New Paper published on Forest Ecology and Management</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 19, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20publication%22" class="tag" data-tooltip='Show items with the tag "publication"'>
+        publication
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="New paper titled  Estimating merchantable and non merchantable wood volume in slash walls using terrestrial and airborne LiDAR  is now published online in Forest Ecology and Management  This collaborative work  involving Cornell EEB  DNRE  and SUNY ESF  is led by our PhD student Nick Cranmer  The study investigates the woody volume of slash wall  an effective forest management practice to prevent deer herbivory and promote forest regeneration with terrestrial and airborne lidar systems  TLS and ALS   Key findings include   1  TLS tends to underestimate total cross sectional area due to omission of small stem cross sections  diameter  lt  5 08 cm    2  TLS based wood volume estimates were similar across both short and tall slash walls in the study with an average volume of 21 34 m3 30 m for short slash walls and 21 50 m3 30 m for tall slash walls  corresponding to 16 9 t dry biomass  30 m and 17 0 t dry biomass  30 m respectively   3  Average merchantable  diameter  gt  15 24 cm  and non merchantable  diameter  lt  15 24 cm  timber fraction was 68 75   and 31 35   for short slash walls and 65 04   and 34 96   for tall slash walls  This study provides novel data and methodology to estimate the construction cost of slash walls which are critical for optimizing slash wall applications ">
+        New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published on...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/13/news.html">Welcome Baby Elena Rossana Cranmer</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 13, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="The Cranmer family has expanded with baby Elena as the new member  Congratulations Nick ">
+        The Cranmer family has expanded with baby Elena as the new member. Congratulations Nick!
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/08/09/news.html" class="post-excerpt-image" aria-label="New Paper published on GCB">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/3994054d-ac0c-493f-aab0-6c30409f9094/gcb17463-fig-0002-m.jpg" alt="New Paper published on GCB" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/09/news.html">New Paper published on GCB</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 09, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20publication%22" class="tag" data-tooltip='Show items with the tag "publication"'>
+        publication
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20ecohydrology%22" class="tag" data-tooltip='Show items with the tag "ecohydrology"'>
+        ecohydrology
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="New paper titled  Two sub annual timescales and coupling modes for terrestrial water and carbon cycles  is now published online in Global Change Biology  Dr  Dan Gianotti from MIT CEE is the lead author while Xiangtao Xu of the BioM2 Lab is a co author  Using remote sensing data  the study identifies two dominant modes of terrestrial water and carbon cycles across the Contiguous United States   1  a negative correlation timescale on the order of a few days during which landscapes dry after precipitation and plants increase their carbon uptake through photosynthetic upregulation   2  A slow  seasonal scale positive covariation through which landscape drying leads to decreased growth and carbon uptake  The spatial pattern of local temporal dynamics positively sloped tangent lines to a convex long term mean state curve is surprisingly strong  and can serve as a benchmark for coupled Earth System Models  The study shows that many such models do not represent this emergent mean state pattern  and hypothesize that this may be due to lack of water carbon feedbacks at daily scales ">
+        New paper titled “Two sub-annual timescales and coupling modes for terrestrial water and carbon cycles” is now published online in Global Change Bi...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/06/news.html">NYSDEC Site Visit at Arnot Forest</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 06, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Arnot Forest sees visits from New York State Department of Environment and Conservation  NYSDEC  Division of Lands and Forests  DLF  and Empire State Forest Products Association  During the day trip  lab members Nick Cranmer and Xiangtao Xu had a field demonstration of terrestrial lidar to help with measuring  monitoring  reporting and verification  MMRV  of temperate forests to NYSDEC DLF Director Fiona Watts and other visitors ">
+        Arnot Forest sees visits from New York State Department of Environment and Conservation (NYSDEC) Division of Lands and Forests (DLF) and Empire Sta...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/07/23/news.html" class="post-excerpt-image" aria-label="Inaugural CoDiFI summer training">
+        <img src="/preview/pr-3/images/news/2024-07-23-news-1.jpg" alt="Inaugural CoDiFI summer training" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/07/23/news.html">Inaugural CoDiFI summer training</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 23, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="The inaugural summer training course of BioM2 led Cornell Digital Forestry Initiative  CoDiFI  hosts a mix of PhD students  professional Master students  and foresters at Arnot Forest  The 4 day workshop introduces the foundations of lidar remote sensing  talk given by Xiangtao Xu   procedures of applying tripod based and backpack lidar systems  demo given by Nick Cranmer  Yixin Ma  and Tao Han   and processes of conducting RGB drone flights  demo given by Hannah Zonnevylle From the Katz Lab  ">
+        The inaugural summer training course of BioM2-led Cornell Digital Forestry Initiative (CoDiFI) hosts a mix of PhD students, professional Master stu...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/07/01/news.html">Welcome Aaron Sams</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 01, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Dr  Aaron Sams has officially started as a part time programmer in the BioM2 Lab  Aaron was previously affiliated with Cornell MBG before he worked at Embark Inc  He will work with the team to develop the Forest Lidar Package in Python  FLiP   Welcome Aaron ">
+        Dr. Aaron Sams has officially started as a part-time programmer in the BioM2 Lab. Aaron was previously affiliated with Cornell MBG before he worked...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/06/27/news.html" class="post-excerpt-image" aria-label="First drone lidar flight">
+        <img src="/preview/pr-3/images/news/2024-06-27-news.jpg" alt="First drone lidar flight" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/06/27/news.html">First drone lidar flight</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>June 27, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20lidar%22" class="tag" data-tooltip='Show items with the tag "lidar"'>
+        lidar
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Nick Cranmer and Xiangtao Xu visited two farms participating Cornell Cooperative Extension Tompkins County s Payment for Ecosystem Service  PES  program  The program aims to create a protocol for measuring carbon credit for farm land  where carbon sequestration associated with agroforestry is an important component  In the visit  Nick tested our new WISPR Livox drone lidar system  together with curious Grant Xu  and had a successful first drone flight ">
+        Nick Cranmer and Xiangtao Xu visited two farms participating Cornell Cooperative Extension Tompkins County’s Payment for Ecosystem Service (PES) pr...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/05/09/news.html">Xiangtao Xu gives seminar at Cary Institute</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>May 09, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+      
+      
+      <p data-search="Xiangtao Xu gives an invited seminar at Cary Institute of Ecosystem Studies titled  Predicting tropical forest growth and mortality under global change  ">
+        Xiangtao Xu gives an invited seminar at Cary Institute of Ecosystem Studies titled “Predicting tropical forest growth and mortality under global ch...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/04/06/news.html" class="post-excerpt-image" aria-label="Xiangtao Xu gives keynote presentation at ER-DGVM-C">
+        <img src="/preview/pr-3/images/news/2024-04-06-news.jpg" alt="Xiangtao Xu gives keynote presentation at ER-DGVM-C" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/04/06/news.html">Xiangtao Xu gives keynote presentation at ER-DGVM-C</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>April 06, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20conference%22" class="tag" data-tooltip='Show items with the tag "conference"'>
+        conference
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Xiangtao Xu gives a keynote presentation titled  Trait based modeling of tropical forest structure and dynamics  critical dimensions of plant functional diversity   kickstarting the two and half day East Regional Dynamic Global Vegetation Modeling Conference  ER DGVM C  at MBL  Woods Hole  Lab members Cameron Coles  Coral Valle Rodriguez  and Tao Han also presented research talks and posters  Tao Han has won the best post doc poster award invited seminar at Cary Institute of Ecosystem Studies titled  Predicting tropical forest growth and mortality under global change  ">
+        Xiangtao Xu gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant funct...
+      </p>
+    </div>
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="citation">Citation</h2>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      
+
+      <a class="citation-title">
+        [no title info]
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">[no publisher info]</span>
+         · 
+        <span class="citation-date">[no date info]</span>
+         · 
+        <span class="citation-id">[no id info]</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a class="citation-image" aria-label="citation link">
+        <img src="" alt="citation image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      
+
+      <a class="citation-title">
+        [no title info]
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">[no publisher info]</span>
+         · 
+        <span class="citation-date">[no date info]</span>
+         · 
+        <span class="citation-id">[no id info]</span>
+      </div>
+
+      
+        
+
+        
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+
+    <div class="citation-text">
+      
+      
+
+      <a class="citation-title">
+        Manual title
+      </a>
+
+      <div class="citation-authors" data-tooltip="Manual authors " tabindex="0">
+        Manual authors
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">[no publisher info]</span>
+         · 
+        <span class="citation-date">[no date info]</span>
+         · 
+        <span class="citation-id">[no id info]</span>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="card">Card</h2>
+
+<div class="card" data-style="">
+  <a href="https://nasa.gov/" aria-label="A Large Card" class="card-image">
+    <img src="/preview/pr-3/images/icon.png" alt="A Large Card" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a href="https://nasa.gov/" data-tooltip="A cool tooltip" class="card-title">
+        A Large Card
+    </a>
+    
+
+    
+      <span class="card-subtitle">A cool card</span>
+    
+
+    
+      <p>
+        A cool description
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20manual-tag%22" class="tag" data-tooltip='Show items with the tag "manual-tag"'>
+        manual-tag
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+
+<div class="card" data-style="small">
+  <a aria-label="A Small Card" class="card-image">
+    <img src="/preview/pr-3/images/icon.png" alt="A Small Card" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+
+  <div class="card-text">
+    
+      <a data-tooltip="A cool tooltip" class="card-title">
+        A Small Card
+    </a>
+    
+
+    
+      <span class="card-subtitle">A cool card</span>
+    
+
+    
+      <p>
+        <em>Lorem</em> <strong>ipsum</strong>
+
+      </p>
+    
+
+    
+      
+
+
+  <div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20manual-tag%22" class="tag" data-tooltip='Show items with the tag "manual-tag"'>
+        manual-tag
+      </a>
+    
+  </div>
+
+
+    
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="portrait">Portrait</h2>
+
+<div class="portrait-wrapper">
+  <a class="portrait" data-style="" aria-label="member link">
+    
+
+    <img src="" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a class="portrait" data-style="small" aria-label="member link">
+    
+
+    <img src="" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a class="portrait" data-style="small" aria-label="Manual name">
+    
+
+    <img src="" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+      <span class="portrait-name">
+        Manual name
+      </span>
+    
+
+    
+
+    
+  </a>
+</div>
+
+<div class="portrait-wrapper">
+  <a class="portrait" data-style="small" aria-label="member link">
+    
+
+    <img src="" class="portrait-image" alt="member portrait" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+
+    
+
+    
+
+    
+  </a>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="post-excerpt">Post Excerpt</h2>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href=""></a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+
+  
+</div>
+
+
+
+
+      
+      
+      <p data-search="">
+        
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="">Manual title</a>
+
+      <div class="post-info">
+  
+    
+    
+      <span data-tooltip="Author">
+        <i class="icon fa-solid fa-feather-pointed"></i>
+        <span>Manual author</span>
+      </span>
+    
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>February 20, 2020</span>
+    </span>
+  
+
+  
+</div>
+
+
+
+
+      
+      
+      <p data-search="">
+        
+      </p>
+    </div>
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="alert">Alert</h2>
+
+<div class="alert" style="--color: #d946ef">
+  
+  <i class="icon fa-solid fa-lightbulb"></i>
+  <div class="alert-content">
+    <p><strong>Tip</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #6366f1">
+  
+  <i class="icon fa-solid fa-circle-question"></i>
+  <div class="alert-content">
+    <p><strong>Help</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #0ea5e9">
+  
+  <i class="icon fa-solid fa-circle-info"></i>
+  <div class="alert-content">
+    <p><strong>Info</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #22c55e">
+  
+  <i class="icon fa-solid fa-circle-check"></i>
+  <div class="alert-content">
+    <p><strong>Success</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #F59E0B">
+  
+  <i class="icon fa-solid fa-circle-exclamation"></i>
+  <div class="alert-content">
+    <p><strong>Warning</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+
+<div class="alert" style="--color: #ef4444">
+  
+  <i class="icon fa-solid fa-ban"></i>
+  <div class="alert-content">
+    <p><strong>Error</strong> 
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  </div>
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="tags">Tags</h2>
+
+<div class="tags" data-repo="greenelab/lab-website-template" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20ovarian-cancer%22" class="tag" data-tooltip='Show items with the tag "ovarian-cancer"'>
+        ovarian-cancer
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20dataset%22" class="tag" data-tooltip='Show items with the tag "dataset"'>
+        dataset
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20gene-expression%22" class="tag" data-tooltip='Show items with the tag "gene-expression"'>
+        gene-expression
+      </a>
+    
+  </div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="float">Float</h2>
+
+<h3 id="figures">Figures</h3>
+
+<div class="float">
+  
+<figure class="figure">
+  <a class="figure-image" aria-label="Caption">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: 200px;
+        max-height: unset;
+      " alt="Caption" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Caption
+
+    </figcaption>
+  
+</figure>
+
+
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="float" data-clear="">
+  
+
+</div>
+
+<h3 id="code">Code</h3>
+
+<div class="float" data-flip="">
+  
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+
+</div>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim diam quis. Id aliquet lectus proin nibh nisl condimentum id venenatis a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. A cras semper auctor neque vitae tempus quam pellentesque nec. At tellus at urna condimentum mattis pellentesque. Ipsum consequat nisl vel pretium. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida. Integer vitae justo eget magna fermentum iaculis eu non diam. Mus mauris vitae ultricies leo integer malesuada nunc vel. Leo integer malesuada nunc vel risus. Ornare arcu odio ut sem nulla pharetra. Purus semper eget duis at tellus at urna condimentum. Enim neque volutpat ac tincidunt vitae semper quis lectus.</p>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="grid">Grid</h2>
+
+<h3 id="regular">Regular</h3>
+
+<p>With Markdown images</p>
+
+<div class="grid" data-style="">
+  
+<p><img src="https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&amp;rev=2" alt="image"></p>
+
+<p><img src="https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg" alt="image"></p>
+
+<p><img src="https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp" alt="image"></p>
+
+<p><img src="/preview/pr-3/images/icon.png" alt="image"></p>
+
+<p><img src="/preview/pr-3/images/icon.png" alt="image"></p>
+
+<p><img src="/preview/pr-3/images/icon.png" alt="image"></p>
+
+</div>
+
+<h3 id="square">Square</h3>
+
+<p>With figure components</p>
+
+<div class="grid" data-style="square">
+  
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="https://journals.plos.org/ploscompbiol/article/figure/image?size=inline&id=info:doi/10.1371/journal.pcbi.1007128.g001&amp;rev=2" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2001037020302804-gr1.jpg" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="https://iiif.elifesciences.org/lax:32822%2Felife-32822-fig8-v3.tif/full/863,/0/default.webp" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+<figure class="figure">
+  <a class="figure-image" aria-label="figure link">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="figure image" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+</figure>
+
+
+</div>
+
+<h3 id="grid-of-citations">Grid of citations</h3>
+
+<div class="grid" data-style="">
+  
+<h3 id="2024">2024</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt7gk4" class="citation-image" aria-label="Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR">
+        <img src="/preview/pr-3/images/news/2024-08-19-news.jpg" alt="Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt7gk4" class="citation-title">
+        Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Nicholas Cranmer, Tao Han, Brett Chedzoy, Peter J. Smallidge, Colin Beier, Lucas Johnson, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Forest Ecology and Management</span>
+         · 
+        <span class="citation-date">01 Oct 2024</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.foreco.2024.122211</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20forestry%22" class="tag" data-tooltip='Show items with the tag "forestry"'>
+        forestry
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt6s44" class="citation-image" aria-label="Two sub‐annual timescales and coupling modes for terrestrial water and carbon cycles">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/3994054d-ac0c-493f-aab0-6c30409f9094/gcb17463-fig-0002-m.jpg" alt="Two sub‐annual timescales and coupling modes for terrestrial water and carbon cycles" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6s44" class="citation-title">
+        Two sub‐annual timescales and coupling modes for terrestrial water and carbon cycles
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Daniel J. Short Gianotti, Kaighin A. McColl, Andrew F. Feldman, Xiangtao Xu, Dara Entekhabi
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">09 Aug 2024</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.17463</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ecohydrology%22" class="tag" data-tooltip='Show items with the tag "ecohydrology"'>
+        ecohydrology
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt6scn" class="citation-image" aria-label="AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in Orchards">
+        <img src="https://spj.science.org/cms/10.34133/plantphenomics.0179/asset/6b661479-27b0-41b8-8371-8afc6ca7301c/assets/graphic/plantphenomics.0179.fig.001.jpg" alt="AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in Orchards" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scn" class="citation-title">
+        AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in Orchards
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Tian Qiu, Tao Wang, Tao Han, Kaspar Kuehn, Lailiang Cheng, Cheng Meng, Xiangtao Xu, Kenong Xu, Jiang Yu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Plant Phenomics</span>
+         · 
+        <span class="citation-date">08 May 2024</span>
+         · 
+        <span class="citation-id">doi:10.34133/plantphenomics.0179</span>
+      </div>
+
+      
+        
+
+        
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt6scp" class="citation-image" aria-label="Global photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental drivers">
+        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S2667325824000281-ga1.jpg" alt="Global photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental drivers" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scp" class="citation-title">
+        Global photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental drivers
+      </a>
+
+      <div class="citation-authors" data-tooltip="Zhengbing Yan, Matteo Detto, Zhengfei Guo, Nicholas G. Smith, Han Wang, Loren P. Albert, Xiangtao Xu, Ziyu Lin, Shuwen Liu, Yingyi Zhao, Shuli Chen, Timothy C. Bonebrake, Jin Wu " tabindex="0">
+        Zhengbing Yan, Matteo Detto, Zhengfei Guo, Nicholas G. Smith, Han Wang, …, Shuwen Liu, Yingyi Zhao, Shuli Chen, Timothy C. Bonebrake, Jin Wu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Fundamental Research</span>
+         · 
+        <span class="citation-date">06 Feb 2024</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.fmre.2023.12.011</span>
+      </div>
+
+      
+        
+
+        
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt6scq" class="citation-image" aria-label="Constraining long‐term model predictions for woody growth using tropical tree rings">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/ed099a2f-4a88-4c0a-8240-00f8f0dd6d21/gcb.v30.1.cover.jpg" alt="Constraining long‐term model predictions for woody growth using tropical tree rings" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scq" class="citation-title">
+        Constraining long‐term model predictions for woody growth using tropical tree rings
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Peter van der Sleen, Peter Groenendijk, Mart Vlam, David Medvigy, Paul Moorcroft, Daniel Petticord, Yixin Ma, Pieter A. Zuidema
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">01 Jan 2024</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.17075</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2023">2023</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gt6scr" class="citation-image" aria-label="Observed impacts of large wind farms on grassland carbon cycling">
+        <img src="https://www.sciengine.com/figures/figures-ad36eaa4f05648238fd7ed8009f67c7e-Graphical%20Abstract.jpg" alt="Observed impacts of large wind farms on grassland carbon cycling" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gt6scr" class="citation-title">
+        Observed impacts of large wind farms on grassland carbon cycling
+      </a>
+
+      <div class="citation-authors" data-tooltip="Donghai Wu, Steven M. Grodsky, Wenfang Xu, Naijing Liu, Rafael M. Almeida, Liming Zhou, Lee M. Miller, Somnath Baidya Roy, Geng Xia, Anurag A. Agrawal, Benjamin Z. Houlton, Alexander S. Flecker, Xiangtao Xu " tabindex="0">
+        Donghai Wu, Steven M. Grodsky, Wenfang Xu, Naijing Liu, Rafael M. Almeida, …, Geng Xia, Anurag A. Agrawal, Benjamin Z. Houlton, Alexander S. Flecker, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Science Bulletin</span>
+         · 
+        <span class="citation-date">19 Dec 2023</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.scib.2023.10.016</span>
+      </div>
+
+      
+        
+
+        
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gsqq3s" class="citation-image" aria-label="Exploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to guide modeling and experimental studies">
+        <img src="https://bg.copernicus.org/articles/20/2117/2023/bg-20-2117-2023-f01-thumb.png" alt="Exploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to guide modeling and experimental studies" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gsqq3s" class="citation-title">
+        Exploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to guide modeling and experimental studies
+      </a>
+
+      <div class="citation-authors" data-tooltip="Jennifer A. Holm, David M. Medvigy, Benjamin Smith, Jeffrey S. Dukes, Claus Beier, Mikhail Mishurov, Xiangtao Xu, Jeremy W. Lichstein, Craig D. Allen, Klaus S. Larsen, Yiqi Luo, Cari Ficken, William T. Pockman, William R. L. Anderegg, Anja Rammig " tabindex="0">
+        Jennifer A. Holm, David M. Medvigy, Benjamin Smith, Jeffrey S. Dukes, Claus Beier, …, Yiqi Luo, Cari Ficken, William T. Pockman, William R. L. Anderegg, Anja Rammig
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Biogeosciences</span>
+         · 
+        <span class="citation-date">14 Jun 2023</span>
+         · 
+        <span class="citation-id">doi:10.5194/bg-20-2117-2023</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20drought%22" class="tag" data-tooltip='Show items with the tag "drought"'>
+        drought
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tree-mortality%22" class="tag" data-tooltip='Show items with the tag "tree-mortality"'>
+        tree-mortality
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gsh5qt" class="citation-image" aria-label="Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technology">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/69472254-32d9-4587-8050-43392e1a2eda/ele14215-fig-0002-m.png" alt="Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technology" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gsh5qt" class="citation-title">
+        Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technology
+      </a>
+
+      <div class="citation-authors" data-tooltip="Xi Yang, Rong Li, Andrew Jablonski, Atticus Stovall, Jongmin Kim, Koong Yi, Yixin Ma, Daniel Beverly, Richard Phillips, Kim Novick, Xiangtao Xu, Manuel Lerdau " tabindex="0">
+        Xi Yang, Rong Li, Andrew Jablonski, Atticus Stovall, Jongmin Kim, …, Daniel Beverly, Richard Phillips, Kim Novick, Xiangtao Xu, Manuel Lerdau
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Ecology Letters</span>
+         · 
+        <span class="citation-date">20 Apr 2023</span>
+         · 
+        <span class="citation-id">doi:10.1111/ele.14215</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20functional-ecology%22" class="tag" data-tooltip='Show items with the tag "functional-ecology"'>
+        functional-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/grnvjx" class="citation-image" aria-label="Leaf economics fundamentals explained by optimality principles">
+        <img src="https://www.science.org/cms/asset/36a2a62d-0e74-4cca-a069-279b7646ca24/sciadv.2023.9.issue-3.largecover.jpg" alt="Leaf economics fundamentals explained by optimality principles" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grnvjx" class="citation-title">
+        Leaf economics fundamentals explained by optimality principles
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Han Wang, I. Colin Prentice, Ian J. Wright, David I. Warton, Shengchao Qiao, Xiangtao Xu, Jian Zhou, Kihachiro Kikuzawa, Nils Chr. Stenseth
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Science Advances</span>
+         · 
+        <span class="citation-date">18 Jan 2023</span>
+         · 
+        <span class="citation-id">doi:10.1126/sciadv.add5667</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20functional-ecology%22" class="tag" data-tooltip='Show items with the tag "functional-ecology"'>
+        functional-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20eco-evo-optimality%22" class="tag" data-tooltip='Show items with the tag "eco-evo-optimality"'>
+        eco-evo-optimality
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2022">2022</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gntmbv" class="citation-image" aria-label="Reduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality responses to drought">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/042eb14c-2513-4972-a3be-5a6ae50edac4/gcb.v28.6.cover.jpg" alt="Reduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality responses to drought" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gntmbv" class="citation-title">
+        Reduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality responses to drought
+      </a>
+
+      <div class="citation-authors" data-tooltip="Donghai Wu, German Vargas G., Jennifer S. Powers, Nate G. McDowell, Justin M. Becknell, Daniel Pérez‐Aviles, David Medvigy, Yanlan Liu, Gabriel G. Katul, Julio César Calvo‐Alvarado, Ana Calvo‐Obando, Arturo Sanchez‐Azofeifa, Xiangtao Xu " tabindex="0">
+        Donghai Wu, German Vargas G., Jennifer S. Powers, Nate G. McDowell, Justin M. Becknell, …, Gabriel G. Katul, Julio César Calvo‐Alvarado, Ana Calvo‐Obando, Arturo Sanchez‐Azofeifa, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">01 Mar 2022</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.16046</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20remote-sensing%22" class="tag" data-tooltip='Show items with the tag "remote-sensing"'>
+        remote-sensing
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tree-mortality%22" class="tag" data-tooltip='Show items with the tag "tree-mortality"'>
+        tree-mortality
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2021">2021</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/grr53z" class="citation-image" aria-label="Plant input does not exert stronger control on topsoil carbon persistence than climate in alpine grasslands">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/833d8a1c-38a0-4bdf-a4f2-79eb158daf91/ele.v24.11.cover.jpg" alt="Plant input does not exert stronger control on topsoil carbon persistence than climate in alpine grasslands" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grr53z" class="citation-title">
+        Plant input does not exert stronger control on topsoil carbon persistence than climate in alpine grasslands
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Donghai Wu, Xiangtao Xu, Haicheng Zhang
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Ecology Letters</span>
+         · 
+        <span class="citation-date">12 Sep 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/ele.13879</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20soil-carbon-turnover%22" class="tag" data-tooltip='Show items with the tag "soil-carbon-turnover"'>
+        soil-carbon-turnover
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gmsfnx" class="citation-image" aria-label="Detecting forest response to droughts with global observations of vegetation water content">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/f7d637c2-4488-4969-8e74-d3425c96fcfc/gcb15872-fig-0003-m.png" alt="Detecting forest response to droughts with global observations of vegetation water content" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gmsfnx" class="citation-title">
+        Detecting forest response to droughts with global observations of vegetation water content
+      </a>
+
+      <div class="citation-authors" data-tooltip="Alexandra G. Konings, Sassan S. Saatchi, Christian Frankenberg, Michael Keller, Victor Leshyk, William R. L. Anderegg, Vincent Humphrey, Ashley M. Matheny, Anna Trugman, Lawren Sack, Elizabeth Agee, Mallory L. Barnes, Oliver Binks, Kerry Cawse‐Nicholson, Bradley O. Christoffersen, Dara Entekhabi, Pierre Gentine, Nataniel M. Holtzman, Gabriel G. Katul, Yanlan Liu, Marcos Longo, Jordi Martinez‐Vilalta, Nate McDowell, Patrick Meir, Maurizio Mencuccini, Assaad Mrad, Kimberly A. Novick, Rafael S. Oliveira, Paul Siqueira, Susan C. Steele‐Dunne, David R. Thompson, Yujie Wang, Richard Wehr, Jeffrey D. Wood, Xiangtao Xu, Pieter A. Zuidema " tabindex="0">
+        Alexandra G. Konings, Sassan S. Saatchi, Christian Frankenberg, Michael Keller, Victor Leshyk, …, Yujie Wang, Richard Wehr, Jeffrey D. Wood, Xiangtao Xu, Pieter A. Zuidema
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">03 Sep 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15872</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tree-mortality%22" class="tag" data-tooltip='Show items with the tag "tree-mortality"'>
+        tree-mortality
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20remote-sensing%22" class="tag" data-tooltip='Show items with the tag "remote-sensing"'>
+        remote-sensing
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/grr53x" class="citation-image" aria-label="Natural experiments and long-term monitoring are critical to understand and predict marine host–microbe ecology and evolution">
+        <img src="" alt="Natural experiments and long-term monitoring are critical to understand and predict marine host–microbe ecology and evolution" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grr53x" class="citation-title">
+        Natural experiments and long-term monitoring are critical to understand and predict marine host–microbe ecology and evolution
+      </a>
+
+      <div class="citation-authors" data-tooltip="Matthieu Leray, Laetitia G. E. Wilkins, Amy Apprill, Holly M. Bik, Friederike Clever, Sean R. Connolly, Marina E. De León, J. Emmett Duffy, Leïla Ezzat, Sarah Gignoux-Wolfsohn, Edward Allen Herre, Jonathan Z. Kaye, David I. Kline, Jordan G. Kueneman, Melissa K. McCormick, W. Owen McMillan, Aaron O’Dea, Tiago J. Pereira, Jillian M. Petersen, Daniel F. Petticord, Mark E. Torchin, Rebecca Vega Thurber, Elin Videvall, William T. Wcislo, Benedict Yuen, Jonathan A. Eisen " tabindex="0">
+        Matthieu Leray, Laetitia G. E. Wilkins, Amy Apprill, Holly M. Bik, Friederike Clever, …, Rebecca Vega Thurber, Elin Videvall, William T. Wcislo, Benedict Yuen, Jonathan A. Eisen
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">PLOS Biology</span>
+         · 
+        <span class="citation-date">19 Aug 2021</span>
+         · 
+        <span class="citation-id">doi:10.1371/journal.pbio.3001322</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20marine-ecology%22" class="tag" data-tooltip='Show items with the tag "marine-ecology"'>
+        marine-ecology
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkkjqv" class="citation-image" aria-label="Leaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy water content">
+        <img src="https://nph.onlinelibrary.wiley.com/pb-assets/assets/page/journal/14698137/14698137/2023/Oct/remotesensingNPH-1698765549.png" alt="Leaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy water content" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkkjqv" class="citation-title">
+        Leaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy water content
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Alexandra G. Konings, Marcos Longo, Andrew Feldman, Liang Xu, Sassan Saatchi, Donghai Wu, Jin Wu, Paul Moorcroft
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">01 Jun 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.17254</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20remote-sensing%22" class="tag" data-tooltip='Show items with the tag "remote-sensing"'>
+        remote-sensing
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tropical-ecology%22" class="tag" data-tooltip='Show items with the tag "tropical-ecology"'>
+        tropical-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmr4d" class="citation-image" aria-label="Recovery: Fast and Slow—Vegetation Response During the 2012–2016 California Drought">
+        <img src="https://agupubs.onlinelibrary.wiley.com/cms/asset/cb4bf941-0093-4c82-a056-0c3b4e4e3de7/jgrg21864-fig-0001-m.png" alt="Recovery: Fast and Slow—Vegetation Response During the 2012–2016 California Drought" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmr4d" class="citation-title">
+        Recovery: Fast and Slow—Vegetation Response During the 2012–2016 California Drought
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xi Yang, Xiangtao Xu, Atticus Stovall, Min Chen, Jung‐Eun Lee
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Journal of Geophysical Research: Biogeosciences</span>
+         · 
+        <span class="citation-date">01 Apr 2021</span>
+         · 
+        <span class="citation-id">doi:10.1029/2020JG005976</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20remote-sensing%22" class="tag" data-tooltip='Show items with the tag "remote-sensing"'>
+        remote-sensing
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tree-mortality%22" class="tag" data-tooltip='Show items with the tag "tree-mortality"'>
+        tree-mortality
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/grz554" class="citation-image" aria-label="Unraveling the relative role of light and water competition between lianas and trees in tropical forests: A vegetation model analysis">
+        <img src="https://besjournals.onlinelibrary.wiley.com/cms/asset/fb1ab1ec-6328-4505-8532-00f080809c8d/jec13540-fig-0001-m.png" alt="Unraveling the relative role of light and water competition between lianas and trees in tropical forests: A vegetation model analysis" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/grz554" class="citation-title">
+        Unraveling the relative role of light and water competition between lianas and trees in tropical forests: A vegetation model analysis
+      </a>
+
+      <div class="citation-authors" data-tooltip="Félicien Meunier, Hans Verbeeck, Betsy Cowdery, Stefan A. Schnitzer, Chris M. Smith‐Martin, Jennifer S. Powers, Xiangtao Xu, Martijn Slot, Hannes P. T. De Deurwaerder, Matteo Detto, Damien Bonal, Marcos Longo, Louis S. Santiago, Michael Dietze " tabindex="0">
+        Félicien Meunier, Hans Verbeeck, Betsy Cowdery, Stefan A. Schnitzer, Chris M. Smith‐Martin, …, Matteo Detto, Damien Bonal, Marcos Longo, Louis S. Santiago, Michael Dietze
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Journal of Ecology</span>
+         · 
+        <span class="citation-date">03 Mar 2021</span>
+         · 
+        <span class="citation-id">doi:10.1111/1365-2745.13540</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tropical-ecology%22" class="tag" data-tooltip='Show items with the tag "tropical-ecology"'>
+        tropical-ecology
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmnwt" class="citation-image" aria-label="Monitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of PlanetScope and drone remote sensing observations">
+        <img src="https://ars.els-cdn.com/content/image/1-s2.0-S0924271620X00128-cov150h.gif" alt="Monitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of PlanetScope and drone remote sensing observations" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnwt" class="citation-title">
+        Monitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of PlanetScope and drone remote sensing observations
+      </a>
+
+      <div class="citation-authors" data-tooltip="Shengbiao Wu, Jing Wang, Zhengbing Yan, Guangqin Song, Yang Chen, Qin Ma, Meifeng Deng, Yuntao Wu, Yingyi Zhao, Zhengfei Guo, Zuoqiang Yuan, Guanhua Dai, Xiangtao Xu, Xi Yang, Yanjun Su, Lingli Liu, Jin Wu " tabindex="0">
+        Shengbiao Wu, Jing Wang, Zhengbing Yan, Guangqin Song, Yang Chen, …, Xiangtao Xu, Xi Yang, Yanjun Su, Lingli Liu, Jin Wu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">ISPRS Journal of Photogrammetry and Remote Sensing</span>
+         · 
+        <span class="citation-date">15 Jan 2021</span>
+         · 
+        <span class="citation-id">doi:10.1016/j.isprsjprs.2020.10.017</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20phenology%22" class="tag" data-tooltip='Show items with the tag "phenology"'>
+        phenology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20remote-sensing%22" class="tag" data-tooltip='Show items with the tag "remote-sensing"'>
+        remote-sensing
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gh7qbj" class="citation-image" aria-label="Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global Change">
+        <img src="https://media.springernature.com/w316/springer-static/cover-hires/journal/40641?as=webp" alt="Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global Change" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gh7qbj" class="citation-title">
+        Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global Change
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Xiangtao Xu, Anna T. Trugman
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Current Climate Change Reports</span>
+         · 
+        <span class="citation-date">12 Jan 2021</span>
+         · 
+        <span class="citation-id">doi:10.1007/s40641-020-00168-6</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20review%22" class="tag" data-tooltip='Show items with the tag "review"'>
+        review
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2020">2020</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmnwx" class="citation-image" aria-label="Accelerated terrestrial ecosystem carbon turnover and its drivers">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/02e87cc9-8afc-40c5-b78e-f3edcdd5d6b0/gcb.v26.9.cover.jpg" alt="Accelerated terrestrial ecosystem carbon turnover and its drivers" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnwx" class="citation-title">
+        Accelerated terrestrial ecosystem carbon turnover and its drivers
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Donghai Wu, Shilong Piao, Dan Zhu, Xuhui Wang, Philippe Ciais, Ana Bastos, Xiangtao Xu, Wenfang Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">30 Aug 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15224</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20carbon-turnover%22" class="tag" data-tooltip='Show items with the tag "carbon-turnover"'>
+        carbon-turnover
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/ghjsdd" class="citation-image" aria-label="Optimal leaf life strategies determine &lt;i&gt;V&lt;/i&gt;&lt;sub&gt;c,max&lt;/sub&gt; dynamic during ontogeny">
+        <img src="https://nph.onlinelibrary.wiley.com/cms/asset/247029f2-d0a5-4958-99fb-690c77cd1108/nph16712-fig-0001-m.png" alt="Optimal leaf life strategies determine &lt;i&gt;V&lt;/i&gt;&lt;sub&gt;c,max&lt;/sub&gt; dynamic during ontogeny" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/ghjsdd" class="citation-title">
+        Optimal leaf life strategies determine <i>V</i><sub>c,max</sub> dynamic during ontogeny
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Matteo Detto, Xiangtao Xu
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">22 Jun 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.16712</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20phenology%22" class="tag" data-tooltip='Show items with the tag "phenology"'>
+        phenology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20optimality-principles%22" class="tag" data-tooltip='Show items with the tag "optimality-principles"'>
+        optimality-principles
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmnw3" class="citation-image" aria-label="A catastrophic tropical drought kills hydraulically vulnerable tree species">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/8fa7c833-2587-456a-9ecc-c5f84a876ca1/gcb.v26.5.cover.jpg" alt="A catastrophic tropical drought kills hydraulically vulnerable tree species" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw3" class="citation-title">
+        A catastrophic tropical drought kills hydraulically vulnerable tree species
+      </a>
+
+      <div class="citation-authors" data-tooltip="Jennifer S. Powers, German Vargas G., Timothy J. Brodribb, Naomi B. Schwartz, Daniel Pérez‐Aviles, Chris M. Smith‐Martin, Justin M. Becknell, Filippo Aureli, Roger Blanco, Erick Calderón‐Morales, Julio C. Calvo‐Alvarado, Ana Julieta Calvo‐Obando, María Marta Chavarría, Dorian Carvajal‐Vanegas, César D. Jiménez‐Rodríguez, Evin Murillo Chacon, Colleen M. Schaffner, Leland K. Werden, Xiangtao Xu, David Medvigy " tabindex="0">
+        Jennifer S. Powers, German Vargas G., Timothy J. Brodribb, Naomi B. Schwartz, Daniel Pérez‐Aviles, …, Evin Murillo Chacon, Colleen M. Schaffner, Leland K. Werden, Xiangtao Xu, David Medvigy
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Global Change Biology</span>
+         · 
+        <span class="citation-date">23 Mar 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/gcb.15037</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tropical-ecology%22" class="tag" data-tooltip='Show items with the tag "tropical-ecology"'>
+        tropical-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tree-mortality%22" class="tag" data-tooltip='Show items with the tag "tree-mortality"'>
+        tree-mortality
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmnw6" class="citation-image" aria-label="Allometric scaling laws linking biomass and rooting depth vary across ontogeny and functional groups in tropical dry forest lianas and trees">
+        <img src="https://nph.onlinelibrary.wiley.com/cms/asset/2ecf3c4e-0f4e-46d6-b066-fb26715e4b19/nph16275-fig-0004-m.png" alt="Allometric scaling laws linking biomass and rooting depth vary across ontogeny and functional groups in tropical dry forest lianas and trees" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw6" class="citation-title">
+        Allometric scaling laws linking biomass and rooting depth vary across ontogeny and functional groups in tropical dry forest lianas and trees
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Chris M. Smith‐Martin, Xiangtao Xu, David Medvigy, Stefan A. Schnitzer, Jennifer S. Powers
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">New Phytologist</span>
+         · 
+        <span class="citation-date">24 Jan 2020</span>
+         · 
+        <span class="citation-id">doi:10.1111/nph.16275</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tropical-ecology%22" class="tag" data-tooltip='Show items with the tag "tropical-ecology"'>
+        tropical-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20allometry%22" class="tag" data-tooltip='Show items with the tag "allometry"'>
+        allometry
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20root%22" class="tag" data-tooltip='Show items with the tag "root"'>
+        root
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+<h3 id="2019">2019</h3>
+
+<div class="citation-container">
+  <div class="citation">
+    
+      <a href="https://doi.org/gkmnw7" class="citation-image" aria-label="Tropical carbon sink accelerated by symbiotic dinitrogen fixation">
+        <img src="https://media.springernature.com/lw685/springer-static/image/art%3A10.1038%2Fs41467-019-13656-7/MediaObjects/41467_2019_13656_Fig2_HTML.png?as=webp" alt="Tropical carbon sink accelerated by symbiotic dinitrogen fixation" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="citation-text">
+      
+      <i class="icon fa-solid fa-scroll"></i>
+
+      <a href="https://doi.org/gkmnw7" class="citation-title">
+        Tropical carbon sink accelerated by symbiotic dinitrogen fixation
+      </a>
+
+      <div class="citation-authors" tabindex="0">
+        Jennifer H. Levy-Varon, Sarah A. Batterman, David Medvigy, Xiangtao Xu, Jefferson S. Hall, Michiel van Breugel, Lars O. Hedin
+
+      </div>
+
+      <div class="citation-details">
+        <span class="citation-publisher">Nature Communications</span>
+         · 
+        <span class="citation-date">02 Dec 2019</span>
+         · 
+        <span class="citation-id">doi:10.1038/s41467-019-13656-7</span>
+      </div>
+
+      
+        
+
+        
+
+        
+          
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20tropical-ecology%22" class="tag" data-tooltip='Show items with the tag "tropical-ecology"'>
+        tropical-ecology
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20nitrogen-fixation%22" class="tag" data-tooltip='Show items with the tag "nitrogen-fixation"'>
+        nitrogen-fixation
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/?search=%22tag:%20ed2%22" class="tag" data-tooltip='Show items with the tag "ed2"'>
+        ed2
+      </a>
+    
+  </div>
+
+
+        
+      
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+<h3 id="grid-of-blog-posts">Grid of blog posts</h3>
+
+<div class="grid" data-style="">
+  
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/09/05/news.html">Cameron passes his A-exam!</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>September 05, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="We are thrilled to announce that Cameron has successfully passed his A Exam  Join us in congratulating Cameron on this outstanding achievement ">
+        We are thrilled to announce that Cameron has successfully passed his A Exam! Join us in congratulating Cameron on this outstanding achievement!
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/08/19/news.html" class="post-excerpt-image" aria-label="New Paper published on Forest Ecology and Management">
+        <img src="/preview/pr-3/images/news/2024-08-19-news.jpg" alt="New Paper published on Forest Ecology and Management" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/19/news.html">New Paper published on Forest Ecology and Management</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 19, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20publication%22" class="tag" data-tooltip='Show items with the tag "publication"'>
+        publication
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="New paper titled  Estimating merchantable and non merchantable wood volume in slash walls using terrestrial and airborne LiDAR  is now published online in Forest Ecology and Management  This collaborative work  involving Cornell EEB  DNRE  and SUNY ESF  is led by our PhD student Nick Cranmer  The study investigates the woody volume of slash wall  an effective forest management practice to prevent deer herbivory and promote forest regeneration with terrestrial and airborne lidar systems  TLS and ALS   Key findings include   1  TLS tends to underestimate total cross sectional area due to omission of small stem cross sections  diameter  lt  5 08 cm    2  TLS based wood volume estimates were similar across both short and tall slash walls in the study with an average volume of 21 34 m3 30 m for short slash walls and 21 50 m3 30 m for tall slash walls  corresponding to 16 9 t dry biomass  30 m and 17 0 t dry biomass  30 m respectively   3  Average merchantable  diameter  gt  15 24 cm  and non merchantable  diameter  lt  15 24 cm  timber fraction was 68 75   and 31 35   for short slash walls and 65 04   and 34 96   for tall slash walls  This study provides novel data and methodology to estimate the construction cost of slash walls which are critical for optimizing slash wall applications ">
+        New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published on...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/13/news.html">Welcome Baby Elena Rossana Cranmer</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 13, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="The Cranmer family has expanded with baby Elena as the new member  Congratulations Nick ">
+        The Cranmer family has expanded with baby Elena as the new member. Congratulations Nick!
+
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/08/09/news.html" class="post-excerpt-image" aria-label="New Paper published on GCB">
+        <img src="https://onlinelibrary.wiley.com/cms/asset/3994054d-ac0c-493f-aab0-6c30409f9094/gcb17463-fig-0002-m.jpg" alt="New Paper published on GCB" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/09/news.html">New Paper published on GCB</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 09, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20publication%22" class="tag" data-tooltip='Show items with the tag "publication"'>
+        publication
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20ecohydrology%22" class="tag" data-tooltip='Show items with the tag "ecohydrology"'>
+        ecohydrology
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="New paper titled  Two sub annual timescales and coupling modes for terrestrial water and carbon cycles  is now published online in Global Change Biology  Dr  Dan Gianotti from MIT CEE is the lead author while Xiangtao Xu of the BioM2 Lab is a co author  Using remote sensing data  the study identifies two dominant modes of terrestrial water and carbon cycles across the Contiguous United States   1  a negative correlation timescale on the order of a few days during which landscapes dry after precipitation and plants increase their carbon uptake through photosynthetic upregulation   2  A slow  seasonal scale positive covariation through which landscape drying leads to decreased growth and carbon uptake  The spatial pattern of local temporal dynamics positively sloped tangent lines to a convex long term mean state curve is surprisingly strong  and can serve as a benchmark for coupled Earth System Models  The study shows that many such models do not represent this emergent mean state pattern  and hypothesize that this may be due to lack of water carbon feedbacks at daily scales ">
+        New paper titled “Two sub-annual timescales and coupling modes for terrestrial water and carbon cycles” is now published online in Global Change Bi...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/08/06/news.html">NYSDEC Site Visit at Arnot Forest</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>August 06, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Arnot Forest sees visits from New York State Department of Environment and Conservation  NYSDEC  Division of Lands and Forests  DLF  and Empire State Forest Products Association  During the day trip  lab members Nick Cranmer and Xiangtao Xu had a field demonstration of terrestrial lidar to help with measuring  monitoring  reporting and verification  MMRV  of temperate forests to NYSDEC DLF Director Fiona Watts and other visitors ">
+        Arnot Forest sees visits from New York State Department of Environment and Conservation (NYSDEC) Division of Lands and Forests (DLF) and Empire Sta...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/07/23/news.html" class="post-excerpt-image" aria-label="Inaugural CoDiFI summer training">
+        <img src="/preview/pr-3/images/news/2024-07-23-news-1.jpg" alt="Inaugural CoDiFI summer training" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/07/23/news.html">Inaugural CoDiFI summer training</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 23, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20arnot%22" class="tag" data-tooltip='Show items with the tag "arnot"'>
+        arnot
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="The inaugural summer training course of BioM2 led Cornell Digital Forestry Initiative  CoDiFI  hosts a mix of PhD students  professional Master students  and foresters at Arnot Forest  The 4 day workshop introduces the foundations of lidar remote sensing  talk given by Xiangtao Xu   procedures of applying tripod based and backpack lidar systems  demo given by Nick Cranmer  Yixin Ma  and Tao Han   and processes of conducting RGB drone flights  demo given by Hannah Zonnevylle From the Katz Lab  ">
+        The inaugural summer training course of BioM2-led Cornell Digital Forestry Initiative (CoDiFI) hosts a mix of PhD students, professional Master stu...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/07/01/news.html">Welcome Aaron Sams</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>July 01, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20team%22" class="tag" data-tooltip='Show items with the tag "team"'>
+        team
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20tls%22" class="tag" data-tooltip='Show items with the tag "tls"'>
+        tls
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Dr  Aaron Sams has officially started as a part time programmer in the BioM2 Lab  Aaron was previously affiliated with Cornell MBG before he worked at Embark Inc  He will work with the team to develop the Forest Lidar Package in Python  FLiP   Welcome Aaron ">
+        Dr. Aaron Sams has officially started as a part-time programmer in the BioM2 Lab. Aaron was previously affiliated with Cornell MBG before he worked...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/06/27/news.html" class="post-excerpt-image" aria-label="First drone lidar flight">
+        <img src="/preview/pr-3/images/news/2024-06-27-news.jpg" alt="First drone lidar flight" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/06/27/news.html">First drone lidar flight</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>June 27, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20lidar%22" class="tag" data-tooltip='Show items with the tag "lidar"'>
+        lidar
+      </a>
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20outreach%22" class="tag" data-tooltip='Show items with the tag "outreach"'>
+        outreach
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Nick Cranmer and Xiangtao Xu visited two farms participating Cornell Cooperative Extension Tompkins County s Payment for Ecosystem Service  PES  program  The program aims to create a protocol for measuring carbon credit for farm land  where carbon sequestration associated with agroforestry is an important component  In the visit  Nick tested our new WISPR Livox drone lidar system  together with curious Grant Xu  and had a successful first drone flight ">
+        Nick Cranmer and Xiangtao Xu visited two farms participating Cornell Cooperative Extension Tompkins County’s Payment for Ecosystem Service (PES) pr...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/05/09/news.html">Xiangtao Xu gives seminar at Cary Institute</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>May 09, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+
+
+
+
+      
+      
+      <p data-search="Xiangtao Xu gives an invited seminar at Cary Institute of Ecosystem Studies titled  Predicting tropical forest growth and mortality under global change  ">
+        Xiangtao Xu gives an invited seminar at Cary Institute of Ecosystem Studies titled “Predicting tropical forest growth and mortality under global ch...
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="post-excerpt-container">
+  <div class="post-excerpt">
+    
+    
+    
+
+    
+      <a href="/preview/pr-3/news/2024/04/06/news.html" class="post-excerpt-image" aria-label="Xiangtao Xu gives keynote presentation at ER-DGVM-C">
+        <img src="/preview/pr-3/images/news/2024-04-06-news.jpg" alt="Xiangtao Xu gives keynote presentation at ER-DGVM-C" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+      </a>
+    
+
+    <div class="post-excerpt-text">
+      <a href="/preview/pr-3/news/2024/04/06/news.html">Xiangtao Xu gives keynote presentation at ER-DGVM-C</a>
+
+      <div class="post-info">
+  
+
+  
+  
+
+  
+    <span data-tooltip="Originally published on">
+      <i class="icon fa-regular fa-calendar"></i>
+      <span>April 06, 2024</span>
+    </span>
+  
+
+  
+    <span data-tooltip="Last updated on">
+      <i class="icon fa-solid fa-clock-rotate-left"></i>
+      <span>September 06, 2024</span>
+    </span>
+  
+</div>
+
+
+  
+
+
+  <div class="tags" data-link="https://biom2-lab.github.io/preview/pr-3/blog">
+    
+      <a href="https://biom2-lab.github.io/preview/pr-3/blog?search=%22tag:%20conference%22" class="tag" data-tooltip='Show items with the tag "conference"'>
+        conference
+      </a>
+    
+  </div>
+
+
+
+
+
+      
+      
+      <p data-search="Xiangtao Xu gives a keynote presentation titled  Trait based modeling of tropical forest structure and dynamics  critical dimensions of plant functional diversity   kickstarting the two and half day East Regional Dynamic Global Vegetation Modeling Conference  ER DGVM C  at MBL  Woods Hole  Lab members Cameron Coles  Coral Valle Rodriguez  and Tao Han also presented research talks and posters  Tao Han has won the best post doc poster award invited seminar at Cary Institute of Ecosystem Studies titled  Predicting tropical forest growth and mortality under global change  ">
+        Xiangtao Xu gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant funct...
+      </p>
+    </div>
+  </div>
+</div>
+
+
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="cols">Cols</h2>
+
+<h3 id="text">Text</h3>
+
+<div class="cols" style="--cols: 3">
+  
+    
+    <div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+  
+    
+    <div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim diam quis. Id aliquet lectus proin nibh nisl condimentum id venenatis a.</p>
+</div>
+  
+    
+    <div>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nulla facilisi etiam dignissim diam quis. Id aliquet lectus proin nibh nisl condimentum id venenatis a. Tristique magna sit amet purus gravida quis blandit turpis cursus. Ultrices eros in cursus turpis massa tincidunt dui ut ornare. A cras semper auctor neque vitae tempus quam pellentesque nec. At tellus at urna condimentum mattis pellentesque. Ipsum consequat nisl vel pretium. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida. Integer vitae justo eget magna fermentum iaculis eu non diam. Mus mauris vitae ultricies leo integer malesuada nunc vel. Leo integer malesuada nunc vel risus. Ornare arcu odio ut sem nulla pharetra. Purus semper eget duis at tellus at urna condimentum. Enim neque volutpat ac tincidunt vitae semper quis lectus.</p>
+</div>
+  
+</div>
+
+<h3 id="images">Images</h3>
+
+<div class="cols" style="--cols: 3">
+  
+    
+    <div>
+<figure class="figure">
+  <a class="figure-image" aria-label="Fig. 1a">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Fig. 1a" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Fig. 1a
+
+    </figcaption>
+  
+</figure>
+
+<p>Lorem <em>ipsum</em> dolor <strong>sit</strong> amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+  
+    
+    <div>
+<figure class="figure">
+  <a class="figure-image" aria-label="Fig. 1b">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Fig. 1b" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Fig. 1b
+
+    </figcaption>
+  
+</figure>
+
+<p>Lorem <em>ipsum</em> dolor <strong>sit</strong> amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+  
+    
+    <div>
+<figure class="figure">
+  <a class="figure-image" aria-label="Fig. 1c">
+    <img src="/preview/pr-3/images/icon.png" style="
+        width: auto;
+        max-height: unset;
+      " alt="Fig. 1c" loading="lazy" onerror="this.src = '/preview/pr-3/images/fallback.svg'; this.onerror = null;">
+  </a>
+  
+    <figcaption class="figure-caption">
+      Fig. 1c
+
+    </figcaption>
+  
+</figure>
+
+<p>Lorem <em>ipsum</em> dolor <strong>sit</strong> amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+</div>
+  
+</div>
+
+<h3 id="code-1">Code</h3>
+
+<div class="cols" style="--cols: 3">
+  
+    
+    <div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+</div>
+  
+    
+    <div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+</div>
+  
+    
+    <div>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">test</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Lorem ipsum dolor sit amet</span><span class="dl">"</span><span class="p">;</span>
+</code></pre></div></div>
+
+</div>
+  
+</div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="search">Search</h2>
+
+<div class="search-box">
+  <input type="text" class="search-input" oninput="onSearchInput(this)" placeholder="Search items on this page">
+  <button disabled data-tooltip="Clear search" aria-label="clear search" onclick="onSearchClear()">
+    <i class="icon fa-solid fa-magnifying-glass"></i>
+  </button>
+</div>
+
+<div class="search-info"></div>
+  </section>
+
+  
+  
+  
+
+  <section class="background" data-size="page">
+    <!--
+  background: ;
+  dark: ;
+  size: ;
+-->
+
+<h2 id="site-search">Site Search</h2>
+
+<form onsubmit="onSiteSearchSubmit(event)">
+  <input type="text" name="query" placeholder="Search site with Google">
+  <button type="submit" class="button" aria-label="search site">
+    <i class="icon fa-solid fa-magnifying-glass"></i>
+  </button>
+</form>
+  </section>
+
+
+    </main>
+    
+
+
+<footer class="background" style="--image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/1024px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg')" data-dark="false" data-size="wide">
+  <!--
+    <div>
+      Extra details like contact info or address
+    </div>
+  -->
+
+  <div>
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="mailto:xx286@cornell.edu" data-tooltip="Email" data-style="bare" aria-label="Email">
+      <i class="icon fa-solid fa-envelope"></i>
+      
+    </a>
+  </div>
+
+
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://orcid.org/0000-0002-9402-9474" data-tooltip="ORCID" data-style="bare" aria-label="ORCID">
+      <i class="icon fa-brands fa-orcid"></i>
+      
+    </a>
+  </div>
+
+
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://scholar.google.com/citations?user=fAorsowAAAAJ" data-tooltip="Google Scholar" data-style="bare" aria-label="Google Scholar">
+      <i class="icon fa-brands fa-google"></i>
+      
+    </a>
+  </div>
+
+
+    
+      
+      
+      
+
+
+
+  <div class="button-wrapper">
+    <a class="button" href="https://github.com/BioM2-Lab" data-tooltip="GitHub" data-style="bare" aria-label="GitHub">
+      <i class="icon fa-brands fa-github"></i>
+      
+    </a>
+  </div>
+
+
+    
+    
+    E317 Corson Hall, Cornell University, Ithaca, NY 14850
+  </div>
+  <div>
+    © 2024
+    BioM2 Lab
+      |   Built with
+    <a href="https://github.com/greenelab/lab-website-template">
+      Lab Website Template
+    </a>
+  </div>
+
+  <input type="checkbox" class="dark-toggle" data-tooltip="Dark mode" aria-label="toggle dark mode" oninput="onDarkToggleChange(event)">
+</footer>
+
+  </body>
+</html>
