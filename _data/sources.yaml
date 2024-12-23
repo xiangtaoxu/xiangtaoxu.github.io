@@ -1,3 +1,13 @@
+- id: doi:10.1016/j.rse.2024.114484
+  type: paper
+  date: 2024-12-15
+  image: images/news/2024-12-22-news.jpg
+  members:
+    - Xiangtao Xu
+  tags:
+    - Remote sensing
+    - Pond
+
 - id: doi:10.1016/j.foreco.2024.122211
   type: paper
   date: 2024-10-01
