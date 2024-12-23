@@ -1,5 +1,26 @@
 # DO NOT EDIT, GENERATED AUTOMATICALLY
 
+- id: doi:10.1016/j.rse.2024.114484
+  title: Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2
+    time series
+  authors:
+  - Denghong Liu
+  - Xiaolin Zhu
+  - Meredith Holgerson
+  - Sheel Bansal
+  - Xiangtao Xu
+  publisher: Remote Sensing of Environment
+  date: '2024-12-15'
+  link: https://doi.org/g8wprd
+  type: paper
+  image: images/news/2024-12-22-news.jpg
+  members:
+  - Xiangtao Xu
+  tags:
+  - Remote sensing
+  - Pond
+  plugin: sources.py
+  file: sources.yaml
 - id: doi:10.1016/j.foreco.2024.122211
   title: Estimating merchantable and non-merchantable wood volume in slash walls using
     terrestrial and airborne LiDAR
