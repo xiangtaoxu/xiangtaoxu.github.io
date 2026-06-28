@@ -1,0 +1,25 @@
+---
+title: "Xiangtao Xu"
+subtitle: "Principal Investigator"
+image: /images/portraits/placeholder.svg
+role: pi          # informational tag only (current vs alumni is decided by folder)
+weight: 1         # controls card order among current members (lower = first)
+about:
+  template: trestles      # nice profile layout: photo on the side, bio + links
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:xx286@cornell.edu"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/xiangtaoxu"
+    - icon: mortarboard
+      text: Google Scholar
+      href: "https://scholar.google.com/citations?user=fAorsowAAAAJ"
+---
+
+Xiangtao is an assistant professor in Ecology and Evolutionary Biology at Cornell.
+His research links plant ecophysiology, ecosystem modeling, and ecological remote
+sensing to predict terrestrial biosphere dynamics from the individual tree to the
+landscape.

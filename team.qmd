@@ -1,0 +1,57 @@
+---
+title: "Our Team"
+page-layout: full
+toc: false
+
+# ----------------------------------------------------------------------------
+# The team page is built from TWO "listings". A listing automatically scans a
+# folder and turns each member file into a card.
+#
+# We split current members from alumni BY FOLDER (one folder per group):
+#   - current-members -> members/current/*.qmd
+#   - alumni-members  -> members/alumni/*.qmd
+# Each member file lives in exactly ONE of these folders, so the two grids
+# never overlap. To retire someone, move their .qmd from current/ to alumni/.
+# ----------------------------------------------------------------------------
+listing:
+  - id: current-members
+    contents: "members/current/*.qmd"
+    type: grid
+    grid-columns: 3
+    image-height: "240px"
+    fields: [image, title, subtitle]
+    image-placeholder: /images/portraits/placeholder.svg
+    sort: "weight asc"         # order by the `weight:` field (PI first, etc.)
+    sort-ui: false
+    filter-ui: false
+
+  - id: alumni-members
+    contents: "members/alumni/*.qmd"
+    type: grid
+    grid-columns: 4
+    image-height: "180px"
+    fields: [image, title, subtitle]
+    image-placeholder: /images/portraits/placeholder.svg
+    sort: "title asc"          # alumni listed alphabetically
+    sort-ui: false
+    filter-ui: false
+---
+
+We are an interdisciplinary group working at the interface of ecology, Earth
+system science, and remote sensing.
+
+**Join us!** We welcome undergraduate researchers, prospective graduate students,
+and postdocs. Reach out to [Xiangtao](mailto:xx286@cornell.edu) if our work
+resonates with you.
+
+
+## Current members
+
+::: {#current-members}
+:::
+
+
+## Alumni
+
+::: {#alumni-members}
+:::

@@ -1,0 +1,17 @@
+---
+title: "Jane Doe"
+subtitle: "PhD Student"
+image: /images/portraits/placeholder.svg
+role: phd
+weight: 3
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:jane@cornell.edu"
+---
+
+*(Example member — replace with a real lab member.)* Jane studies plant
+functional traits and their role in tropical forest responses to drought.

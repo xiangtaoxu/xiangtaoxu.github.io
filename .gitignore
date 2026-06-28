@@ -1,0 +1,9 @@
+# Quarto build output and cache — never commit these
+/_site/
+/.quarto/
+
+# OS / editor cruft
+.DS_Store
+*~
+
+**/*.quarto_ipynb

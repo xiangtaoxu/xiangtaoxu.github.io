@@ -1,0 +1,47 @@
+# ============================================================================
+#  Project-wide configuration for the whole website.
+#  This is the ONE file that ties all pages together (navbar, theme, footer).
+# ============================================================================
+
+project:
+  type: website          # tells Quarto this is a multi-page website
+  output-dir: _site      # rendered HTML is written here (git-ignored)
+
+website:
+  title: "BioM2 Lab"
+  description: "Biosphere Modeling & Monitoring — Xiangtao Xu Lab, Cornell EEB"
+  # site-url is only needed for deployment / sitemaps; harmless to keep now.
+  site-url: "https://xiangtaoxu.eeb.cornell.edu"
+
+  navbar:
+    background: primary   # uses the carnelian color from theme.scss
+    pinned: true          # navbar stays visible when you scroll
+    left:
+      - text: "Home"
+        href: index.qmd
+      - text: "Team"
+        href: team.qmd
+      # --- Publications page is reserved for later. When you're ready,
+      #     uncomment these two lines and create publications.qmd.
+      # - text: "Publications"
+      #   href: publications.qmd
+    right:
+      - icon: github
+        href: https://github.com/BioM2-Lab
+        aria-label: "GitHub"
+
+  page-footer:
+    center: "© 2026 BioM2 Lab · Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    # A base Bootswatch theme ("litera" = clean & friendly) layered with our
+    # own tweaks in theme.scss. Order matters: theme.scss wins.
+    theme: [litera, theme.scss]
+    toc: false             # no table-of-contents on these landing-style pages
+    smooth-scroll: true
+    link-external-newwindow: true
+    include-in-header:
+      - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">

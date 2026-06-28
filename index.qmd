@@ -1,0 +1,55 @@
+---
+# No `title:` here on purpose — we want a custom hero instead of the default
+# page title block. `pagetitle` only sets the browser tab text.
+pagetitle: "BioM2 Lab — Home"
+page-layout: full
+toc: false
+---
+
+::: {.hero-banner}
+# Welcome to the BioM2 Lab
+
+[Biosphere Modeling & Monitoring · Cornell University]{.lead}
+
+We combine *in situ* observation and *in silico* modeling to understand forest
+ecosystem dynamics — from individual trees to the global terrestrial biosphere.
+
+[Meet the team »](team.qmd){.btn .btn-primary .btn-lg}
+:::
+
+
+## What we do
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🌳 Ecosystem modeling
+Process-based models (the ED2 lineage and beyond) that scale plant physiology up
+to ecosystem and biosphere dynamics.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🛰️ Ecological remote sensing
+Lidar, drones, and satellite products to characterize vegetation structure and
+function across spatial and temporal scales.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🔬 Model–data integration
+A ModEx approach that fuses field experiments, observations, and models to make
+sharper predictions of ecosystem change.
+:::
+:::
+
+:::
+
+
+::: {.callout-note appearance="simple"}
+**Interested in joining?** See the [Team page](team.qmd) for opportunities for
+undergraduates, graduate students, and postdocs.
+:::

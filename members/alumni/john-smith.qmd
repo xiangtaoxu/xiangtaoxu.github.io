@@ -1,0 +1,16 @@
+---
+title: "John Smith"
+subtitle: "Former Postdoc (2021–2024) · now at XYZ University"
+image: /images/portraits/placeholder.svg
+role: alumni        # informational; alumni live in the members/alumni/ folder
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: globe
+      text: Website
+      href: "https://example.com"
+---
+
+*(Example alumni — replace or delete.)* John was a postdoc in the lab and now
+runs his own research group studying boreal forest dynamics.

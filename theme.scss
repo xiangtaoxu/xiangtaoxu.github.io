@@ -1,0 +1,62 @@
+/*-- scss:defaults --*/
+// ---------------------------------------------------------------------------
+// Variables. These override Bootstrap/Bootswatch BEFORE the theme is compiled.
+// Change a value here and it propagates across the whole site.
+// ---------------------------------------------------------------------------
+
+$primary:          #b31b1b;   // Cornell carnelian — main accent color
+$secondary:        #6c757d;
+$body-color:       #222529;
+$link-color:       #b31b1b;
+$link-hover-color: #7d1212;
+
+$font-family-sans-serif: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+$headings-font-weight: 700;
+$border-radius:    0.6rem;
+
+
+/*-- scss:rules --*/
+// ---------------------------------------------------------------------------
+// Custom CSS rules applied AFTER the theme is compiled.
+// ---------------------------------------------------------------------------
+
+// (The "Inter" web font is loaded in the HTML <head> via _quarto.yml's
+//  include-in-header; if offline, the system font stack above is used.)
+
+// ---- Home-page hero banner ----
+.hero-banner {
+  background: linear-gradient(135deg, #b31b1b 0%, #7d1212 100%);
+  color: #fff;
+  padding: 4rem 2rem;
+  border-radius: $border-radius;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.hero-banner h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; border: none; }
+.hero-banner .lead { font-size: 1.25rem; opacity: 0.95; }
+.hero-banner .btn { margin-top: 1.5rem; }
+
+// Make hero buttons readable on the red background (white button, red text)
+.hero-banner .btn-primary {
+  background: #fff; color: #b31b1b; border-color: #fff; font-weight: 600;
+}
+.hero-banner .btn-primary:hover { background: #f3f3f3; color: #7d1212; }
+
+// ---- "What we do" theme cards on the home page ----
+.theme-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: $border-radius;
+  padding: 1.5rem;
+  height: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.theme-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+.theme-card h3 { margin-top: 0; }
+
+// ---- Team listing (the grid of member cards) ----
+.card { border-radius: $border-radius; }
+.card-img-top, .card img { object-fit: cover; }      // crop portraits nicely
+.quarto-grid-item .card-title { margin-bottom: 0.1rem; }
+.quarto-grid-item .card-subtitle { color: $primary; font-weight: 600; }
