@@ -45,24 +45,36 @@ $border-radius:    0.6rem;
 .navbar .nav-link { color: rgba(255, 255, 255, 0.92) !important; }     // white links on the dark banner
 .navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff !important; }
 
-// ---- Home-page hero block (now a simple carnelian band, no photo) ----
+// ---- Home-page hero: MEDS animation on top, Welcome text in a band directly below ----
+.hero-anim {
+  // `contain` shows the WHOLE animation (no cropping); white fills the sides
+  background: url('/images/hero/meds-forest.gif') center / contain no-repeat #ffffff;
+  aspect-ratio: 7 / 2;             // short, wide box -> text band shows above the fold on desktop
+  max-height: 340px;               // cap on very wide screens
+  border: 1px solid #e7e7e9;
+  border-bottom: none;
+  border-radius: $border-radius $border-radius 0 0;   // round the TOP corners only
+}
 .hero-banner {
-  background: linear-gradient(135deg, #b31b1b 0%, #7d1212 100%);
-  color: #fff;
-  padding: 4rem 2rem;
-  border-radius: $border-radius;
-  text-align: center;
+  background: #ffffff;             // white band holding the text, BELOW the animation
+  color: #1a1d21;
+  border: 1px solid #e7e7e9;       // subtle frame so the light card reads on the white page
+  border-top: none;
+  border-radius: 0 0 $border-radius $border-radius;    // round the BOTTOM corners only
   margin-bottom: 2.5rem;
+  padding: 1.4rem 2rem 1.7rem;
+  text-align: center;
 }
-.hero-banner h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; border: none; }
-.hero-banner .lead { font-size: 1.25rem; opacity: 0.95; }
-.hero-banner .btn { margin-top: 1.5rem; }
+.hero-banner h1 { color: #1a1d21; font-size: 2.0rem; margin-bottom: 0.3rem; border: none; }
+.hero-banner .lead { color: #555; opacity: 1; font-size: 1.0rem; margin-bottom: 0.4rem; }
+.hero-banner .btn { margin-top: 0.9rem; }
 
-// Make hero buttons readable on the red background (white button, red text)
+// "Meet the team" = ghost button: red words, transparent background, red outline.
+// Fills carnelian on hover.
 .hero-banner .btn-primary {
-  background: #fff; color: #b31b1b; border-color: #fff; font-weight: 600;
+  background: transparent; color: #b31b1b; border-color: #b31b1b; font-weight: 700;
 }
-.hero-banner .btn-primary:hover { background: #f3f3f3; color: #7d1212; }
+.hero-banner .btn-primary:hover { background: #b31b1b; color: #fff; border-color: #b31b1b; }
 
 // ---- "What we do" theme cards on the home page ----
 .theme-card {

@@ -6,13 +6,13 @@ page-layout: full
 toc: false
 ---
 
+::: {.hero-anim}
+:::
+
 ::: {.hero-banner}
-# Welcome to the BioM2 Lab
+# Predicting forests and biosphere under a changing planet
 
-[Biosphere Modeling & Monitoring · Cornell University]{.lead}
-
-We combine *in situ* observation and *in silico* modeling to understand forest
-ecosystem dynamics — from individual trees to the global terrestrial biosphere.
+[Principles and solutions integrating *in situ* and *in silico* research]{.lead}
 
 [Meet the team »](team.qmd){.btn .btn-primary .btn-lg}
 :::
