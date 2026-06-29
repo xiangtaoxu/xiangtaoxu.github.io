@@ -1,0 +1,12 @@
+---
+title: "News"
+listing:
+  contents: news          # all posts in the news/ folder
+  type: default           # blog-style list (no per-post image required)
+  sort: "date desc"
+  date-format: "MMM D, YYYY"
+  fields: [date, title, description]
+  sort-ui: false
+  filter-ui: false
+  feed: true              # generates an RSS feed
+---

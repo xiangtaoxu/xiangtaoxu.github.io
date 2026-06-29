@@ -4,6 +4,17 @@
 pagetitle: "BioM2 Lab — Home"
 page-layout: full
 toc: false
+# Show the most recent news posts below the hero
+listing:
+  - id: latest-news
+    contents: news          # the news/ folder of posts
+    type: default
+    sort: "date desc"
+    max-items: 3
+    date-format: "MMM D, YYYY"
+    fields: [date, title, description]
+    sort-ui: false
+    filter-ui: false
 ---
 
 ::: {.hero-anim}
@@ -18,38 +29,9 @@ toc: false
 :::
 
 
-## What we do
+## Latest news
 
-::: {.grid}
-
-::: {.g-col-12 .g-col-md-4}
-::: {.theme-card}
-### 🌳 Ecosystem modeling
-Process-based models (the ED2 lineage and beyond) that scale plant physiology up
-to ecosystem and biosphere dynamics.
-:::
+::: {#latest-news}
 :::
 
-::: {.g-col-12 .g-col-md-4}
-::: {.theme-card}
-### 🛰️ Ecological remote sensing
-Lidar, drones, and satellite products to characterize vegetation structure and
-function across spatial and temporal scales.
-:::
-:::
-
-::: {.g-col-12 .g-col-md-4}
-::: {.theme-card}
-### 🔬 Model–data integration
-A ModEx approach that fuses field experiments, observations, and models to make
-sharper predictions of ecosystem change.
-:::
-:::
-
-:::
-
-
-::: {.callout-note appearance="simple"}
-**Interested in joining?** See the [Team page](team.qmd) for opportunities for
-undergraduates, graduate students, and postdocs.
-:::
+[All news →](news.qmd)

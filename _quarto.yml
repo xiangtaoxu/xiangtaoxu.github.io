@@ -26,6 +26,10 @@ website:
         href: index.qmd
       - text: "Team"
         href: team.qmd
+      - text: "Research"
+        href: research.qmd
+      - text: "News"
+        href: news.qmd
       # --- Publications page is reserved for later. When you're ready,
       #     uncomment these two lines and create publications.qmd.
       # - text: "Publications"

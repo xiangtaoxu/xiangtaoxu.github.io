@@ -1,0 +1,45 @@
+---
+title: "Research"
+page-layout: full
+toc: false
+---
+
+We work at the interface of ecology, Earth system science, and remote sensing —
+combining field observation with process-based modeling. Our work spans three
+connected themes:
+
+## What we do
+
+::: {.grid}
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🌳 Ecosystem modeling
+Process-based models (the ED2 lineage and beyond) that scale plant physiology up
+to ecosystem and biosphere dynamics.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🛰️ Ecological remote sensing
+Lidar, drones, and satellite products to characterize vegetation structure and
+function across spatial and temporal scales.
+:::
+:::
+
+::: {.g-col-12 .g-col-md-4}
+::: {.theme-card}
+### 🔬 Model–data integration
+A ModEx approach that fuses field experiments, observations, and models to make
+sharper predictions of ecosystem change.
+:::
+:::
+
+:::
+
+
+::: {.callout-note appearance="simple"}
+**Interested in joining?** See the [Team page](team.qmd) for opportunities for
+undergraduates, graduate students, and postdocs.
+:::

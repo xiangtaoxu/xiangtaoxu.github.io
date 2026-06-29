@@ -1,0 +1,10 @@
+---
+title: "New paper on tropical forest carbon dynamics"
+date: "2026-05-22"
+description: "Lab members publish on coupling lidar structure with demographic models."
+---
+
+*(Example post — replace with real news.)* A new study from the lab links
+lidar-derived canopy structure with process-based demographic modeling to
+improve predictions of tropical-forest carbon dynamics. Link and citation to
+come.

@@ -1,0 +1,10 @@
+---
+title: "New BioM2 Lab website is live"
+date: "2026-06-15"
+description: "Our redesigned lab website is now live, built with Quarto."
+---
+
+*(Example post — replace with real news.)* We've launched a refreshed lab
+website built with [Quarto](https://quarto.org). Browse the [team](../team.qmd)
+and [research](../research.qmd) pages, and check back here for updates on papers,
+grants, and lab news.
