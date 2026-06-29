@@ -23,7 +23,29 @@ $border-radius:    0.6rem;
 // (The "Inter" web font is loaded in the HTML <head> via _quarto.yml's
 //  include-in-header; if offline, the system font stack above is used.)
 
-// ---- Home-page hero banner ----
+// ---- Site header: full-width ecosystem banner, dark-shaded so nav text stands out ----
+.navbar {
+  background-color: $primary;        // fallback if the image fails to load
+  background-image:
+    // horizontal scrim: darker at the two edges (menu + icons), bright canopy in the middle
+    linear-gradient(to right,
+      rgba(8, 10, 12, 0.52) 0%,
+      rgba(8, 10, 12, 0.16) 24%,
+      rgba(8, 10, 12, 0.10) 50%,
+      rgba(8, 10, 12, 0.16) 76%,
+      rgba(8, 10, 12, 0.52) 100%),
+    url('/images/banners/header-banner.jpg');
+  background-size: cover;            // span the FULL width of the banner
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 120px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);    // keeps letters legible over the bright canopy
+}
+.navbar .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
+.navbar .nav-link { color: rgba(255, 255, 255, 0.92) !important; }     // white links on the dark banner
+.navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff !important; }
+
+// ---- Home-page hero block (now a simple carnelian band, no photo) ----
 .hero-banner {
   background: linear-gradient(135deg, #b31b1b 0%, #7d1212 100%);
   color: #fff;

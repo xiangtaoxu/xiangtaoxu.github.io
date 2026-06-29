@@ -6,6 +6,10 @@
 project:
   type: website          # tells Quarto this is a multi-page website
   output-dir: _site      # rendered HTML is written here (git-ignored)
+  resources:
+    # the banner image is referenced only from theme.scss, so list it here to be
+    # sure Quarto copies it into the built site
+    - images/banners/header-banner.jpg
 
 website:
   title: "BioM2 Lab"
@@ -14,7 +18,7 @@ website:
   site-url: "https://xiangtaoxu.eeb.cornell.edu"
 
   navbar:
-    background: primary   # uses the carnelian color from theme.scss
+    background: dark      # dark navbar -> white text/icons (legible on the dark banner)
     pinned: true          # navbar stays visible when you scroll
     left:
       - text: "Home"
