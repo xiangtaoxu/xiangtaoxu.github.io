@@ -1,0 +1,23 @@
+---
+title: "Nicholas Cranmer"
+subtitle: "EEB PhD Student"
+image: /images/portraits/nicholas-cranmer.jpg
+role: phd
+weight: 6
+aliases: ["Nicholas Cranmer", "N. Cranmer", "N Cranmer", "Nick Cranmer"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:nc459@cornell.edu"
+    - icon: twitter
+      text: Twitter
+      href: "https://twitter.com/NicholasCranme1"
+---
+
+I am primarily interested in using remote sensing technologies such as terrestrial
+laser scanning (i.e., terrestrial LiDAR) to further understand ecological processes
+such as carbon sequestration and storage under different forest management
+practices.

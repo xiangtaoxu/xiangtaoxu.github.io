@@ -1,0 +1,21 @@
+---
+title: "Tao Han"
+subtitle: "Postdoctoral Researcher"
+image: /images/portraits/tao-han.jpg
+role: postdoc
+weight: 2
+aliases: ["Tao Han", "T. Han", "T Han"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:th596@cornell.edu"
+    - icon: record-circle
+      text: ORCID
+      href: "https://orcid.org/0000-0001-9164-284X"
+---
+
+I am interested in using advanced computer vision techniques and terrestrial laser
+scanning to understand different ecological processes.

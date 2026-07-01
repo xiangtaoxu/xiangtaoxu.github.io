@@ -1,0 +1,18 @@
+---
+title: "Aaron Sams"
+subtitle: "Part-time Programmer"
+image: /images/portraits/placeholder.svg
+role: programmer
+weight: 10
+aliases: ["Aaron Sams", "A Sams", "A. Coles"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:as2847@cornell.edu"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/ajsams"
+---

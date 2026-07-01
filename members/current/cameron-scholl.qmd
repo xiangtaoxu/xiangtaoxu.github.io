@@ -1,0 +1,22 @@
+---
+title: "Cameron Scholl"
+subtitle: "EEB PhD Student"
+image: /images/portraits/cameron-scholl.jpg
+role: phd
+weight: 4
+aliases: ["Cameron Scholl", "Cameron J. Scholl", "C. Scholl", "C Scholl", "Cameron Coles", "C. Coles", "C Coles"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:cjc378@cornell.edu"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/camjay99"
+---
+
+I am interested in the use of remote sensing in identifying the extent and
+intensity of defoliation, as well as predicting the drivers and long-term impacts
+of spongy moth outbreaks.

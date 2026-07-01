@@ -1,0 +1,18 @@
+---
+title: "Maddie Watson"
+subtitle: "Summer Research Intern"
+image: /images/portraits/maddie-watson.jpg
+role: alumni
+aliases: ["Maddie Watson", "M. Watson", "M Watson", "Madeleine Watson"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:miw34@cornell.edu"
+---
+
+I am an undergraduate student on the Cornell Gymnastics team majoring in
+environment and sustainability. I am interested in how terrestrial lidar
+scanners can answer important questions for forest ecology and sustainability.

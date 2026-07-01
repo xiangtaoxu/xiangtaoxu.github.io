@@ -1,9 +1,10 @@
 ---
 title: "Xiangtao Xu"
-subtitle: "Principal Investigator"
-image: /images/portraits/placeholder.svg
+subtitle: "Assistant Professor, EEB Cornell"
+image: /images/portraits/xiangtao-xu.jpg
 role: pi          # informational tag only (current vs alumni is decided by folder)
 weight: 1         # controls card order among current members (lower = first)
+aliases: ["Xiangtao Xu", "X. Xu", "X Xu"]   # name variants, for matching against publication author lists
 about:
   template: trestles      # nice profile layout: photo on the side, bio + links
   image-shape: round
@@ -11,15 +12,25 @@ about:
     - icon: envelope
       text: Email
       href: "mailto:xx286@cornell.edu"
-    - icon: github
-      text: GitHub
-      href: "https://github.com/xiangtaoxu"
+    - icon: twitter
+      text: Twitter
+      href: "https://twitter.com/XiangtaoX"
+    - icon: record-circle
+      text: ORCID
+      href: "https://orcid.org/0000-0002-9402-9474"
     - icon: mortarboard
       text: Google Scholar
       href: "https://scholar.google.com/citations?user=fAorsowAAAAJ"
 ---
 
-Xiangtao is an assistant professor in Ecology and Evolutionary Biology at Cornell.
-His research links plant ecophysiology, ecosystem modeling, and ecological remote
-sensing to predict terrestrial biosphere dynamics from the individual tree to the
-landscape.
+I am an ecosystem ecologist with broad interests in other related fields of ecology
+and Earth System Science. My research revolves around the role of vegetation in our
+Earth system and searches for quantitative frameworks to understand their
+ecophysiology and make predictions. I am also interested in novel methods to
+characterize plant activities across different spatial and temporal scales such as
+ecological remote sensing.
+
+Currently I teach *BIOEE 1610 Introductory Biology: Ecology and the Environment* and
+*BIOEE 4940 Quantitative Methods in Ecology*.
+
+[Full CV](https://docs.google.com/document/d/1o6VspwBWYJ0h-pIDAzkIfkuARvH4BGDx/edit?usp=sharing&ouid=107075740368533912664&rtpof=true&sd=true)

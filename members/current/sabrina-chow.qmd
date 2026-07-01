@@ -1,0 +1,23 @@
+---
+title: "Sabrina Chow"
+subtitle: "Undergraduate, Computational Biology"
+image: /images/portraits/sabrina-chow.jpg
+role: undergrad
+weight: 9
+aliases: ["Sabrina Chow", "S. Chow", "S Chow"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:sabrina8chow@gmail.com"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/sabrinachow8"
+    - icon: globe
+      text: Website
+      href: "https://sabrinachow8.github.io/sabrinachow8/index.html"
+---
+
+Leaf lifespan, ecology, conservation.

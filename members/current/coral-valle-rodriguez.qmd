@@ -1,0 +1,27 @@
+---
+title: "Coral del Mar Valle-Rodríguez"
+subtitle: "EEB PhD Student"
+image: /images/portraits/coral-valle-rodriguez.jpg
+role: phd
+weight: 5
+aliases: ["Coral del Mar Valle Rodríguez", "Coral del Mar Valle-Rodríguez", "C.V.R.", "C. Valle-Rodríguez"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:cv273@cornell.edu"
+    - icon: twitter
+      text: Twitter
+      href: "https://twitter.com/CoraldelMarVR"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/coraldelmarvr"
+    - icon: record-circle
+      text: ORCID
+      href: "https://orcid.org/0009-0003-8440-583X"
+---
+
+I am highly interested in using remote sensing techniques to study changes in
+forest composition and plant behavior due to climate change in the tropics.

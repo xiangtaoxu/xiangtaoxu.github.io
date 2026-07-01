@@ -1,0 +1,34 @@
+---
+title: "Donghai Wu"
+subtitle: "Postdoc 2019–2022 · now Staff Scientist, South China Botanical Garden"
+image: /images/portraits/donghai-wu.jpg
+role: alumni
+aliases: ["Donghai Wu", "D. Wu", "D Wu"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:dw623@cornell.edu"
+    - icon: globe
+      text: ResearchGate
+      href: "https://www.researchgate.net/profile/Donghai-Wu"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/donghaiwu"
+    - icon: twitter
+      text: Twitter
+      href: "https://twitter.com/DonghaiWuCarbon"
+    - icon: record-circle
+      text: ORCID
+      href: "https://orcid.org/0000-0002-4638-3743"
+    - icon: mortarboard
+      text: Google Scholar
+      href: "https://scholar.google.com/citations?user=ip05g0oAAAAJ"
+---
+
+I focus on providing insights into three scientific questions: (1) How to
+quantify the destinies of the carbon atoms fixed by photosynthesis? (2) How does
+the ecosystem respond to environmental change? (3) How to establish a positive
+feedback between human and nature?
