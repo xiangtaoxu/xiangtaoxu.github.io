@@ -1,0 +1,818 @@
+# Resolved publication cache -- reflects what's rendered on research.qmd.
+# Regenerated 2026-07-01 via ORCID (0000-0002-9402-9474) + Crossref.
+- id: doi:10.1016/j.foreco.2024.122211
+  title: Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and
+    airborne LiDAR
+  authors:
+  - Nicholas Cranmer
+  - Tao Han
+  - Brett Chedzoy
+  - Peter J. Smallidge
+  - Colin Beier
+  - Lucas Johnson
+  - Xiangtao Xu
+  publisher: Forest Ecology and Management
+  date: '2024-10-01'
+  link: https://doi.org/gt7gk4
+  type: paper
+- id: doi:10.1111/gcb.17463
+  title: Two sub‐annual timescales and coupling modes for terrestrial water and carbon cycles
+  authors:
+  - Daniel J. Short Gianotti
+  - Kaighin A. McColl
+  - Andrew F. Feldman
+  - Xiangtao Xu
+  - Dara Entekhabi
+  publisher: Global Change Biology
+  date: '2024-08-09'
+  link: https://doi.org/gt6s44
+  type: paper
+- id: doi:10.34133/plantphenomics.0179
+  title: 'AppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in Orchards'
+  authors:
+  - Tian Qiu
+  - Tao Wang
+  - Tao Han
+  - Kaspar Kuehn
+  - Lailiang Cheng
+  - Cheng Meng
+  - Xiangtao Xu
+  - Kenong Xu
+  - Jiang Yu
+  publisher: Plant Phenomics
+  date: '2024-05-08'
+  link: https://doi.org/gt6scn
+  type: paper
+- id: doi:10.1016/j.fmre.2023.12.011
+  title: Global photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental
+    drivers
+  authors:
+  - Zhengbing Yan
+  - Matteo Detto
+  - Zhengfei Guo
+  - Nicholas G. Smith
+  - Han Wang
+  - Loren P. Albert
+  - Xiangtao Xu
+  - Ziyu Lin
+  - Shuwen Liu
+  - Yingyi Zhao
+  - Shuli Chen
+  - Timothy C. Bonebrake
+  - Jin Wu
+  publisher: Fundamental Research
+  date: '2024-02-06'
+  link: https://doi.org/gt6scp
+  type: paper
+- id: doi:10.1111/gcb.17075
+  title: Constraining long‐term model predictions for woody growth using tropical tree rings
+  authors:
+  - Xiangtao Xu
+  - Peter van der Sleen
+  - Peter Groenendijk
+  - Mart Vlam
+  - David Medvigy
+  - Paul Moorcroft
+  - Daniel Petticord
+  - Yixin Ma
+  - Pieter A. Zuidema
+  publisher: Global Change Biology
+  date: '2024-01-01'
+  link: https://doi.org/gt6scq
+  type: paper
+- id: doi:10.1016/j.scib.2023.10.016
+  title: Observed impacts of large wind farms on grassland carbon cycling
+  authors:
+  - Donghai Wu
+  - Steven M. Grodsky
+  - Wenfang Xu
+  - Naijing Liu
+  - Rafael M. Almeida
+  - Liming Zhou
+  - Lee M. Miller
+  - Somnath Baidya Roy
+  - Geng Xia
+  - Anurag A. Agrawal
+  - Benjamin Z. Houlton
+  - Alexander S. Flecker
+  - Xiangtao Xu
+  publisher: Science Bulletin
+  date: '2023-12-19'
+  link: https://doi.org/gt6scr
+  type: paper
+- id: doi:10.1111/ele.14215
+  title: 'Leaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technology'
+  authors:
+  - Xi Yang
+  - Rong Li
+  - Andrew Jablonski
+  - Atticus Stovall
+  - Jongmin Kim
+  - Koong Yi
+  - Yixin Ma
+  - Daniel Beverly
+  - Richard Phillips
+  - Kim Novick
+  - Xiangtao Xu
+  - Manuel Lerdau
+  publisher: Ecology Letters
+  date: '2023-04-20'
+  link: https://doi.org/gsh5qt
+  type: paper
+- id: doi:10.5194/bg-20-2117-2023
+  title: 'Exploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to
+    guide modeling and experimental studies'
+  authors:
+  - Jennifer A. Holm
+  - David M. Medvigy
+  - Benjamin Smith
+  - Jeffrey S. Dukes
+  - Claus Beier
+  - Mikhail Mishurov
+  - Xiangtao Xu
+  - Jeremy W. Lichstein
+  - Craig D. Allen
+  - Klaus S. Larsen
+  - Yiqi Luo
+  - Cari Ficken
+  - William T. Pockman
+  - William R. L. Anderegg
+  - Anja Rammig
+  publisher: Biogeosciences
+  date: '2023-06-14'
+  link: https://doi.org/gsqq3s
+  type: paper
+- id: doi:10.1126/sciadv.add5667
+  title: Leaf economics fundamentals explained by optimality principles
+  authors:
+  - Han Wang
+  - I. Colin Prentice
+  - Ian J. Wright
+  - David I. Warton
+  - Shengchao Qiao
+  - Xiangtao Xu
+  - Jian Zhou
+  - Kihachiro Kikuzawa
+  - Nils Chr. Stenseth
+  publisher: Science Advances
+  date: '2023-01-18'
+  link: https://doi.org/grnvjx
+  type: paper
+- id: doi:10.1111/gcb.16046
+  title: Reduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality
+    responses to drought
+  authors:
+  - Donghai Wu
+  - German Vargas G.
+  - Jennifer S. Powers
+  - Nate G. McDowell
+  - Justin M. Becknell
+  - Daniel Pérez‐Aviles
+  - David Medvigy
+  - Yanlan Liu
+  - Gabriel G. Katul
+  - Julio César Calvo‐Alvarado
+  - Ana Calvo‐Obando
+  - Arturo Sanchez‐Azofeifa
+  - Xiangtao Xu
+  publisher: Global Change Biology
+  date: '2022-03-01'
+  link: https://doi.org/gntmbv
+  type: paper
+- id: doi:10.1371/journal.pbio.3001322
+  title: Natural experiments and long-term monitoring are critical to understand and predict marine host–microbe
+    ecology and evolution
+  authors:
+  - Matthieu Leray
+  - Laetitia G. E. Wilkins
+  - Amy Apprill
+  - Holly M. Bik
+  - Friederike Clever
+  - Sean R. Connolly
+  - Marina E. De León
+  - J. Emmett Duffy
+  - Leïla Ezzat
+  - Sarah Gignoux-Wolfsohn
+  - Edward Allen Herre
+  - Jonathan Z. Kaye
+  - David I. Kline
+  - Jordan G. Kueneman
+  - Melissa K. McCormick
+  - W. Owen McMillan
+  - Aaron O’Dea
+  - Tiago J. Pereira
+  - Jillian M. Petersen
+  - Daniel F. Petticord
+  - Mark E. Torchin
+  - Rebecca Vega Thurber
+  - Elin Videvall
+  - William T. Wcislo
+  - Benedict Yuen
+  - Jonathan A. Eisen
+  publisher: PLOS Biology
+  date: '2021-08-19'
+  link: https://doi.org/grr53x
+  type: paper
+- id: doi:10.1111/gcb.15872
+  title: Detecting forest response to droughts with global observations of vegetation water content
+  authors:
+  - Alexandra G. Konings
+  - Sassan S. Saatchi
+  - Christian Frankenberg
+  - Michael Keller
+  - Victor Leshyk
+  - William R. L. Anderegg
+  - Vincent Humphrey
+  - Ashley M. Matheny
+  - Anna Trugman
+  - Lawren Sack
+  - Elizabeth Agee
+  - Mallory L. Barnes
+  - Oliver Binks
+  - Kerry Cawse‐Nicholson
+  - Bradley O. Christoffersen
+  - Dara Entekhabi
+  - Pierre Gentine
+  - Nataniel M. Holtzman
+  - Gabriel G. Katul
+  - Yanlan Liu
+  - Marcos Longo
+  - Jordi Martinez‐Vilalta
+  - Nate McDowell
+  - Patrick Meir
+  - Maurizio Mencuccini
+  - Assaad Mrad
+  - Kimberly A. Novick
+  - Rafael S. Oliveira
+  - Paul Siqueira
+  - Susan C. Steele‐Dunne
+  - David R. Thompson
+  - Yujie Wang
+  - Richard Wehr
+  - Jeffrey D. Wood
+  - Xiangtao Xu
+  - Pieter A. Zuidema
+  publisher: Global Change Biology
+  date: '2021-09-03'
+  link: https://doi.org/gmsfnx
+  type: paper
+- id: doi:10.1111/ele.13879
+  title: Plant input does not exert stronger control on topsoil carbon persistence than climate in alpine
+    grasslands
+  authors:
+  - Donghai Wu
+  - Xiangtao Xu
+  - Haicheng Zhang
+  publisher: Ecology Letters
+  date: '2021-09-12'
+  link: https://doi.org/grr53z
+  type: paper
+- id: doi:10.1029/2020JG005976
+  title: 'Recovery: Fast and Slow—Vegetation Response During the 2012–2016 California Drought'
+  authors:
+  - Xi Yang
+  - Xiangtao Xu
+  - Atticus Stovall
+  - Min Chen
+  - Jung‐Eun Lee
+  publisher: 'Journal of Geophysical Research: Biogeosciences'
+  date: '2021-04-01'
+  link: https://doi.org/gkmr4d
+  type: paper
+- id: doi:10.1111/nph.17254
+  title: Leaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy
+    water content
+  authors:
+  - Xiangtao Xu
+  - Alexandra G. Konings
+  - Marcos Longo
+  - Andrew Feldman
+  - Liang Xu
+  - Sassan Saatchi
+  - Donghai Wu
+  - Jin Wu
+  - Paul Moorcroft
+  publisher: New Phytologist
+  date: '2021-06-01'
+  link: https://doi.org/gkkjqv
+  type: paper
+- id: doi:10.1111/1365-2745.13540
+  title: 'Unraveling the relative role of light and water competition between lianas and trees in tropical
+    forests: A vegetation model analysis'
+  authors:
+  - Félicien Meunier
+  - Hans Verbeeck
+  - Betsy Cowdery
+  - Stefan A. Schnitzer
+  - Chris M. Smith‐Martin
+  - Jennifer S. Powers
+  - Xiangtao Xu
+  - Martijn Slot
+  - Hannes P. T. De Deurwaerder
+  - Matteo Detto
+  - Damien Bonal
+  - Marcos Longo
+  - Louis S. Santiago
+  - Michael Dietze
+  publisher: Journal of Ecology
+  date: '2021-03-03'
+  link: https://doi.org/grz554
+  type: paper
+- id: doi:10.1016/j.isprsjprs.2020.10.017
+  title: Monitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of
+    PlanetScope and drone remote sensing observations
+  authors:
+  - Shengbiao Wu
+  - Jing Wang
+  - Zhengbing Yan
+  - Guangqin Song
+  - Yang Chen
+  - Qin Ma
+  - Meifeng Deng
+  - Yuntao Wu
+  - Yingyi Zhao
+  - Zhengfei Guo
+  - Zuoqiang Yuan
+  - Guanhua Dai
+  - Xiangtao Xu
+  - Xi Yang
+  - Yanjun Su
+  - Lingli Liu
+  - Jin Wu
+  publisher: ISPRS Journal of Photogrammetry and Remote Sensing
+  date: '2021-01-15'
+  link: https://doi.org/gkmnwt
+  type: paper
+- id: doi:10.1007/s40641-020-00168-6
+  title: 'Trait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global Change'
+  authors:
+  - Xiangtao Xu
+  - Anna T. Trugman
+  publisher: Current Climate Change Reports
+  date: '2021-01-12'
+  link: https://doi.org/gh7qbj
+  type: paper
+- id: doi:10.1111/gcb.15224
+  title: Accelerated terrestrial ecosystem carbon turnover and its drivers
+  authors:
+  - Donghai Wu
+  - Shilong Piao
+  - Dan Zhu
+  - Xuhui Wang
+  - Philippe Ciais
+  - Ana Bastos
+  - Xiangtao Xu
+  - Wenfang Xu
+  publisher: Global Change Biology
+  date: '2020-08-30'
+  link: https://doi.org/gkmnwx
+  type: paper
+- id: doi:10.1111/nph.16712
+  title: Optimal leaf life strategies determine <i>V</i><sub>c,max</sub> dynamic during ontogeny
+  authors:
+  - Matteo Detto
+  - Xiangtao Xu
+  publisher: New Phytologist
+  date: '2020-06-22'
+  link: https://doi.org/ghjsdd
+  type: paper
+- id: doi:10.1111/gcb.15037
+  title: A catastrophic tropical drought kills hydraulically vulnerable tree species
+  authors:
+  - Jennifer S. Powers
+  - German Vargas G.
+  - Timothy J. Brodribb
+  - Naomi B. Schwartz
+  - Daniel Pérez‐Aviles
+  - Chris M. Smith‐Martin
+  - Justin M. Becknell
+  - Filippo Aureli
+  - Roger Blanco
+  - Erick Calderón‐Morales
+  - Julio C. Calvo‐Alvarado
+  - Ana Julieta Calvo‐Obando
+  - María Marta Chavarría
+  - Dorian Carvajal‐Vanegas
+  - César D. Jiménez‐Rodríguez
+  - Evin Murillo Chacon
+  - Colleen M. Schaffner
+  - Leland K. Werden
+  - Xiangtao Xu
+  - David Medvigy
+  publisher: Global Change Biology
+  date: '2020-03-23'
+  link: https://doi.org/gkmnw3
+  type: paper
+- id: doi:10.1111/nph.16275
+  title: Allometric scaling laws linking biomass and rooting depth vary across ontogeny and functional
+    groups in tropical dry forest lianas and trees
+  authors:
+  - Chris M. Smith‐Martin
+  - Xiangtao Xu
+  - David Medvigy
+  - Stefan A. Schnitzer
+  - Jennifer S. Powers
+  publisher: New Phytologist
+  date: '2020-01-24'
+  link: https://doi.org/gkmnw6
+  type: paper
+- id: doi:10.1038/s41467-019-13656-7
+  title: Tropical carbon sink accelerated by symbiotic dinitrogen fixation
+  authors:
+  - Jennifer H. Levy-Varon
+  - Sarah A. Batterman
+  - David Medvigy
+  - Xiangtao Xu
+  - Jefferson S. Hall
+  - Michiel van Breugel
+  - Lars O. Hedin
+  publisher: Nature Communications
+  date: '2019-12-02'
+  link: https://doi.org/gkmnw7
+  type: paper
+- id: doi:10.1016/j.rse.2024.114484
+  title: Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time series
+  authors:
+  - Denghong Liu
+  - Xiaolin Zhu
+  - Meredith Holgerson
+  - Sheel Bansal
+  - Xiangtao Xu
+  publisher: Remote Sensing of Environment
+  date: '2024-12-15'
+  link: https://doi.org/10.1016/j.rse.2024.114484
+  type: paper
+- id: doi:10.1111/nph.71384
+  title: Mechanisms and scales in modeling forest responses to changing disturbance regimes
+  authors:
+  - Xiangtao Xu
+  - Cameron Scholl
+  - Yixin Ma
+  - Evan Gora
+  - Maria Uriarte
+  - William R. L. Anderegg
+  - Yanlan Liu
+  - Tao Han
+  - Yiqi Luo
+  - Charles D. Koven
+  - Winslow D. Hansen
+  - Douglas C. Morton
+  publisher: New Phytologist
+  date: '2026-06-26'
+  link: https://doi.org/10.1111/nph.71384
+  type: paper
+- id: doi:10.1038/s41477-026-02240-9
+  title: Amazon rainforests are rejuvenating their canopies by producing more photosynthetically efficient
+    young leaves under climate change
+  authors:
+  - Xueqin Yang
+  - Jie Tian
+  - Philippe Ciais
+  - Liming Zhou
+  - Peter B. Reich
+  - Jin Wu
+  - Jiali Shang
+  - Jérôme Chave
+  - Julien Lamour
+  - Isabelle Maréchaux
+  - Yongshuo H. Fu
+  - Jing Ming Chen
+  - Jane Liu
+  - Shengli Tao
+  - Xiangming Xiao
+  - Xiangtao Xu
+  - Yongxian Su
+  - Haicheng Zhang
+  - Zaichun Zhu
+  - Yao Zhang
+  - Dalei Hao
+  - Lei Chen
+  - Qiang Liu
+  - Raffaele Lafortezza
+  - Kai Yan
+  - Peng Li
+  - Xing Li
+  - Patrick Meir
+  - Hui Liu
+  - Damien Bonal
+  - Bruce W. Nelson
+  - Hao Tang
+  - Jingrui Wang
+  - Kailiang Yu
+  - Wenping Yuan
+  - Shuo Wang
+  - Xiuzhi Chen
+  publisher: Nature Plants
+  date: '2026-03-09'
+  link: https://doi.org/10.1038/s41477-026-02240-9
+  type: paper
+- id: doi:10.1038/s41558-026-02639-4
+  title: Increasing atmospheric dryness and storms accelerates biomass turnover in Amazonian forests
+  authors:
+  - Donghai Wu
+  - Yongshi Zhou
+  - Yanlei Feng
+  - Evan M. Gora
+  - Marcos Longo
+  - Robinson I. Negrón-Juárez
+  - Sassan S. Saatchi
+  - Yanlan Liu
+  - Yixin Ma
+  - Douglas C. Morton
+  - Nate G. McDowell
+  - Yiqi Luo
+  - Xiangtao Xu
+  publisher: Nature Climate Change
+  date: '2026-05-13'
+  link: https://doi.org/10.1038/s41558-026-02639-4
+  type: paper
+- id: doi:10.1016/j.foreco.2026.123854
+  title: Lagged climatic drivers of spongy moth (Lymantria dispar dispar) outbreaks revealed by satellite-based
+    defoliation mapping
+  authors:
+  - Cameron J. Scholl
+  - Christine L. Goodale
+  - Xiangtao Xu
+  publisher: Forest Ecology and Management
+  date: 2026-09
+  link: https://doi.org/10.1016/j.foreco.2026.123854
+  type: paper
+- id: doi:10.1038/s41559-025-02922-1
+  title: Spatial patterns and future potential of tree species richness and structural diversity in China’s
+    forests
+  authors:
+  - Changjin Cheng
+  - Guoyi Zhou
+  - Xuli Tang
+  - Shaopeng Wang
+  - Yanjun Su
+  - Jin Wu
+  - Xiangtao Xu
+  - Wenfang Xu
+  - Fangmei Lin
+  - Yongshi Zhou
+  - Genxu Wang
+  - Junhua Yan
+  - Keping Ma
+  - Sheng Du
+  - Shenggong Li
+  - Shijie Han
+  - Youxin Ma
+  - Juxiu Liu
+  - Donghai Wu
+  publisher: Nature Ecology &amp; Evolution
+  date: '2025-12-02'
+  link: https://doi.org/10.1038/s41559-025-02922-1
+  type: paper
+- id: doi:10.1016/j.agrformet.2025.110675
+  title: Aligning satellite-based phenology in a deep learning model for improved crop yield estimates
+    over large regions
+  authors:
+  - Jiaying Zhang
+  - Kaiyu Guan
+  - Zhangliang Chen
+  - James Hipple
+  - Yizhi Huang
+  - Bin Peng
+  - Sibo Wang
+  - Xiangtao Xu
+  - Zhenong Jin
+  - Kejie Zhao
+  - Maxwell Jong
+  publisher: Agricultural and Forest Meteorology
+  date: 2025-09
+  link: https://doi.org/10.1016/j.agrformet.2025.110675
+  type: paper
+- id: doi:10.1088/1748-9326/adc58c
+  title: Degradation and deforestation increase the sensitivity of the Amazon Forest to climate extremes
+  authors:
+  - Marcos Longo
+  - Michael Keller
+  - Lara M Kueppers
+  - Kevin W Bowman
+  - Ovidiu Csillik
+  - António Ferraz
+  - Paul R Moorcroft
+  - Jean Pierre Ometto
+  - Britaldo S Soares-Filho
+  - Xiangtao Xu
+  - Mauro L R de Assis
+  - Eric B Görgens
+  - Erik J L Larson
+  - Jessica F Needham
+  - Elsa M Ordway
+  - Francisca R S Pereira
+  - Ekena Rangel Pinagé
+  - Luciane Sato
+  - Liang Xu
+  - Sassan Saatchi
+  publisher: Environmental Research Letters
+  date: '2025-04-11'
+  link: https://doi.org/10.1088/1748-9326/adc58c
+  type: paper
+- id: doi:10.1038/s41467-025-62845-0
+  title: Increasing constraint of aridity on tree intrinsic water use efficiency
+  authors:
+  - Mengjie Wang
+  - Shushi Peng
+  - Zihan Lu
+  - Xiangtao Xu
+  - Andrew Felton
+  - Anping Chen
+  publisher: Nature Communications
+  date: '2025-08-14'
+  link: https://doi.org/10.1038/s41467-025-62845-0
+  type: paper
+- id: doi:10.1038/s41561-025-01731-2
+  title: Large CO2 removal potential of woody debris preservation in managed forests
+  authors:
+  - Yiqi Luo
+  - Ning Wei
+  - Xingjie Lu
+  - Yu Zhou
+  - Feng Tao
+  - Quan Quan
+  - Cuijuan Liao
+  - Lifen Jiang
+  - Jianyang Xia
+  - Yuanyuan Huang
+  - Shuli Niu
+  - Xiangtao Xu
+  - Ying Sun
+  - Ning Zeng
+  - Charles Koven
+  - Liqing Peng
+  - Steve Davis
+  - Pete Smith
+  - Fengqi You
+  - Yu Jiang
+  - Lailiang Cheng
+  - Benjamin Houlton
+  publisher: Nature Geoscience
+  date: '2025-06-25'
+  link: https://doi.org/10.1038/s41561-025-01731-2
+  type: paper
+  correction: https://doi.org/10.1038/s41561-025-01769-2
+- id: doi:10.1029/2023wr036896
+  title: 'The Surface Water and Ocean Topography Mission (SWOT) Prior Lake Database (PLD): Lake Mask and
+    Operational Auxiliaries'
+  authors:
+  - Jida Wang
+  - Claire Pottier
+  - Cécile Cazals
+  - Marjorie Battude
+  - Yongwei Sheng
+  - Chunqiao Song
+  - Md Safat Sikder
+  - Xiao Yang
+  - Linghong Ke
+  - Manon Delhoume
+  - Marielle Gosset
+  - Rafael Reis Alencar Oliveira
+  - Manuela Grippa
+  - Félix Girard
+  - George H. Allen
+  - Xiangtao Xu
+  - Xiaolin Zhu
+  - Sylvain Biancamaria
+  - Laurence C. Smith
+  - Jean‐François Crétaux
+  - Tamlin M. Pavelsky
+  publisher: Water Resources Research
+  date: 2025-03
+  link: https://doi.org/10.1029/2023wr036896
+  type: paper
+- id: doi:10.1038/s41893-024-01500-w
+  title: Towards sustainable aquaculture in the Amazon
+  authors:
+  - Felipe S. Pacheco
+  - Sebastian A. Heilpern
+  - Claire DiLeo
+  - Rafael M. Almeida
+  - Suresh A. Sethi
+  - Marcela Miranda
+  - Nicholas Ray
+  - Nathan O. Barros
+  - Jucilene Cavali
+  - Carolina Costa
+  - Carolina R. Doria
+  - Joshua Fan
+  - Kathryn J. Fiorella
+  - Bruce R. Forsberg
+  - Marcelo Gomes
+  - Laura Greenstreet
+  - Meredith Holgerson
+  - David McGrath
+  - Peter B. McIntyre
+  - Patricia Moraes-Valenti
+  - Ilce Oliveira
+  - Jean P. H. B. Ometto
+  - Fabio Roland
+  - Adry Trindade
+  - Marta E. Ummus
+  - Wagner C. Valenti
+  - Xiangtao Xu
+  - Carla P. Gomes
+  - Alexander S. Flecker
+  publisher: Nature Sustainability
+  date: '2025-01-24'
+  link: https://doi.org/10.1038/s41893-024-01500-w
+  type: paper
+- id: doi:10.1111/gcb.70709
+  title: Taller Trees Experienced Less Crown Damage During a Severe Hurricane in a Tropical Forest
+  authors:
+  - Tao Han
+  - António Ferraz
+  - Dingyi Fang
+  - Tian Zheng
+  - Roi Ankori‐Karlinsky
+  - Gabriel Arellano
+  - Douglas Morton
+  - Jess K. Zimmerman
+  - Michael Keller
+  - María Uriarte
+  - Xiangtao Xu
+  publisher: Global Change Biology
+  date: 2026-01
+  link: https://doi.org/10.1111/gcb.70709
+  type: paper
+- id: doi:10.1111/nph.70299
+  title: '<scp>SIF</scp> research in the tropics: the overlooked vertical dimension and its implications
+    for interpretation and upscaling of photosynthesis'
+  authors:
+  - Ying Sun
+  - Xiangtao Xu
+  - Yixin Ma
+  publisher: New Phytologist
+  date: '2025-06-08'
+  link: https://doi.org/10.1111/nph.70299
+  type: paper
+- id: doi:10.1111/gcb.70337
+  title: Trait‐Based Tree Mortality Risk Assessment From the Perspective of Imaging Spectroscopy
+  authors:
+  - Meicheng Shen
+  - Kyla Dahlin
+  - Xiangtao Xu
+  - Zachary Butterfield
+  publisher: Global Change Biology
+  date: 2025-07
+  link: https://doi.org/10.1111/gcb.70337
+  type: paper
+- id: doi:10.1111/nph.70008
+  title: Trade‐off between spring phenological sensitivities to temperature and precipitation across species
+    and space in alpine grasslands over the Qinghai–Tibetan Plateau
+  authors:
+  - Xiaoting Li
+  - Wei Guo
+  - Hao He
+  - Hao Wang
+  - Aimée Classen
+  - Donghai Wu
+  - Yixin Ma
+  - Yunqiang Wang
+  - Jin‐Sheng He
+  - Xiangtao Xu
+  publisher: New Phytologist
+  date: '2025-02-24'
+  link: https://doi.org/10.1111/nph.70008
+  type: paper
+- id: doi:10.1029/2025jg008814
+  title: Constraining Light‐Driven Plasticity in Leaf Traits With Observations Improves the Prediction
+    of Tropical Forest Demography, Structure, and Biomass Dynamics
+  authors:
+  - Yixin Ma
+  - Paul R. Moorcroft
+  - S. Joseph Wright
+  - Alistair Rogers
+  - Julien Lamour
+  - Kenneth J. Davidson
+  - Shawn P. Serbin
+  - Matteo Detto
+  - Xiangtao Xu
+  publisher: 'Journal of Geophysical Research: Biogeosciences'
+  date: '2025-05-28'
+  link: https://doi.org/10.1029/2025jg008814
+  type: paper
+- id: doi:10.1029/2023ms003911
+  title: 'A Unified Framework to Reconcile Different Approaches of Modeling Transpiration Response to
+    Water Stress: Plant Hydraulics, Supply Demand Balance, and Empirical Soil Water Stress Function'
+  authors:
+  - Yi Yang
+  - Kaiyu Guan
+  - Bin Peng
+  - Xue Feng
+  - Xiangtao Xu
+  - Ming Pan
+  - Brandon P. Sloan
+  - Jingwen Zhang
+  - Wang Zhou
+  - Lingcheng Li
+  - Murugesu Sivapalan
+  - Elizabeth A. Ainsworth
+  - Kimberly A. Novick
+  - Zong‐Liang Yang
+  - Sheng Wang
+  publisher: Journal of Advances in Modeling Earth Systems
+  date: 2025-04
+  link: https://doi.org/10.1029/2023ms003911
+  type: paper
