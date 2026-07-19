@@ -1,27 +1,6 @@
 [
   {
-    "listing": "/team.html",
-    "items": [
-      "/members/current/xiangtao-xu.html",
-      "/members/current/tao-han.html",
-      "/members/current/rong-li.html",
-      "/members/current/cameron-scholl.html",
-      "/members/current/coral-valle-rodriguez.html",
-      "/members/current/nicholas-cranmer.html",
-      "/members/current/yixin-ma.html",
-      "/members/current/cam-reimer.html",
-      "/members/current/orion-hoch.html",
-      "/members/alumni/aaron-sams.html",
-      "/members/alumni/daniel-petticord.html",
-      "/members/alumni/dylan-van-bramer.html",
-      "/members/alumni/sabrina-chow.html",
-      "/members/alumni/xiaoting-li.html",
-      "/members/alumni/donghai-wu.html",
-      "/members/alumni/maddie-watson.html"
-    ]
-  },
-  {
-    "listing": "/index.html",
+    "listing": "/news.html",
     "items": [
       "/news/2026-07-15-yixin-ma-defense.html",
       "/news/2026-07-08-welcome-baby-charlotte.html",
@@ -44,7 +23,28 @@
     ]
   },
   {
-    "listing": "/news.html",
+    "listing": "/team.html",
+    "items": [
+      "/members/current/xiangtao-xu.html",
+      "/members/current/tao-han.html",
+      "/members/current/rong-li.html",
+      "/members/current/cameron-scholl.html",
+      "/members/current/coral-valle-rodriguez.html",
+      "/members/current/nicholas-cranmer.html",
+      "/members/current/yixin-ma.html",
+      "/members/current/cam-reimer.html",
+      "/members/current/orion-hoch.html",
+      "/members/alumni/aaron-sams.html",
+      "/members/alumni/daniel-petticord.html",
+      "/members/alumni/dylan-van-bramer.html",
+      "/members/alumni/sabrina-chow.html",
+      "/members/alumni/xiaoting-li.html",
+      "/members/alumni/donghai-wu.html",
+      "/members/alumni/maddie-watson.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
     "items": [
       "/news/2026-07-15-yixin-ma-defense.html",
       "/news/2026-07-08-welcome-baby-charlotte.html",
