@@ -45,11 +45,11 @@ $border-radius:    0.6rem;
 .navbar .nav-link { color: rgba(255, 255, 255, 0.92) !important; }     // white links on the dark banner
 .navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff !important; }
 
-// ---- Home-page hero: MEDS animation on top, Welcome text in a band directly below ----
+// ---- Home-page hero: forest-structure animation on top, Welcome text in a band directly below ----
 .hero-anim {
   // `contain` shows the WHOLE animation (no cropping); white fills the sides
-  background: url('/images/hero/meds-forest.gif') center / contain no-repeat #ffffff;
-  aspect-ratio: 7 / 2;             // short, wide box -> text band shows above the fold on desktop
+  background: url('/images/hero/forest-structure-2d3d.gif') center / contain no-repeat #ffffff;
+  aspect-ratio: 3.54 / 1;           // matches the 2124x600 GIF -> shows in full, no crop
   max-height: 340px;               // cap on very wide screens
   border: 1px solid #e7e7e9;
   border-bottom: none;

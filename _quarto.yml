@@ -10,7 +10,7 @@ project:
     # the banner image is referenced only from theme.scss, so list it here to be
     # sure Quarto copies it into the built site
     - images/banners/header-banner.jpg
-    - images/hero/meds-forest.gif
+    - images/hero/forest-structure-2d3d.gif
 
 website:
   title: "BioM2 Lab"
