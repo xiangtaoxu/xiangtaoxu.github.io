@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>BioM2 Lab</title>
+<link>https://xiangtaoxu.eeb.cornell.edu/news.html</link>
+<atom:link href="https://xiangtaoxu.eeb.cornell.edu/news.xml" rel="self" type="application/rss+xml"/>
+<description>Biosphere Modeling &amp; Monitoring — Xiangtao Xu Lab, Cornell EEB</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Wed, 15 Jul 2026 04:00:00 GMT</lastBuildDate>
+<item>
+  <title>A new doctor in the house</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-15-yixin-ma-defense.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Yixin Ma</strong>, the very first graduate student in BioM2 Lab, gave a wonderful public defense today! Congratulations Yixin and wish you the best for your upcoming journey at Harvard University as a post-doc!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-15-yixin-ma-defense.html</guid>
+  <pubDate>Wed, 15 Jul 2026 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-07-15-news.png" medium="image" type="image/png" height="186" width="144"/>
+</item>
+<item>
+  <title>Welcome baby Charlotte Nan Scholl</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-08-welcome-baby-charlotte.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Congratulations, <strong>Cameron</strong>!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-08-welcome-baby-charlotte.html</guid>
+  <pubDate>Wed, 08 Jul 2026 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Rong Li presents poster at the Schmidt Science Summit</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-29-rong-li-issummit-poster.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Rong Li</strong>, a Schmidt AI4Science postdoctoral fellow at the <a href="https://science.ai.cornell.edu/">Cornell University AI for Science Institute</a>, presented a poster titled “Quantifying Neighborhood and Species Interaction Effects on Tropical Tree Growth with Machine Learning and Long-term Census Data” at the 2026 Interdisciplinary Science Summit in North Carolina. The work, co-authored with lab alumni <strong>Dylan Van Bramer</strong> and <strong>Xiangtao Xu</strong>, uses XGBoost and graph neural network (GNN) models on long-term census data from the Luquillo Forest Dynamics Plot in Puerto Rico to quantify how neighboring trees and species interactions shape individual tree growth.</p>
+
+
+
+ ]]></description>
+  <category>Conference</category>
+  <category>AI</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-29-rong-li-issummit-poster.html</guid>
+  <pubDate>Mon, 29 Jun 2026 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-06-29-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>New Tansley Review on modeling forest disturbance published in New Phytologist</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-26-nph-tansley-review.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>New Tansley Review titled “Mechanisms and scales in modeling forest responses to changing disturbance regimes” is now published <a href="https://doi.org/10.1111/nph.71384">online</a> in <em>New Phytologist</em>. The review synthesizes the mechanisms underlying vegetation responses to disturbance across spatio-temporal scales — from disturbance occurrence and immediate structural damage to post-disturbance community reorganization and long-term ecosystem feedbacks — and identifies key challenges for representing these processes in terrestrial biosphere models. The key message: advancing mechanistic, scalable, and observation-constrained modeling of disturbance across scales is essential for reducing uncertainties in forecasting global change impacts on ecosystems and the carbon cycle. Several BioM2 Lab members contributed to the review, including <strong>Xiangtao Xu</strong>, <strong>Cameron Scholl</strong>, <strong>Yixin Ma</strong>, and <strong>Tao Han</strong>.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>Disturbance ecology</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-26-nph-tansley-review.html</guid>
+  <pubDate>Fri, 26 Jun 2026 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-06-26-nph-tansley-review.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>BioM2 website remade with Quarto</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-25-website-relaunch.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The BioM2 Lab website has been rebuilt with <a href="https://quarto.org">Quarto</a>.</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-06-25-website-relaunch.html</guid>
+  <pubDate>Thu, 25 Jun 2026 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>New paper on storm-driven biomass turnover in Amazonian forests published in Nature Climate Change</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-05-03-ncc-storm-biomass-turnover.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>New paper titled “Increasing atmospheric dryness and storms accelerates biomass turnover in Amazonian forests” is now published <a href="https://doi.org/10.1038/s41558-026-02639-4">online</a> in <em>Nature Climate Change</em>. Led by lab alumnus <strong>Donghai Wu</strong>, the study demonstrates that storms are an important driver of spatial heterogeneity in Amazon forest biomass turnover rates, on top of the effects of atmospheric dryness and water stress. The findings highlight that disturbance modeling frameworks need to explicitly represent storm impacts, not just drought stress, to accurately capture patterns of biomass turnover across the Amazon. <strong>Yixin Ma</strong> and <strong>Xiangtao Xu</strong> are co-authors on the study.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>Disturbance ecology</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-05-03-ncc-storm-biomass-turnover.html</guid>
+  <pubDate>Sun, 03 May 2026 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Pond mapping paper published in Remote Sensing of Environment</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-12-22-pond-mapping-paper-published.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>New lab paper titled “Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time series” is now published <a href="https://www.sciencedirect.com/science/article/abs/pii/S0034425724005108">online</a> in <em>Remote Sensing of Environment</em>! The project is a collaboration with the <a href="https://blogs.cornell.edu/holgersonlab/">Holgerson Lab</a> at Cornell EEB and led by visiting student Denghong Liu from Hong Kong Polytechnic University. The study develops a novel object mapper (OptiSAR-POM) for individual ponds down to ~0.2 hectare in size. It has high accuracy and scalability across diverse landscapes and will contribute to better inventorying of small water bodies across New York State, which are biogeochemical hotspots for greenhouse gas emissions.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>Remote sensing</category>
+  <category>Pond</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-12-22-pond-mapping-paper-published.html</guid>
+  <pubDate>Sun, 22 Dec 2024 05:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-12-22-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Cameron passes his A-exam!</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-09-05-cameron-a-exam.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>We are thrilled to announce that Cameron has successfully passed his A Exam! Join us in congratulating Cameron on this outstanding achievement!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-09-05-cameron-a-exam.html</guid>
+  <pubDate>Thu, 05 Sep 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>New paper published in Forest Ecology and Management</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-19-foreco-paper-published.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published <a href="https://www.sciencedirect.com/science/article/pii/S0378112724005231">online</a> in <em>Forest Ecology and Management</em>! This collaborative work, involving Cornell EEB, DNRE, and SUNY ESF, is led by our PhD student Nick Cranmer. The study investigates the woody volume of slash walls, an effective forest management practice to prevent deer herbivory and promote forest regeneration, using terrestrial and airborne lidar systems (TLS and ALS). Key findings include: (1) TLS tends to underestimate total cross-sectional area due to omission of small stem cross-sections (diameter &lt; 5.08 cm); (2) TLS-based wood volume estimates were similar across both short and tall slash walls in the study, with an average volume of 21.34 m³/30 m for short slash walls and 21.50 m³/30 m for tall slash walls, corresponding to 16.9 t dry biomass/30 m and 17.0 t dry biomass/30 m respectively; and (3) average merchantable (diameter &gt; 15.24 cm) and non-merchantable (diameter &lt; 15.24 cm) timber fraction was 68.75% and 31.35% for short slash walls and 65.04% and 34.96% for tall slash walls. This study provides novel data and methodology to estimate the construction cost of slash walls, which is critical for optimizing slash wall applications.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>TLS</category>
+  <category>Arnot</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-19-foreco-paper-published.html</guid>
+  <pubDate>Mon, 19 Aug 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-08-19-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Welcome baby Elena Rossana Cranmer</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-13-welcome-baby-elena.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The Cranmer family has expanded, with baby Elena as its newest member. Congratulations, <strong>Nick</strong>!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-13-welcome-baby-elena.html</guid>
+  <pubDate>Tue, 13 Aug 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>New paper published in Global Change Biology</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-09-gcb-paper-published.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>New paper titled “Two sub-annual timescales and coupling modes for terrestrial water and carbon cycles” is now published <a href="https://onlinelibrary.wiley.com/doi/10.1111/gcb.17463">online</a> in <em>Global Change Biology</em>. Dr.&nbsp;Dan Gianotti from MIT CEE is the lead author while Xiangtao Xu of the BioM2 Lab is a co-author. Using remote sensing data, the study identifies two dominant modes of terrestrial water and carbon cycles across the contiguous United States: (1) a negative-correlation timescale on the order of a few days, during which landscapes dry after precipitation and plants increase their carbon uptake through photosynthetic upregulation, and (2) a slow, seasonal-scale positive covariation through which landscape drying leads to decreased growth and carbon uptake. The spatial pattern of local temporal dynamics — positively sloped tangent lines to a convex long-term mean-state curve — is surprisingly strong and can serve as a benchmark for coupled Earth System Models. The study shows that many such models do not represent this emergent mean-state pattern, and hypothesizes that this may be due to a lack of water-carbon feedbacks at daily scales.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>Ecohydrology</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-09-gcb-paper-published.html</guid>
+  <pubDate>Fri, 09 Aug 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Coral del Mar presented an oral session on ‘Creating Safe Spaces within ESA’</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-08-esa-safe-spaces-talk.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>As incoming Chapter Chair for the ESA Latin American and Caribbean Chapter, Coral del Mar presented in a contributed oral session focused on creating safe spaces for early career professionals within ESA.</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-08-esa-safe-spaces-talk.html</guid>
+  <pubDate>Thu, 08 Aug 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/ESA_TALK.jpeg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>NYSDEC site visit at Arnot Forest</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-06-nysdec-site-visit.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>Arnot Forest sees visits from the New York State Department of Environmental Conservation (NYSDEC) Division of Lands and Forests (DLF) and the Empire State Forest Products Association. During the day trip, lab members <strong>Nick Cranmer</strong> and <strong>Xiangtao Xu</strong> gave a field demonstration of terrestrial lidar to help with measuring, monitoring, reporting, and verification (MMRV) of temperate forests, to NYSDEC DLF Director Fiona Watts and other visitors.</p>
+
+
+
+ ]]></description>
+  <category>Arnot</category>
+  <category>TLS</category>
+  <category>Outreach</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-08-06-nysdec-site-visit.html</guid>
+  <pubDate>Tue, 06 Aug 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Inaugural CoDiFI summer training</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-07-23-codifi-summer-training.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p>The inaugural summer training course of the BioM2-led Cornell Digital Forestry Initiative (<a href="../codifi.html">CoDiFI</a>) hosts a mix of PhD students, professional Master’s students, and foresters at Arnot Forest. The 4-day workshop introduces the foundations of lidar remote sensing (talk given by <strong>Xiangtao Xu</strong>), procedures of applying tripod-based and backpack lidar systems (demo given by <strong>Nick Cranmer</strong>, <strong>Yixin Ma</strong>, and <strong>Tao Han</strong>), and processes of conducting RGB drone flights (demo given by <strong>Hannah Zonnevylle</strong> from the <a href="https://cals.cornell.edu/daniel-katz">Katz Lab</a>).</p>
+
+
+
+ ]]></description>
+  <category>Arnot</category>
+  <category>TLS</category>
+  <category>Outreach</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-07-23-codifi-summer-training.html</guid>
+  <pubDate>Tue, 23 Jul 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-07-23-news-1.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Welcome Aaron Sams</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-07-01-welcome-aaron-sams.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><a href="https://www.linkedin.com/in/aaronjsams/">Dr.&nbsp;Aaron Sams</a> has officially started as a part-time programmer in the BioM2 Lab. Aaron was previously affiliated with Cornell MBG before he worked at Embark Inc.&nbsp;He will work with the team to develop the Forest Lidar Package in Python (FLiP). Welcome Aaron!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <category>TLS</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-07-01-welcome-aaron-sams.html</guid>
+  <pubDate>Mon, 01 Jul 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>First drone lidar flight</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-06-27-first-drone-lidar-flight.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Nick Cranmer</strong> and <strong>Xiangtao Xu</strong> visited two farms participating in Cornell Cooperative Extension Tompkins County’s Payment for Ecosystem Service (PES) program. The program aims to create a protocol for measuring carbon credit for farmland, where carbon sequestration associated with agroforestry is an important component. On the visit, Nick tested our new WISPR-Livox drone-lidar system (together with curious Grant Xu) and had a successful first drone flight!</p>
+
+
+
+ ]]></description>
+  <category>Lidar</category>
+  <category>Outreach</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-06-27-first-drone-lidar-flight.html</guid>
+  <pubDate>Thu, 27 Jun 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-06-27-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
+  <title>Xiangtao Xu gives seminar at Cary Institute</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-05-09-cary-institute-seminar.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Xiangtao Xu</strong> gives an invited seminar at <a href="https://www.caryinstitute.org/">Cary Institute of Ecosystem Studies</a> titled “Predicting tropical forest growth and mortality under global change.”</p>
+
+
+
+ ]]></description>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-05-09-cary-institute-seminar.html</guid>
+  <pubDate>Thu, 09 May 2024 04:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Xiangtao Xu gives keynote presentation at ER-DGVM-C</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-04-06-erdgvm-keynote.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Xiangtao Xu</strong> gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant functional diversity,” kickstarting the two-and-a-half-day East Regional Dynamic Global Vegetation Modeling Conference (<a href="https://aimesproject.org/erdgvmc_2024/">ER-DGVM-C</a>) at MBL, Woods Hole. Lab members <strong>Cameron Scholl</strong>, <strong>Coral Valle-Rodriguez</strong>, and <strong>Tao Han</strong> also presented research talks and posters. <strong>Tao Han</strong> has won the best postdoc poster award!</p>
+
+
+
+ ]]></description>
+  <category>Conference</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-04-06-erdgvm-keynote.html</guid>
+  <pubDate>Sat, 06 Apr 2024 04:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-04-06-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+</channel>
+</rss>

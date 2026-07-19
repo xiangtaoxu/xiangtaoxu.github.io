@@ -1,0 +1,282 @@
+[
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Research",
+    "section": "",
+    "text": "“The key to prediction and understanding lies in the elucidation of mechanisms underlying observed patterns. Typically, these mechanisms operate at different scales than those on which the patterns are observed.” — Levin (1992), The Problem of Pattern and Scale in Ecology, Ecology 73(6): 1943–1967\nWe work at the interface of plant science, ecology, Earth system science, and remote sensing. We aim to improve predictive understanding of our diverse and heterogeneous biosphere, leveraging novel ecological data sets, advanced computational tools, and theoretical analysis. Our research addresses classic questions across ecological scales: To what extent do traits determine plant performance and vital rates? What are the key dimensions of plant functional diversity? How do biodiversity and environmental heterogeneity interact to determine large-scale processes such as carbon and water cycles? We also develop novel quantitative methods to extract ecologically relevant information from multi-platform remote sensing products, particularly terrestrial lidar data."
+  },
+  {
+    "objectID": "research.html#what-we-do",
+    "href": "research.html#what-we-do",
+    "title": "Research",
+    "section": "What we do",
+    "text": "What we do\n\n\n\n🌳 Ecosystem modeling\nProcess-based models (the ED2 lineage and beyond) that scale plant physiology up to ecosystem and biosphere dynamics.\n\n\n\n\n🛰️ Ecological remote sensing\nLidar, drones, and satellite products to characterize vegetation dynamics and land surface processes across spatial and temporal scales.\n\n\n\n\n💻 Model–data integration\nA ModEx approach that fuses field experiments, observations, and models to improve predictions and generate new hypotheses about ecosystem dynamics."
+  },
+  {
+    "objectID": "research.html#research-projects",
+    "href": "research.html#research-projects",
+    "title": "Research",
+    "section": "Research Projects",
+    "text": "Research Projects\nCurrent lab research revolves around Tropical forest resilience under environmental change, Forest biomass monitoring and modeling, and Mapping ponds, wetland and their ecosystem functioning supported by NSF, DOE, USDA, NY DEC, NASA, Cornell CALS, and private foundations."
+  },
+  {
+    "objectID": "research.html#publications",
+    "href": "research.html#publications",
+    "title": "Research",
+    "section": "Publications",
+    "text": "Publications\n(Bold names are BioM2 Lab members at the time of publication. Updated on 2026-07-19.)\n\n\n2026\n\nLagged climatic drivers of spongy moth (Lymantria dispar dispar) outbreaks revealed by satellite-based defoliation mappingCameron J. Scholl, Christine L. Goodale, Xiangtao Xu. Forest Ecology and Management. DOI: 10.1016/j.foreco.2026.123854\nSoil fertility controls on tropical forest productivity and mortality: synthesis and roadmapMichelle Y. Wong, Sarah A. Batterman, Jane M. Lucas, Katrin Fleischer, Mark S. Ashton, Marijn Bauters, David F. R. P. Burslem, KC Cushman, James W. Dalling, Sebastian Doetterl, Adriane Esquivel-Muelbert, Claire Fortunel, Jennifer A. Holm, Nohemi Huanca-Nunez, Guopeng Liang, Moses B. Libalah, Demetrius Lira-Martins, Jose A. Medina-Vega, Helene C. Muller-Landau, Jessica Needham, Elsa M. Ordway, Mareli Sánchez-Juliá, Laura Toro, Xiangtao Xu, S. Joseph Wright, Gabriela Zuquim, Evan M. Gora. New Phytologist. DOI: 10.1111/nph.71367\nMechanisms and scales in modeling forest responses to changing disturbance regimesXiangtao Xu, Cameron Scholl, Yixin Ma, Evan Gora, Maria Uriarte, William R. L. Anderegg, Yanlan Liu, Tao Han, Yiqi Luo, Charles D. Koven, Winslow D. Hansen, Douglas C. Morton. New Phytologist. DOI: 10.1111/nph.71384\nIncreasing atmospheric dryness and storms accelerates biomass turnover in Amazonian forestsDonghai Wu, Yongshi Zhou, Yanlei Feng, Evan M. Gora, Marcos Longo, Robinson I. Negrón-Juárez, Sassan S. Saatchi, Yanlan Liu, Yixin Ma, Douglas C. Morton, Nate G. McDowell, Yiqi Luo, Xiangtao Xu. Nature Climate Change. DOI: 10.1038/s41558-026-02639-4\nAmazon rainforests are rejuvenating their canopies by producing more photosynthetically efficient young leaves under climate changeXueqin Yang, Jie Tian, Philippe Ciais, Liming Zhou, Peter B. Reich, Jin Wu, Jiali Shang, Jérôme Chave, Julien Lamour, Isabelle Maréchaux, Yongshuo H. Fu, Jing Ming Chen, Jane Liu, Shengli Tao, Xiangming Xiao, Xiangtao Xu, Yongxian Su, Haicheng Zhang, Zaichun Zhu, Yao Zhang, Dalei Hao, Lei Chen, Qiang Liu, Raffaele Lafortezza, Kai Yan, Peng Li, Xing Li, Patrick Meir, Hui Liu, Damien Bonal, Bruce W. Nelson, Hao Tang, Jingrui Wang, Kailiang Yu, Wenping Yuan, Shuo Wang, Xiuzhi Chen. Nature Plants. DOI: 10.1038/s41477-026-02240-9\nTaller Trees Experienced Less Crown Damage During a Severe Hurricane in a Tropical ForestTao Han, António Ferraz, Dingyi Fang, Tian Zheng, Roi Ankori‐Karlinsky, Gabriel Arellano, Douglas Morton, Jess K. Zimmerman, Michael Keller, María Uriarte, Xiangtao Xu. Global Change Biology. DOI: 10.1111/gcb.70709\n\n\n\n2025\n\nSpatial patterns and future potential of tree species richness and structural diversity in China’s forestsChangjin Cheng, Guoyi Zhou, Xuli Tang, Shaopeng Wang, Yanjun Su, Jin Wu, Xiangtao Xu, Wenfang Xu, Fangmei Lin, Yongshi Zhou, Genxu Wang, Junhua Yan, Keping Ma, Sheng Du, Shenggong Li, Shijie Han, Youxin Ma, Juxiu Liu, Donghai Wu. Nature Ecology & Evolution. DOI: 10.1038/s41559-025-02922-1\nAligning satellite-based phenology in a deep learning model for improved crop yield estimates over large regionsJiaying Zhang, Kaiyu Guan, Zhangliang Chen, James Hipple, Yizhi Huang, Bin Peng, Sibo Wang, Xiangtao Xu, Zhenong Jin, Kejie Zhao, Maxwell Jong. Agricultural and Forest Meteorology. DOI: 10.1016/j.agrformet.2025.110675\nIncreasing constraint of aridity on tree intrinsic water use efficiencyMengjie Wang, Shushi Peng, Zihan Lu, Xiangtao Xu, Andrew Felton, Anping Chen. Nature Communications. DOI: 10.1038/s41467-025-62845-0\nTrait‐Based Tree Mortality Risk Assessment From the Perspective of Imaging SpectroscopyMeicheng Shen, Kyla Dahlin, Xiangtao Xu, Zachary Butterfield. Global Change Biology. DOI: 10.1111/gcb.70337\nLarge CO2 removal potential of woody debris preservation in managed forestsYiqi Luo, Ning Wei, Xingjie Lu, Yu Zhou, Feng Tao, Quan Quan, Cuijuan Liao, Lifen Jiang, Jianyang Xia, Yuanyuan Huang, Shuli Niu, Xiangtao Xu, Ying Sun, Ning Zeng, Charles Koven, Liqing Peng, Steve Davis, Pete Smith, Fengqi You, Yu Jiang, Lailiang Cheng, Benjamin Houlton. Nature Geoscience (see correction). DOI: 10.1038/s41561-025-01731-2\nSIF research in the tropics: the overlooked vertical dimension and its implications for interpretation and upscaling of photosynthesisYing Sun, Xiangtao Xu, Yixin Ma. New Phytologist. DOI: 10.1111/nph.70299\nConstraining Light‐Driven Plasticity in Leaf Traits With Observations Improves the Prediction of Tropical Forest Demography, Structure, and Biomass DynamicsYixin Ma, Paul R. Moorcroft, S. Joseph Wright, Alistair Rogers, Julien Lamour, Kenneth J. Davidson, Shawn P. Serbin, Matteo Detto, Xiangtao Xu. Journal of Geophysical Research: Biogeosciences. DOI: 10.1029/2025jg008814\nDegradation and deforestation increase the sensitivity of the Amazon Forest to climate extremesMarcos Longo, Michael Keller, Lara M Kueppers, Kevin W Bowman, Ovidiu Csillik, António Ferraz, Paul R Moorcroft, Jean Pierre Ometto, Britaldo S Soares-Filho, Xiangtao Xu, Mauro L R de Assis, Eric B Görgens, Erik J L Larson, Jessica F Needham, Elsa M Ordway, Francisca R S Pereira, Ekena Rangel Pinagé, Luciane Sato, Liang Xu, Sassan Saatchi. Environmental Research Letters. DOI: 10.1088/1748-9326/adc58c\nA Unified Framework to Reconcile Different Approaches of Modeling Transpiration Response to Water Stress: Plant Hydraulics, Supply Demand Balance, and Empirical Soil Water Stress FunctionYi Yang, Kaiyu Guan, Bin Peng, Xue Feng, Xiangtao Xu, Ming Pan, Brandon P. Sloan, Jingwen Zhang, Wang Zhou, Lingcheng Li, Murugesu Sivapalan, Elizabeth A. Ainsworth, Kimberly A. Novick, Zong‐Liang Yang, Sheng Wang. Journal of Advances in Modeling Earth Systems. DOI: 10.1029/2023ms003911\nThe Surface Water and Ocean Topography Mission (SWOT) Prior Lake Database (PLD): Lake Mask and Operational AuxiliariesJida Wang, Claire Pottier, Cécile Cazals, Marjorie Battude, Yongwei Sheng, Chunqiao Song, Md Safat Sikder, Xiao Yang, Linghong Ke, Manon Delhoume, Marielle Gosset, Rafael Reis Alencar Oliveira, Manuela Grippa, Félix Girard, George H. Allen, Xiangtao Xu, Xiaolin Zhu, Sylvain Biancamaria, Laurence C. Smith, Jean‐François Crétaux, Tamlin M. Pavelsky. Water Resources Research. DOI: 10.1029/2023wr036896\nTrade‐off between spring phenological sensitivities to temperature and precipitation across species and space in alpine grasslands over the Qinghai–Tibetan PlateauXiaoting Li, Wei Guo, Hao He, Hao Wang, Aimée Classen, Donghai Wu, Yixin Ma, Yunqiang Wang, Jin‐Sheng He, Xiangtao Xu. New Phytologist. DOI: 10.1111/nph.70008\nTowards sustainable aquaculture in the AmazonFelipe S. Pacheco, Sebastian A. Heilpern, Claire DiLeo, Rafael M. Almeida, Suresh A. Sethi, Marcela Miranda, Nicholas Ray, Nathan O. Barros, Jucilene Cavali, Carolina Costa, Carolina R. Doria, Joshua Fan, Kathryn J. Fiorella, Bruce R. Forsberg, Marcelo Gomes, Laura Greenstreet, Meredith Holgerson, David McGrath, Peter B. McIntyre, Patricia Moraes-Valenti, Ilce Oliveira, Jean P. H. B. Ometto, Fabio Roland, Adry Trindade, Marta E. Ummus, Wagner C. Valenti, Xiangtao Xu, Carla P. Gomes, Alexander S. Flecker. Nature Sustainability. DOI: 10.1038/s41893-024-01500-w\n\n\n\n2024\n\nInventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time seriesDenghong Liu, Xiaolin Zhu, Meredith Holgerson, Sheel Bansal, Xiangtao Xu. Remote Sensing of Environment. DOI: 10.1016/j.rse.2024.114484\nEstimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDARNicholas Cranmer, Tao Han, Brett Chedzoy, Peter J. Smallidge, Colin Beier, Lucas Johnson, Xiangtao Xu. Forest Ecology and Management. DOI: 10.1016/j.foreco.2024.122211\nTwo sub‐annual timescales and coupling modes for terrestrial water and carbon cyclesDaniel J. Short Gianotti, Kaighin A. McColl, Andrew F. Feldman, Xiangtao Xu, Dara Entekhabi. Global Change Biology. DOI: 10.1111/gcb.17463\nAppleQSM: Geometry-Based 3D Characterization of Apple Tree Architecture in OrchardsTian Qiu, Tao Wang, Tao Han, Kaspar Kuehn, Lailiang Cheng, Cheng Meng, Xiangtao Xu, Kenong Xu, Jiang Yu. Plant Phenomics. DOI: 10.34133/plantphenomics.0179\nGlobal photosynthetic capacity jointly determined by enzyme kinetics and eco-evo-environmental driversZhengbing Yan, Matteo Detto, Zhengfei Guo, Nicholas G. Smith, Han Wang, Loren P. Albert, Xiangtao Xu, Ziyu Lin, Shuwen Liu, Yingyi Zhao, Shuli Chen, Timothy C. Bonebrake, Jin Wu. Fundamental Research. DOI: 10.1016/j.fmre.2023.12.011\nConstraining long‐term model predictions for woody growth using tropical tree ringsXiangtao Xu, Peter van der Sleen, Peter Groenendijk, Mart Vlam, David Medvigy, Paul Moorcroft, Daniel Petticord, Yixin Ma, Pieter A. Zuidema. Global Change Biology. DOI: 10.1111/gcb.17075\n\n\n\n2023\n\nObserved impacts of large wind farms on grassland carbon cyclingDonghai Wu, Steven M. Grodsky, Wenfang Xu, Naijing Liu, Rafael M. Almeida, Liming Zhou, Lee M. Miller, Somnath Baidya Roy, Geng Xia, Anurag A. Agrawal, Benjamin Z. Houlton, Alexander S. Flecker, Xiangtao Xu. Science Bulletin. DOI: 10.1016/j.scib.2023.10.016\nExploring the impacts of unprecedented climate extremes on forest ecosystems: hypotheses to guide modeling and experimental studiesJennifer A. Holm, David M. Medvigy, Benjamin Smith, Jeffrey S. Dukes, Claus Beier, Mikhail Mishurov, Xiangtao Xu, Jeremy W. Lichstein, Craig D. Allen, Klaus S. Larsen, Yiqi Luo, Cari Ficken, William T. Pockman, William R. L. Anderegg, Anja Rammig. Biogeosciences. DOI: 10.5194/bg-20-2117-2023\nLeaf angle as a leaf and canopy trait: Rejuvenating its role in ecology with new technologyXi Yang, Rong Li, Andrew Jablonski, Atticus Stovall, Jongmin Kim, Koong Yi, Yixin Ma, Daniel Beverly, Richard Phillips, Kim Novick, Xiangtao Xu, Manuel Lerdau. Ecology Letters. DOI: 10.1111/ele.14215\nLeaf economics fundamentals explained by optimality principlesHan Wang, I. Colin Prentice, Ian J. Wright, David I. Warton, Shengchao Qiao, Xiangtao Xu, Jian Zhou, Kihachiro Kikuzawa, Nils Chr. Stenseth. Science Advances. DOI: 10.1126/sciadv.add5667\n\n\n\n2022\n\nReduced ecosystem resilience quantifies fine‐scale heterogeneity in tropical forest mortality responses to droughtDonghai Wu, German Vargas G., Jennifer S. Powers, Nate G. McDowell, Justin M. Becknell, Daniel Pérez‐Aviles, David Medvigy, Yanlan Liu, Gabriel G. Katul, Julio César Calvo‐Alvarado, Ana Calvo‐Obando, Arturo Sanchez‐Azofeifa, Xiangtao Xu. Global Change Biology. DOI: 10.1111/gcb.16046\n\n\n\n2021\n\nPlant input does not exert stronger control on topsoil carbon persistence than climate in alpine grasslandsDonghai Wu, Xiangtao Xu, Haicheng Zhang. Ecology Letters. DOI: 10.1111/ele.13879\nDetecting forest response to droughts with global observations of vegetation water contentAlexandra G. Konings, Sassan S. Saatchi, Christian Frankenberg, Michael Keller, Victor Leshyk, William R. L. Anderegg, Vincent Humphrey, Ashley M. Matheny, Anna Trugman, Lawren Sack, Elizabeth Agee, Mallory L. Barnes, Oliver Binks, Kerry Cawse‐Nicholson, Bradley O. Christoffersen, Dara Entekhabi, Pierre Gentine, Nataniel M. Holtzman, Gabriel G. Katul, Yanlan Liu, Marcos Longo, Jordi Martinez‐Vilalta, Nate McDowell, Patrick Meir, Maurizio Mencuccini, Assaad Mrad, Kimberly A. Novick, Rafael S. Oliveira, Paul Siqueira, Susan C. Steele‐Dunne, David R. Thompson, Yujie Wang, Richard Wehr, Jeffrey D. Wood, Xiangtao Xu, Pieter A. Zuidema. Global Change Biology. DOI: 10.1111/gcb.15872\nNatural experiments and long-term monitoring are critical to understand and predict marine host–microbe ecology and evolutionMatthieu Leray, Laetitia G. E. Wilkins, Amy Apprill, Holly M. Bik, Friederike Clever, Sean R. Connolly, Marina E. De León, J. Emmett Duffy, Leïla Ezzat, Sarah Gignoux-Wolfsohn, Edward Allen Herre, Jonathan Z. Kaye, David I. Kline, Jordan G. Kueneman, Melissa K. McCormick, W. Owen McMillan, Aaron O’Dea, Tiago J. Pereira, Jillian M. Petersen, Daniel F. Petticord, Mark E. Torchin, Rebecca Vega Thurber, Elin Videvall, William T. Wcislo, Benedict Yuen, Jonathan A. Eisen. PLOS Biology. DOI: 10.1371/journal.pbio.3001322\nLeaf surface water, not plant water stress, drives diurnal variation in tropical forest canopy water contentXiangtao Xu, Alexandra G. Konings, Marcos Longo, Andrew Feldman, Liang Xu, Sassan Saatchi, Donghai Wu, Jin Wu, Paul Moorcroft. New Phytologist. DOI: 10.1111/nph.17254\nRecovery: Fast and Slow—Vegetation Response During the 2012–2016 California DroughtXi Yang, Xiangtao Xu, Atticus Stovall, Min Chen, Jung‐Eun Lee. Journal of Geophysical Research: Biogeosciences. DOI: 10.1029/2020JG005976\nUnraveling the relative role of light and water competition between lianas and trees in tropical forests: A vegetation model analysisFélicien Meunier, Hans Verbeeck, Betsy Cowdery, Stefan A. Schnitzer, Chris M. Smith‐Martin, Jennifer S. Powers, Xiangtao Xu, Martijn Slot, Hannes P. T. De Deurwaerder, Matteo Detto, Damien Bonal, Marcos Longo, Louis S. Santiago, Michael Dietze. Journal of Ecology. DOI: 10.1111/1365-2745.13540\nMonitoring tree-crown scale autumn leaf phenology in a temperate forest with an integration of PlanetScope and drone remote sensing observationsShengbiao Wu, Jing Wang, Zhengbing Yan, Guangqin Song, Yang Chen, Qin Ma, Meifeng Deng, Yuntao Wu, Yingyi Zhao, Zhengfei Guo, Zuoqiang Yuan, Guanhua Dai, Xiangtao Xu, Xi Yang, Yanjun Su, Lingli Liu, Jin Wu. ISPRS Journal of Photogrammetry and Remote Sensing. DOI: 10.1016/j.isprsjprs.2020.10.017\nTrait-Based Modeling of Terrestrial Ecosystems: Advances and Challenges Under Global ChangeXiangtao Xu, Anna T. Trugman. Current Climate Change Reports. DOI: 10.1007/s40641-020-00168-6\n\n\n\n2020\n\nAccelerated terrestrial ecosystem carbon turnover and its driversDonghai Wu, Shilong Piao, Dan Zhu, Xuhui Wang, Philippe Ciais, Ana Bastos, Xiangtao Xu, Wenfang Xu. Global Change Biology. DOI: 10.1111/gcb.15224\nOptimal leaf life strategies determine Vc,max dynamic during ontogenyMatteo Detto, Xiangtao Xu. New Phytologist. DOI: 10.1111/nph.16712\nA catastrophic tropical drought kills hydraulically vulnerable tree speciesJennifer S. Powers, German Vargas G., Timothy J. Brodribb, Naomi B. Schwartz, Daniel Pérez‐Aviles, Chris M. Smith‐Martin, Justin M. Becknell, Filippo Aureli, Roger Blanco, Erick Calderón‐Morales, Julio C. Calvo‐Alvarado, Ana Julieta Calvo‐Obando, María Marta Chavarría, Dorian Carvajal‐Vanegas, César D. Jiménez‐Rodríguez, Evin Murillo Chacon, Colleen M. Schaffner, Leland K. Werden, Xiangtao Xu, David Medvigy. Global Change Biology. DOI: 10.1111/gcb.15037\nAllometric scaling laws linking biomass and rooting depth vary across ontogeny and functional groups in tropical dry forest lianas and treesChris M. Smith‐Martin, Xiangtao Xu, David Medvigy, Stefan A. Schnitzer, Jennifer S. Powers. New Phytologist. DOI: 10.1111/nph.16275\n\n\n\n2019\n\nTropical carbon sink accelerated by symbiotic dinitrogen fixationJennifer H. Levy-Varon, Sarah A. Batterman, David Medvigy, Xiangtao Xu, Jefferson S. Hall, Michiel van Breugel, Lars O. Hedin. Nature Communications. DOI: 10.1038/s41467-019-13656-7"
+  },
+  {
+    "objectID": "team.html",
+    "href": "team.html",
+    "title": "Our Team",
+    "section": "",
+    "text": "We are an interdisciplinary group working at the interface of ecology, Earth system science, and remote sensing.\nJoin us! We welcome undergraduate researchers, prospective graduate students, and postdocs. Reach out to Xiangtao if our work resonates with you."
+  },
+  {
+    "objectID": "team.html#current-members",
+    "href": "team.html#current-members",
+    "title": "Our Team",
+    "section": "Current members",
+    "text": "Current members\n\n\n\n\n\n\n\n\n\n\nXiangtao Xu\n\n\nAssociate Professor, EEB Cornell\n\n\n\n\n\n\n\n\n\n\n\n\nTao Han\n\n\nPostdoctoral Researcher\n\n\n\n\n\n\n\n\n\n\n\n\nRong Li\n\n\nPostdoctoral Researcher\n\n\n\n\n\n\n\n\n\n\n\n\nCameron Scholl\n\n\nEEB PhD Candidate\n\n\n\n\n\n\n\n\n\n\n\n\nCoral del Mar Valle-Rodríguez\n\n\nEEB PhD Candidate\n\n\n\n\n\n\n\n\n\n\n\n\nNicholas Cranmer\n\n\nEEB PhD Candidate\n\n\n\n\n\n\n\n\n\n\n\n\nYixin Ma\n\n\nEEB PhD Candidate\n\n\n\n\n\n\n\n\n\n\n\n\nCam Reimer\n\n\nEEB PhD Student\n\n\n\n\n\n\n\n\n\n\n\n\nOrion Hoch\n\n\nUndergraduate\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "team.html#alumni",
+    "href": "team.html#alumni",
+    "title": "Our Team",
+    "section": "Alumni",
+    "text": "Alumni\n\n\n\n\n\n\nName\n\n\n\nDetails\n\n\n\n\n\n\n\n\nAaron Sams\n\n\nPart-time Programmer 2024–2025\n\n\n\n\n\n\nDaniel Petticord\n\n\nEEB PhD Candidate 2020–2025; Now Postdoctoral Fellow, Cary Institute of Ecosystem Studies\n\n\n\n\n\n\nDylan Van Bramer\n\n\nUndergraduate Research Assistant 2023–2025; Now PhD Student, University of Toronto Computer Science\n\n\n\n\n\n\nSabrina Chow\n\n\nUndergraduate Research Assistant 2023–2025; Now PhD Student, Harvard University Organismic and Evolutionary Biology\n\n\n\n\n\n\nXiaoting Li\n\n\nVisiting Student 2022–2023\n\n\n\n\n\n\nDonghai Wu\n\n\nPostdoc 2019–2022; Now Staff Scientist, South China Botanical Garden\n\n\n\n\n\n\nMaddie Watson\n\n\nSummer Research Intern 2020–2021\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "members/alumni/xiaoting-li.html",
+    "href": "members/alumni/xiaoting-li.html",
+    "title": "Xiaoting Li",
+    "section": "",
+    "text": "I am interested in work that integrates different spatial and temporal scales to understand vegetation phenology-environment interactions. My current research focuses on phenological sensitivity inference with predictive modeling in alpine grasslands on the Tibetan Plateau."
+  },
+  {
+    "objectID": "members/alumni/donghai-wu.html",
+    "href": "members/alumni/donghai-wu.html",
+    "title": "Donghai Wu",
+    "section": "",
+    "text": "I focus on providing insights into three scientific questions: (1) How to quantify the destinies of the carbon atoms fixed by photosynthesis? (2) How does the ecosystem respond to environmental change? (3) How to establish a positive feedback between human and nature?"
+  },
+  {
+    "objectID": "members/current/xiangtao-xu.html",
+    "href": "members/current/xiangtao-xu.html",
+    "title": "Xiangtao Xu",
+    "section": "",
+    "text": "I am a plant and ecosystem ecologist with broad interests in environmental science and Earth System Science. My research revolves around the role of vegetation in our Earth system and searches for quantitative frameworks to understand their ecophysiology and make predictions. I am also interested in novel methods to characterize plant activities across different spatial and temporal scales such as ecological remote sensing.\nCurrently I teach BIOEE 1610 Introductory Biology: Ecology and the Environment and BIOEE 3550/6550 Ecological and Environmental Data Analytics."
+  },
+  {
+    "objectID": "members/current/yixin-ma.html",
+    "href": "members/current/yixin-ma.html",
+    "title": "Yixin Ma",
+    "section": "",
+    "text": "I am broadly interested in how plants interact with environmental variability (both temporally and spatially), and my research centers on phenotypic plasticity, i.e., within-species trait variability driven by different environments. I approach this topic using techniques in ecological modeling and ecophysiology. My current research examines light-driven plasticity within the canopy and how it relates to demography and fitness."
+  },
+  {
+    "objectID": "members/current/cameron-scholl.html",
+    "href": "members/current/cameron-scholl.html",
+    "title": "Cameron Scholl",
+    "section": "",
+    "text": "I am interested in the use of remote sensing in identifying the extent and intensity of defoliation, as well as predicting the drivers and long-term impacts of spongy moth outbreaks."
+  },
+  {
+    "objectID": "news/2024-07-01-welcome-aaron-sams.html",
+    "href": "news/2024-07-01-welcome-aaron-sams.html",
+    "title": "Welcome Aaron Sams",
+    "section": "",
+    "text": "Dr. Aaron Sams has officially started as a part-time programmer in the BioM2 Lab. Aaron was previously affiliated with Cornell MBG before he worked at Embark Inc. He will work with the team to develop the Forest Lidar Package in Python (FLiP). Welcome Aaron!"
+  },
+  {
+    "objectID": "news/2026-06-29-rong-li-issummit-poster.html",
+    "href": "news/2026-06-29-rong-li-issummit-poster.html",
+    "title": "Rong Li presents poster at the Schmidt Science Summit",
+    "section": "",
+    "text": "Rong Li, a Schmidt AI4Science postdoctoral fellow at the Cornell University AI for Science Institute, presented a poster titled “Quantifying Neighborhood and Species Interaction Effects on Tropical Tree Growth with Machine Learning and Long-term Census Data” at the 2026 Interdisciplinary Science Summit in North Carolina. The work, co-authored with lab alumni Dylan Van Bramer and Xiangtao Xu, uses XGBoost and graph neural network (GNN) models on long-term census data from the Luquillo Forest Dynamics Plot in Puerto Rico to quantify how neighboring trees and species interactions shape individual tree growth."
+  },
+  {
+    "objectID": "news/2024-07-23-codifi-summer-training.html",
+    "href": "news/2024-07-23-codifi-summer-training.html",
+    "title": "Inaugural CoDiFI summer training",
+    "section": "",
+    "text": "The inaugural summer training course of the BioM2-led Cornell Digital Forestry Initiative (CoDiFI) hosts a mix of PhD students, professional Master’s students, and foresters at Arnot Forest. The 4-day workshop introduces the foundations of lidar remote sensing (talk given by Xiangtao Xu), procedures of applying tripod-based and backpack lidar systems (demo given by Nick Cranmer, Yixin Ma, and Tao Han), and processes of conducting RGB drone flights (demo given by Hannah Zonnevylle from the Katz Lab)."
+  },
+  {
+    "objectID": "news/2024-08-08-esa-safe-spaces-talk.html",
+    "href": "news/2024-08-08-esa-safe-spaces-talk.html",
+    "title": "Coral del Mar presented an oral session on ‘Creating Safe Spaces within ESA’",
+    "section": "",
+    "text": "As incoming Chapter Chair for the ESA Latin American and Caribbean Chapter, Coral del Mar presented in a contributed oral session focused on creating safe spaces for early career professionals within ESA."
+  },
+  {
+    "objectID": "news/2024-06-27-first-drone-lidar-flight.html",
+    "href": "news/2024-06-27-first-drone-lidar-flight.html",
+    "title": "First drone lidar flight",
+    "section": "",
+    "text": "Nick Cranmer and Xiangtao Xu visited two farms participating in Cornell Cooperative Extension Tompkins County’s Payment for Ecosystem Service (PES) program. The program aims to create a protocol for measuring carbon credit for farmland, where carbon sequestration associated with agroforestry is an important component. On the visit, Nick tested our new WISPR-Livox drone-lidar system (together with curious Grant Xu) and had a successful first drone flight!"
+  },
+  {
+    "objectID": "news/2026-05-03-ncc-storm-biomass-turnover.html",
+    "href": "news/2026-05-03-ncc-storm-biomass-turnover.html",
+    "title": "New paper on storm-driven biomass turnover in Amazonian forests published in Nature Climate Change",
+    "section": "",
+    "text": "New paper titled “Increasing atmospheric dryness and storms accelerates biomass turnover in Amazonian forests” is now published online in Nature Climate Change. Led by lab alumnus Donghai Wu, the study demonstrates that storms are an important driver of spatial heterogeneity in Amazon forest biomass turnover rates, on top of the effects of atmospheric dryness and water stress. The findings highlight that disturbance modeling frameworks need to explicitly represent storm impacts, not just drought stress, to accurately capture patterns of biomass turnover across the Amazon. Yixin Ma and Xiangtao Xu are co-authors on the study."
+  },
+  {
+    "objectID": "news/2024-08-19-foreco-paper-published.html",
+    "href": "news/2024-08-19-foreco-paper-published.html",
+    "title": "New paper published in Forest Ecology and Management",
+    "section": "",
+    "text": "New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published online in Forest Ecology and Management! This collaborative work, involving Cornell EEB, DNRE, and SUNY ESF, is led by our PhD student Nick Cranmer. The study investigates the woody volume of slash walls, an effective forest management practice to prevent deer herbivory and promote forest regeneration, using terrestrial and airborne lidar systems (TLS and ALS). Key findings include: (1) TLS tends to underestimate total cross-sectional area due to omission of small stem cross-sections (diameter &lt; 5.08 cm); (2) TLS-based wood volume estimates were similar across both short and tall slash walls in the study, with an average volume of 21.34 m³/30 m for short slash walls and 21.50 m³/30 m for tall slash walls, corresponding to 16.9 t dry biomass/30 m and 17.0 t dry biomass/30 m respectively; and (3) average merchantable (diameter &gt; 15.24 cm) and non-merchantable (diameter &lt; 15.24 cm) timber fraction was 68.75% and 31.35% for short slash walls and 65.04% and 34.96% for tall slash walls. This study provides novel data and methodology to estimate the construction cost of slash walls, which is critical for optimizing slash wall applications."
+  },
+  {
+    "objectID": "news/2026-06-25-website-relaunch.html",
+    "href": "news/2026-06-25-website-relaunch.html",
+    "title": "BioM2 website remade with Quarto",
+    "section": "",
+    "text": "The BioM2 Lab website has been rebuilt with Quarto."
+  },
+  {
+    "objectID": "news/2026-07-08-welcome-baby-charlotte.html",
+    "href": "news/2026-07-08-welcome-baby-charlotte.html",
+    "title": "Welcome baby Charlotte Nan Scholl",
+    "section": "",
+    "text": "Congratulations, Cameron!"
+  },
+  {
+    "objectID": "codifi.html#cornell-digital-forestry-initiative",
+    "href": "codifi.html#cornell-digital-forestry-initiative",
+    "title": "CoDiFI",
+    "section": "Cornell Digital Forestry Initiative",
+    "text": "Cornell Digital Forestry Initiative\nThis project creates a next-generation forestry research hub that provides resources and expertise for integrating novel remote sensing (e.g., drone, lidar) and computational techniques with conventional forestry measurements across a range of departments at Cornell.\n(More content coming soon.)"
+  },
+  {
+    "objectID": "index.html#latest-news",
+    "href": "index.html#latest-news",
+    "title": "Predicting forests and biosphere under a changing planet",
+    "section": "Latest news",
+    "text": "Latest news\n\n\n\n\n\n\n\n\n\n\nA new doctor in the house\n\n\nYixin passed her B-Exam and is now officially Dr. Ma!\n\n\n\n\n\nJul 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome baby Charlotte Nan Scholl\n\n\nCongratulations to Cameron and Cheyanne Scholl on the arrival of baby Charlotte Nan Scholl!\n\n\n\n\n\nJul 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRong Li presents poster at the Schmidt Science Summit\n\n\nRong Li presents a poster on neighborhood and species interaction effects on tropical tree growth at the 2026 Schmidt Science Summit.\n\n\n\n\n\nJun 29, 2026\n\n\n\n\n\nNo matching items\n\nAll news →"
+  },
+  {
+    "objectID": "news/2026-06-26-nph-tansley-review.html",
+    "href": "news/2026-06-26-nph-tansley-review.html",
+    "title": "New Tansley Review on modeling forest disturbance published in New Phytologist",
+    "section": "",
+    "text": "New Tansley Review titled “Mechanisms and scales in modeling forest responses to changing disturbance regimes” is now published online in New Phytologist. The review synthesizes the mechanisms underlying vegetation responses to disturbance across spatio-temporal scales — from disturbance occurrence and immediate structural damage to post-disturbance community reorganization and long-term ecosystem feedbacks — and identifies key challenges for representing these processes in terrestrial biosphere models. The key message: advancing mechanistic, scalable, and observation-constrained modeling of disturbance across scales is essential for reducing uncertainties in forecasting global change impacts on ecosystems and the carbon cycle. Several BioM2 Lab members contributed to the review, including Xiangtao Xu, Cameron Scholl, Yixin Ma, and Tao Han."
+  },
+  {
+    "objectID": "news/2024-09-05-cameron-a-exam.html",
+    "href": "news/2024-09-05-cameron-a-exam.html",
+    "title": "Cameron passes his A-exam!",
+    "section": "",
+    "text": "We are thrilled to announce that Cameron has successfully passed his A Exam! Join us in congratulating Cameron on this outstanding achievement!"
+  },
+  {
+    "objectID": "news/2026-07-15-yixin-ma-defense.html",
+    "href": "news/2026-07-15-yixin-ma-defense.html",
+    "title": "A new doctor in the house",
+    "section": "",
+    "text": "Yixin Ma, the very first graduate student in BioM2 Lab, gave a wonderful public defense today! Congratulations Yixin and wish you the best for your upcoming journey at Harvard University as a post-doc!"
+  },
+  {
+    "objectID": "news/2024-05-09-cary-institute-seminar.html",
+    "href": "news/2024-05-09-cary-institute-seminar.html",
+    "title": "Xiangtao Xu gives seminar at Cary Institute",
+    "section": "",
+    "text": "Xiangtao Xu gives an invited seminar at Cary Institute of Ecosystem Studies titled “Predicting tropical forest growth and mortality under global change.”"
+  },
+  {
+    "objectID": "news/2024-08-09-gcb-paper-published.html",
+    "href": "news/2024-08-09-gcb-paper-published.html",
+    "title": "New paper published in Global Change Biology",
+    "section": "",
+    "text": "New paper titled “Two sub-annual timescales and coupling modes for terrestrial water and carbon cycles” is now published online in Global Change Biology. Dr. Dan Gianotti from MIT CEE is the lead author while Xiangtao Xu of the BioM2 Lab is a co-author. Using remote sensing data, the study identifies two dominant modes of terrestrial water and carbon cycles across the contiguous United States: (1) a negative-correlation timescale on the order of a few days, during which landscapes dry after precipitation and plants increase their carbon uptake through photosynthetic upregulation, and (2) a slow, seasonal-scale positive covariation through which landscape drying leads to decreased growth and carbon uptake. The spatial pattern of local temporal dynamics — positively sloped tangent lines to a convex long-term mean-state curve — is surprisingly strong and can serve as a benchmark for coupled Earth System Models. The study shows that many such models do not represent this emergent mean-state pattern, and hypothesizes that this may be due to a lack of water-carbon feedbacks at daily scales."
+  },
+  {
+    "objectID": "news/2024-12-22-pond-mapping-paper-published.html",
+    "href": "news/2024-12-22-pond-mapping-paper-published.html",
+    "title": "Pond mapping paper published in Remote Sensing of Environment",
+    "section": "",
+    "text": "New lab paper titled “Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time series” is now published online in Remote Sensing of Environment! The project is a collaboration with the Holgerson Lab at Cornell EEB and led by visiting student Denghong Liu from Hong Kong Polytechnic University. The study develops a novel object mapper (OptiSAR-POM) for individual ponds down to ~0.2 hectare in size. It has high accuracy and scalability across diverse landscapes and will contribute to better inventorying of small water bodies across New York State, which are biogeochemical hotspots for greenhouse gas emissions."
+  },
+  {
+    "objectID": "news/2024-08-13-welcome-baby-elena.html",
+    "href": "news/2024-08-13-welcome-baby-elena.html",
+    "title": "Welcome baby Elena Rossana Cranmer",
+    "section": "",
+    "text": "The Cranmer family has expanded, with baby Elena as its newest member. Congratulations, Nick!"
+  },
+  {
+    "objectID": "news/2024-04-06-erdgvm-keynote.html",
+    "href": "news/2024-04-06-erdgvm-keynote.html",
+    "title": "Xiangtao Xu gives keynote presentation at ER-DGVM-C",
+    "section": "",
+    "text": "Xiangtao Xu gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant functional diversity,” kickstarting the two-and-a-half-day East Regional Dynamic Global Vegetation Modeling Conference (ER-DGVM-C) at MBL, Woods Hole. Lab members Cameron Scholl, Coral Valle-Rodriguez, and Tao Han also presented research talks and posters. Tao Han has won the best postdoc poster award!"
+  },
+  {
+    "objectID": "news/2024-08-06-nysdec-site-visit.html",
+    "href": "news/2024-08-06-nysdec-site-visit.html",
+    "title": "NYSDEC site visit at Arnot Forest",
+    "section": "",
+    "text": "Arnot Forest sees visits from the New York State Department of Environmental Conservation (NYSDEC) Division of Lands and Forests (DLF) and the Empire State Forest Products Association. During the day trip, lab members Nick Cranmer and Xiangtao Xu gave a field demonstration of terrestrial lidar to help with measuring, monitoring, reporting, and verification (MMRV) of temperate forests, to NYSDEC DLF Director Fiona Watts and other visitors."
+  },
+  {
+    "objectID": "members/current/nicholas-cranmer.html",
+    "href": "members/current/nicholas-cranmer.html",
+    "title": "Nicholas Cranmer",
+    "section": "",
+    "text": "I am primarily interested in using remote sensing technologies such as terrestrial laser scanning (i.e., terrestrial LiDAR) to further understand ecological processes such as carbon sequestration and storage under different forest management practices."
+  },
+  {
+    "objectID": "members/current/tao-han.html",
+    "href": "members/current/tao-han.html",
+    "title": "Tao Han",
+    "section": "",
+    "text": "I am interested in using advanced computer vision techniques and terrestrial laser scanning to understand different ecological processes."
+  },
+  {
+    "objectID": "members/current/coral-valle-rodriguez.html",
+    "href": "members/current/coral-valle-rodriguez.html",
+    "title": "Coral del Mar Valle-Rodríguez",
+    "section": "",
+    "text": "I am highly interested in using remote sensing techniques to study changes in forest composition and plant behavior due to climate change in the tropics."
+  },
+  {
+    "objectID": "members/alumni/sabrina-chow.html",
+    "href": "members/alumni/sabrina-chow.html",
+    "title": "Sabrina Chow",
+    "section": "",
+    "text": "Leaf lifespan, ecology, conservation."
+  },
+  {
+    "objectID": "members/alumni/daniel-petticord.html",
+    "href": "members/alumni/daniel-petticord.html",
+    "title": "Daniel Petticord",
+    "section": "",
+    "text": "I work predominantly at the plant-soil interface. Particularly, I’m interested in how the root and soil “microbiome” influences the interaction between plants and their local environment. My work takes a Tilman-esque approach to plants by thinking of them as consumers of soil resources, and my interests focus around how microbes influence or explain these consumer-resource interactions. Before Cornell, I applied this approach to examine ecosystem-level plant-soil processes that maintain the diversity of tropical tree species. During my PhD, I have transitioned to more applied work. Specifically, my dissertation examines how plant-fungal interactions might play a role in ecologically-damaging nutrient loss from a historically fertilized subtropical pasture. In the future, I hope to bring this approach to study patterns of invasion and succession, particularly in the disturbed “wilderness” of the Anthropocene."
+  },
+  {
+    "objectID": "members/alumni/maddie-watson.html",
+    "href": "members/alumni/maddie-watson.html",
+    "title": "Maddie Watson",
+    "section": "",
+    "text": "I am an undergraduate student on the Cornell Gymnastics team majoring in environment and sustainability. I am interested in how terrestrial lidar scanners can answer important questions for forest ecology and sustainability."
+  },
+  {
+    "objectID": "members/alumni/dylan-van-bramer.html",
+    "href": "members/alumni/dylan-van-bramer.html",
+    "title": "Dylan Van Bramer",
+    "section": "",
+    "text": "I’m a junior studying Computer Science, with a passion for machine learning and data science, and their applications to ecology. At the Xu Lab, in a collaboration with the Gomes Lab, I am working on machine learning models for forest ecology. Exploring both deep learning and ensemble methods, we are learning about neighborhood interactions between species using forest census data. I am excited to continue learning about both machine learning and ecology throughout my time here."
+  },
+  {
+    "objectID": "news.html",
+    "href": "news.html",
+    "title": "News",
+    "section": "",
+    "text": "A new doctor in the house\n\n\nYixin passed her B-Exam and is now officially Dr. Ma!\n\n\n\n\n\nJul 15, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome baby Charlotte Nan Scholl\n\n\nCongratulations to Cameron and Cheyanne Scholl on the arrival of baby Charlotte Nan Scholl!\n\n\n\n\n\nJul 8, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nRong Li presents poster at the Schmidt Science Summit\n\n\nRong Li presents a poster on neighborhood and species interaction effects on tropical tree growth at the 2026 Schmidt Science Summit.\n\n\n\n\n\nJun 29, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nNew Tansley Review on modeling forest disturbance published in New Phytologist\n\n\nNew Tansley Review argues that mechanistic, scalable modeling of forest disturbance is essential for reducing uncertainty in global change forecasts.\n\n\n\n\n\nJun 26, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nBioM2 website remade with Quarto\n\n\nThe BioM2 Lab website has been rebuilt with Quarto.\n\n\n\n\n\nJun 25, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nNew paper on storm-driven biomass turnover in Amazonian forests published in Nature Climate Change\n\n\nNew paper shows storms are a key driver of spatial heterogeneity in Amazon forest biomass turnover, on top of atmospheric dryness and water stress.\n\n\n\n\n\nMay 3, 2026\n\n\n\n\n\n\n\n\n\n\n\n\nPond mapping paper published in Remote Sensing of Environment\n\n\nNew paper on inventorying ponds with Sentinel-1/2 time series is published in Remote Sensing of Environment.\n\n\n\n\n\nDec 22, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nCameron passes his A-exam!\n\n\nCongratulations to Cameron Scholl on passing his A Exam!\n\n\n\n\n\nSep 5, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNew paper published in Forest Ecology and Management\n\n\nNew paper on estimating wood volume in slash walls using terrestrial and airborne LiDAR is published in Forest Ecology and Management.\n\n\n\n\n\nAug 19, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome baby Elena Rossana Cranmer\n\n\nCongratulations to Nick Cranmer and family on the arrival of baby Elena Rossana Cranmer!\n\n\n\n\n\nAug 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNew paper published in Global Change Biology\n\n\nNew paper on two sub-annual timescales of terrestrial water and carbon cycling is published in Global Change Biology.\n\n\n\n\n\nAug 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nCoral del Mar presented an oral session on ‘Creating Safe Spaces within ESA’\n\n\nCoral del Mar presents on creating safe spaces within ESA as incoming Chapter Chair of the ESA Latin American and Caribbean Chapter.\n\n\n\n\n\nAug 8, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nNYSDEC site visit at Arnot Forest\n\n\nNYSDEC and Empire State Forest Products Association visit Arnot Forest for a terrestrial lidar field demonstration.\n\n\n\n\n\nAug 6, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nInaugural CoDiFI summer training\n\n\nThe inaugural CoDiFI summer training course brings lidar and drone methods to PhD students, master’s students, and foresters at Arnot Forest.\n\n\n\n\n\nJul 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome Aaron Sams\n\n\nDr. Aaron Sams joins the lab as a part-time programmer to develop the Forest Lidar Package in Python (FLiP).\n\n\n\n\n\nJul 1, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nFirst drone lidar flight\n\n\nNick Cranmer and Xiangtao Xu test the new WISPR-Livox drone-lidar system on a Cornell Cooperative Extension PES farm visit.\n\n\n\n\n\nJun 27, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nXiangtao Xu gives seminar at Cary Institute\n\n\nXiangtao Xu gives an invited seminar at the Cary Institute of Ecosystem Studies.\n\n\n\n\n\nMay 9, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nXiangtao Xu gives keynote presentation at ER-DGVM-C\n\n\nXiangtao Xu keynotes the East Regional DGVM Conference at MBL, Woods Hole; Tao Han wins best postdoc poster.\n\n\n\n\n\nApr 6, 2024\n\n\n\n\n\nNo matching items"
+  }
+]
