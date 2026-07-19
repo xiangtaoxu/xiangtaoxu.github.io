@@ -28,6 +28,8 @@ website:
         href: team.qmd
       - text: "Research"
         href: research.qmd
+      - text: "CoDiFI"
+        href: codifi.qmd
       - text: "News"
         href: news.qmd
       # --- Publications page is reserved for later. When you're ready,

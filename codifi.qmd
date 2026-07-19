@@ -1,0 +1,16 @@
+---
+title: "CoDiFI"
+page-layout: full
+toc: false
+---
+
+![](images/projects/CoDiFI.jpg){.project-page-image}
+
+## Cornell Digital Forestry Initiative
+
+This project creates a next-generation forestry research hub that provides
+resources and expertise for integrating novel remote sensing (e.g., drone,
+lidar) and computational techniques with conventional forestry measurements
+across a range of departments at Cornell.
+
+*(More content coming soon.)*

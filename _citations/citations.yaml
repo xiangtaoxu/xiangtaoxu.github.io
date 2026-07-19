@@ -1,5 +1,5 @@
 # Resolved publication cache -- reflects what's rendered on research.qmd.
-# Regenerated 2026-07-01 via ORCID (0000-0002-9402-9474) + Crossref.
+# Regenerated 2026-07-19 via ORCID (0000-0002-9402-9474) + Crossref.
 - id: doi:10.1016/j.foreco.2024.122211
   title: Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and
     airborne LiDAR
@@ -815,4 +815,38 @@
   publisher: Journal of Advances in Modeling Earth Systems
   date: 2025-04
   link: https://doi.org/10.1029/2023ms003911
+  type: paper
+- id: doi:10.1111/nph.71367
+  title: 'Soil fertility controls on tropical forest productivity and mortality: synthesis and roadmap'
+  authors:
+  - Michelle Y. Wong
+  - Sarah A. Batterman
+  - Jane M. Lucas
+  - Katrin Fleischer
+  - Mark S. Ashton
+  - Marijn Bauters
+  - David F. R. P. Burslem
+  - KC Cushman
+  - James W. Dalling
+  - Sebastian Doetterl
+  - Adriane Esquivel-Muelbert
+  - Claire Fortunel
+  - Jennifer A. Holm
+  - Nohemi Huanca-Nunez
+  - Guopeng Liang
+  - Moses B. Libalah
+  - Demetrius Lira-Martins
+  - Jose A. Medina-Vega
+  - Helene C. Muller-Landau
+  - Jessica Needham
+  - Elsa M. Ordway
+  - Mareli Sánchez-Juliá
+  - Laura Toro
+  - Xiangtao Xu
+  - S. Joseph Wright
+  - Gabriela Zuquim
+  - Evan M. Gora
+  publisher: New Phytologist
+  date: '2026-06-29'
+  link: https://doi.org/10.1111/nph.71367
   type: paper
