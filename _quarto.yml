@@ -11,6 +11,8 @@ project:
     # sure Quarto copies it into the built site
     - images/banners/header-banner.jpg
     - images/hero/forest-structure-2d3d.gif
+    # CNAME must be copied into every gh-pages publish, or the custom domain breaks
+    - CNAME
 
 website:
   title: "BioM2 Lab"
