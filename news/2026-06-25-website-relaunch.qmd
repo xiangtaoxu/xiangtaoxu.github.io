@@ -1,0 +1,8 @@
+---
+title: "BioM2 website remade with Quarto"
+date: "2026-06-25"
+description: "The BioM2 Lab website has been rebuilt with Quarto."
+categories: [Team]
+---
+
+The BioM2 Lab website has been rebuilt with [Quarto](https://quarto.org).

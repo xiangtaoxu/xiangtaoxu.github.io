@@ -1,0 +1,8 @@
+---
+title: "NYSDEC site visit at Arnot Forest"
+date: "2024-08-06"
+description: "NYSDEC and Empire State Forest Products Association visit Arnot Forest for a terrestrial lidar field demonstration."
+categories: [Arnot, TLS, Outreach]
+---
+
+Arnot Forest sees visits from the New York State Department of Environmental Conservation (NYSDEC) Division of Lands and Forests (DLF) and the Empire State Forest Products Association. During the day trip, lab members **Nick Cranmer** and **Xiangtao Xu** gave a field demonstration of terrestrial lidar to help with measuring, monitoring, reporting, and verification (MMRV) of temperate forests, to NYSDEC DLF Director Fiona Watts and other visitors.

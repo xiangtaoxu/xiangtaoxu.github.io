@@ -1,6 +1,6 @@
 ---
 title: "Xiangtao Xu"
-subtitle: "Assistant Professor, EEB Cornell"
+subtitle: "Associate Professor, EEB Cornell"
 image: /images/portraits/xiangtao-xu.jpg
 role: pi          # informational tag only (current vs alumni is decided by folder)
 weight: 1         # controls card order among current members (lower = first)
@@ -23,14 +23,11 @@ about:
       href: "https://scholar.google.com/citations?user=fAorsowAAAAJ"
 ---
 
-I am an ecosystem ecologist with broad interests in other related fields of ecology
-and Earth System Science. My research revolves around the role of vegetation in our
+I am a plant and ecosystem ecologist with broad interests in environmental science and Earth System Science. My research revolves around the role of vegetation in our
 Earth system and searches for quantitative frameworks to understand their
 ecophysiology and make predictions. I am also interested in novel methods to
 characterize plant activities across different spatial and temporal scales such as
 ecological remote sensing.
 
 Currently I teach *BIOEE 1610 Introductory Biology: Ecology and the Environment* and
-*BIOEE 4940 Quantitative Methods in Ecology*.
-
-[Full CV](https://docs.google.com/document/d/1o6VspwBWYJ0h-pIDAzkIfkuARvH4BGDx/edit?usp=sharing&ouid=107075740368533912664&rtpof=true&sd=true)
+*BIOEE 3550/6550 Ecological and Environmental Data Analytics*.

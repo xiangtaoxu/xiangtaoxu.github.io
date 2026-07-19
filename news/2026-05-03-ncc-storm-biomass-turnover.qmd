@@ -1,0 +1,8 @@
+---
+title: "New paper on storm-driven biomass turnover in Amazonian forests published in Nature Climate Change"
+date: "2026-05-03"
+description: "New paper shows storms are a key driver of spatial heterogeneity in Amazon forest biomass turnover, on top of atmospheric dryness and water stress."
+categories: [Publication, Disturbance ecology]
+---
+
+New paper titled "Increasing atmospheric dryness and storms accelerates biomass turnover in Amazonian forests" is now published [online](https://doi.org/10.1038/s41558-026-02639-4) in *Nature Climate Change*. Led by lab alumnus **Donghai Wu**, the study demonstrates that storms are an important driver of spatial heterogeneity in Amazon forest biomass turnover rates, on top of the effects of atmospheric dryness and water stress. The findings highlight that disturbance modeling frameworks need to explicitly represent storm impacts, not just drought stress, to accurately capture patterns of biomass turnover across the Amazon. **Yixin Ma** and **Xiangtao Xu** are co-authors on the study.

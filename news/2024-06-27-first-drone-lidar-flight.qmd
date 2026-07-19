@@ -1,0 +1,9 @@
+---
+title: "First drone lidar flight"
+date: "2024-06-27"
+description: "Nick Cranmer and Xiangtao Xu test the new WISPR-Livox drone-lidar system on a Cornell Cooperative Extension PES farm visit."
+image: /images/news/2024-06-27-news.jpg
+categories: [Lidar, Outreach]
+---
+
+**Nick Cranmer** and **Xiangtao Xu** visited two farms participating in Cornell Cooperative Extension Tompkins County's Payment for Ecosystem Service (PES) program. The program aims to create a protocol for measuring carbon credit for farmland, where carbon sequestration associated with agroforestry is an important component. On the visit, Nick tested our new WISPR-Livox drone-lidar system (together with curious Grant Xu) and had a successful first drone flight!

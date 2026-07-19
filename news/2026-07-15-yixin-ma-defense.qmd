@@ -1,0 +1,9 @@
+---
+title: "A new doctor in the house"
+date: "2026-07-15"
+description: "Yixin passed her B-Exam and is now officially Dr. Ma!"
+image: /images/news/2026-07-15-news.png
+categories: [Team]
+---
+
+**Yixin Ma**, the very first graduate student in BioM2 Lab, gave a wonderful public defense today! Congratulations Yixin and wish you the best for your upcoming journey at Harvard University as a post-doc! 

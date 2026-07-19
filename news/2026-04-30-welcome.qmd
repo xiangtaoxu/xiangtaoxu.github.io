@@ -1,8 +1,0 @@
----
-title: "Welcoming new lab members this spring"
-date: "2026-04-30"
-description: "New students and a postdoc join the BioM2 Lab."
----
-
-*(Example post — replace with real news.)* We're excited to welcome new members
-to the lab this spring. Meet everyone on the [team page](../team.qmd).

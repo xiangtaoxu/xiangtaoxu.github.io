@@ -1,0 +1,9 @@
+---
+title: "New Tansley Review on modeling forest disturbance published in New Phytologist"
+date: "2026-06-26"
+description: "New Tansley Review argues that mechanistic, scalable modeling of forest disturbance is essential for reducing uncertainty in global change forecasts."
+image: /images/news/2026-06-26-nph-tansley-review.jpg
+categories: [Publication, Disturbance ecology]
+---
+
+New Tansley Review titled "Mechanisms and scales in modeling forest responses to changing disturbance regimes" is now published [online](https://doi.org/10.1111/nph.71384) in *New Phytologist*. The review synthesizes the mechanisms underlying vegetation responses to disturbance across spatio-temporal scales — from disturbance occurrence and immediate structural damage to post-disturbance community reorganization and long-term ecosystem feedbacks — and identifies key challenges for representing these processes in terrestrial biosphere models. The key message: advancing mechanistic, scalable, and observation-constrained modeling of disturbance across scales is essential for reducing uncertainties in forecasting global change impacts on ecosystems and the carbon cycle. Several BioM2 Lab members contributed to the review, including **Xiangtao Xu**, **Cameron Scholl**, **Yixin Ma**, and **Tao Han**.

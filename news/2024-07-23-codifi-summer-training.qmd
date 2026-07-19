@@ -1,0 +1,9 @@
+---
+title: "Inaugural CoDiFI summer training"
+date: "2024-07-23"
+description: "The inaugural CoDiFI summer training course brings lidar and drone methods to PhD students, master's students, and foresters at Arnot Forest."
+image: /images/news/2024-07-23-news-1.jpg
+categories: [Arnot, TLS, Outreach]
+---
+
+The inaugural summer training course of the BioM2-led Cornell Digital Forestry Initiative ([CoDiFI](../codifi.qmd)) hosts a mix of PhD students, professional Master's students, and foresters at Arnot Forest. The 4-day workshop introduces the foundations of lidar remote sensing (talk given by **Xiangtao Xu**), procedures of applying tripod-based and backpack lidar systems (demo given by **Nick Cranmer**, **Yixin Ma**, and **Tao Han**), and processes of conducting RGB drone flights (demo given by **Hannah Zonnevylle** from the [Katz Lab](https://cals.cornell.edu/daniel-katz)).

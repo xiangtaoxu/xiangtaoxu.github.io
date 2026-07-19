@@ -1,0 +1,9 @@
+---
+title: "Pond mapping paper published in Remote Sensing of Environment"
+date: "2024-12-22"
+description: "New paper on inventorying ponds with Sentinel-1/2 time series is published in Remote Sensing of Environment."
+image: /images/news/2024-12-22-news.jpg
+categories: [Publication, Remote sensing, Pond]
+---
+
+New lab paper titled "Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time series" is now published [online](https://www.sciencedirect.com/science/article/abs/pii/S0034425724005108) in *Remote Sensing of Environment*! The project is a collaboration with the [Holgerson Lab](https://blogs.cornell.edu/holgersonlab/) at Cornell EEB and led by visiting student Denghong Liu from Hong Kong Polytechnic University. The study develops a novel object mapper (OptiSAR-POM) for individual ponds down to ~0.2 hectare in size. It has high accuracy and scalability across diverse landscapes and will contribute to better inventorying of small water bodies across New York State, which are biogeochemical hotspots for greenhouse gas emissions.

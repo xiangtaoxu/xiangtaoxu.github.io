@@ -12,7 +12,7 @@ listing:
     sort: "date desc"
     max-items: 3
     date-format: "MMM D, YYYY"
-    fields: [date, title, description]
+    fields: [image, date, title, description]
     sort-ui: false
     filter-ui: false
 ---

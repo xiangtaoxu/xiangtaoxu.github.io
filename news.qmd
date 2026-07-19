@@ -2,10 +2,10 @@
 title: "News"
 listing:
   contents: news          # all posts in the news/ folder
-  type: default           # blog-style list (no per-post image required)
+  type: default           # blog-style list; shows a thumbnail when a post has one
   sort: "date desc"
   date-format: "MMM D, YYYY"
-  fields: [date, title, description]
+  fields: [image, date, title, description]   # posts without an image just show text (no placeholder)
   sort-ui: false
   filter-ui: false
   feed: true              # generates an RSS feed

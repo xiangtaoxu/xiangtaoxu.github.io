@@ -1,0 +1,9 @@
+---
+title: "Rong Li presents poster at the Schmidt Science Summit"
+date: "2026-06-29"
+description: "Rong Li presents a poster on neighborhood and species interaction effects on tropical tree growth at the 2026 Schmidt Science Summit."
+image: /images/news/2026-06-29-news.jpg
+categories: [Conference, AI]
+---
+
+**Rong Li**, a Schmidt AI4Science postdoctoral fellow at the [Cornell University AI for Science Institute](https://science.ai.cornell.edu/), presented a poster titled "Quantifying Neighborhood and Species Interaction Effects on Tropical Tree Growth with Machine Learning and Long-term Census Data" at the 2026 Interdisciplinary Science Summit in North Carolina. The work, co-authored with lab alumni **Dylan Van Bramer** and **Xiangtao Xu**, uses XGBoost and graph neural network (GNN) models on long-term census data from the Luquillo Forest Dynamics Plot in Puerto Rico to quantify how neighboring trees and species interactions shape individual tree growth.

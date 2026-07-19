@@ -1,0 +1,8 @@
+---
+title: "Welcome Aaron Sams"
+date: "2024-07-01"
+description: "Dr. Aaron Sams joins the lab as a part-time programmer to develop the Forest Lidar Package in Python (FLiP)."
+categories: [Team, TLS]
+---
+
+[Dr. Aaron Sams](https://www.linkedin.com/in/aaronjsams/) has officially started as a part-time programmer in the BioM2 Lab. Aaron was previously affiliated with Cornell MBG before he worked at Embark Inc. He will work with the team to develop the Forest Lidar Package in Python (FLiP). Welcome Aaron!
