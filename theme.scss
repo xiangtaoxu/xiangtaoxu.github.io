@@ -172,3 +172,36 @@ $border-radius:    0.6rem;
 #listing-alumni-members .listing-details {
   color: #555;
 }
+
+// ---- Widen the page content column on wide screens ----
+// Our pages don't carry Quarto's "fullcontent" body class (that's a different
+// layout mode) -- our <body> is just "nav-fixed quarto-light", so the rule
+// that actually governs width at desktop sizes is the bare `body .page-columns`
+// rule inside the `@media (min-width: 992px)` block. It caps the content
+// column at ~850px and dumps the rest of the viewport into two flexible (5fr)
+// side margins. Fine on a laptop; on a wide monitor those margins balloon and
+// everything looks small, squeezed into a narrow center strip. Same selector
+// and media query Quarto emits, just a wider content column and less
+// aggressive side margins.
+//
+// !important is needed here: Quarto appends its own structural/layout CSS
+// after all theme SCSS in the compiled bundle, so normal cascade order can't
+// win against it -- only higher specificity or !important can.
+@media (min-width: 992px) {
+  body .page-columns {
+    grid-template-columns:
+      [screen-start] 1.5em
+      [screen-start-inset] 1fr
+      [page-start page-start-inset] 35px
+      [body-start-outset] 35px
+      [body-start] 1.5em
+      [body-content-start] minmax(500px, calc(1400px - 3em))
+      [body-content-end] 1.5em
+      [body-end] 35px
+      [body-end-outset] minmax(75px, 145px)
+      [page-end-inset] 35px
+      [page-end] 1fr
+      [screen-end-inset] 1.5em
+      [screen-end] !important;
+  }
+}

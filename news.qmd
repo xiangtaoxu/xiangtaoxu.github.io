@@ -1,5 +1,6 @@
 ---
 title: "News"
+page-layout: full
 listing:
   contents: news          # all posts in the news/ folder
   type: default           # blog-style list; shows a thumbnail when a post has one
