@@ -1,0 +1,39 @@
+name: Publish to GitHub Pages
+
+# Renders the site with Quarto and deploys it to the gh-pages branch, which
+# is what GitHub Pages actually serves (custom domain: xiangtaoxu.eeb.cornell.edu).
+# Runs on every push to main; can also be triggered manually.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+# Cancel an in-progress deploy if a newer push arrives, so two runs never
+# race to push to gh-pages at the same time.
+concurrency:
+  group: pages-publish
+  cancel-in-progress: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          # pinned to match the version used for local development
+          version: "1.9.38"
+
+      - name: Render and publish to gh-pages
+        uses: quarto-dev/quarto-actions/publish@v2
+        with:
+          target: gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
