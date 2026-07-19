@@ -18,7 +18,7 @@ listing:
     contents: "members/current/*.qmd"
     type: grid
     grid-columns: 4            # smaller cards -> 8 current members fit in 2 rows
-    image-height: "160px"
+    image-height: "220px"
     fields: [image, title, subtitle]
     image-placeholder: /images/portraits/placeholder.svg
     sort: "weight asc"         # order by the `weight:` field (PI first, etc.)
