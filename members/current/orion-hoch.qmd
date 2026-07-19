@@ -1,0 +1,15 @@
+---
+title: "Orion Hoch"
+subtitle: "Undergraduate"
+image: /images/portraits/placeholder.svg
+role: undergrad
+weight: 9
+aliases: ["Orion Hoch"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:ogh6@cornell.edu"
+---
