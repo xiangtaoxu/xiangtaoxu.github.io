@@ -1,0 +1,15 @@
+---
+title: "Cam Reimer"
+subtitle: "EEB PhD Student"
+image: /images/portraits/cameron-reimer.jpg
+role: phd
+weight: 8
+aliases: ["Cam Reimer"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:cr657@cornell.edu"
+---

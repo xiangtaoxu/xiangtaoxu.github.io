@@ -1,6 +1,6 @@
 ---
 title: "Cameron Scholl"
-subtitle: "EEB PhD Student"
+subtitle: "EEB PhD Candidate"
 image: /images/portraits/cameron-scholl.jpg
 role: phd
 weight: 4

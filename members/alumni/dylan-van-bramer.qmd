@@ -2,8 +2,9 @@
 title: "Dylan Van Bramer"
 subtitle: "Undergraduate, Computer Science"
 image: /images/portraits/dylan-van-bramer.jpg
-role: undergrad
-weight: 8
+role: alumni
+sort_key: 2025
+details: "Undergraduate Research Assistant 2023–2025; Now PhD Student, University of Toronto Computer Science"
 aliases: ["Dylan Van Bramer", "D. Van Bramer", "D Van Bramer"]
 about:
   template: trestles

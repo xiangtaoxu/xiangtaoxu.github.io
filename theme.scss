@@ -136,3 +136,28 @@ $border-radius:    0.6rem;
 .card-img-top, .card img { object-fit: cover; }      // crop portraits nicely
 .quarto-grid-item .card-title { margin-bottom: 0.1rem; }
 .quarto-grid-item .card-subtitle { color: $primary; font-weight: 600; }
+
+// ---- Alumni compact list (a `type: table` listing, no photos) ----
+// Scoped to #listing-alumni-members so it only affects the Alumni roster,
+// not any other table listing on the site.
+#listing-alumni-members table.quarto-listing-table {
+  width: 100%;
+}
+#listing-alumni-members table.quarto-listing-table thead {
+  display: none;                     // no "Name / Details" header row
+}
+#listing-alumni-members table.quarto-listing-table td {
+  padding: 0.6rem 1rem 0.6rem 0;
+  border: none;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+#listing-alumni-members table.quarto-listing-table td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+  width: 1%;                         // shrink to fit the longest name
+  padding-right: 2rem;
+}
+#listing-alumni-members .listing-details {
+  color: #555;
+}

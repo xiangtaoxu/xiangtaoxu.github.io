@@ -1,6 +1,6 @@
 ---
 title: "Coral del Mar Valle-Rodríguez"
-subtitle: "EEB PhD Student"
+subtitle: "EEB PhD Candidate"
 image: /images/portraits/coral-valle-rodriguez.jpg
 role: phd
 weight: 5

@@ -3,6 +3,8 @@ title: "Donghai Wu"
 subtitle: "Postdoc 2019–2022 · now Staff Scientist, South China Botanical Garden"
 image: /images/portraits/donghai-wu.jpg
 role: alumni
+sort_key: 2022
+details: "Postdoc 2019–2022; Now Staff Scientist, South China Botanical Garden"
 aliases: ["Donghai Wu", "D. Wu", "D Wu"]
 about:
   template: trestles

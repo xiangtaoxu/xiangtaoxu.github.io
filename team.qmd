@@ -17,8 +17,8 @@ listing:
   - id: current-members
     contents: "members/current/*.qmd"
     type: grid
-    grid-columns: 3
-    image-height: "240px"
+    grid-columns: 4            # smaller cards -> 8 current members fit in 2 rows
+    image-height: "160px"
     fields: [image, title, subtitle]
     image-placeholder: /images/portraits/placeholder.svg
     sort: "weight asc"         # order by the `weight:` field (PI first, etc.)
@@ -27,12 +27,12 @@ listing:
 
   - id: alumni-members
     contents: "members/alumni/*.qmd"
-    type: grid
-    grid-columns: 4
-    image-height: "180px"
-    fields: [image, title, subtitle]
-    image-placeholder: /images/portraits/placeholder.svg
-    sort: "title asc"          # alumni listed alphabetically
+    type: table              # compact text list, no photos
+    fields: [title, details]  # `details` is a hand-written one-line summary per person
+    field-display-names:
+      title: "Name"
+      details: "Details"
+    sort: "sort_key desc"     # most recent departure first; sort_key: 0 = unknown, sorts last
     sort-ui: false
     filter-ui: false
 ---

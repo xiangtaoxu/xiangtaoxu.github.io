@@ -3,6 +3,8 @@ title: "Xiaoting Li"
 subtitle: "Visiting Student, 2022–2023"
 image: /images/portraits/xiaoting-li.jpg
 role: alumni
+sort_key: 2023
+details: "Visiting Student 2022–2023"
 aliases: ["Xiaoting Li", "X. Li", "X Li"]
 about:
   template: trestles

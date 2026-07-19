@@ -2,8 +2,9 @@
 title: "Aaron Sams"
 subtitle: "Part-time Programmer"
 image: /images/portraits/placeholder.svg
-role: programmer
-weight: 10
+role: alumni
+sort_key: 2025
+details: "Part-time Programmer 2024–2025"
 aliases: ["Aaron Sams", "A Sams", "A. Coles"]
 about:
   template: trestles

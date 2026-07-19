@@ -3,6 +3,8 @@ title: "Maddie Watson"
 subtitle: "Summer Research Intern"
 image: /images/portraits/maddie-watson.jpg
 role: alumni
+sort_key: 2021
+details: "Summer Research Intern 2020–2021"
 aliases: ["Maddie Watson", "M. Watson", "M Watson", "Madeleine Watson"]
 about:
   template: trestles

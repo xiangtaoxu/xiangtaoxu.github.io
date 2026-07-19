@@ -1,6 +1,6 @@
 ---
 title: "Nicholas Cranmer"
-subtitle: "EEB PhD Student"
+subtitle: "EEB PhD Candidate"
 image: /images/portraits/nicholas-cranmer.jpg
 role: phd
 weight: 6

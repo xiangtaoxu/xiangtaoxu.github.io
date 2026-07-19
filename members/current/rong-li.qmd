@@ -1,0 +1,15 @@
+---
+title: "Rong Li"
+subtitle: "Postdoctoral Researcher"
+image: /images/portraits/rong-li.jpg
+role: postdoc
+weight: 2.5
+aliases: ["Rong Li"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:rl945@cornell.edu"
+---

@@ -2,8 +2,9 @@
 title: "Daniel Petticord"
 subtitle: "EEB PhD Candidate"
 image: /images/portraits/dan-petticord.jpg
-role: phd
-weight: 3
+role: alumni
+sort_key: 2025
+details: "EEB PhD Candidate 2020–2025; Now Postdoctoral Fellow, Cary Institute of Ecosystem Studies"
 aliases: ["Daniel Petticord", "D.F. Petticord", "D. Petticord", "Daniel F. Petticord"]
 about:
   template: trestles
