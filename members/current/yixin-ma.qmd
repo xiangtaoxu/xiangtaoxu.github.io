@@ -1,6 +1,6 @@
 ---
 title: "Yixin Ma"
-subtitle: "EEB PhD Candidate"
+subtitle: "EEB PhD"
 image: /images/portraits/yixin-ma.jpg
 role: phd
 weight: 7

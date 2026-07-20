@@ -20,7 +20,7 @@ from multi-platform remote sensing products, particularly terrestrial lidar data
 
 ::: {.grid}
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12}
 ::: {.theme-card}
 ### 🌳 Ecosystem modeling
 Process-based models (the ED2 lineage and beyond) that scale plant physiology up
@@ -28,7 +28,7 @@ to ecosystem and biosphere dynamics.
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12}
 ::: {.theme-card}
 ### 🛰️ Ecological remote sensing
 Lidar, drones, and satellite products to characterize vegetation dynamics and
@@ -36,7 +36,7 @@ land surface processes across spatial and temporal scales.
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12}
 ::: {.theme-card}
 ### 💻 Model–data integration
 A ModEx approach that fuses field experiments, observations, and models to improve predictions and generate new hypotheses about ecosystem dynamics.

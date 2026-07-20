@@ -14,6 +14,11 @@ $font-family-sans-serif: "Inter", "Segoe UI", system-ui, -apple-system, "Helveti
 $headings-font-weight: 700;
 $border-radius:    0.6rem;
 
+// Bump the whole-site default text size up a notch. Bootstrap's default is
+// 1rem (16px); 1.1rem (~17.6px) reads more comfortably for body copy and, via
+// Bootstrap's rem-based scale, gently enlarges headings and components too.
+$font-size-base:   1.1rem;
+
 
 /*-- scss:rules --*/
 // ---------------------------------------------------------------------------
@@ -41,16 +46,20 @@ $border-radius:    0.6rem;
   min-height: 120px;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);    // keeps letters legible over the bright canopy
 }
-.navbar .navbar-brand { color: #fff; font-weight: 700; font-size: 1.5rem; }
-.navbar .nav-link { color: rgba(255, 255, 255, 0.92) !important; }     // white links on the dark banner
+.navbar .navbar-brand { color: #fff; font-weight: 700; font-size: 1.9rem; }
+.navbar .nav-link { color: rgba(255, 255, 255, 0.92) !important; font-size: 1.2rem; }     // white links on the dark banner
 .navbar .nav-link:hover, .navbar .nav-link:focus { color: #fff !important; }
 
 // ---- Home-page hero: forest-structure animation on top, Welcome text in a band directly below ----
 .hero-anim {
-  // `contain` shows the WHOLE animation (no cropping); white fills the sides
+  // `contain` shows the WHOLE animation (no cropping); the box itself keeps the
+  // GIF's exact 3.54:1 ratio, so the image fills the full content width edge to
+  // edge with no white gaps on the sides. (An old `max-height` cap used to
+  // squash the box shorter than that ratio, which is what left the right-side
+  // gap -- removed on purpose.)
   background: url('/images/hero/forest-structure-2d3d.gif') center / contain no-repeat #ffffff;
   aspect-ratio: 3.54 / 1;           // matches the 2124x600 GIF -> shows in full, no crop
-  max-height: 340px;               // cap on very wide screens
+  width: 100%;
   border: 1px solid #e7e7e9;
   border-bottom: none;
   border-radius: $border-radius $border-radius 0 0;   // round the TOP corners only
@@ -65,8 +74,8 @@ $border-radius:    0.6rem;
   padding: 1.4rem 2rem 1.7rem;
   text-align: center;
 }
-.hero-banner h1 { color: #1a1d21; font-size: 2.0rem; margin-bottom: 0.3rem; border: none; }
-.hero-banner .lead { color: #555; opacity: 1; font-size: 1.0rem; margin-bottom: 0.4rem; }
+.hero-banner h1 { color: #1a1d21; font-size: 2.6rem; margin-bottom: 0.3rem; border: none; }
+.hero-banner .lead { color: #555; opacity: 1; font-size: 1.25rem; margin-bottom: 0.4rem; }
 .hero-banner .btn { margin-top: 0.9rem; }
 
 // "Meet the team" = ghost button: red words, transparent background, red outline.
@@ -89,8 +98,7 @@ $border-radius:    0.6rem;
 .theme-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
 .theme-card h3 {
   margin-top: 0;
-  font-size: 1.05rem;      // small enough that title + emoji fit on one line
-  white-space: nowrap;
+  font-size: 1.2rem;
 }
 
 // ---- Standalone project page (e.g. CoDiFI) ----
@@ -173,6 +181,48 @@ $border-radius:    0.6rem;
   color: #555;
 }
 
+// ---- News listing: date on top, figure directly below it on the left ----
+// Quarto's default post layout is a flex row (date | body | thumbnail) that on
+// `image-right` posts pushes the picture to the far right. We re-lay it out as a
+// CSS grid with named areas so the metadata (date) and the thumbnail stack in a
+// left column, with the title + description filling the right column. Posts
+// without an image simply leave the lower-left cell empty.
+.quarto-listing-default .quarto-post {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas:
+    "date  body"
+    "thumb body";
+  grid-template-rows: auto auto;
+  column-gap: 2rem;
+  align-items: start;
+}
+.quarto-listing-default .quarto-post .metadata  { grid-area: date;  }
+.quarto-listing-default .quarto-post .thumbnail { grid-area: thumb; }
+.quarto-listing-default .quarto-post .body      { grid-area: body;  }
+
+// Date: same size as the post title, and read as a heading (dark, not a red link).
+.quarto-listing-default .quarto-post .metadata,
+.quarto-listing-default .quarto-post .listing-date,
+.quarto-listing-default .quarto-post .listing-date a {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #1a1d21;
+  text-decoration: none;
+}
+.quarto-listing-default .quarto-post .listing-title,
+.quarto-listing-default .quarto-post .listing-title a { font-size: 1.35rem; }
+
+.quarto-listing-default .quarto-post .thumbnail img { margin-top: 0.5rem; border-radius: $border-radius; }
+
+// On narrow screens, stack everything in a single column (date, figure, then text).
+@media (max-width: 767px) {
+  .quarto-listing-default .quarto-post {
+    grid-template-columns: 1fr;
+    grid-template-areas: "date" "thumb" "body";
+  }
+}
+
 // ---- Widen the page content column on wide screens ----
 // Our pages don't carry Quarto's "fullcontent" body class (that's a different
 // layout mode) -- our <body> is just "nav-fixed quarto-light", so the rule
@@ -195,7 +245,7 @@ $border-radius:    0.6rem;
       [page-start page-start-inset] 35px
       [body-start-outset] 35px
       [body-start] 1.5em
-      [body-content-start] minmax(500px, calc(1400px - 3em))
+      [body-content-start] minmax(500px, calc(1180px - 3em))
       [body-content-end] 1.5em
       [body-end] 35px
       [body-end-outset] minmax(75px, 145px)
