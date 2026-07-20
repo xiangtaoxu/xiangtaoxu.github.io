@@ -1,0 +1,17 @@
+---
+title: "Finn Ericson"
+subtitle: "Undergraduate"
+image: /images/portraits/finn-ericson.jpeg
+role: undergrad
+weight: 10
+aliases: ["Finn Ericson"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:fce7@cornell.edu"
+---
+
+Undergraduate researcher majoring in Environment & Sustainability.
