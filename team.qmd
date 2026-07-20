@@ -18,7 +18,9 @@ listing:
     contents: "members/current/*.qmd"
     type: grid
     grid-columns: 4            # smaller cards -> 8 current members fit in 2 rows
-    image-height: "220px"
+    # No image-height: the portraits are square-cropped and theme.scss renders
+    # the card image 1:1 (see ".quarto-grid-item .card-img-top"). A fixed height
+    # here would letterbox them back into short cards.
     fields: [image, title, subtitle]
     image-placeholder: /images/portraits/placeholder.svg
     sort: "weight asc"         # order by the `weight:` field (PI first, etc.)

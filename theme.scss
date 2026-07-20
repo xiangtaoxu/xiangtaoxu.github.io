@@ -152,7 +152,17 @@ $font-size-base:   1.1rem;
 
 // ---- Team listing (the grid of member cards) ----
 .card { border-radius: $border-radius; }
-.card-img-top, .card img { object-fit: cover; }      // crop portraits nicely
+// Square cards: the portraits are cropped 1:1 (face-centered), so show them
+// square — width follows the grid column, height matches it. We scope to
+// `.quarto-grid-item` so this out-specifies Quarto's own `.card-img-top` rule
+// (appended after this theme) without needing `!important`; dropping the
+// listing's `image-height` in team.qmd is what lets the aspect-ratio take over.
+.quarto-grid-item .card-img-top {
+  aspect-ratio: 1 / 1;
+  height: auto;
+  width: 100%;
+  object-fit: cover;      // crop portraits nicely
+}
 .quarto-grid-item .card-title { margin-bottom: 0.1rem; }
 .quarto-grid-item .card-subtitle { color: $primary; font-weight: 600; }
 
