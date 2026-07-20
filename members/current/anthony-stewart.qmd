@@ -1,0 +1,22 @@
+---
+title: "Anthony Stewart"
+subtitle: "Atkinson Postdoctoral Fellow"
+image: 
+role: postdoc
+weight: 9
+aliases: ["Anthony J. Stewart", "A. Stewart", "AJS"]
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: envelope
+      text: Email
+      href: "mailto:ajs544@cornell.edu"
+    - icon: github
+      text: GitHub
+      href: "https://github.com/ajs0428"
+    - icon: wifi
+      text: Website
+      href: "https://ajs0428.github.io"
+---
+I am interested in characterizing and quantifying carbon storage and cycling across terrestrial and aquatic environments using field collected measurements with remote sensing and machine learning. 
