@@ -1,7 +1,7 @@
 ---
 title: "Anthony Stewart"
 subtitle: "Atkinson Postdoctoral Fellow"
-image: 
+image: images/portraits/anthony.JPG 
 role: postdoc
 weight: 9
 aliases: ["Anthony J. Stewart", "A. Stewart", "AJS"]
