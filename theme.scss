@@ -192,6 +192,56 @@ $font-size-base:   1.1rem;
   color: #555;
 }
 
+// ---- Home page "Latest news" (a compact `type: table` listing) ----
+// The home page shows only the date and the headline — no thumbnails, no
+// summaries; those live on the post page itself. Scoped to #latest-news so the
+// full News page (a `default` listing, styled further down) is untouched.
+#latest-news table.quarto-listing-table {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+#latest-news table.quarto-listing-table thead {
+  display: none;                     // no "Date / Title" header row
+}
+#latest-news table.quarto-listing-table td {
+  padding: 0.7rem 1rem 0.7rem 0;
+  border: none;
+  border-bottom: 1px solid #eee;
+  vertical-align: baseline;
+}
+// Date column: shrink to fit, read as a label rather than a link.
+#latest-news table.quarto-listing-table td:first-child {
+  white-space: nowrap;
+  width: 1%;
+  padding-right: 2rem;
+  font-weight: 600;
+  color: #1a1d21;
+}
+#latest-news .listing-date,
+#latest-news .listing-date a {
+  color: #1a1d21;
+  text-decoration: none;
+}
+// Headline: styled as an explicit link (accent color, underline, trailing
+// arrow) so it reads as "click through to the full news post".
+// NB: in a table listing Quarto puts `.listing-title` on the <a> itself
+// (`<a class="title listing-title">`), so this targets the anchor, not a wrapper.
+#latest-news .quarto-listing-table .listing-title {
+  color: $primary;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-thickness: 1px;
+}
+#latest-news .quarto-listing-table .listing-title::after {
+  content: " \2192";                 // → : an affordance that this opens the full post
+  text-decoration: none;
+  display: inline-block;
+}
+#latest-news .quarto-listing-table .listing-title:hover {
+  text-decoration-thickness: 2px;
+}
+
 // ---- News listing: date on top, figure directly below it on the left ----
 // Quarto's default post layout is a flex row (date | body | thumbnail) that on
 // `image-right` posts pushes the picture to the far right. We re-lay it out as a

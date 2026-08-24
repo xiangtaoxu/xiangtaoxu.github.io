@@ -4,15 +4,18 @@
 pagetitle: "BioM2 Lab — Home"
 page-layout: full
 toc: false
-# Show the most recent news posts below the hero
+# Show the most recent news posts below the hero.
+# Deliberately a compact `table` listing of date + headline only: no images and
+# no description here — the picture and the full story belong on the post page,
+# which the headline links to. (`news.qmd` keeps the richer `default` layout.)
 listing:
   - id: latest-news
     contents: news          # the news/ folder of posts
-    type: default
+    type: table
     sort: "date desc"
     max-items: 3
     date-format: "MMM D, YYYY"
-    fields: [image, date, title, description]
+    fields: [date, title]
     sort-ui: false
     filter-ui: false
 ---
