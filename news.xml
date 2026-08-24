@@ -19,6 +19,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-07-15-news.png" class="news-hero img-fluid" alt="A new doctor in the house"></p>
 <p><strong>Yixin Ma</strong>, the very first graduate student in BioM2 Lab, gave a wonderful public defense today! Congratulations Yixin and wish you the best for your upcoming journey at Harvard University as a post-doc!</p>
 
 
@@ -54,6 +55,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-06-29-news.jpg" class="news-hero img-fluid" alt="Rong Li presents poster at the Schmidt Science Summit"></p>
 <p><strong>Rong Li</strong>, a Schmidt AI4Science postdoctoral fellow at the <a href="https://science.ai.cornell.edu/">Cornell University AI for Science Institute</a>, presented a poster titled “Quantifying Neighborhood and Species Interaction Effects on Tropical Tree Growth with Machine Learning and Long-term Census Data” at the 2026 Interdisciplinary Science Summit in North Carolina. The work, co-authored with lab alumni <strong>Dylan Van Bramer</strong> and <strong>Xiangtao Xu</strong>, uses XGBoost and graph neural network (GNN) models on long-term census data from the Luquillo Forest Dynamics Plot in Puerto Rico to quantify how neighboring trees and species interactions shape individual tree growth.</p>
 
 
@@ -73,6 +75,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-06-26-nph-tansley-review.jpg" class="news-hero img-fluid" alt="New Tansley Review on modeling forest disturbance published in New Phytologist"></p>
 <p>New Tansley Review titled “Mechanisms and scales in modeling forest responses to changing disturbance regimes” is now published <a href="https://doi.org/10.1111/nph.71384">online</a> in <em>New Phytologist</em>. The review synthesizes the mechanisms underlying vegetation responses to disturbance across spatio-temporal scales — from disturbance occurrence and immediate structural damage to post-disturbance community reorganization and long-term ecosystem feedbacks — and identifies key challenges for representing these processes in terrestrial biosphere models. The key message: advancing mechanistic, scalable, and observation-constrained modeling of disturbance across scales is essential for reducing uncertainties in forecasting global change impacts on ecosystems and the carbon cycle. Several BioM2 Lab members contributed to the review, including <strong>Xiangtao Xu</strong>, <strong>Cameron Scholl</strong>, <strong>Yixin Ma</strong>, and <strong>Tao Han</strong>.</p>
 
 
@@ -127,6 +130,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-12-22-news.jpg" class="news-hero img-fluid" alt="Pond mapping paper published in Remote Sensing of Environment"></p>
 <p>New lab paper titled “Inventorying ponds through novel size-adaptive object mapping using Sentinel-1/2 time series” is now published <a href="https://www.sciencedirect.com/science/article/abs/pii/S0034425724005108">online</a> in <em>Remote Sensing of Environment</em>! The project is a collaboration with the <a href="https://blogs.cornell.edu/holgersonlab/">Holgerson Lab</a> at Cornell EEB and led by visiting student Denghong Liu from Hong Kong Polytechnic University. The study develops a novel object mapper (OptiSAR-POM) for individual ponds down to ~0.2 hectare in size. It has high accuracy and scalability across diverse landscapes and will contribute to better inventorying of small water bodies across New York State, which are biogeochemical hotspots for greenhouse gas emissions.</p>
 
 
@@ -164,6 +168,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-08-19-news.jpg" class="news-hero img-fluid" alt="New paper published in Forest Ecology and Management"></p>
 <p>New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published <a href="https://www.sciencedirect.com/science/article/pii/S0378112724005231">online</a> in <em>Forest Ecology and Management</em>! This collaborative work, involving Cornell EEB, DNRE, and SUNY ESF, is led by our PhD student Nick Cranmer. The study investigates the woody volume of slash walls, an effective forest management practice to prevent deer herbivory and promote forest regeneration, using terrestrial and airborne lidar systems (TLS and ALS). Key findings include: (1) TLS tends to underestimate total cross-sectional area due to omission of small stem cross-sections (diameter &lt; 5.08 cm); (2) TLS-based wood volume estimates were similar across both short and tall slash walls in the study, with an average volume of 21.34 m³/30 m for short slash walls and 21.50 m³/30 m for tall slash walls, corresponding to 16.9 t dry biomass/30 m and 17.0 t dry biomass/30 m respectively; and (3) average merchantable (diameter &gt; 15.24 cm) and non-merchantable (diameter &lt; 15.24 cm) timber fraction was 68.75% and 31.35% for short slash walls and 65.04% and 34.96% for tall slash walls. This study provides novel data and methodology to estimate the construction cost of slash walls, which is critical for optimizing slash wall applications.</p>
 
 
@@ -219,6 +224,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/ESA_TALK.jpeg" class="news-hero img-fluid" alt="Coral del Mar presented an oral session on ‘Creating Safe Spaces within ESA’"></p>
 <p>As incoming Chapter Chair for the ESA Latin American and Caribbean Chapter, Coral del Mar presented in a contributed oral session focused on creating safe spaces for early career professionals within ESA.</p>
 
 
@@ -256,6 +262,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-07-23-news-1.jpg" class="news-hero img-fluid" alt="Inaugural CoDiFI summer training"></p>
 <p>The inaugural summer training course of the BioM2-led Cornell Digital Forestry Initiative (<a href="../codifi.html">CoDiFI</a>) hosts a mix of PhD students, professional Master’s students, and foresters at Arnot Forest. The 4-day workshop introduces the foundations of lidar remote sensing (talk given by <strong>Xiangtao Xu</strong>), procedures of applying tripod-based and backpack lidar systems (demo given by <strong>Nick Cranmer</strong>, <strong>Yixin Ma</strong>, and <strong>Tao Han</strong>), and processes of conducting RGB drone flights (demo given by <strong>Hannah Zonnevylle</strong> from the <a href="https://cals.cornell.edu/daniel-katz">Katz Lab</a>).</p>
 
 
@@ -294,6 +301,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-06-27-news.jpg" class="news-hero img-fluid" alt="First drone lidar flight"></p>
 <p><strong>Nick Cranmer</strong> and <strong>Xiangtao Xu</strong> visited two farms participating in Cornell Cooperative Extension Tompkins County’s Payment for Ecosystem Service (PES) program. The program aims to create a protocol for measuring carbon credit for farmland, where carbon sequestration associated with agroforestry is an important component. On the visit, Nick tested our new WISPR-Livox drone-lidar system (together with curious Grant Xu) and had a successful first drone flight!</p>
 
 
@@ -329,6 +337,7 @@
 
 
 
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-04-06-news.jpg" class="news-hero img-fluid" alt="Xiangtao Xu gives keynote presentation at ER-DGVM-C"></p>
 <p><strong>Xiangtao Xu</strong> gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant functional diversity,” kickstarting the two-and-a-half-day East Regional Dynamic Global Vegetation Modeling Conference (<a href="https://aimesproject.org/erdgvmc_2024/">ER-DGVM-C</a>) at MBL, Woods Hole. Lab members <strong>Cameron Scholl</strong>, <strong>Coral Valle-Rodriguez</strong>, and <strong>Tao Han</strong> also presented research talks and posters. <strong>Tao Han</strong> has won the best postdoc poster award!</p>
 
 
