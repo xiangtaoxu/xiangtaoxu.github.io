@@ -1,0 +1,7 @@
+# Settings shared by every post in this folder (Quarto applies a `_metadata.yml`
+# to all documents in its directory).
+#
+# The filter renders each post's front-matter `image:` at the top of the post
+# body — see ../_filters/news-image.lua for why.
+filters:
+  - ../_filters/news-image.lua

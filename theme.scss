@@ -284,6 +284,20 @@ $font-size-base:   1.1rem;
   }
 }
 
+// ---- News post hero image (injected by _filters/news-image.lua) ----
+// The post's front-matter `image:` is inserted at the top of its body. Sizes
+// vary a lot across posts (a 258px screenshot, a 4000px photo, one portrait),
+// so: never upscale (Quarto's `img-fluid` already caps width at 100%), cap the
+// height so a tall image doesn't push the story off-screen, and center it so
+// the small ones don't sit lonely against the left margin.
+img.news-hero {
+  display: block;
+  margin: 0 auto 1.75rem;
+  max-height: 30rem;
+  width: auto;
+  border-radius: $border-radius;
+}
+
 // ---- Widen the page content column on wide screens ----
 // Our pages don't carry Quarto's "fullcontent" body class (that's a different
 // layout mode) -- our <body> is just "nav-fixed quarto-light", so the rule
