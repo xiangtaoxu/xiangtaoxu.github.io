@@ -64,6 +64,39 @@ with [Quarto](https://quarto.org) and served via GitHub Pages.
   listed under `project.resources` in `_quarto.yml`, or Quarto won't copy it
   into the build.
 
+## Updating the publication list
+
+`research.qmd` holds the rendered list; `_citations/citations.yaml` is a cache
+of exactly what that list contains (there is no generator script — it's kept in
+sync by hand). `_citations/sources.yaml` is the older curated DOI list, reserved
+for a future Publications page; it is not the source of truth.
+
+To sync after new papers come out:
+
+1. Fetch the works list from Xiangtao's ORCID (`0000-0002-9402-9474`,
+   `https://pub.orcid.org/v3.0/<id>/works`) and diff its DOIs against the `id:`
+   fields in `citations.yaml`.
+2. Pull metadata for each genuinely new DOI from Crossref
+   (`https://api.crossref.org/works/<doi>`) — title *with* its markup
+   (`<scp>`, `<sub>`, `&amp;`), full author list in order, journal, issued date.
+3. Insert into the right year block of `research.qmd`, newest first, as:
+   `- **[title](https://doi.org/DOI)**<br><span class="pub-meta">authors. *Journal*. DOI: <code>DOI</code></span>`
+4. Append the same record to `citations.yaml` (`id`, `title`, `authors`,
+   `publisher`, `date`, `link`, `type`), and bump both the *Updated on* line in
+   `research.qmd` and the "Regenerated" date in the cache header.
+
+What stays out of the list — ORCID carries far more than belongs here:
+
+- **Anything before 2019**, when Xiangtao became a PI. The list is the lab's
+  output, not a full CV, so the 2019 section is where it ends.
+- **Preprints and non-papers**: bioRxiv, Authorea, Biogeosciences/EGU discussion
+  papers and their supplements, conference abstracts, referee reports.
+- **Corrections**: link one inline from the entry it corrects (see the *Nature
+  Geoscience* woody-debris paper) rather than giving it its own entry.
+
+Bold only real lab members, and match on the *whole* name — surname alone
+misfires (a co-author named Zewei Ma is not Yixin Ma).
+
 ## Build & preview
 
 Quarto here runs from a **conda env named `website`** (it carries pinned

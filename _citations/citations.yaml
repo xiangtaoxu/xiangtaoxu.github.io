@@ -1,5 +1,5 @@
 # Resolved publication cache -- reflects what's rendered on research.qmd.
-# Regenerated 2026-07-19 via ORCID (0000-0002-9402-9474) + Crossref.
+# Regenerated 2026-08-24 via ORCID (0000-0002-9402-9474) + Crossref.
 - id: doi:10.1016/j.foreco.2024.122211
   title: Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and
     airborne LiDAR
@@ -849,4 +849,109 @@
   publisher: New Phytologist
   date: '2026-06-29'
   link: https://doi.org/10.1111/nph.71367
+  type: paper
+- id: doi:10.1126/sciadv.aec5472
+  title: Land-use transitions and carbon emissions of aquaculture expansion in the Brazilian Amazon
+  authors:
+  - Felipe S. Pacheco
+  - Sebastian A. Heilpern
+  - Rafael M. Almeida
+  - Suresh A. Sethi
+  - Marcela Miranda
+  - Nicholas Ray
+  - Laura Greenstreet
+  - Joshua Fan
+  - Brendan H. Rappazzo
+  - Anmol Kabra
+  - Marta E. Ummus
+  - Ícaro B. Alves
+  - Nathan O. Barros
+  - Jucilene Cavali
+  - Gabriel M. Cesar
+  - Carolina R. Doria
+  - Kathryn J. Fiorella
+  - Bruce R. Forsberg
+  - Marcelo Gomes da Silva
+  - Daniel A. Maciel
+  - David McGrath
+  - Peter B. McIntyre
+  - Patricia Moraes-Valenti
+  - Ilce Oliveira
+  - Jean P. H. B. Ometto
+  - Fabio Roland
+  - Adry Trindade
+  - Wagner C. Valenti
+  - Aline M. Valerio
+  - Xiangtao Xu
+  - Carla P. Gomes
+  - Alexander S. Flecker
+  publisher: Science Advances
+  date: '2026-08-14'
+  link: https://doi.org/10.1126/sciadv.aec5472
+  type: paper
+- id: doi:10.1111/gcb.70987
+  title: 'Multi‐Model Ensembles in Ecosystem Modeling: Challenges and Best Practices for Decision‐Making'
+  authors:
+  - Kaiyu Guan
+  - Rongzhu Qin
+  - Zewei Ma
+  - Lei Zhao
+  - Licheng Liu
+  - Sheng Wang
+  - Trevor F. Keenan
+  - Mengqi Jia
+  - Debjani Sihi
+  - Eric Potash
+  - Senthold Asseng
+  - Jingyun Tang
+  - Xiangtao Xu
+  - Katheleen Boomer
+  - Bin Peng
+  - Zhenong Jin
+  - Forrest M. Hoffman
+  - Stephen Ogle
+  - Jonathan Coppess
+  - Madhu Khanna
+  - Alyssa Whitcraft
+  - Benjamin R. K. Runkle
+  publisher: Global Change Biology
+  date: 2026-08
+  link: https://doi.org/10.1111/gcb.70987
+  type: paper
+- id: doi:10.1111/pce.70781
+  title: Disentangling Thermal and Hydraulic Drivers of Stomatal Conductance Under Hot Versus Dry Vapour Pressure
+    Deficit Increases Using Water‐Use Efficiency
+  authors:
+  - Aaron Potkay
+  - Brandon Sloan
+  - Aviad Perry
+  - Or Sperling
+  - Uri Hochberg
+  - Rong Li
+  - Xiangtao Xu
+  - Mazen Nakad
+  - Richard L. Peters
+  - Xue Feng
+  publisher: Plant, Cell &amp; Environment
+  date: '2026-07-28'
+  link: https://doi.org/10.1111/pce.70781
+  type: paper
+- id: doi:10.1111/gcb.71021
+  title: Water Limits Radial Tree Growth More Than Light in an Everwet Subtropical Forest
+  authors:
+  - Laura E. Boeschoten
+  - Chris M. Smith‐Martin
+  - Jose A. Medina‐Vega
+  - Kristina J. Anderson‐Teixeira
+  - Luis A. Esbrí Ruiz
+  - Rebecca A. Montgomery
+  - Monique Picón
+  - Mukund P. Rao
+  - Tana E. Wood
+  - Xiangtao Xu
+  - Jess K. Zimmerman
+  - María Uriarte
+  publisher: Global Change Biology
+  date: 2026-07
+  link: https://doi.org/10.1111/gcb.71021
   type: paper
