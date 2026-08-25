@@ -10,7 +10,35 @@
 <atom:link href="https://xiangtaoxu.eeb.cornell.edu/news.xml" rel="self" type="application/rss+xml"/>
 <description>Biosphere Modeling &amp; Monitoring — Xiangtao Xu Lab, Cornell EEB</description>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Thu, 30 Jul 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Mon, 24 Aug 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Collaborative research spotlights August 2026</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-08-24-collaborative-research-spotlights.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-24-news.jpg" class="news-hero img-fluid" alt="Collaborative research spotlights August 2026"></p>
+<p>A good share of the lab’s output shows up as contributions to work led by collaborators. Five such papers have appeared since early summer, and each is worth a look:</p>
+<ul>
+<li><p><strong><a href="https://doi.org/10.1111/nph.71367">Soil fertility controls on tropical forest productivity and mortality</a></strong> (<em>New Phytologist</em>), led by Michelle Wong and Evan Gora. Aboveground productivity rises with soil fertility, but biomass does not rise proportionally — likely because mortality climbs too. The paper lays out a mechanistic framework for that disconnect and a roadmap for pinning it down.</p></li>
+<li><p><strong><a href="https://doi.org/10.1126/sciadv.aec5472">Land-use transitions and carbon emissions of aquaculture expansion in the Brazilian Amazon</a></strong> (<em>Science Advances</em>), led by Felipe Pacheco with Alex Flecker’s group at Cornell. Amazonian aquaculture pond area grew 450-fold between 1985 and 2022, mostly on existing pasture (87%) rather than forest (5%). In Rondônia, production could double by converting just 1.2% of degraded pasture — if siting policy steers it there.</p></li>
+<li><p><strong><a href="https://doi.org/10.1111/gcb.70987">Multi-model ensembles in ecosystem modeling</a></strong> (<em>Global Change Biology</em>), led by Kaiyu Guan. A perspective on a habit the field has slipped into: stacking models together and reading the spread as uncertainty. The authors argue that ensembles are only decision-grade when built on rigorous model intercomparison and co-designed with the people using them, since a poorly built ensemble mostly manufactures confidence.</p></li>
+<li><p><strong><a href="https://doi.org/10.1111/pce.70781">Disentangling thermal and hydraulic drivers of stomatal conductance under hot versus dry VPD</a></strong> (<em>Plant, Cell &amp; Environment</em>), led by Aaron Potkay and Xue Feng, with <strong>Rong Li</strong> and <strong>Xiangtao Xu</strong> as co-authors. Rising VPD is not one signal: dry VPD (low humidity) imposes hydraulic stress that raises water-use efficiency and closes stomata quickly, while hot VPD (high temperature) does the opposite. Of three optimization models tested, only the Generalized Stomatal Optimization model reproduced both responses.</p></li>
+<li><p><strong><a href="https://doi.org/10.1111/gcb.71021">Water limits radial tree growth more than light in an everwet subtropical forest</a></strong> (<em>Global Change Biology</em>), led by Laura Boeschoten and María Uriarte. Two years of hourly dendrometer data from 35 trees in a forest receiving 3500 mm of rain a year overturn the standing assumption that growth there is light-limited: soil moisture and evaporative demand governed whether trees grew at all, with light shaping only how much once water was ample.</p></li>
+</ul>
+<p>The full publication list lives on the <a href="../research.html">Research</a> page.</p>
+
+
+
+ ]]></description>
+  <category>Publication</category>
+  <category>Collaboration</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-08-24-collaborative-research-spotlights.html</guid>
+  <pubDate>Mon, 24 Aug 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-24-news.jpg" medium="image" type="image/jpeg"/>
+</item>
 <item>
   <title>New paper on satellite mapping of spongy moth defoliation published in Forest Ecology and Management</title>
   <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-30-spongy-moth-defoliation-paper.html</link>
