@@ -1,0 +1,21 @@
+---
+title: "Collaborative research spotlights August 2026"
+date: "2026-08-24"
+image: /images/news/2026-08-24-news.jpg
+description: "Five recent papers with BioM2 co-authors, spanning tropical soil fertility, Amazon aquaculture, ecosystem model ensembles, stomatal theory, and everwet forest growth."
+categories: [Publication, Collaboration]
+---
+
+A good share of the lab's output shows up as contributions to work led by collaborators. Five such papers have appeared since early summer, and each is worth a look:
+
+- **[Soil fertility controls on tropical forest productivity and mortality](https://doi.org/10.1111/nph.71367)** (*New Phytologist*), led by Michelle Wong and Evan Gora. Aboveground productivity rises with soil fertility, but biomass does not rise proportionally — likely because mortality climbs too. The paper lays out a mechanistic framework for that disconnect and a roadmap for pinning it down.
+
+- **[Land-use transitions and carbon emissions of aquaculture expansion in the Brazilian Amazon](https://doi.org/10.1126/sciadv.aec5472)** (*Science Advances*), led by Felipe Pacheco with Alex Flecker's group at Cornell. Amazonian aquaculture pond area grew 450-fold between 1985 and 2022, mostly on existing pasture (87%) rather than forest (5%). In Rondônia, production could double by converting just 1.2% of degraded pasture — if siting policy steers it there.
+
+- **[Multi-model ensembles in ecosystem modeling](https://doi.org/10.1111/gcb.70987)** (*Global Change Biology*), led by Kaiyu Guan. A perspective on a habit the field has slipped into: stacking models together and reading the spread as uncertainty. The authors argue that ensembles are only decision-grade when built on rigorous model intercomparison and co-designed with the people using them, since a poorly built ensemble mostly manufactures confidence.
+
+- **[Disentangling thermal and hydraulic drivers of stomatal conductance under hot versus dry VPD](https://doi.org/10.1111/pce.70781)** (*Plant, Cell & Environment*), led by Aaron Potkay and Xue Feng, with **Rong Li** and **Xiangtao Xu** as co-authors. Rising VPD is not one signal: dry VPD (low humidity) imposes hydraulic stress that raises water-use efficiency and closes stomata quickly, while hot VPD (high temperature) does the opposite. Of three optimization models tested, only the Generalized Stomatal Optimization model reproduced both responses.
+
+- **[Water limits radial tree growth more than light in an everwet subtropical forest](https://doi.org/10.1111/gcb.71021)** (*Global Change Biology*), led by Laura Boeschoten and María Uriarte. Two years of hourly dendrometer data from 35 trees in a forest receiving 3500 mm of rain a year overturn the standing assumption that growth there is light-limited: soil moisture and evaporative demand governed whether trees grew at all, with light shaping only how much once water was ample.
+
+The full publication list lives on the [Research](../research.qmd) page.
