@@ -1,0 +1,13 @@
+---
+title: "New paper on satellite mapping of spongy moth defoliation published in Forest Ecology and Management"
+date: "2026-07-30"
+image: /images/news/2026-07-30-news.jpg
+description: "Sentinel-2 defoliation mapping shows that warm, dry summers precede spongy moth outbreaks by a year — giving land managers a season of advance warning."
+categories: [Publication, Remote sensing, Disturbance ecology]
+---
+
+New lab paper titled "Lagged climatic drivers of spongy moth (*Lymantria dispar dispar*) outbreaks revealed by satellite-based defoliation mapping" is now published [online](https://doi.org/10.1016/j.foreco.2026.123854) in *Forest Ecology and Management*. Led by PhD student **Cameron Scholl**, the study develops an algorithm that quantifies defoliation from Sentinel-2 time series by detecting the spongy moth's telltale spring signature: fully leaf-out deciduous canopies that abruptly lose their leaves to feeding larvae, then push out a second flush of foliage.
+
+Mapping defoliation this way turns up a lagged climatic control on outbreaks — warm, dry summers tend to be followed by heavy defoliation the *next* year. The likely mechanism is the moth's own enemies: the pathogens that normally keep larval populations in check depend on moisture, so in dry summers more larvae survive to adulthood and lay far more eggs going into the following season. That one-year lag is what makes the result useful in practice, since surveying for outbreaks on the ground is slow and labor-intensive, and a season of warning is enough time to decide where to concentrate monitoring and management effort.
+
+The work is a collaboration with [Christine Goodale](https://cals.cornell.edu/people/christine-l-goodale) at Cornell EEB, with **Xiangtao Xu** as senior author, and was supported by the Cornell Atkinson Center for Sustainability and the U.S. Department of Energy. The study is also featured in the [Cornell Chronicle](https://news.cornell.edu/stories/2026/07/satellite-imagery-could-protect-trees-devastating-moth-outbreaks).
