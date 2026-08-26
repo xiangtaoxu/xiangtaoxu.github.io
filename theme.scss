@@ -158,12 +158,20 @@ $font-size-base:   1.1rem;
 // inline `height` (its default listing thumbnail size), so we must target the
 // image and use `!important` to beat that inline style — nothing else overrides it.
 .quarto-grid-item .card-img-top { margin: 0; }   // it's a <p> wrapper: drop default paragraph spacing
+
+// Default for grid listings: a landscape thumbnail. Quarto stamps the <img>
+// with an inline `height`, so `!important` is the only thing that beats it.
 .quarto-grid-item .card-img-top img {
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 2 / 1;
   width: 100%;
-  height: auto !important;   // override Quarto's inline thumbnail height
-  object-fit: cover;         // crop the square portrait to fill
+  height: auto !important;
+  object-fit: cover;
 }
+
+// Team portraits are the exception: they're cropped 1:1 (face-centered), so the
+// current-members grid shows them square. Scoped to that listing by id — this
+// used to be unscoped, which silently square-cropped the Teaching cards too.
+#listing-current-members .card-img-top img { aspect-ratio: 1 / 1; }
 .quarto-grid-item .card-title { margin-bottom: 0.1rem; }
 .quarto-grid-item .card-subtitle { color: $primary; font-weight: 600; }
 
@@ -329,4 +337,161 @@ img.news-hero {
       [screen-end-inset] 1.5em
       [screen-end] !important;
   }
+}
+
+// ---- Teaching: interactive climate-diagram page ----------------------------
+// The page is a map plus a chart panel. Everything here is scoped under
+// .climate-diagram (or the #cd-* ids the script owns) so it can't leak into the
+// rest of the site. The chart itself is an <svg> built in JS; its colours live
+// here rather than in the script so they stay with the rest of the palette.
+
+.cd-howto {
+  background: #fbfbfc;
+  border: 1px solid #e7e7e9;
+  border-left: 4px solid $primary;
+  border-radius: 0 $border-radius $border-radius 0;
+  padding: 1.1rem 1.4rem 0.5rem;
+  margin: 1.25rem 0 1.75rem;
+  p { margin-bottom: 0.8rem; }
+}
+
+.climate-diagram { margin: 1.25rem 0 2rem; }
+
+// Controls sit above the map: a preset picker and a coordinate entry box.
+.cd-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem 2rem;
+  align-items: flex-end;
+  margin-bottom: 0.9rem;
+}
+.cd-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  select, input {
+    font: inherit;
+    font-weight: 400;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    background: #fff;
+  }
+  select { min-width: 20rem; max-width: 100%; }
+}
+.cd-coords {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  span { width: 100%; }
+  input { width: 7rem; }
+}
+
+// Map left, chart right on a wide screen; stacked on a narrow one.
+.cd-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+}
+.cd-map {
+  height: 60vh;
+  min-height: 380px;
+  border: 1px solid #e7e7e9;
+  border-radius: $border-radius;
+  // The basemap is a single image, so let the browser smooth it when zoomed
+  // rather than showing hard pixel edges.
+  background: #eef1f4;
+  z-index: 0;             // keep Leaflet's panes under the pinned navbar
+}
+.cd-panel {
+  border: 1px solid #e7e7e9;
+  border-radius: $border-radius;
+  padding: 1rem 1.1rem;
+  background: #fff;
+  min-height: 380px;
+}
+.cd-status, .cd-empty { color: #555; font-size: 0.95rem; margin: 0.4rem 0; }
+
+// The clicked cell, drawn as a rectangle: this is the area the numbers
+// actually describe, and seeing the click snap to a box is the point.
+.cd-cell { stroke: $primary; fill: $primary; }
+.cd-pin  { stroke: #1a1d21; stroke-width: 2; fill: #fff; }
+
+// ---- the chart ----
+.cd-chart { width: 100%; height: auto; display: block; }
+
+.cd-temp-line { fill: none; stroke: #b31b1b; stroke-width: 2; }
+.cd-prec-line { fill: none; stroke: #1f6fb2; stroke-width: 2; }
+.cd-band      { stroke: none; }
+.cd-dry-dot   { fill: #d98324; }
+.cd-wet-line  { stroke: #1f6fb2; stroke-width: 0.8; fill: none; }
+.cd-verywet   { fill: #1f6fb2; opacity: 0.75; stroke: none; }
+
+.cd-gridline  { stroke: #e9e9ec; stroke-width: 1; }
+.cd-axis      { stroke: #999; stroke-width: 1; }
+.cd-axis-zero { stroke: #b9b9bf; stroke-width: 1.2; }
+// The 1:2 -> 1:20 scale break. Dashed and labelled on purpose: it is the most
+// confusing feature of the chart for a first-time reader.
+.cd-break       { stroke: #888; stroke-width: 1; stroke-dasharray: 4 3; }
+.cd-break-label { font-size: 10px; fill: #777; text-anchor: end; }   // anchored end: it sits just inside the right edge of the plot
+
+.cd-tick      { font-size: 11px; fill: #555; }
+.cd-tick-t    { text-anchor: end; }
+.cd-tick-p    { text-anchor: start; }
+.cd-month     { font-size: 11px; fill: #555; text-anchor: middle; }
+.cd-axis-title { font-size: 11px; fill: #555; text-anchor: middle; }
+
+.cd-title     { font-size: 17px; font-weight: 700; fill: #1a1d21; }
+.cd-subtitle  { font-size: 12px; fill: #555; }
+.cd-stats     { font-size: 12px; fill: #333; }
+.cd-period    { font-size: 11px; fill: #666; text-anchor: end; }
+.cd-caption   { font-size: 10.5px; fill: #666; }
+.cd-caption-warn { fill: #8a5200; }
+
+.cd-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.6rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-size: 0.85rem;
+  color: #444;
+  li { display: flex; align-items: center; gap: 0.35rem; }
+}
+.cd-key { width: 1.1rem; height: 0.7rem; border-radius: 2px; display: inline-block; }
+.cd-key-temp    { background: #b31b1b; height: 0.2rem; }
+.cd-key-prec    { background: #1f6fb2; height: 0.2rem; }
+.cd-key-dry     { background: repeating-linear-gradient(45deg,#d98324 0 2px,#fff 2px 5px); border: 1px solid #eee; }
+.cd-key-wet     { background: repeating-linear-gradient(45deg,#1f6fb2 0 1px,#fff 1px 4px); border: 1px solid #eee; }
+.cd-key-verywet { background: #1f6fb2; opacity: 0.75; }
+
+// Wide table on a narrow screen: scroll the table, never the page.
+.cd-table-wrap { overflow-x: auto; margin-top: 0.9rem; }
+.cd-table {
+  width: 100%;
+  font-size: 0.82rem;
+  border-collapse: collapse;
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.82rem;
+    color: #666;
+    padding-bottom: 0.3rem;
+  }
+  th, td { padding: 0.25rem 0.45rem; border-bottom: 1px solid #eee; text-align: right; }
+  th[scope="row"] { text-align: left; white-space: nowrap; color: #333; }
+  thead th { color: #333; }
+}
+
+@media (max-width: 991px) {
+  .cd-layout { grid-template-columns: 1fr; }
+  // Shorter map when stacked, so the diagram is visible without hunting for it.
+  .cd-map { height: 48vh; min-height: 300px; }
+  .cd-panel { min-height: 0; }
+  .cd-field select { min-width: 0; width: 100%; }
 }

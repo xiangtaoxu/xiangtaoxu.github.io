@@ -1,0 +1,41 @@
+---
+title: "Teaching"
+page-layout: full
+toc: false
+
+# ----------------------------------------------------------------------------
+# One section per course, one listing per section.
+#
+# Grouping is BY FOLDER (teaching/bioee1610/, teaching/<next-course>/, ...), the
+# same way the Team page separates current members from alumni. A file lives in
+# exactly one course folder, so two sections can never show the same card and
+# nothing can be silently missed by a typo in a front-matter field.
+#
+# Ordering within a course comes from each file's `weight:` field (low first).
+#
+# To add material to an existing course: drop a .qmd into that course's folder.
+# Nothing here needs editing.
+#
+# To add a NEW course, three steps:
+#   1. make the folder, e.g. teaching/bioee2510/
+#   2. add a listing block below, copying the one for bioee1610 and changing
+#      `id:` and `contents:`
+#   3. add a `## Course name` section in the body with ::: {#that-id} under it
+# ----------------------------------------------------------------------------
+listing:
+  - id: bioee1610
+    contents: "teaching/bioee1610/*.qmd"
+    type: grid
+    grid-columns: 3
+    fields: [image, title, description]
+    sort: "weight asc"
+    sort-ui: false
+    filter-ui: false
+---
+
+Web-based interactive tools for courses.
+
+## BioEE 1610: Ecology and Environment
+
+::: {#bioee1610}
+:::

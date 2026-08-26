@@ -1,0 +1,99 @@
+---
+title: "Global Climate Diagrams"
+description: Interactive map for climate diagrams
+image: /images/teaching/climate-diagram-card.jpg
+weight: 10
+page-layout: full
+toc: false
+
+# Leaflet is loaded for THIS page only, not site-wide — the other six pages
+# have no map on them and shouldn't pay for the download.
+format:
+  html:
+    include-in-header:
+      - text: <link rel="stylesheet" href="/js/vendor/leaflet/leaflet.css">
+    include-after-body:
+      - text: |
+          <script src="/js/vendor/leaflet/leaflet.js"></script>
+          <script src="/js/climate-diagram.js" defer></script>
+---
+
+Every place on Earth has a climate you can summarise in a single picture: how
+warm it is each month, and how much rain falls. Putting those two curves on one
+chart results in a **climate diagram** (or a Walter–Lieth diagram, after the
+two ecologists who standardised it). **Click anywhere** on the map below and one
+will be drawn for that spot.
+
+## Explore
+
+Click the map, pick a biome from the menu, or type coordinates. The link in your
+browser's address bar updates as you go, so you can copy it to share or hand in
+a specific location.
+
+::: {.climate-diagram}
+::: {.cd-controls #cd-controls}
+:::
+::: {.cd-layout}
+::: {.cd-map #cd-map}
+:::
+::: {.cd-panel #cd-panel}
+:::
+:::
+:::
+
+## Things to try
+
+- Compare **Manaus** and **Darwin**. Both are tropical and both are hot all
+  year — so why is one rainforest and the other savanna? Look at the dry season.
+- Find **Nairobi**. It sits almost exactly on the equator, but it is not hot.
+  Check the elevation in the diagram header.
+- Click somewhere in the **Andes**, then somewhere in **Kansas**. Notice which
+  diagram warns you that the grid cell is hiding a lot of terrain, and think
+  about what that means for how much you should trust it.
+- Walk north up a single line of longitude — say 100° W — from Mexico to the
+  Arctic, clicking every few degrees. Watch the temperature curve flatten out
+  and drop.
+
+## How to read a climate diagram
+
+::: {.cd-howto}
+
+**Two lines, two axes.** The red line is *temperature*, read against the axis on
+the **left** in °C. The blue line is *rainfall*, read against the axis on the
+**right** in mm. Each point is an average for that month.
+
+**The two axes are deliberately linked.** 10 °C on the left lines up with 20 mm
+on the right. That is not an accident — it is the whole trick of the diagram.
+Where the rainfall line sits *above* the temperature line, more water arrives
+than the warmth can evaporate, and plants have water to work with: a **wet
+season** (blue hatching). Where rainfall drops *below* temperature, it is a
+**dry season** (orange dots). You can spot a Mediterranean summer drought or a
+monsoon instantly, without reading a single number.
+
+**The right-hand axis changes scale at 100 mm.** Below 100 mm each 10 °C is
+20 mm; above it, each 10 °C is 200 mm. Without that squeeze, a wet tropical
+month would run off the top of the page. The chart marks where the change
+happens — watch for it, because it makes very wet months look flatter than they
+are.
+
+**A note on months.** Southern-hemisphere diagrams start in July, so that summer
+sits in the middle of the chart just as it does for northern ones. The chart
+says so when it does this.
+
+:::
+
+## About the data
+
+Monthly averages come from **WorldClim 2.1**, which describes the climate of
+**1970–2000** — a 30-year average, not this year's weather, and not a forecast.
+Values are given for grid cells 0.5° across (roughly 55 km north–south), so each
+diagram describes a *region*, not a point. In mountainous or coastal places the
+real climate can vary sharply inside one cell, and the diagram says so when the
+terrain warrants it.
+
+Fick, S.E. and R.J. Hijmans (2017). WorldClim 2: new 1 km spatial resolution
+climate surfaces for global land areas. *International Journal of Climatology*
+37(12): 4302–4315.
+
+Basemap: [Natural Earth II](https://www.naturalearthdata.com/) (public domain).
+Map interaction by [Leaflet](https://leafletjs.com/).

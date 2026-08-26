@@ -11,6 +11,12 @@ project:
     # sure Quarto copies it into the built site
     - images/banners/header-banner.jpg
     - images/hero/forest-structure-2d3d.gif
+    # Same rule, one step further: these are referenced only from JavaScript at
+    # runtime, so Quarto's scanner never sees them. Without these three lines the
+    # climate-diagram page works in `quarto preview` and 404s in production.
+    - data/climate/**
+    - js/**
+    - images/basemap/**
     # CNAME must be copied into every gh-pages publish, or the custom domain breaks
     - CNAME
 
@@ -30,6 +36,8 @@ website:
         href: team.qmd
       - text: "Research"
         href: research.qmd
+      - text: "Teaching"
+        href: teaching.qmd
       - text: "CoDiFI"
         href: codifi.qmd
       - text: "News"
