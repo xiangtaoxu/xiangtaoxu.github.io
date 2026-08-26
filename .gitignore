@@ -10,17 +10,3 @@
 
 # One-off download cache for tools/build_climate_grid.py (60 MB of WorldClim zips)
 /.worldclim-cache/
-
-# ---------------------------------------------------------------------------
-# Generated climate grid for the Global Climate Diagrams teaching page.
-#
-# HELD BACK ON PURPOSE — this is not build output, it is a licence question.
-# WorldClim allows academic use but NOT redistribution without prior written
-# permission, and publishing this file to the website is redistribution.
-# See tools/README.md ("Licence") for the terms and who to ask.
-#
-# Once permission from info@worldclim.org is on file, delete these two lines
-# and commit data/climate/. Until then the page renders but reports that the
-# climate data is unavailable.
-# ---------------------------------------------------------------------------
-/data/climate/

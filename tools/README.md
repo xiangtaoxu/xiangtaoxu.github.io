@@ -63,7 +63,7 @@ constant the client needs — grid geometry, scale factors, plane indices,
 provenance — so `js/climate-diagram.js` hardcodes none of them. Regenerating at
 a different resolution requires no JavaScript change.
 
-### Licence — read before committing the output
+### Licence — current status
 
 WorldClim's terms (<https://worldclim.org/about.html>) say:
 
@@ -71,10 +71,37 @@ WorldClim's terms (<https://worldclim.org/about.html>) say:
 > **Redistribution or commercial use is not allowed without prior permission.**
 
 Running this script locally is ordinary academic use. Publishing `data/climate/`
-to the website is *redistribution* of a derived product, and needs written
-permission from <info@worldclim.org> first. Until that permission is on file,
-`data/climate/` must stay out of git.
+to the website is *redistribution* of a derived product — non-commercial purpose
+does not cover it, because redistribution is prohibited as its own act.
 
-If permission is declined, the fix is to point this script at a source that
-permits redistribution; the binary format, the manifest, and the whole client
-are dataset-agnostic, so only the reading stage of this script would change.
+**Status:** permission was requested from <info@worldclim.org> on 2026-08-25 for
+this specific derived product (monthly tavg + precipitation aggregated from 10
+arc-minutes to 0.5°, requantized to int16, ~2.5 MB, served static so diagrams can
+be drawn client-side). **No reply yet.** The data is published in the meantime,
+on the understanding that it comes down promptly if permission is declined.
+WorldClim 2.1 is cited on the page and in `manifest.json`.
+
+### If permission is declined — taking it down
+
+Removing it from the live site is one commit:
+
+```bash
+git rm -r --cached data/climate
+printf '\n/data/climate/\n' >> .gitignore
+git commit -m "Remove WorldClim-derived grid pending redistribution permission"
+git push origin main          # CI redeploys without it
+```
+
+The page degrades on its own: it loads, the map works, and it reports that
+climate data is unavailable. No code change is needed.
+
+Two things that commit does **not** do, in case WorldClim asks for more:
+
+- the file stays in this repo's **git history** (and in `gh-pages` history), which
+  is public. Purging it needs a history rewrite plus a force push;
+- caches and mirrors outside our control may retain it for a while.
+
+The durable fix is to repoint the reading stage of this script at a source that
+permits redistribution. The binary format, the manifest, and the entire client
+are dataset-agnostic, so nothing else changes — roughly twenty lines here.
+CHELSA is the obvious candidate; check its licence first.
