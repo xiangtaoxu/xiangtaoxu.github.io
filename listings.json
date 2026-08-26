@@ -1,27 +1,8 @@
 [
   {
-    "listing": "/news.html",
+    "listing": "/teaching.html",
     "items": [
-      "/news/2026-08-24-collaborative-research-spotlights.html",
-      "/news/2026-07-30-spongy-moth-defoliation-paper.html",
-      "/news/2026-07-15-yixin-ma-defense.html",
-      "/news/2026-07-08-welcome-baby-charlotte.html",
-      "/news/2026-06-29-rong-li-issummit-poster.html",
-      "/news/2026-06-26-nph-tansley-review.html",
-      "/news/2026-06-25-website-relaunch.html",
-      "/news/2026-05-03-ncc-storm-biomass-turnover.html",
-      "/news/2024-12-22-pond-mapping-paper-published.html",
-      "/news/2024-09-05-cameron-a-exam.html",
-      "/news/2024-08-19-foreco-paper-published.html",
-      "/news/2024-08-13-welcome-baby-elena.html",
-      "/news/2024-08-09-gcb-paper-published.html",
-      "/news/2024-08-08-esa-safe-spaces-talk.html",
-      "/news/2024-08-06-nysdec-site-visit.html",
-      "/news/2024-07-23-codifi-summer-training.html",
-      "/news/2024-07-01-welcome-aaron-sams.html",
-      "/news/2024-06-27-first-drone-lidar-flight.html",
-      "/news/2024-05-09-cary-institute-seminar.html",
-      "/news/2024-04-06-erdgvm-keynote.html"
+      "/teaching/bioee1610/climate-diagram.html"
     ]
   },
   {
@@ -49,6 +30,31 @@
   },
   {
     "listing": "/index.html",
+    "items": [
+      "/news/2026-08-24-collaborative-research-spotlights.html",
+      "/news/2026-07-30-spongy-moth-defoliation-paper.html",
+      "/news/2026-07-15-yixin-ma-defense.html",
+      "/news/2026-07-08-welcome-baby-charlotte.html",
+      "/news/2026-06-29-rong-li-issummit-poster.html",
+      "/news/2026-06-26-nph-tansley-review.html",
+      "/news/2026-06-25-website-relaunch.html",
+      "/news/2026-05-03-ncc-storm-biomass-turnover.html",
+      "/news/2024-12-22-pond-mapping-paper-published.html",
+      "/news/2024-09-05-cameron-a-exam.html",
+      "/news/2024-08-19-foreco-paper-published.html",
+      "/news/2024-08-13-welcome-baby-elena.html",
+      "/news/2024-08-09-gcb-paper-published.html",
+      "/news/2024-08-08-esa-safe-spaces-talk.html",
+      "/news/2024-08-06-nysdec-site-visit.html",
+      "/news/2024-07-23-codifi-summer-training.html",
+      "/news/2024-07-01-welcome-aaron-sams.html",
+      "/news/2024-06-27-first-drone-lidar-flight.html",
+      "/news/2024-05-09-cary-institute-seminar.html",
+      "/news/2024-04-06-erdgvm-keynote.html"
+    ]
+  },
+  {
+    "listing": "/news.html",
     "items": [
       "/news/2026-08-24-collaborative-research-spotlights.html",
       "/news/2026-07-30-spongy-moth-defoliation-paper.html",
