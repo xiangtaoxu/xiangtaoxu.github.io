@@ -495,3 +495,302 @@ img.news-hero {
   .cd-panel { min-height: 0; }
   .cd-field select { min-width: 0; width: 100%; }
 }
+
+// ---- Teaching: interactive photosynthesis page -----------------------------
+// Three stacked tools, each a chart plus its controls. Everything is scoped under
+// .ph-* (the ids the script owns) so it cannot leak into the rest of the site.
+// The charts are <svg> built in JS; their colours live here rather than in the
+// script so they stay with the rest of the palette.
+//
+// The three pathway colours are the load-bearing ones: C3 carnelian (it is the
+// default leaf and the site's accent), C4 a warm gold (a grass of hot open ground),
+// CAM a cool teal drawn dashed (a sketch, not the research model -- see the page).
+
+$ph-c3:   #b31b1b;
+$ph-c4:   #c07a10;
+$ph-cam:  #2a7f8f;
+$ph-water: #1f6fb2;
+
+.ph-tool {
+  max-width: 100%;
+  overflow-x: hidden;      // charts and tables scroll in their own boxes, never the page
+  border: 1px solid #e7e7e9;
+  border-radius: $border-radius;
+  padding: 1rem 1.15rem 1.15rem;
+  background: #fff;
+  margin: 1.25rem 0 1.75rem;
+}
+
+// ---- tabs ----
+.ph-tabs {
+  display: flex;
+  gap: 0.35rem;
+  border-bottom: 1px solid #e7e7e9;
+  margin-bottom: 0.9rem;
+}
+.ph-tab {
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #666;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  &:hover { color: #222; }
+  &.is-active { color: $primary; border-bottom-color: $primary; }
+}
+
+// ---- controls ----
+// auto-fit rather than a fixed column count: fields hide and show as the view
+// changes (a slider that IS the x axis is hidden), so the row must reflow.
+.ph-controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 0.9rem 1.6rem;
+  margin-bottom: 1.1rem;
+}
+.ph-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.88rem;
+  min-width: 0;
+  select, input[type="range"] { font: inherit; width: 100%; }
+  select {
+    font-weight: 400;
+    padding: 0.35rem 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.35rem;
+    background: #fff;
+  }
+  input[type="range"] { accent-color: $primary; margin: 0; }
+}
+.ph-field-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+.ph-field-name { font-weight: 600; color: #333; }
+.ph-field-value { font-variant-numeric: tabular-nums; color: $primary; font-weight: 600; white-space: nowrap; }
+.ph-field-hint { font-size: 0.78rem; color: #777; line-height: 1.35; font-weight: 400; }
+
+.ph-switch-row { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
+.ph-switch-opt {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 400;
+  cursor: pointer;
+  input { accent-color: $primary; margin: 0; }
+}
+// The humidity switch in section 2 changes what the chart MEANS, so it is boxed
+// rather than sitting flush with the ordinary sliders.
+.ph-switch-key {
+  background: #fbf7f7;
+  border: 1px solid #eddcdc;
+  border-left: 3px solid $primary;
+  border-radius: 0 0.35rem 0.35rem 0;
+  padding: 0.6rem 0.75rem;
+  grid-column: 1 / -1;
+}
+.ph-toggle-c3 span { color: $ph-c3; font-weight: 600; }
+.ph-toggle-c4 span { color: $ph-c4; font-weight: 600; }
+.ph-toggle-cam span { color: $ph-cam; font-weight: 600; }
+
+// ---- climate preset buttons (section 3's headline control) ----
+.ph-climate { grid-column: 1 / -1; }
+.ph-climate-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.ph-climate-btn {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  background: #fff;
+  cursor: pointer;
+  &:hover { border-color: #999; }
+  &.is-active { background: $primary; border-color: $primary; color: #fff; }
+}
+
+// ---- the charts ----
+.ph-chart { width: 100%; height: auto; display: block; }
+
+.ph-line { fill: none; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+.ph-an   { stroke: $ph-c3; }
+.ph-e    { stroke: $ph-water; stroke-width: 1.8; }
+.ph-wue  { stroke: #5b8f3a; }
+.ph-ref  { stroke: #b9b9bf; stroke-width: 1.6; stroke-dasharray: 5 4; }
+
+// The three potential rates, drawn thin under the answer. Seeing them meet at a
+// rounded corner is what makes "co-limitation" mean something.
+.ph-env { stroke-width: 1; opacity: 0.55; }
+.ph-env-rubisco { stroke: #8a5200; stroke-dasharray: 3 3; }
+.ph-env-rubp    { stroke: #1f6fb2; stroke-dasharray: 3 3; }
+.ph-env-product { stroke: #6b4c9a; stroke-dasharray: 3 3; }
+
+.ph-path-c3  { stroke: $ph-c3; }
+.ph-path-c4  { stroke: $ph-c4; }
+.ph-path-cam { stroke: $ph-cam; stroke-dasharray: 7 4; }
+// Water shares its pathway's colour so you can tell whose water is whose, but is
+// thin and dotted so it can never be mistaken for the carbon line beside it.
+.ph-e-line   { stroke-width: 1.2; opacity: 0.8; stroke-dasharray: 1.5 2.5; }
+
+.ph-band { stroke: none; }
+.ph-band-rubisco { fill: #8a5200; opacity: 0.07; }
+.ph-band-rubp    { fill: #1f6fb2; opacity: 0.07; }
+.ph-band-product { fill: #6b4c9a; opacity: 0.07; }
+.ph-band-pep     { fill: #c07a10; opacity: 0.07; }
+.ph-band-none,
+.ph-band-loss    { fill: #999; opacity: 0.10; }
+.ph-band-night   { fill: #2c3e50; opacity: 0.08; }
+.ph-band-label   { font-size: 10px; fill: #666; text-anchor: middle; }
+
+.ph-gridline  { stroke: #eeeef1; stroke-width: 1; }
+.ph-axis      { stroke: #aaa; stroke-width: 1; }
+.ph-axis-zero { stroke: #c4c4ca; stroke-width: 1.2; }
+.ph-cursor    { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
+.ph-dot       { stroke: #fff; stroke-width: 1.5; }
+.ph-dot-an    { fill: $ph-c3; }
+.ph-dot-e     { fill: $ph-water; }
+.ph-note      { font-size: 10.5px; fill: #666; }
+
+.ph-tick       { font-size: 11px; fill: #555; }
+.ph-tick-y     { text-anchor: end; }
+.ph-tick-y2    { text-anchor: start; fill: $ph-water; }
+.ph-tick-x     { text-anchor: middle; }
+.ph-axis-title { font-size: 11px; fill: #555; text-anchor: middle; }
+.ph-axis-title-2 { fill: $ph-water; }
+
+// The water-use-efficiency strip sits under the main chart and shares its x axis.
+.ph-substrip { margin-top: 0.2rem; }
+.ph-substrip-title {
+  font-size: 0.82rem;
+  color: #5b8f3a;
+  font-weight: 600;
+  margin: 0.5rem 0 0;
+}
+
+// ---- legend ----
+.ph-legend {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.1rem;
+  font-size: 0.83rem;
+  color: #444;
+  li { display: flex; align-items: center; gap: 0.35rem; }
+}
+.ph-key { width: 1.15rem; height: 0.18rem; border-radius: 2px; display: inline-block; }
+.ph-key-an, .ph-key-c3 { background: $ph-c3; }
+.ph-key-c4    { background: $ph-c4; }
+.ph-key-cam   { background: repeating-linear-gradient(to right, $ph-cam 0 6px, transparent 6px 10px); }
+.ph-key-e, .ph-key-water { background: $ph-water; }
+.ph-key-carbon    { background: #555; height: 0.2rem; }
+.ph-key-waterline { background: repeating-linear-gradient(to right, #555 0 2px, transparent 2px 5px); height: 0.12rem; }
+.ph-key-wue   { background: #5b8f3a; }
+.ph-key-ref   { background: repeating-linear-gradient(to right, #b9b9bf 0 5px, transparent 5px 9px); }
+.ph-key-rubisco { background: repeating-linear-gradient(to right, #8a5200 0 3px, transparent 3px 6px); }
+.ph-key-rubp    { background: repeating-linear-gradient(to right, #1f6fb2 0 3px, transparent 3px 6px); }
+.ph-key-product { background: repeating-linear-gradient(to right, #6b4c9a 0 3px, transparent 3px 6px); }
+
+// ---- readout tiles ----
+.ph-readout-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+  gap: 0.7rem;
+  margin: 1rem 0 0.4rem;
+}
+.ph-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.55rem 0.7rem;
+  background: #fafafb;
+  border: 1px solid #eeeef1;
+  border-radius: 0.35rem;
+}
+.ph-stat-value { font-size: 1.12rem; font-weight: 700; color: #1a1d21; font-variant-numeric: tabular-nums; line-height: 1.2; }
+.ph-stat-label { font-size: 0.78rem; font-weight: 600; color: #444; }
+.ph-stat-sub   { font-size: 0.72rem; color: #888; line-height: 1.3; }
+
+// ---- tables ----
+.ph-data {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  summary { cursor: pointer; color: #666; font-size: 0.83rem; }
+}
+.ph-table-wrap { overflow-x: auto; margin-top: 0.6rem; }
+.ph-table {
+  width: 100%;
+  font-size: 0.8rem;
+  border-collapse: collapse;
+  caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.82rem;
+    color: #666;
+    padding-bottom: 0.35rem;
+  }
+  th, td { padding: 0.3rem 0.5rem; border-bottom: 1px solid #eee; text-align: right; font-variant-numeric: tabular-nums; }
+  th[scope="row"] { text-align: left; white-space: nowrap; color: #333; }
+  thead th { text-align: right; color: #333; vertical-align: bottom; }
+}
+
+// The daily budget is the point of section 3, so it is the one table that is not
+// hidden behind a <details>.
+.ph-budget-host { max-width: 100%; }
+.ph-budget {
+  margin-top: 1rem;
+  min-width: 34rem;        // below this the six columns become unreadable; the
+                           // .ph-table-wrap around it scrolls instead of the page
+  font-size: 0.88rem;
+  thead th span { display: block; font-weight: 400; font-size: 0.72rem; color: #888; }
+  th[scope="row"] { font-weight: 700; }
+  .ph-row-c3  th[scope="row"] { color: $ph-c3; }
+  .ph-row-c4  th[scope="row"] { color: $ph-c4; }
+  .ph-row-cam th[scope="row"] { color: $ph-cam; }
+}
+.ph-budget-note, .ph-phase-note, .ph-crossover {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0.7rem 0 0;
+}
+.ph-phase-note, .ph-crossover {
+  background: #fbfbfc;
+  border-left: 3px solid #ddd;
+  padding: 0.6rem 0.8rem;
+  border-radius: 0 0.3rem 0.3rem 0;
+}
+
+// ---- prose blocks the .qmd owns ----
+.ph-howto, .ph-caveat {
+  background: #fbfbfc;
+  border: 1px solid #e7e7e9;
+  border-left: 4px solid $primary;
+  border-radius: 0 $border-radius $border-radius 0;
+  padding: 1.1rem 1.4rem 0.6rem;
+  margin: 1.25rem 0 1.75rem;
+  p { margin-bottom: 0.8rem; }
+}
+// The CAM caveat is a different KIND of warning from the how-to box: it says
+// "this part is a sketch", so it gets the teal that the CAM curve is drawn in.
+.ph-caveat { border-left-color: $ph-cam; }
+
+.ph-try {
+  background: #fcfcfa;
+  border: 1px solid #ecece4;
+  border-radius: $border-radius;
+  padding: 1rem 1.4rem 0.6rem;
+  margin: 1.25rem 0 1.75rem;
+  > p:first-child { font-weight: 600; margin-bottom: 0.5rem; }
+  ul { margin-bottom: 0.7rem; }
+  li { margin-bottom: 0.35rem; }
+}
+
+@media (max-width: 767px) {
+  .ph-tool { padding: 0.8rem 0.7rem 1rem; }
+  .ph-controls-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+  .ph-readout-grid { grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); }
+  .ph-tabs { overflow-x: auto; }
+}

@@ -1,0 +1,273 @@
+---
+title: "Photosynthesis"
+description: Interactive photosynthesis simulation
+image: /images/teaching/photosynthesis-card.jpg
+weight: 20
+page-layout: full
+toc: true
+toc-title: "On this page"
+
+# Two scripts, this page only. The model file is loaded first because the UI file
+# needs it; both are plain <script defer>, so they run in order after parsing.
+format:
+  html:
+    include-after-body:
+      - text: |
+          <script src="/js/photosynthesis-model.js" defer></script>
+          <script src="/js/photosynthesis.js" defer></script>
+---
+
+Every leaf on Earth is running the same trade. It opens tiny pores to let carbon
+dioxide in, and water walks out through the same doorway. How well a plant does that
+trade — how much sugar it gets per litre of water — decides where it can live.
+
+The three tools below build that picture one piece at a time. The first has no pores
+at all, and no water: just the chemistry, with you supplying the CO₂. The second adds
+the pores, and with them the cost. The third watches three completely different
+solutions play out over a whole day.
+
+Everything runs in your browser. Move a slider and the answer is recomputed on the
+spot — nothing is fetched, so it works on a bad connection and keeps working with the
+network off.
+
+## 1. What limits a leaf?
+
+A leaf builds sugar with three things: an enzyme called **Rubisco** that grabs CO₂,
+**light energy** to power the reaction, and somewhere to **put the sugar** once it is
+made. At any moment one of those three is the bottleneck, and which one it is changes
+as the day and the seasons change.
+
+For now, forget about the pores. Imagine you can dial the CO₂ concentration *inside*
+the leaf directly, and watch what the chemistry does.
+
+::: {.ph-tool}
+::: {.ph-controls #ph-limits-controls}
+:::
+::: {.ph-chart #ph-limits-chart}
+:::
+::: {.ph-readout #ph-limits-readout}
+:::
+:::
+
+The heavy red line is what the leaf actually achieves. The three faint dashed lines
+behind it are the three ceilings — enzyme, light, sugar export — and the leaf is always
+held down by the lowest one. Notice that the red line does not follow the lowest ceiling
+exactly but rounds the corner where two of them cross: near a changeover, *both*
+processes are partly limiting at once.
+
+::: {.ph-try}
+Things to try
+
+- **Halve the Rubisco capacity.** The flat part of the curve drops a long way, but the
+  steep part near zero light barely moves. That early slope is set by photons, not
+  enzyme — which is exactly why a leaf growing in deep shade should not waste nitrogen
+  building Rubisco it will never use.
+- **Now halve the electron-transport ratio instead.** This time the slope moves and the
+  plateau holds. Two different knobs, two different parts of the curve.
+- **Switch to the CO₂ tab** and watch where the enzyme and light ceilings cross as you
+  change the light. That crossing *is* the changeover, and it slides.
+- **Set the internal CO₂ to 150 ppm**, roughly a leaf with its pores nearly shut, then
+  to 400, wide open. You have just previewed the whole of Section 2.
+- **Push the temperature to 40 °C.** Everything collapses — but look at the respiration
+  number, which is still climbing. Heat costs a leaf twice.
+:::
+
+You have been setting the internal CO₂ by hand. A real leaf cannot do that. To let CO₂
+in it has to open its pores, and the moment it does, water starts leaving.
+
+## 2. The price of carbon is water
+
+Now the pores are in the model. You set the CO₂ in the **air**; the leaf decides how far
+to open, and therefore what its internal CO₂ becomes — the number you were dialling
+yourself a moment ago.
+
+Opening wider buys more carbon and costs more water. How bad that bargain is depends on
+how *thirsty the air is*: the drier the air, the more water escapes through the same
+opening. And warm air is thirsty air, because warm air can hold far more water vapour.
+
+::: {.ph-tool}
+::: {.ph-controls #ph-water-controls}
+:::
+::: {.ph-chart #ph-water-chart}
+:::
+::: {.ph-readout #ph-water-readout}
+:::
+:::
+
+::: {.ph-try}
+Things to try
+
+- **Keep humidity fixed and sweep the temperature.** Carbon peaks around 25 °C. Water
+  keeps climbing to about 30 °C. And the ratio between them — the bottom strip — falls
+  the whole way, by roughly five-fold from a cool morning to a hot afternoon.
+- **Now switch to "dryness of the air stays the same."** The ratio goes almost flat.
+  That is the whole lesson in one click: the temperature penalty on water-use efficiency
+  is not the enzymes giving up, it is the *air* getting greedier. A plant cannot
+  acclimate its way out of that one.
+- **Raise the CO₂ in the air to 800 ppm.** Efficiency goes up *and* water use goes down —
+  the leaf can get what it needs without opening as far.
+- **Halve g₁** to make a cautious, drought-adapted leaf, and read off what that caution
+  costs in carbon.
+- **Watch "CO₂ inside ÷ outside"** as you change the light and the CO₂. It barely moves.
+  Leaves hold that ratio remarkably steady, and what sets it is not light or CO₂ but how
+  dry the air is.
+:::
+
+Every leaf so far has been a C3 leaf — the ordinary kind, and about 85 % of plant
+species. If the price of carbon is water, are there other ways to pay it?
+
+## 3. Three ways to pay that price
+
+There are, and plants found two of them.
+
+**C4** plants run a CO₂ pump. They spend extra energy concentrating CO₂ around Rubisco,
+which lets them keep their pores tighter for the same carbon gain. Maize, sugarcane and
+most tropical grasses do this.
+
+**CAM** plants go further and simply move the whole operation to the night. They open
+their pores in the cool, damp dark, stash the CO₂ as an acid, seal up at dawn, and spend
+the day making sugar from yesterday's air. Cacti and agaves do this.
+
+Watch all three over one simulated day, and read what each one gained and spent.
+
+::: {.ph-tool}
+::: {.ph-controls #ph-pathways-controls}
+:::
+::: {.ph-chart #ph-pathways-chart}
+:::
+::: {.ph-budget-host #ph-pathways-budget}
+:::
+:::
+
+::: {.ph-caveat}
+**A word about the CAM line.** The C3 and C4 curves come from the same research model
+the rest of this page uses. The CAM curve does not — it is a deliberately simple sketch,
+because a real CAM plant runs on a daily internal clock that this page does not try to
+simulate. It captures the parts that matter here: pores open at night, shut by day, and
+a hard ceiling set by how much acid last night's storage could hold. It leaves out the
+dawn and dusk windows when real CAM plants do take in some CO₂ directly.
+
+The flat daytime line means *no exchange with the air* — not "nothing happening." Inside
+the leaf, sugar is being made at full speed.
+
+One more caution: the efficiency numbers here are for **one leaf on one day**. Textbooks
+often quote CAM as three to ten times more water-efficient than C3, but those are
+whole-plant, whole-season figures that include CAM plants shutting down entirely for
+months. This page cannot show that, and does not pretend to.
+:::
+
+::: {.ph-try}
+Things to try
+
+- **Follow a single C3 day.** Light peaks at noon. But carbon peaks in the *mid-morning*,
+  a couple of hours earlier, and water use peaks later still. Ask yourself why the leaf's
+  best hour is not the sunniest one.
+- **Compare mid-morning with mid-afternoon** at the same light. The afternoon gets less
+  carbon for more water. Section 2 already told you why: the air has warmed up and dried
+  out, even though the sun has not changed.
+- **Click "Hot desert."** The C3 leaf loses about 70 % of the carbon it got in Ithaca.
+  CAM loses barely any. CAM is not the most *efficient* pathway in the desert — it is the
+  one that hardly notices the desert.
+- **Look at C4's water column in that desert.** It uses *more* water than the C3 leaf,
+  while being more efficient per unit. Efficiency is not the same as thrift, and that
+  distinction matters when the water runs out.
+- **Click "Wet tropics."** CAM's efficiency advantage is at its largest here — and its
+  point is at its smallest. Nobody needs it where it rains every afternoon. Now ask where
+  CAM plants actually grow.
+- **Open the "Response to light" tab** and find where the C3 and C4 curves cross. Below
+  that light level, the ordinary C3 leaf wins. Then move the temperature and watch the
+  crossing move.
+:::
+
+## What the model is doing
+
+::: {.ph-howto}
+
+**Three ceilings, and the lowest one wins.** The enzyme ceiling depends on how much
+Rubisco there is and how much CO₂ reaches it. The light ceiling depends on how many
+photons arrive. The export ceiling is a fixed rate at which the leaf can ship sugar out.
+Near a changeover both are partly limiting, so the model rounds the corner rather than
+switching abruptly.
+
+**Photorespiration is why CO₂ matters so much.** Rubisco sometimes grabs oxygen instead
+of carbon dioxide, and the leaf has to spend energy cleaning up the mistake. The lower
+the CO₂ inside the leaf, the more often it happens — which is why the curve in Section 1
+does not start at zero, and why raising CO₂ helps a C3 leaf so much. C4 and CAM plants
+have both found ways to concentrate CO₂ around Rubisco and largely avoid it.
+
+**Warm is good until it isn't.** Enzymes speed up with temperature, then start to come
+apart. Every rate in the model rises to an optimum and falls past it, which is why the
+curves peak. Respiration keeps rising longer than photosynthesis does, so a hot leaf is
+squeezed from both ends.
+
+**Stomata are doing arithmetic.** The model asks what opening gets the most carbon for
+the least water, given how dry the air is. It turns out the answer keeps the internal
+CO₂ at a nearly constant *fraction* of the outside air — which is why that number barely
+moves in Section 2 no matter what else you change.
+
+**What this page simplifies.** The leaf is assumed to be the same temperature as the air
+and the air is assumed to be well stirred. A real leaf in still, bright sun runs several
+degrees hotter than the air, which pushes it further along every curve here. There is
+also no soil in this model, so no plant on this page can ever run out of water — worth
+remembering when you click "Hot desert."
+
+:::
+
+## Where this comes from
+
+**Start here.** If you want to read further, these two are written to be read:
+
+- **von Caemmerer, S. (2000).** *Biochemical Models of Leaf Photosynthesis.* CSIRO
+  Publishing. The book-length version of everything on this page.
+- **Lambers, H. & Oliveira, R.S. (2019).** *Plant Physiological Ecology*, 3rd ed.,
+  chapter 2. Covers C3, C4 and CAM and the water trade-off at about the level of
+  Sections 2 and 3.
+
+**The model itself.** The equations behind Sections 1–3, and the papers they come from:
+
+- Farquhar, G.D., von Caemmerer, S. & Berry, J.A. (1980). A biochemical model of
+  photosynthetic CO₂ assimilation in leaves of C3 species. *Planta* 149:78–90.
+  **Section 1 is this paper.**
+- Collatz, G.J., Ribas-Carbo, M. & Berry, J.A. (1992). Coupled photosynthesis–stomatal
+  conductance model for leaves of C4 plants. *Australian Journal of Plant Physiology*
+  19:519–538. **The C4 pathway in Section 3.**
+- Medlyn, B.E. et al. (2011). Reconciling the optimal and empirical approaches to
+  modelling stomatal conductance. *Global Change Biology* 17:2134–2144. **The pores, and
+  therefore all of Section 2.**
+- Bernacchi, C.J. et al. (2001). Improved temperature response functions for models of
+  Rubisco-limited photosynthesis. *Plant, Cell & Environment* 24:253–259.
+- Medlyn, B.E. et al. (2002). Temperature response of parameters of a biochemically
+  based model of photosynthesis. *Plant, Cell & Environment* 25:1167–1179. **Why the
+  curves fall past their optimum.**
+- Bolton, D. (1980). The computation of equivalent potential temperature. *Monthly
+  Weather Review* 108:1046–1053. The saturation vapour pressure formula behind every
+  humidity number here.
+
+**For the pathways in Section 3:**
+
+- Ehleringer, J. & Björkman, O. (1977). Quantum yields for CO₂ uptake in C3 and C4
+  plants. *Plant Physiology* 59:86–90. **The measurement behind the C3/C4 crossover in
+  dim light and cool temperatures.**
+- Sage, R.F., Sage, T.L. & Kocacinar, F. (2012). Photorespiration and the evolution of
+  C4 photosynthesis. *Annual Review of Plant Biology* 63:19–47.
+- Osmond, C.B. (1978). Crassulacean acid metabolism: a curiosity in context. *Annual
+  Review of Plant Physiology* 29:379–414.
+- Nobel, P.S. (1991). *Physicochemical and Environmental Plant Physiology*; and Lüttge,
+  U. (2004). Ecophysiology of crassulacean acid metabolism. *Annals of Botany*
+  93:629–652. The CAM acid-storage numbers behind the sketch in Section 3.
+
+### How this model actually works
+
+The leaf model on this page is the same one used by **MEDS**, the lab's ecosystem model.
+If you want the equations in full — including the parts this page leaves out, like the
+leaf boundary layer, plant hydraulics, and how drought closes stomata — see
+[Leaf gas exchange](https://github.com/xiangtaoxu/MEDS/blob/v0.1.0/docs/science/leaf_gas_exchange.md)
+in the MEDS science documentation.
+
+The numbers here are pinned to
+[MEDS v0.1.0](https://github.com/xiangtaoxu/MEDS/releases/tag/v0.1.0), and the JavaScript
+in this page is checked against the model's own Fortran code case by case, so the curves
+you are moving are the ones the research model produces.
+
+Xu, X. and the BioM2 Lab (2026). *MEDS: a Fortran 2018 reimplementation of the Ecosystem
+Demography model*, v0.1.0.
