@@ -87,6 +87,21 @@
         return api;
       },
 
+      // The band between two curves, used to make "carbon lost to photorespiration"
+      // a visible area rather than a difference the reader has to compute by eye.
+      areaBetween: function (o) {
+        var map = o.axis === "y2" ? Y2 : Y, i, d = "";
+        var clamp = function (v) { return Math.max(m.top - 4, Math.min(m.top + ph + 4, map(v))); };
+        for (i = 0; i < o.upper.length; i++) {
+          d += (i ? "L" : "M") + fmt(X(o.upper[i][0]), 1) + "," + fmt(clamp(o.upper[i][1]), 1);
+        }
+        for (i = o.lower.length - 1; i >= 0; i--) {
+          d += "L" + fmt(X(o.lower[i][0]), 1) + "," + fmt(clamp(o.lower[i][1]), 1);
+        }
+        layers.bands.push(el("path", { d: d + "Z", "class": "ph-area " + (o.cls || "") }));
+        return api;
+      },
+
       series: function (o) {
         var map = o.axis === "y2" ? Y2 : Y, d = "", started = false;
         for (var i = 0; i < o.points.length; i++) {
@@ -100,12 +115,6 @@
         return api;
       },
 
-      marker: function (o) {
-        layers.marks.push(el("line", { x1: X(o.x), x2: X(o.x), y1: m.top, y2: m.top + ph,
-                                       "class": "ph-cursor" }));
-        return api;
-      },
-
       dot: function (o) {
         var map = o.axis === "y2" ? Y2 : Y;
         layers.marks.push(el("circle", { cx: X(o.x), cy: map(o.y), r: o.r || 3.5,
@@ -114,9 +123,19 @@
       },
 
       note: function (o) {
-        layers.labels.push(el("text", { x: X(o.x), y: (o.axis === "y2" ? Y2 : Y)(o.y) + (o.dy || 0),
-                                        "class": "ph-note", "text-anchor": o.anchor || "middle" },
+        layers.labels.push(el("text", { x: X(o.x) + (o.dx || 0),
+                                        y: (o.axis === "y2" ? Y2 : Y)(o.y) + (o.dy || 0),
+                                        "class": "ph-note " + (o.cls || ""),
+                                        "text-anchor": o.anchor || "middle" },
                               o.text));
+        return api;
+      },
+
+      // A short vertical tick rather than marker()'s full-height cursor: used to
+      // pin the compensation point to the axis without drawing a line across the plot.
+      stem: function (o) {
+        layers.marks.push(el("line", { x1: X(o.x), x2: X(o.x), y1: Y(o.y0), y2: Y(o.y1),
+                                       "class": "ph-stem" }));
         return api;
       },
 
@@ -219,43 +238,14 @@
     return { node: wrap, select: sel, set: function (v) { sel.value = v; } };
   }
 
-  // A labelled group of radio buttons, used where a choice changes what the chart MEANS
-  // and so must be visible rather than hidden in a menu.
-  function switcher(o) {
-    var wrap = h("div", "ph-field ph-switch" + (o.emphasis ? " ph-switch-key" : ""));
-    if (o.label) wrap.appendChild(h("span", "ph-field-name", o.label));
-    var row = h("div", "ph-switch-row");
-    var name = "sw" + Math.random().toString(36).slice(2, 8);
-    o.options.forEach(function (opt) {
-      var lab = h("label", "ph-switch-opt");
-      var r = document.createElement("input");
-      r.type = "radio"; r.name = name; r.value = opt.value;
-      if (opt.value === o.value) r.checked = true;
-      r.addEventListener("change", function () { if (r.checked) o.onChange(opt.value); });
-      lab.appendChild(r);
-      lab.appendChild(h("span", null, opt.label));
-      row.appendChild(lab);
-    });
-    wrap.appendChild(row);
-    if (o.hint) wrap.appendChild(h("span", "ph-field-hint", o.hint));
-    return { node: wrap };
-  }
-
-  function toggles(o) {
-    var wrap = h("div", "ph-field");
-    wrap.appendChild(h("span", "ph-field-name", o.label));
-    var row = h("div", "ph-switch-row");
-    o.options.forEach(function (opt) {
-      var lab = h("label", "ph-switch-opt ph-toggle-" + opt.value);
-      var c = document.createElement("input");
-      c.type = "checkbox"; c.checked = opt.checked !== false;
-      c.addEventListener("change", function () { o.onChange(opt.value, c.checked); });
-      lab.appendChild(c);
-      lab.appendChild(h("span", null, opt.label));
-      row.appendChild(lab);
-    });
-    wrap.appendChild(row);
-    return { node: wrap };
+  // Parameters that only make sense once the basics do. Collapsed by default: a
+  // first-year needs Vcmax, CO2 and temperature, not two capacity ratios.
+  function advanced(label) {
+    var d = h("details", "ph-advanced");
+    d.appendChild(h("summary", null, label));
+    var grid = h("div", "ph-controls-grid");
+    d.appendChild(grid);
+    return { node: d, grid: grid };
   }
 
   function tabs(host, items, onPick) {
@@ -300,8 +290,32 @@
     return d;
   }
 
+  // Every panel mounts the same way: find the three divs the .qmd owns, wire a
+  // frame-coalesced redraw, and hand back the controls host. `id` is the concept name
+  // (limits / water / pathways); `out` names the third div, which differs per panel.
+  function mount(panel, id, out) {
+    var host = document.getElementById("ph-" + id + "-controls");
+    if (!host) return null;
+    panel.chartHost = document.getElementById("ph-" + id + "-chart");
+    panel.outHost = document.getElementById("ph-" + id + "-" + out);
+    panel.draw = scheduler(panel.render.bind(panel));
+    return host;
+  }
+
   // Redraw on the next frame, never more than once per frame. A dragged slider fires
   // `input` faster than the display refreshes; without this the work queues up.
+  function zeroCrossing(pts) {
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1][1], b = pts[i][1];
+      if (a == null || b == null) continue;
+      if (a < 0 && b >= 0) {
+        var t = -a / (b - a);
+        return pts[i - 1][0] + t * (pts[i][0] - pts[i - 1][0]);
+      }
+    }
+    return null;
+  }
+
   function scheduler(fn) {
     var pending = false;
     return function () {
@@ -316,18 +330,18 @@
   // ========================================================================
 
   var limits = {
-    state: { presetKey: "sun", ci: 280, vcmax25: 90, jv: 1.8, rdv: 0.015, tempC: 25,
-             par: 1500, view: "light" },
+    state: { presetKey: "sun", ci: 280, vcmax25: 130, jv: 1.8, rdv: 0.015, tempC: 25 },
     ref: null,
 
+    // Oxygen removed. 2 % is the low-O2 condition photorespiration was historically
+    // measured under, not a hypothetical: see PhotoModel.scaleRates.
+    LOW_O2: 0.02,
+
     boot: function () {
-      var host = document.getElementById("ph-limits-controls");
+      var host = mount(this, "limits", "readout");
       if (!host) return;
-      this.chartHost = document.getElementById("ph-limits-chart");
-      this.readHost = document.getElementById("ph-limits-readout");
-      this.draw = scheduler(this.render.bind(this));
-      this.buildControls(host);
       this.snapshotReference();
+      this.buildControls(host);
       this.render();
     },
 
@@ -338,29 +352,24 @@
                         jmax25: null, tpu25: null, rd25: null });
     },
 
-    // The grey "where you started" curve. Captured from the preset, not from the live
-    // sliders, so a slider move always reads as a change from a fixed baseline.
+    // The grey "where you started" curve, captured from the preset rather than the live
+    // sliders, so every slider move reads as a change from a fixed baseline.
     snapshotReference: function () {
       var p = M.params({ preset: this.state.presetKey === "custom" ? "sun" : this.state.presetKey });
       var rates = M.scaleRates(p, 25);
-      var pts = [], i, par;
-      for (i = 0; i <= N; i++) {
-        par = i / N * 2000;
-        pts.push([par, M.demandC3(280, rates, par, true).An]);
-      }
+      var pts = [], i;
+      for (i = 0; i <= N; i++) pts.push([i / N * 2000, M.demandC3(280, rates, i / N * 2000, true).An]);
       this.ref = pts;
     },
 
     buildControls: function (host) {
       var self = this, s = this.state;
       host.innerHTML = "";
-
-      tabs(host, [{ key: "light", label: "Response to light" },
-                  { key: "aci",   label: "Response to CO₂ inside the leaf" }],
-           function (k) { s.view = k; self.render(); });
-
       var grid = h("div", "ph-controls-grid");
 
+      // Order matters for layout: the three sliders share a row and line up, and the
+      // select — which has a different height — drops to its own row rather than
+      // making the first one ragged.
       this.presetSel = chooser({
         label: "Kind of leaf", value: s.presetKey,
         options: M.PRESETS.filter(function (p) { return p.pathway === "C3"; })
@@ -374,8 +383,6 @@
           self.render();
         }
       });
-      grid.appendChild(this.presetSel.node);
-
       this.ciS = slider({
         label: "CO₂ inside the leaf (Ci)", value: s.ci, min: 50, max: 1000, step: 5, unit: "ppm",
         hint: "A real leaf usually sits near 70 % of the outside air — about 280 ppm when the air is 400.",
@@ -384,15 +391,6 @@
         onInput: function (v) { s.ci = v; self.draw(); }
       });
       grid.appendChild(this.ciS.node);
-
-      this.parS = slider({
-        label: "Sunlight (PAR)", value: s.par, min: 0, max: 2000, step: 10,
-        unit: "µmol/m²/s", aria: "Photosynthetically active radiation",
-        hint: "Full summer sun ≈ 2000 · overcast ≈ 400 · forest floor ≈ 50",
-        fmt: function (v) { return String(Math.round(v)); },
-        onInput: function (v) { s.par = v; self.draw(); }
-      });
-      grid.appendChild(this.parS.node);
 
       this.tempS = slider({
         label: "Leaf temperature", value: s.tempC, min: 0, max: 45, step: 0.5, unit: "°C",
@@ -403,20 +401,26 @@
       grid.appendChild(this.tempS.node);
 
       this.vc = slider({
-        label: "Rubisco capacity (Vcmax25)", value: s.vcmax25, min: 10, max: 150, step: 1,
+        label: "Rubisco capacity (Vcmax25)", value: s.vcmax25, min: 10, max: 200, step: 1,
         unit: "µmol/m²/s", aria: "Maximum carboxylation rate at 25 degrees Celsius",
         fmt: function (v) { return String(Math.round(v)); },
         onInput: function (v) { s.vcmax25 = v; s.presetKey = "custom"; self.presetSel.set("custom"); self.draw(); }
       });
       grid.appendChild(this.vc.node);
+      grid.appendChild(this.presetSel.node);      // second row, on its own
 
+      host.appendChild(grid);
+
+      // Two capacity ratios, out of the way. They reward exploration but nothing in the
+      // section depends on touching them.
+      var adv = advanced("Advanced parameters");
       this.jvS = slider({
         label: "Electron transport : Rubisco (Jmax/Vcmax)", value: s.jv, min: 1.0, max: 2.5, step: 0.05,
         aria: "Ratio of maximum electron transport to maximum carboxylation",
         fmt: function (v) { return fmt(v, 2); },
         onInput: function (v) { s.jv = v; s.presetKey = "custom"; self.presetSel.set("custom"); self.draw(); }
       });
-      grid.appendChild(this.jvS.node);
+      adv.grid.appendChild(this.jvS.node);
 
       this.rdS = slider({
         label: "Respiration : Rubisco (Rd/Vcmax)", value: s.rdv, min: 0.005, max: 0.03, step: 0.001,
@@ -424,85 +428,91 @@
         fmt: function (v) { return fmt(v, 3); },
         onInput: function (v) { s.rdv = v; s.presetKey = "custom"; self.presetSel.set("custom"); self.draw(); }
       });
-      grid.appendChild(this.rdS.node);
-
-      host.appendChild(grid);
-      this.syncFieldVisibility();
+      adv.grid.appendChild(this.rdS.node);
+      host.appendChild(adv.node);
     },
 
-    // On the light-response tab Ci is a setting and PAR is the axis; on the A-Ci tab they
-    // swap. Hiding the one that is the axis prevents the "why does this slider do nothing"
-    // question before it is asked.
-    syncFieldVisibility: function () {
-      var light = this.state.view === "light";
-      this.parS.node.style.display = light ? "none" : "";
-      this.ciS.node.style.display = light ? "" : "none";
+    curve: function (rates, ci) {
+      var pts = [], i, x;
+      for (i = 0; i <= N; i++) {
+        x = i / N * 2000;
+        pts.push([x, M.demandC3(ci, rates, x, true).An]);
+      }
+      return pts;
     },
 
     render: function () {
-      this.syncFieldVisibility();
       var s = this.state, p = this.params();
       var rates = M.scaleRates(p, s.tempC);
+      var pts = this.curve(rates, s.ci);
       var i, x, d;
 
-      var isLight = s.view === "light";
-      var xDomain = isLight ? [0, 2000] : [0, 1000];
-      var pts = [], envAc = [], envAj = [], envAp = [], rows = [];
+      // The oxygen-free comparison is always drawn: photorespiration is not an optional
+      // detail of a C3 leaf, and the gap is the clearest thing on the chart.
+      var loRates = M.scaleRates(p, s.tempC, undefined, this.LOW_O2);
+      var loPts = this.curve(loRates, s.ci);
 
-      for (i = 0; i <= N; i++) {
-        x = xDomain[0] + i / N * (xDomain[1] - xDomain[0]);
-        d = isLight ? M.demandC3(s.ci, rates, x, true) : M.demandC3(x, rates, s.par, true);
-        pts.push([x, d.An]);
-        envAc.push([x, d.Ac - rates.rd]);
-        envAj.push([x, d.Aj - rates.rd]);
-        envAp.push([x, d.Ap - rates.rd]);
-      }
-
-      var ymax = Math.max(6, Math.ceil(Math.max.apply(null, pts.map(function (q) { return q[1]; })) / 5) * 5 + 5);
+      var top = loPts;
+      var ymax = Math.max(6, Math.ceil(Math.max.apply(null, top.map(function (q) { return q[1]; })) / 5) * 5 + 5);
       var ymin = Math.min(-2, Math.floor(Math.min.apply(null, pts.map(function (q) { return q[1]; }))));
 
       var c = chart({
-        width: 660, height: 320, xDomain: xDomain, yDomain: [ymin, ymax],
-        xLabel: isLight ? "Sunlight, PAR (µmol photons per m² of leaf per second)"
-                        : "CO₂ inside the leaf, Ci (ppm)",
+        width: 660, height: 320, xDomain: [0, 2000], yDomain: [ymin, ymax],
+        xLabel: "Sunlight, PAR (µmol photons per m² of leaf per second)",
         yLabel: "Photosynthesis (µmol CO₂ per m² per second)",
-        ariaLabel: this.ariaSummary(pts, rates)
+        ariaLabel: "Net photosynthesis against light. It rises steeply from the compensation " +
+                   "point and levels off near " + fmt(pts[pts.length - 1][1], 1) +
+                   " micromoles per square metre per second."
       });
 
       // Limitation bands: contiguous runs of the same binding process.
       var runStart = 0, runLim = null;
       for (i = 0; i <= N; i++) {
-        x = xDomain[0] + i / N * (xDomain[1] - xDomain[0]);
-        d = isLight ? M.demandC3(s.ci, rates, x, true) : M.demandC3(x, rates, s.par, true);
-        var key = d.limitation.key;
-        if (runLim === null) { runLim = key; runStart = x; }
-        else if (key !== runLim) {
+        x = i / N * 2000;
+        d = M.demandC3(s.ci, rates, x, true);
+        if (runLim === null) { runLim = d.limitation.key; runStart = x; }
+        else if (d.limitation.key !== runLim) {
           c.band({ x0: runStart, x1: x, cls: runLim, label: this.bandLabel(runLim) });
-          runLim = key; runStart = x;
+          runLim = d.limitation.key; runStart = x;
         }
       }
-      c.band({ x0: runStart, x1: xDomain[1], cls: runLim, label: this.bandLabel(runLim) });
+      c.band({ x0: runStart, x1: 2000, cls: runLim, label: this.bandLabel(runLim) });
 
-      // The three potential rates, thin, so co-limitation is visibly a rounded corner
-      // between two straight-ish lines rather than an unexplained curve.
-      c.series({ points: envAc, cls: "ph-env ph-env-rubisco" });
-      c.series({ points: envAj, cls: "ph-env ph-env-rubp" });
-      if (envAp[0][1] < ymax) c.series({ points: envAp, cls: "ph-env ph-env-product" });
-
-      if (isLight && this.ref) c.series({ points: this.ref, cls: "ph-ref" });
+      // The three potential-rate ceilings are NOT drawn. With the oxygen comparison
+      // permanent, three more dashed lines plus a shaded area is past what one chart can
+      // carry — and the labelled background bands already answer "what is limiting?",
+      // which is the section's question.
+      c.areaBetween({ upper: loPts, lower: pts, cls: "ph-area-photoresp" });
+      c.series({ points: loPts, cls: "ph-lowo2" });
+      if (this.ref) c.series({ points: this.ref, cls: "ph-ref" });
       c.series({ points: pts, cls: "ph-an" });
 
-      var cursor = isLight ? null : s.par;
-      if (!isLight) { /* the A-Ci tab marks nothing; PAR is a setting, not a position */ }
+      var comp = zeroCrossing(pts);
+      if (comp != null) {
+        c.stem({ x: comp, y0: ymin, y1: 0 });
+        c.dot({ x: comp, y: 0, cls: "ph-dot-comp", r: 4.5 });
+        var nearLeft = comp / 2000 < 0.18;
+        c.note({ x: comp, y: 0, dy: -12, dx: nearLeft ? 9 : 0,
+                 anchor: nearLeft ? "start" : "middle", cls: "ph-note-comp",
+                 text: "compensation point · " + Math.round(comp) });
+      }
 
-      var here = isLight ? M.demandC3(s.ci, rates, 1500, true) : M.demandC3(s.ci, rates, s.par, true);
-      if (isLight) c.dot({ x: 1500, y: here.An, cls: "ph-dot-an" });
-      else c.dot({ x: s.ci, y: here.An, cls: "ph-dot-an" });
+      // Label the gap in place, so the shaded area does not need the legend to be read.
+      {
+        var gapAt = Math.round(N * 0.72), gx = loPts[gapAt][0];
+        var lost = loPts[gapAt][1] - pts[gapAt][1];
+        if (lost > 0.5) {
+          c.note({ x: gx, y: (loPts[gapAt][1] + pts[gapAt][1]) / 2, dy: 4,
+                   cls: "ph-note-loss",
+                   text: "lost to photorespiration · " +
+                         Math.round(100 * lost / loPts[gapAt][1]) + " %" });
+        }
+      }
 
       this.chartHost.innerHTML = "";
       this.chartHost.appendChild(c.render());
       this.chartHost.appendChild(this.legend());
-      this.renderReadout(rates, pts, isLight);
+      this.renderTable(pts, loPts);
     },
 
     bandLabel: function (key) {
@@ -513,69 +523,29 @@
     legend: function () {
       var d = h("ul", "ph-legend");
       d.innerHTML =
-        '<li><span class="ph-key ph-key-an"></span>What the leaf actually does</li>' +
-        '<li><span class="ph-key ph-key-rubisco"></span>Limit set by enzyme (Rubisco)</li>' +
-        '<li><span class="ph-key ph-key-rubp"></span>Limit set by light (RuBP)</li>' +
-        '<li><span class="ph-key ph-key-product"></span>Limit set by sugar export (TPU)</li>' +
-        '<li><span class="ph-key ph-key-ref"></span>Where you started</li>';
+        '<li><span class="ph-key ph-key-an"></span>Realised rate</li>' +
+        '<li><span class="ph-key ph-key-lowo2"></span>The same leaf without oxygen</li>' +
+        '<li><span class="ph-key ph-key-loss"></span>Carbon lost to photorespiration</li>' +
+        '<li><span class="ph-key ph-key-ref"></span>Starting values</li>' +
+        '<li><span class="ph-key ph-key-comp"></span>Compensation point</li>';
       return d;
     },
 
-    ariaSummary: function (pts, rates) {
-      var last = pts[pts.length - 1];
-      return "Photosynthesis rises with the x axis and levels off near " +
-             fmt(last[1], 1) + " micromoles per square metre per second.";
-    },
-
-    renderReadout: function (rates, pts, isLight) {
-      var s = this.state;
-      var at = isLight ? M.demandC3(s.ci, rates, 1500, true) : M.demandC3(s.ci, rates, s.par, true);
-
-      // Scan the light-response curve for the two numbers a lab exercise asks for.
-      var lcp = null, sat90 = null, i;
-      var lightPts = [];
-      for (i = 0; i <= N; i++) {
-        var par = i / N * 2000;
-        lightPts.push([par, M.demandC3(s.ci, rates, par, true).An]);
-      }
-      var amax = lightPts[lightPts.length - 1][1];
-      for (i = 1; i < lightPts.length; i++) {
-        if (lcp === null && lightPts[i - 1][1] < 0 && lightPts[i][1] >= 0) {
-          var t = -lightPts[i - 1][1] / (lightPts[i][1] - lightPts[i - 1][1]);
-          lcp = lightPts[i - 1][0] + t * (lightPts[i][0] - lightPts[i - 1][0]);
-        }
-        if (sat90 === null && amax > 0 && lightPts[i][1] >= 0.9 * amax) sat90 = lightPts[i][0];
-      }
-
-      var host = this.readHost;
+    // Collapsed by default. This is the only non-visual route into the chart for a
+    // screen reader, and it is what gets pasted into a spreadsheet for an assignment,
+    // so it stays even though it costs no screen space.
+    renderTable: function (pts, loPts) {
+      var host = this.outHost, rows = [], i;
       host.innerHTML = "";
-      var stats = h("div", "ph-readout-grid");
-      function cell(label, value, sub) {
-        var c = h("div", "ph-stat");
-        c.appendChild(h("span", "ph-stat-value", value));
-        c.appendChild(h("span", "ph-stat-label", label));
-        if (sub) c.appendChild(h("span", "ph-stat-sub", sub));
-        stats.appendChild(c);
-      }
-      cell("Net photosynthesis", fmt(at.An, 2), "µmol CO₂/m²/s" +
-           (isLight ? " at full sun (1500)" : " at PAR " + Math.round(s.par)));
-      cell("Gross photosynthesis", fmt(at.Ag, 2), "before respiration is subtracted");
-      cell("Respiration (Rd)", fmt(rates.rd, 2), "the leaf's own cost, day and night");
-      cell("What's limiting", at.limitation.label, at.limitation.sub);
-      cell("Light compensation point", lcp == null ? "—" : Math.round(lcp),
-           "PAR where the leaf breaks even");
-      cell("90 % of maximum at", sat90 == null ? "—" : Math.round(sat90),
-           "PAR — more light adds little beyond here");
-      host.appendChild(stats);
-
-      var rows = [];
       for (i = 0; i <= N; i += 12) {
-        rows.push([Math.round(pts[i][0]), fmt(pts[i][1], 2)]);
+        var row = [Math.round(pts[i][0]), fmt(pts[i][1], 2)];
+        if (loPts) row.push(fmt(loPts[i][1], 2));
+        rows.push(row);
       }
-      host.appendChild(dataTable(
-        isLight ? "Net photosynthesis against light, at the settings above"
-                : "Net photosynthesis against internal CO₂, at the settings above",
-        [isLight ? "PAR (µmol/m²/s)" : "Ci (ppm)", "A (µmol CO₂/m²/s)"], rows));
+      var hd = ["PAR (µmol/m²/s)", "A (µmol CO₂/m²/s)"];
+      if (loPts) hd.push("A without oxygen");
+      host.appendChild(dataTable("Net photosynthesis against light, at the settings above",
+                                 hd, rows));
     }
   };
 
@@ -584,82 +554,40 @@
   // ========================================================================
 
   var water = {
-    state: { axis: "temp", humidity: "rh", rh: 50, vpdFixed: 1.5, ca: 400, g1: 4.0,
-             vcmax25: 90, pathway: "C3", tempC: 25, par: 1500 },
+    // No axis switch, no humidity switch, no pathway switch: this section asks one
+    // question — what does warming do to the carbon-for-water bargain of a C3 leaf —
+    // and every control that is not part of that question has been removed.
+    state: { rh: 50, ca: 400, g1: 4.0, vcmax25: 130, par: 1500 },
 
     boot: function () {
-      var host = document.getElementById("ph-water-controls");
+      var host = mount(this, "water", "readout");
       if (!host) return;
-      this.chartHost = document.getElementById("ph-water-chart");
-      this.readHost = document.getElementById("ph-water-readout");
-      this.draw = scheduler(this.render.bind(this));
       this.buildControls(host);
       this.render();
     },
 
     params: function () {
       var s = this.state;
-      var base = s.pathway === "C4" ? "c4" : "sun";
-      return M.params({ preset: base, vcmax25: s.pathway === "C4" ? 40 : s.vcmax25,
-                        g1: s.g1, jmax25: null, tpu25: null, rd25: null });
+      return M.params({ preset: "sun", vcmax25: s.vcmax25, g1: s.g1,
+                        jmax25: null, tpu25: null, rd25: null });
     },
 
-    vpdAt: function (tempC) {
-      var s = this.state;
-      return s.humidity === "rh" ? M.vpdFrom(tempC, s.rh) : s.vpdFixed * 1000;
-    },
+    // Relative humidity is held constant as the leaf warms, so vapour pressure deficit
+    // follows from temperature alone. That coupling is the mechanism the section teaches.
+    vpdAt: function (tempC) { return M.vpdFrom(tempC, this.state.rh); },
 
     buildControls: function (host) {
       var self = this, s = this.state;
       host.innerHTML = "";
-
       var grid = h("div", "ph-controls-grid");
 
-      grid.appendChild(switcher({
-        label: "What stays fixed as the leaf warms?", value: s.humidity, emphasis: true,
-        options: [{ value: "rh", label: "Humidity stays the same (realistic)" },
-                  { value: "vpd", label: "Dryness of the air stays the same (thought experiment)" }],
-        hint: "Warm air holds more water, so at constant humidity it gets thirstier. Pinning the dryness instead removes that effect — which is how you find out how much of the story it is.",
-        onChange: function (v) { s.humidity = v; self.syncFields(); self.render(); }
-      }).node);
-
-      grid.appendChild(switcher({
-        label: "Plot against", value: s.axis,
-        options: [{ value: "temp", label: "Temperature" }, { value: "par", label: "Light" }],
-        onChange: function (v) { s.axis = v; self.syncFields(); self.render(); }
-      }).node);
-
-      this.rhS = slider({
+      grid.appendChild(slider({
         label: "Relative humidity", value: s.rh, min: 10, max: 90, step: 1, unit: "%",
         aria: "Relative humidity in percent",
+        hint: "Held constant as the leaf warms — so the air's drying power still rises, because warm air holds more vapour.",
         fmt: function (v) { return String(Math.round(v)); },
         onInput: function (v) { s.rh = v; self.draw(); }
-      });
-      grid.appendChild(this.rhS.node);
-
-      this.vpdS = slider({
-        label: "Dryness of the air (VPD)", value: s.vpdFixed, min: 0.2, max: 5, step: 0.1, unit: "kPa",
-        aria: "Vapour pressure deficit in kilopascals",
-        fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.vpdFixed = v; self.draw(); }
-      });
-      grid.appendChild(this.vpdS.node);
-
-      this.tempS = slider({
-        label: "Air temperature", value: s.tempC, min: 0, max: 45, step: 0.5, unit: "°C",
-        aria: "Air temperature in degrees Celsius",
-        fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.tempC = v; self.draw(); }
-      });
-      grid.appendChild(this.tempS.node);
-
-      this.parS = slider({
-        label: "Sunlight (PAR)", value: s.par, min: 0, max: 2000, step: 10, unit: "µmol/m²/s",
-        aria: "Photosynthetically active radiation",
-        fmt: function (v) { return String(Math.round(v)); },
-        onInput: function (v) { s.par = v; self.draw(); }
-      });
-      grid.appendChild(this.parS.node);
+      }).node);
 
       grid.appendChild(slider({
         label: "CO₂ in the air (Ca)", value: s.ca, min: 150, max: 1000, step: 10, unit: "ppm",
@@ -669,69 +597,50 @@
         onInput: function (v) { s.ca = v; self.draw(); }
       }).node);
 
-      this.g1S = slider({
+      grid.appendChild(slider({
         label: "How freely the stomata open (g₁)", value: s.g1, min: 1, max: 8, step: 0.1,
         aria: "Medlyn stomatal slope parameter g1",
         hint: "Low = a cautious, drought-adapted leaf. High = a thirsty one.",
         fmt: function (v) { return fmt(v, 1); },
         onInput: function (v) { s.g1 = v; self.draw(); }
-      });
-      grid.appendChild(this.g1S.node);
-
-      this.vcS = slider({
-        label: "Rubisco capacity (Vcmax25)", value: s.vcmax25, min: 10, max: 150, step: 1,
-        unit: "µmol/m²/s", aria: "Maximum carboxylation rate at 25 degrees Celsius",
-        fmt: function (v) { return String(Math.round(v)); },
-        onInput: function (v) { s.vcmax25 = v; self.draw(); }
-      });
-      grid.appendChild(this.vcS.node);
-
-      grid.appendChild(switcher({
-        label: "Pathway", value: s.pathway,
-        options: [{ value: "C3", label: "C3" }, { value: "C4", label: "C4" }],
-        onChange: function (v) {
-          s.pathway = v;
-          s.g1 = M.preset(v === "C4" ? "c4" : "sun").g1;
-          self.g1S.set(s.g1);
-          self.syncFields();
-          self.render();
-        }
       }).node);
 
       host.appendChild(grid);
-      this.syncFields();
-    },
 
-    syncFields: function () {
-      var s = this.state;
-      this.rhS.node.style.display = s.humidity === "rh" ? "" : "none";
-      this.vpdS.node.style.display = s.humidity === "rh" ? "none" : "";
-      this.tempS.node.style.display = s.axis === "temp" ? "none" : "";
-      this.parS.node.style.display = s.axis === "par" ? "none" : "";
-      this.vcS.node.style.display = s.pathway === "C4" ? "none" : "";
-    },
-
-    sample: function (x) {
-      var s = this.state, p = this.params();
-      var tempC = s.axis === "temp" ? x : s.tempC;
-      var par = s.axis === "par" ? x : s.par;
-      return M.solveLeaf({ par: par, tempC: tempC, ca: s.ca, vpd: this.vpdAt(tempC), params: p });
+      var adv = advanced("Advanced parameters");
+      adv.grid.appendChild(slider({
+        label: "Sunlight (PAR)", value: s.par, min: 0, max: 2000, step: 10, unit: "µmol/m²/s",
+        aria: "Photosynthetically active radiation",
+        fmt: function (v) { return String(Math.round(v)); },
+        onInput: function (v) { s.par = v; self.draw(); }
+      }).node);
+      adv.grid.appendChild(slider({
+        label: "Rubisco capacity (Vcmax25)", value: s.vcmax25, min: 10, max: 200, step: 1,
+        unit: "µmol/m²/s", aria: "Maximum carboxylation rate at 25 degrees Celsius",
+        fmt: function (v) { return String(Math.round(v)); },
+        onInput: function (v) { s.vcmax25 = v; self.draw(); }
+      }).node);
+      host.appendChild(adv.node);
     },
 
     render: function () {
-      var s = this.state, i, x;
-      var xDomain = s.axis === "temp" ? [0, 45] : [0, 2000];
-      var A = [], E = [], WUE = [], all = [];
+      var s = this.state, p = this.params(), i, x;
+      var A = [], E = [], WUE = [], CICA = [], all = [];
 
       for (i = 0; i <= N; i++) {
-        x = xDomain[0] + i / N * (xDomain[1] - xDomain[0]);
-        var f = this.sample(x);
+        x = i / N * 45;
+        var f = M.solveLeaf({ par: s.par, tempC: x, ca: s.ca, vpd: this.vpdAt(x), params: p });
         var eMmol = f.E * 1000;
         A.push([x, f.An]);
         E.push([x, eMmol]);
         // Below the light compensation point A < 0 while E > 0, so A/E is negative and
-        // blows up at the crossing. Clip at zero and say why, rather than draw a spike.
+        // unbounded at the crossing. Break the line and label the region instead.
         WUE.push([x, f.An > 0 && eMmol > 1e-6 ? f.An / eMmol : null]);
+        // Ci/Ca is only meaningful while the leaf is a net CO2 sink. Past the point
+        // where A goes negative the solver's night branch puts Ci ABOVE Ca (correct --
+        // the leaf is a source), which would draw a spike above 1 that means something
+        // entirely different from the ratio being plotted. Break the line instead.
+        CICA.push([x, f.An > 0 ? f.ciOverCa : null]);
         all.push({ x: x, f: f, e: eMmol });
       }
 
@@ -740,58 +649,72 @@
       var yMax = Math.max(5, Math.ceil((aMax + 2) / 5) * 5);
       var yMin = Math.min(-2, Math.floor(Math.min.apply(null, A.map(function (q) { return q[1]; }))));
       var y2Max = Math.max(2, Math.ceil((eMax + 1) / 2) * 2);
-      var y2Min = yMin / yMax * y2Max;      // share the zero line across both axes
+      var y2Min = yMin / yMax * y2Max;          // share the zero line across both axes
 
       var c = chart({
         width: 660, height: 300, margin: { top: 18, right: 62, bottom: 44, left: 60 },
-        xDomain: xDomain, yDomain: [yMin, yMax], y2Domain: [y2Min, y2Max],
-        xLabel: s.axis === "temp" ? "Air temperature (°C)"
-                                  : "Sunlight, PAR (µmol photons per m² per second)",
+        xDomain: [0, 45], yDomain: [yMin, yMax], y2Domain: [y2Min, y2Max],
+        xLabel: "Air temperature (°C)",
         yLabel: "Photosynthesis (µmol CO₂ per m² per second)",
         y2Label: "Water lost (mmol H₂O per m² per second)",
-        ariaLabel: "Carbon gain and water loss against " +
-                   (s.axis === "temp" ? "temperature" : "light") + "."
+        ariaLabel: "Carbon gain and water loss against air temperature at constant relative humidity."
       });
 
-      // Where the leaf is losing carbon, shade it and name it.
-      var negEnd = null;
+      var negEnd = null, negStart = null;
       for (i = 0; i < A.length; i++) if (A[i][1] > 0) { negEnd = A[i][0]; break; }
-      if (negEnd != null && negEnd > xDomain[0]) {
-        c.band({ x0: xDomain[0], x1: negEnd, cls: "loss", label: "losing carbon" });
-      }
-      var negStart = null;
       for (i = A.length - 1; i >= 0; i--) if (A[i][1] > 0) { negStart = A[i][0]; break; }
-      if (negStart != null && negStart < xDomain[1] - 1e-9) {
-        c.band({ x0: negStart, x1: xDomain[1], cls: "loss", label: "losing carbon" });
-      }
+      if (negEnd != null && negEnd > 0) c.band({ x0: 0, x1: negEnd, cls: "loss", label: "losing carbon" });
+      if (negStart != null && negStart < 45) c.band({ x0: negStart, x1: 45, cls: "loss", label: "losing carbon" });
 
       c.series({ points: E, cls: "ph-e", axis: "y2" });
       c.series({ points: A, cls: "ph-an" });
 
-      var cur = s.axis === "temp" ? s.tempC : s.par;
-      c.marker({ x: cur });
-      var at = this.sample(cur);
-      c.dot({ x: cur, y: at.An, cls: "ph-dot-an" });
-      c.dot({ x: cur, y: at.E * 1000, cls: "ph-dot-e", axis: "y2" });
+      // The two peaks are the point: carbon turns over before water does.
+      var peakA = null, peakE = null;
+      for (i = 0; i < all.length; i++) {
+        if (peakA === null || all[i].f.An > peakA.f.An) peakA = all[i];
+        if (peakE === null || all[i].e > peakE.e) peakE = all[i];
+      }
+      // The peaks sit only a few degrees apart and at a similar height, so the labels
+      // are anchored in OPPOSITE directions -- carbon's text runs left from its dot,
+      // water's runs right -- which keeps them clear however close the peaks get.
+      if (peakA && peakA.f.An > 0) {
+        c.dot({ x: peakA.x, y: peakA.f.An, cls: "ph-dot-an" });
+        c.note({ x: peakA.x, y: peakA.f.An, dy: -12, dx: -9, anchor: "end",
+                 cls: "ph-note-peak", text: "carbon peaks · " + fmt(peakA.x, 0) + " °C" });
+      }
+      if (peakE && peakE.e > 0) {
+        c.dot({ x: peakE.x, y: peakE.e, cls: "ph-dot-e", axis: "y2" });
+        c.note({ x: peakE.x, y: peakE.e, dy: -12, dx: 9, anchor: "start", axis: "y2",
+                 cls: "ph-note-peak-e", text: "water peaks · " + fmt(peakE.x, 0) + " °C" });
+      }
 
       this.chartHost.innerHTML = "";
       this.chartHost.appendChild(c.render());
-      this.chartHost.appendChild(this.wueStrip(WUE, xDomain, s));
+      this.chartHost.appendChild(this.wueStrip(WUE, CICA));
       this.chartHost.appendChild(this.legend());
-      this.renderReadout(all, cur, at);
+      this.renderTable(all);
     },
 
-    // WUE gets its own short strip rather than a third axis: it is a ratio, it has a
-    // different shape from either curve, and crowding it in would hide both.
-    wueStrip: function (WUE, xDomain, s) {
+    // Water-use efficiency gets its own strip rather than a third axis: it is a ratio,
+    // its shape differs from both curves, and crowding it in would hide all three.
+    wueStrip: function (WUE, CICA) {
       var vals = WUE.map(function (q) { return q[1]; }).filter(function (v) { return v != null; });
       var top = vals.length ? Math.ceil(Math.max.apply(null, vals) + 1) : 10;
       var c = chart({
-        width: 660, height: 130, margin: { top: 14, right: 62, bottom: 40, left: 60 },
-        xDomain: xDomain, yDomain: [0, top],
-        xLabel: s.axis === "temp" ? "Air temperature (°C)" : "Sunlight, PAR (µmol per m² per second)",
-        yLabel: "Carbon per water",
-        ariaLabel: "Water-use efficiency, carbon gained per unit of water lost."
+        width: 660, height: 165, margin: { top: 14, right: 62, bottom: 40, left: 60 },
+        xDomain: [0, 45], yDomain: [0, top],
+        // Ci/Ca is a fraction, so its axis is fixed rather than auto-scaled: auto-scaling
+        // would turn a modest 0.89 -> 0.73 drift into what looks like a collapse, and the
+        // point is that leaves hold this ratio remarkably steady. The floor is 0.5 rather
+        // than 0 both to leave the curve legible and because 0.5 is a real reference --
+        // it is roughly where a C4 leaf operates (section 3).
+        y2Domain: [0.5, 1.0], y2Ticks: [0.5, 0.6, 0.7, 0.8, 0.9, 1.0],
+        y2TickFmt: function (t) { return t.toFixed(1); },
+        xLabel: "Air temperature (°C)",
+        yLabel: "Carbon per water", y2Label: "CO₂ inside ÷ outside",
+        ariaLabel: "Water-use efficiency falls steadily as the leaf warms, and the ratio " +
+                   "of internal to ambient CO2 drifts down with it."
       });
       var gap = [];
       for (var i = 0; i < WUE.length; i++) if (WUE[i][1] == null) gap.push(WUE[i][0]);
@@ -799,10 +722,11 @@
         c.band({ x0: Math.min.apply(null, gap), x1: Math.max.apply(null, gap),
                  cls: "loss", label: "no carbon to divide" });
       }
+      c.series({ points: CICA, cls: "ph-cica", axis: "y2" });
       c.series({ points: WUE, cls: "ph-wue" });
       var wrap = h("div", "ph-substrip");
       wrap.appendChild(h("p", "ph-substrip-title",
-        "Water-use efficiency — µmol CO₂ gained per mmol H₂O lost"));
+        "What the stomata are trading — carbon per water (left) and the CO₂ they hold inside (right)"));
       wrap.appendChild(c.render());
       return wrap;
     },
@@ -812,60 +736,25 @@
       d.innerHTML =
         '<li><span class="ph-key ph-key-an"></span>Carbon gained (left axis)</li>' +
         '<li><span class="ph-key ph-key-e"></span>Water lost (right axis)</li>' +
-        '<li><span class="ph-key ph-key-wue"></span>Carbon per water (strip below)</li>';
+        '<li><span class="ph-key ph-key-wue"></span>Carbon per water (strip below, left)</li>' +
+        '<li><span class="ph-key ph-key-cica"></span>CO₂ inside ÷ outside (strip below, right)</li>';
       return d;
     },
 
-    renderReadout: function (all, cur, at) {
-      var s = this.state, host = this.readHost;
-      var tempC = s.axis === "temp" ? cur : s.tempC;
-      var vpd = this.vpdAt(tempC);
-      var eMmol = at.E * 1000;
-
+    // Collapsed: the screen-reader route into the chart, and the spreadsheet route for
+    // an assignment. Same reasoning as section 1.
+    renderTable: function (all) {
+      var host = this.outHost, rows = [], step = Math.ceil(all.length / 12), j;
       host.innerHTML = "";
-      var stats = h("div", "ph-readout-grid");
-      function cell(label, value, sub) {
-        var c = h("div", "ph-stat");
-        c.appendChild(h("span", "ph-stat-value", value));
-        c.appendChild(h("span", "ph-stat-label", label));
-        if (sub) c.appendChild(h("span", "ph-stat-sub", sub));
-        stats.appendChild(c);
-      }
-      cell("Carbon gained", fmt(at.An, 2), "µmol CO₂/m²/s");
-      cell("Water lost", fmt(eMmol, 2), "mmol H₂O/m²/s");
-      cell("Carbon per water", at.An > 0 ? fmt(at.An / eMmol, 2) : "—", "µmol CO₂ per mmol H₂O");
-      cell("Dryness of the air", fmt(vpd / 1000, 2), "kPa VPD at " + fmt(tempC, 1) + " °C");
-      cell("Stomata open to", fmt(at.gs, 3), "mol H₂O/m²/s");
-      cell("CO₂ inside ÷ outside", fmt(at.ciOverCa, 2),
-           "Ci/Ca — the number Section 1 let you set by hand");
-
-      // The two temperatures a student is meant to notice are different.
-      if (s.axis === "temp") {
-        var peakA = null, halfWue = null, first = null;
-        for (var i = 0; i < all.length; i++) {
-          if (peakA === null || all[i].f.An > peakA.f.An) peakA = all[i];
-          var w = all[i].f.An > 0 && all[i].e > 1e-6 ? all[i].f.An / all[i].e : null;
-          if (w != null) {
-            if (first === null) first = w;
-            if (halfWue === null && w < first / 2) halfWue = all[i].x;
-          }
-        }
-        cell("Carbon peaks at", fmt(peakA.x, 1) + " °C", "past here, warmer is worse");
-        cell("Efficiency halves by", halfWue == null ? "—" : fmt(halfWue, 1) + " °C",
-             halfWue != null && halfWue < peakA.x
-               ? "already halved before carbon even peaks"
-               : "a different temperature from the carbon peak");
-      }
-      host.appendChild(stats);
-
-      var rows = [], step = Math.ceil(all.length / 11);
-      for (var j = 0; j < all.length; j += step) {
+      for (j = 0; j < all.length; j += step) {
         var a = all[j];
-        rows.push([fmt(a.x, s.axis === "temp" ? 1 : 0), fmt(a.f.An, 2), fmt(a.e, 2),
-                   a.f.An > 0 ? fmt(a.f.An / a.e, 2) : "—"]);
+        rows.push([fmt(a.x, 1), fmt(this.vpdAt(a.x) / 1000, 2), fmt(a.f.An, 2), fmt(a.e, 2),
+                   a.f.An > 0 ? fmt(a.f.An / a.e, 2) : "—",
+                   a.f.An > 0 ? fmt(a.f.ciOverCa, 3) : "—"]);
       }
-      host.appendChild(dataTable("Carbon, water and their ratio at the settings above",
-        [s.axis === "temp" ? "T (°C)" : "PAR", "A (µmol/m²/s)", "E (mmol/m²/s)", "A/E"], rows));
+      host.appendChild(dataTable(
+        "Carbon, water and their ratio against temperature, at the settings above",
+        ["T (°C)", "VPD (kPa)", "A (µmol/m²/s)", "E (mmol/m²/s)", "A/E", "Ci/Ca"], rows));
     }
   };
 
@@ -874,16 +763,21 @@
   // ========================================================================
 
   var pathways = {
-    state: { view: "day", climateKey: "ithaca", ca: 400,
-             tMean: null, tAmp: null, tDew: null, parMax: null, doy: null,
-             show: { C3: true, C4: true, CAM: true }, tempC: 30 },
+    // One view, three pathways, always all three. The only choice left is whether you
+    // are looking at the carbon side or the water side of the same day -- and splitting
+    // those apart is what lets each chart use a single, unambiguous y axis.
+    state: { view: "carbon", climateKey: "ithaca", ca: 400,
+             tMean: null, tAmp: null, tDew: null, parMax: null, doy: null, lat: null },
+
+    PATHS: [
+      { key: "C3",  preset: "sun", label: "C3" },
+      { key: "C4",  preset: "c4",  label: "C4" },
+      { key: "CAM", preset: "cam", label: "CAM (dashed)" }
+    ],
 
     boot: function () {
-      var host = document.getElementById("ph-pathways-controls");
+      var host = mount(this, "pathways", "budget");
       if (!host) return;
-      this.chartHost = document.getElementById("ph-pathways-chart");
-      this.budgetHost = document.getElementById("ph-pathways-budget");
-      this.draw = scheduler(this.render.bind(this));
       this.applyClimate("ithaca");
       this.buildControls(host);
       this.render();
@@ -906,9 +800,8 @@
       var self = this, s = this.state;
       host.innerHTML = "";
 
-      tabs(host, [{ key: "day", label: "A day in the life" },
-                  { key: "light", label: "Response to light" }],
-           function (k) { s.view = k; self.syncFields(); self.render(); });
+      tabs(host, [{ key: "carbon", label: "Carbon" }, { key: "water", label: "Water" }],
+           function (k) { s.view = k; self.render(); });
 
       var grid = h("div", "ph-controls-grid");
 
@@ -932,54 +825,22 @@
       this.climBtns.appendChild(row);
       grid.appendChild(this.climBtns);
 
-      grid.appendChild(toggles({
-        label: "Show which pathways",
-        options: [{ value: "C3", label: "C3", checked: true },
-                  { value: "C4", label: "C4", checked: true },
-                  { value: "CAM", label: "CAM", checked: true }],
-        onChange: function (k, on) { s.show[k] = on; self.render(); }
-      }).node);
-
       this.tMeanS = slider({
         label: "Average temperature", value: s.tMean, min: 5, max: 40, step: 0.5, unit: "°C",
         aria: "Mean daily air temperature",
         fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.tMean = v; s.climateKey = "custom"; self.clearClimate(); self.draw(); }
+        onInput: function (v) { s.tMean = v; self.clearClimate(); self.draw(); }
       });
       grid.appendChild(this.tMeanS.node);
-
-      this.tAmpS = slider({
-        label: "Day–night temperature swing", value: s.tAmp, min: 1, max: 16, step: 0.5, unit: "± °C",
-        aria: "Half the daily temperature range",
-        fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.tAmp = v; s.climateKey = "custom"; self.clearClimate(); self.draw(); }
-      });
-      grid.appendChild(this.tAmpS.node);
 
       this.tDewS = slider({
         label: "Dewpoint (how humid the air is)", value: s.tDew, min: -5, max: 26, step: 0.5, unit: "°C",
         aria: "Dewpoint temperature",
-        hint: "Held constant through the day, so the air gets drier as it warms — which is what really happens.",
+        hint: "Held constant through the day, so the air dries out as it warms and grows humid again at night.",
         fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.tDew = v; s.climateKey = "custom"; self.clearClimate(); self.draw(); }
+        onInput: function (v) { s.tDew = v; self.clearClimate(); self.draw(); }
       });
       grid.appendChild(this.tDewS.node);
-
-      this.parS = slider({
-        label: "Peak sunlight", value: s.parMax, min: 400, max: 2400, step: 50, unit: "µmol/m²/s",
-        aria: "Peak photosynthetically active radiation at solar noon",
-        fmt: function (v) { return String(Math.round(v)); },
-        onInput: function (v) { s.parMax = v; s.climateKey = "custom"; self.clearClimate(); self.draw(); }
-      });
-      grid.appendChild(this.parS.node);
-
-      this.tempS = slider({
-        label: "Leaf temperature", value: s.tempC, min: 5, max: 45, step: 0.5, unit: "°C",
-        aria: "Leaf temperature for the light-response comparison",
-        fmt: function (v) { return fmt(v, 1); },
-        onInput: function (v) { s.tempC = v; self.draw(); }
-      });
-      grid.appendChild(this.tempS.node);
 
       grid.appendChild(slider({
         label: "CO₂ in the air (Ca)", value: s.ca, min: 150, max: 1000, step: 10, unit: "ppm",
@@ -989,124 +850,116 @@
       }).node);
 
       host.appendChild(grid);
-      this.syncFields();
+
+      var adv = advanced("Advanced parameters");
+      this.tAmpS = slider({
+        label: "Day–night temperature swing", value: s.tAmp, min: 1, max: 16, step: 0.5, unit: "± °C",
+        aria: "Half the daily temperature range",
+        fmt: function (v) { return fmt(v, 1); },
+        onInput: function (v) { s.tAmp = v; self.clearClimate(); self.draw(); }
+      });
+      adv.grid.appendChild(this.tAmpS.node);
+
+      this.parS = slider({
+        label: "Peak sunlight", value: s.parMax, min: 400, max: 2400, step: 50, unit: "µmol/m²/s",
+        aria: "Peak photosynthetically active radiation at solar noon",
+        fmt: function (v) { return String(Math.round(v)); },
+        onInput: function (v) { s.parMax = v; self.clearClimate(); self.draw(); }
+      });
+      adv.grid.appendChild(this.parS.node);
+      host.appendChild(adv.node);
     },
 
     clearClimate: function () {
+      this.state.climateKey = "custom";
       Array.prototype.forEach.call(this.climBtns.querySelectorAll(".ph-climate-btn"),
         function (b) { b.classList.remove("is-active"); });
     },
 
-    syncFields: function () {
-      var day = this.state.view === "day";
-      this.tMeanS.node.style.display = day ? "" : "none";
-      this.tAmpS.node.style.display = day ? "" : "none";
-      this.parS.node.style.display = day ? "" : "none";
-      this.tempS.node.style.display = day ? "none" : "";
-      // climate buttons and dewpoint set the AIR, which both views need
-    },
-
     render: function () {
-      if (this.state.view === "day") this.renderDay();
-      else this.renderLight();
-    },
-
-    // -------- the day view --------
-
-    renderDay: function () {
       var s = this.state, cl = this.climate(), self = this;
       var runs = {};
-      ["C3", "C4", "CAM"].forEach(function (k) {
-        var presetKey = k === "C3" ? "sun" : k === "C4" ? "c4" : "cam";
-        runs[k] = M.runDay({ params: M.params({ preset: presetKey }), climate: cl,
-                             ca: s.ca, nStep: DAY_STEPS });
+      this.PATHS.forEach(function (pth) {
+        runs[pth.key] = M.runDay({ params: M.params({ preset: pth.preset }), climate: cl,
+                                   ca: s.ca, nStep: DAY_STEPS });
       });
 
-      var shown = ["C3", "C4", "CAM"].filter(function (k) { return s.show[k]; });
-      var aMax = 5, eMax = 2, aMin = -3;
-      shown.forEach(function (k) {
-        runs[k].series.forEach(function (p) {
-          aMax = Math.max(aMax, p.An); aMin = Math.min(aMin, p.An);
-          eMax = Math.max(eMax, p.E);
+      var carbon = s.view === "carbon";
+      var pick = function (p) { return carbon ? p.An : p.E; };
+
+      var vMax = carbon ? 5 : 2, vMin = 0;
+      this.PATHS.forEach(function (pth) {
+        runs[pth.key].series.forEach(function (p) {
+          vMax = Math.max(vMax, pick(p)); vMin = Math.min(vMin, pick(p));
         });
       });
-      var yMax = Math.ceil((aMax + 3) / 5) * 5, yMin = Math.floor(aMin - 1);
-      var y2Max = Math.ceil((eMax + 1) / 2) * 2, y2Min = yMin / yMax * y2Max;
+      var yMax = Math.ceil((vMax + (carbon ? 3 : 1)) / (carbon ? 5 : 2)) * (carbon ? 5 : 2);
+      var yMin = Math.floor(vMin - (carbon ? 1 : 0.2));
 
       var c = chart({
-        width: 660, height: 330, margin: { top: 18, right: 62, bottom: 44, left: 60 },
-        xDomain: [0, 24], yDomain: [yMin, yMax], y2Domain: [y2Min, y2Max],
+        width: 660, height: 320, margin: { top: 18, right: 20, bottom: 44, left: 62 },
+        xDomain: [0, 24], yDomain: [yMin, yMax],
         xTicks: [0, 3, 6, 9, 12, 15, 18, 21, 24],
         xTickFmt: function (t) { return (t < 10 ? "0" : "") + t + ":00"; },
         xLabel: "Time of day",
-        yLabel: "Carbon exchange with the air (µmol CO₂ per m² per second)",
-        y2Label: "Water lost (mmol H₂O per m² per second)",
-        ariaLabel: "Carbon and water exchange through one simulated day for three photosynthetic pathways."
+        yLabel: carbon ? "Carbon exchange with the air (µmol CO₂ per m² per second)"
+                       : "Water lost (mmol H₂O per m² per second)",
+        ariaLabel: (carbon ? "Carbon" : "Water") +
+                   " exchange through one simulated day for three photosynthetic pathways."
       });
 
-      // Night shading, straight off the driver rather than assumed.
+      // Night shading comes from the driver's own daylength, not an assumption.
       var dl = runs.C3.daylength, rise = 12 - dl / 2, set = 12 + dl / 2;
       c.band({ x0: 0, x1: rise, cls: "night", label: "night" });
       c.band({ x0: set, x1: 24, cls: "night", label: "night" });
 
-      shown.forEach(function (k) {
-        var cls = "ph-path-" + k.toLowerCase();
-        c.series({ points: runs[k].series.map(function (p) { return [p.hour, p.E]; }),
-                   cls: cls + " ph-e-line", axis: "y2" });
-      });
-      shown.forEach(function (k) {
-        var cls = "ph-path-" + k.toLowerCase();
-        c.series({ points: runs[k].series.map(function (p) { return [p.hour, p.An]; }), cls: cls });
+      this.PATHS.forEach(function (pth) {
+        c.series({ points: runs[pth.key].series.map(function (p) { return [p.hour, pick(p)]; }),
+                   cls: "ph-path-" + pth.key.toLowerCase() });
       });
 
       this.chartHost.innerHTML = "";
       this.chartHost.appendChild(c.render());
-      this.chartHost.appendChild(this.dayLegend(shown, true));
-      if (s.show.CAM) this.chartHost.appendChild(this.camPhases(rise, set));
-      this.renderBudget(runs, shown, rise, set);
+      this.chartHost.appendChild(this.legend());
+      this.chartHost.appendChild(this.camNote(carbon));
+      this.renderBudget(runs);
     },
 
-    dayLegend: function (shown, withWater) {
+    legend: function () {
       var d = h("ul", "ph-legend");
-      var html = "";
-      shown.forEach(function (k) {
-        html += '<li><span class="ph-key ph-key-' + k.toLowerCase() + '"></span>' + k +
-                (k === "CAM" ? " (dashed)" : "") + "</li>";
-      });
-      html += '<li><span class="ph-key ph-key-carbon"></span>carbon — thick line, left axis</li>';
-      if (withWater) {
-        html += '<li><span class="ph-key ph-key-waterline"></span>water — thin dotted line, right axis</li>';
-      }
-      d.innerHTML = html;
+      d.innerHTML = this.PATHS.map(function (p) {
+        return '<li><span class="ph-key ph-key-' + p.key.toLowerCase() + '"></span>' +
+               p.label + "</li>";
+      }).join("");
       return d;
     },
 
-    camPhases: function (rise, set) {
+    camNote: function (carbon) {
       var p = h("p", "ph-phase-note");
-      p.innerHTML =
-        "<strong>Follow the dashed CAM line.</strong> Through the night it is the only one " +
-        "<em>taking carbon in</em> — stomata open in cool, damp air. Through the day it sits just " +
-        "below zero: the stomata are shut, so nothing is going in or out, and the sugar being made " +
-        "right now is built from CO₂ captured last night.";
+      p.innerHTML = carbon
+        ? "<strong>Follow the dashed CAM line.</strong> Through the night it is the only " +
+          "one <em>taking carbon in</em>. Through the day it sits just below zero: the " +
+          "stomata are shut, so nothing enters or leaves, and the sugar being built right " +
+          "now comes from CO₂ captured last night."
+        : "<strong>Follow the dashed CAM line.</strong> Its water loss is inverted too — " +
+          "almost nothing by day, and what little it spends it spends at night, when the " +
+          "air is coolest and closest to saturation. That is the entire strategy: buy " +
+          "carbon at the hour when water is cheapest.";
       return p;
     },
 
-    // The budget table is the section's thesis: three pathways, three bargains.
-    renderBudget: function (runs, shown, rise, set) {
-      var host = this.budgetHost;
+    // The budget table is the section's thesis: three pathways, three bargains. It does
+    // not change with the carbon/water tab, because it is about the whole day either way.
+    renderBudget: function (runs) {
+      var host = this.outHost, self = this;
       if (!host) return;
       host.innerHTML = "";
 
-      var c3w = runs.C3.water;
-      var rows = shown.map(function (k) {
-        var r = runs[k];
-        var mm = r.water * 0.018;                    // mol H2O -> kg/m2 -> mm of water
-        return [k,
-                Math.round(r.carbon),
-                fmt(mm, 2),
-                fmt(r.wue, 2),
-                fmt(r.carbon / Math.max(mm, 1e-9), 0),
-                fmt(r.wue / runs.C3.wue, 2) + "×"];
+      var rows = this.PATHS.map(function (pth) {
+        var r = runs[pth.key];
+        var mm = r.water * 0.018;                   // mol H2O -> kg/m2 -> mm of water
+        return [pth.key, Math.round(r.carbon), fmt(mm, 2), fmt(r.wue, 2),
+                fmt(r.carbon / Math.max(mm, 1e-9), 0), fmt(r.wue / runs.C3.wue, 2) + "×"];
       });
 
       var t = h("table", "ph-table ph-budget");
@@ -1125,122 +978,33 @@
         html += "</tr>";
       });
       t.innerHTML = html + "</tbody>";
-      var budgetWrap = h("div", "ph-table-wrap");
-      budgetWrap.appendChild(t);
-      host.appendChild(budgetWrap);
+      var wrap = h("div", "ph-table-wrap");
+      wrap.appendChild(t);
+      host.appendChild(wrap);
 
       var note = h("p", "ph-budget-note");
       note.innerHTML = "Carbon is <em>net</em> — the night's respiration has already been " +
-        "subtracted. Water is given in millimetres, the same unit as rainfall, so you can " +
-        "compare it with what actually falls on this place. Daylength here is " +
+        "subtracted. Water is given in millimetres, the same unit as rainfall, so it can be " +
+        "compared with what actually falls on this place. Daylength here is " +
         fmt(runs.C3.daylength, 1) + " hours.";
       host.appendChild(note);
 
-      // Accessible/spreadsheet version of the plotted series.
-      var series = runs[shown[0]].series;
-      var trows = [];
-      for (var i = 0; i < series.length; i += 8) {
+      var series = runs.C3.series, trows = [], i;
+      for (i = 0; i < series.length; i += 8) {
         var row = [(function (hh) {
-          var m = Math.round(hh * 60), H = Math.floor(m / 60), Mi = m % 60;
+          var mm = Math.round(hh * 60), H = Math.floor(mm / 60), Mi = mm % 60;
           return (H < 10 ? "0" : "") + H + ":" + (Mi < 10 ? "0" : "") + Mi;
         })(series[i].hour), Math.round(series[i].par), fmt(series[i].tempC, 1),
           fmt(series[i].vpd / 1000, 2)];
-        shown.forEach(function (k) {
-          row.push(fmt(runs[k].series[i].An, 2));
-          row.push(fmt(runs[k].series[i].E, 2));
+        self.PATHS.forEach(function (pth) {
+          row.push(fmt(runs[pth.key].series[i].An, 2));
+          row.push(fmt(runs[pth.key].series[i].E, 2));
         });
         trows.push(row);
       }
       var headers = ["Time", "PAR", "T (°C)", "VPD (kPa)"];
-      shown.forEach(function (k) { headers.push(k + " A"); headers.push(k + " E"); });
+      this.PATHS.forEach(function (pth) { headers.push(pth.key + " A"); headers.push(pth.key + " E"); });
       host.appendChild(dataTable("The simulated day, every two hours", headers, trows));
-    },
-
-    // -------- the light-response view --------
-
-    renderLight: function () {
-      var s = this.state, i, x;
-      var shown = ["C3", "C4"].filter(function (k) { return s.show[k]; });
-      var curves = {}, aMax = 5, aMin = -3;
-
-      // VPD comes from the chosen climate's dewpoint at the chosen leaf temperature, so
-      // this tab and the day view describe the same air rather than two different ones.
-      var vpd = Math.max(M.esat(s.tempC) - M.esat(s.tDew), M.CONST.VPD_FLOOR);
-
-      shown.forEach(function (k) {
-        var p = M.params({ preset: k === "C3" ? "sun" : "c4" });
-        var pts = [];
-        for (i = 0; i <= N; i++) {
-          x = i / N * 2000;
-          var f = M.solveLeaf({ par: x, tempC: s.tempC, ca: s.ca, vpd: vpd, params: p });
-          pts.push([x, f.An]);
-          aMax = Math.max(aMax, f.An); aMin = Math.min(aMin, f.An);
-        }
-        curves[k] = pts;
-      });
-
-      // CAM's ceiling is its overnight malate charge, so it is a property of the DAY,
-      // not of the instantaneous light. Read it off a full run rather than inventing one.
-      var camPts = null;
-      if (s.show.CAM) {
-        var run = M.runDay({ params: M.params({ preset: "cam" }), climate: this.climate(),
-                             ca: s.ca, nStep: DAY_STEPS });
-        var ceiling = run.carbon / (run.daylength * 3600) * 1000;
-        camPts = [];
-        for (i = 0; i <= N; i++) {
-          x = i / N * 2000;
-          var camP = M.params({ preset: "cam" });
-          var camRates = M.scaleRates(camP, s.tempC);
-          var dd = M.demandC3(camP.ciDay, camRates, x, true);
-          camPts.push([x, Math.min(dd.An, ceiling)]);
-        }
-        aMax = Math.max(aMax, ceiling);
-      }
-
-      var yMax = Math.ceil((aMax + 3) / 5) * 5, yMin = Math.floor(aMin - 1);
-      var c = chart({
-        width: 660, height: 330, xDomain: [0, 2000], yDomain: [yMin, yMax],
-        xLabel: "Sunlight, PAR (µmol photons per m² per second)",
-        yLabel: "Net photosynthesis (µmol CO₂ per m² per second)",
-        ariaLabel: "Light response curves for the three photosynthetic pathways."
-      });
-      shown.forEach(function (k) { c.series({ points: curves[k], cls: "ph-path-" + k.toLowerCase() }); });
-      if (camPts) c.series({ points: camPts, cls: "ph-path-cam" });
-
-      this.chartHost.innerHTML = "";
-      this.chartHost.appendChild(c.render());
-      this.chartHost.appendChild(this.dayLegend(shown.concat(s.show.CAM ? ["CAM"] : []), false));
-
-      // Where do C3 and C4 cross? That crossing is the section's most counter-intuitive
-      // fact, so find it and say it in words rather than leaving it to be spotted.
-      var host = this.budgetHost;
-      host.innerHTML = "";
-      if (s.show.C3 && s.show.C4) {
-        var cross = null;
-        for (i = 1; i <= N; i++) {
-          var d0 = curves.C3[i - 1][1] - curves.C4[i - 1][1];
-          var d1 = curves.C3[i][1] - curves.C4[i][1];
-          if (d0 > 0 && d1 <= 0) { cross = curves.C3[i][0]; break; }
-        }
-        var p = h("p", "ph-crossover");
-        p.innerHTML = cross == null
-          ? "At " + fmt(s.tempC, 1) + " °C these two curves do not cross in this range."
-          : "<strong>The curves cross at about " + Math.round(cross) + " µmol/m²/s.</strong> " +
-            "Below that — in shade, at dawn, under a canopy — the <em>C3</em> leaf is ahead. " +
-            "The CO₂ pump that makes C4 so good in bright light costs extra energy to run, and " +
-            "in dim light that cost is not repaid. Try moving the temperature and watch where " +
-            "the crossing goes.";
-        host.appendChild(p);
-      }
-      var rows = [];
-      for (i = 0; i <= N; i += 12) {
-        var r = [Math.round(i / N * 2000)];
-        shown.forEach(function (k) { r.push(fmt(curves[k][i][1], 2)); });
-        if (camPts) r.push(fmt(camPts[i][1], 2));
-        rows.push(r);
-      }
-      var hd = ["PAR"].concat(shown).concat(camPts ? ["CAM"] : []);
-      host.appendChild(dataTable("Net photosynthesis against light for each pathway", hd, rows));
     }
   };
 

@@ -567,35 +567,34 @@ $ph-water: #1f6fb2;
   }
   input[type="range"] { accent-color: $primary; margin: 0; }
 }
-.ph-field-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+// Reserve two lines for the name+value row so a label that wraps does not push its
+// slider below the ones beside it. Cheaper and less lossy than shortening the labels.
+.ph-field-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+  min-height: 2.6em;
+}
 .ph-field-name { font-weight: 600; color: #333; }
 .ph-field-value { font-variant-numeric: tabular-nums; color: $primary; font-weight: 600; white-space: nowrap; }
 .ph-field-hint { font-size: 0.78rem; color: #777; line-height: 1.35; font-weight: 400; }
 
-.ph-switch-row { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; }
-.ph-switch-opt {
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
-  font-weight: 400;
-  cursor: pointer;
-  input { accent-color: $primary; margin: 0; }
+// Parameters a first-year does not need. Collapsed, but present for anyone curious.
+.ph-advanced {
+  margin-top: 0.4rem;
+  border-top: 1px solid #eeeef1;
+  padding-top: 0.6rem;
+  summary {
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #777;
+    &:hover { color: #333; }
+  }
+  .ph-controls-grid { margin-top: 0.8rem; margin-bottom: 0.3rem; }
 }
-// The humidity switch in section 2 changes what the chart MEANS, so it is boxed
-// rather than sitting flush with the ordinary sliders.
-.ph-switch-key {
-  background: #fbf7f7;
-  border: 1px solid #eddcdc;
-  border-left: 3px solid $primary;
-  border-radius: 0 0.35rem 0.35rem 0;
-  padding: 0.6rem 0.75rem;
-  grid-column: 1 / -1;
-}
-.ph-toggle-c3 span { color: $ph-c3; font-weight: 600; }
-.ph-toggle-c4 span { color: $ph-c4; font-weight: 600; }
-.ph-toggle-cam span { color: $ph-cam; font-weight: 600; }
 
-// ---- climate preset buttons (section 3's headline control) ----
 .ph-climate { grid-column: 1 / -1; }
 .ph-climate-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .ph-climate-btn {
@@ -614,30 +613,27 @@ $ph-water: #1f6fb2;
 .ph-chart { width: 100%; height: auto; display: block; }
 
 .ph-line { fill: none; stroke-width: 2.2; stroke-linejoin: round; stroke-linecap: round; }
+// The same leaf with oxygen removed, and the gap between the two: that gap IS the
+// carbon photorespiration takes back, so it is filled rather than left to be inferred.
+.ph-lowo2 { stroke: #2f7d4f; stroke-width: 1.8; stroke-dasharray: 6 4; }
+.ph-area  { stroke: none; }
+.ph-area-photoresp { fill: #2f7d4f; opacity: 0.13; }
+.ph-note-loss { font-size: 11px; fill: #2f7d4f; font-weight: 600; }
+.ph-note-peak   { font-size: 11px; fill: $ph-c3; font-weight: 600; }
+.ph-note-peak-e { font-size: 11px; fill: $ph-water; font-weight: 600; }
 .ph-an   { stroke: $ph-c3; }
 .ph-e    { stroke: $ph-water; stroke-width: 1.8; }
 .ph-wue  { stroke: #5b8f3a; }
+.ph-cica { stroke: #7a5aa8; stroke-dasharray: 5 3; }
 .ph-ref  { stroke: #b9b9bf; stroke-width: 1.6; stroke-dasharray: 5 4; }
-
-// The three potential rates, drawn thin under the answer. Seeing them meet at a
-// rounded corner is what makes "co-limitation" mean something.
-.ph-env { stroke-width: 1; opacity: 0.55; }
-.ph-env-rubisco { stroke: #8a5200; stroke-dasharray: 3 3; }
-.ph-env-rubp    { stroke: #1f6fb2; stroke-dasharray: 3 3; }
-.ph-env-product { stroke: #6b4c9a; stroke-dasharray: 3 3; }
 
 .ph-path-c3  { stroke: $ph-c3; }
 .ph-path-c4  { stroke: $ph-c4; }
 .ph-path-cam { stroke: $ph-cam; stroke-dasharray: 7 4; }
-// Water shares its pathway's colour so you can tell whose water is whose, but is
-// thin and dotted so it can never be mistaken for the carbon line beside it.
-.ph-e-line   { stroke-width: 1.2; opacity: 0.8; stroke-dasharray: 1.5 2.5; }
-
 .ph-band { stroke: none; }
 .ph-band-rubisco { fill: #8a5200; opacity: 0.07; }
 .ph-band-rubp    { fill: #1f6fb2; opacity: 0.07; }
 .ph-band-product { fill: #6b4c9a; opacity: 0.07; }
-.ph-band-pep     { fill: #c07a10; opacity: 0.07; }
 .ph-band-none,
 .ph-band-loss    { fill: #999; opacity: 0.10; }
 .ph-band-night   { fill: #2c3e50; opacity: 0.08; }
@@ -646,10 +642,14 @@ $ph-water: #1f6fb2;
 .ph-gridline  { stroke: #eeeef1; stroke-width: 1; }
 .ph-axis      { stroke: #aaa; stroke-width: 1; }
 .ph-axis-zero { stroke: #c4c4ca; stroke-width: 1.2; }
-.ph-cursor    { stroke: #999; stroke-width: 1; stroke-dasharray: 3 3; }
 .ph-dot       { stroke: #fff; stroke-width: 1.5; }
 .ph-dot-an    { fill: $ph-c3; }
 .ph-dot-e     { fill: $ph-water; }
+// The compensation point: where the curve crosses zero and the leaf breaks even.
+// Deliberately not carnelian -- it is a property of the curve, not another series.
+.ph-dot-comp  { fill: #1a1d21; }
+.ph-stem      { stroke: #1a1d21; stroke-width: 1; stroke-dasharray: 2 2; opacity: 0.45; }
+.ph-note-comp { font-size: 11px; fill: #1a1d21; font-weight: 600; }
 .ph-note      { font-size: 10.5px; fill: #666; }
 
 .ph-tick       { font-size: 11px; fill: #555; }
@@ -661,9 +661,15 @@ $ph-water: #1f6fb2;
 
 // The water-use-efficiency strip sits under the main chart and shares its x axis.
 .ph-substrip { margin-top: 0.2rem; }
+// The strip's right axis is Ci/Ca, not water, so it must not inherit the blue that
+// labels the water axis on the chart above it.
+.ph-substrip .ph-tick-y2,
+.ph-substrip .ph-axis-title-2 { fill: #7a5aa8; }
 .ph-substrip-title {
   font-size: 0.82rem;
-  color: #5b8f3a;
+  color: #555;                 // the strip now carries two series, so the title is
+                               // neutral rather than taking the colour of one of them
+
   font-weight: 600;
   margin: 0.5rem 0 0;
 }
@@ -684,34 +690,13 @@ $ph-water: #1f6fb2;
 .ph-key-an, .ph-key-c3 { background: $ph-c3; }
 .ph-key-c4    { background: $ph-c4; }
 .ph-key-cam   { background: repeating-linear-gradient(to right, $ph-cam 0 6px, transparent 6px 10px); }
-.ph-key-e, .ph-key-water { background: $ph-water; }
-.ph-key-carbon    { background: #555; height: 0.2rem; }
-.ph-key-waterline { background: repeating-linear-gradient(to right, #555 0 2px, transparent 2px 5px); height: 0.12rem; }
+.ph-key-e { background: $ph-water; }
 .ph-key-wue   { background: #5b8f3a; }
+.ph-key-cica  { background: repeating-linear-gradient(to right, #7a5aa8 0 5px, transparent 5px 8px); }
 .ph-key-ref   { background: repeating-linear-gradient(to right, #b9b9bf 0 5px, transparent 5px 9px); }
-.ph-key-rubisco { background: repeating-linear-gradient(to right, #8a5200 0 3px, transparent 3px 6px); }
-.ph-key-rubp    { background: repeating-linear-gradient(to right, #1f6fb2 0 3px, transparent 3px 6px); }
-.ph-key-product { background: repeating-linear-gradient(to right, #6b4c9a 0 3px, transparent 3px 6px); }
-
-// ---- readout tiles ----
-.ph-readout-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
-  gap: 0.7rem;
-  margin: 1rem 0 0.4rem;
-}
-.ph-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
-  padding: 0.55rem 0.7rem;
-  background: #fafafb;
-  border: 1px solid #eeeef1;
-  border-radius: 0.35rem;
-}
-.ph-stat-value { font-size: 1.12rem; font-weight: 700; color: #1a1d21; font-variant-numeric: tabular-nums; line-height: 1.2; }
-.ph-stat-label { font-size: 0.78rem; font-weight: 600; color: #444; }
-.ph-stat-sub   { font-size: 0.72rem; color: #888; line-height: 1.3; }
+.ph-key-comp  { background: #1a1d21; width: 0.55rem; height: 0.55rem; border-radius: 50%; }
+.ph-key-lowo2 { background: repeating-linear-gradient(to right, #2f7d4f 0 6px, transparent 6px 10px); }
+.ph-key-loss  { background: #2f7d4f; opacity: 0.3; height: 0.6rem; }
 
 // ---- tables ----
 .ph-data {
@@ -750,13 +735,13 @@ $ph-water: #1f6fb2;
   .ph-row-c4  th[scope="row"] { color: $ph-c4; }
   .ph-row-cam th[scope="row"] { color: $ph-cam; }
 }
-.ph-budget-note, .ph-phase-note, .ph-crossover {
+.ph-budget-note, .ph-phase-note {
   font-size: 0.85rem;
   color: #555;
   line-height: 1.5;
   margin: 0.7rem 0 0;
 }
-.ph-phase-note, .ph-crossover {
+.ph-phase-note {
   background: #fbfbfc;
   border-left: 3px solid #ddd;
   padding: 0.6rem 0.8rem;
@@ -764,7 +749,7 @@ $ph-water: #1f6fb2;
 }
 
 // ---- prose blocks the .qmd owns ----
-.ph-howto, .ph-caveat {
+.ph-howto {
   background: #fbfbfc;
   border: 1px solid #e7e7e9;
   border-left: 4px solid $primary;
@@ -773,10 +758,6 @@ $ph-water: #1f6fb2;
   margin: 1.25rem 0 1.75rem;
   p { margin-bottom: 0.8rem; }
 }
-// The CAM caveat is a different KIND of warning from the how-to box: it says
-// "this part is a sketch", so it gets the teal that the CAM curve is drawn in.
-.ph-caveat { border-left-color: $ph-cam; }
-
 .ph-try {
   background: #fcfcfa;
   border: 1px solid #ecece4;
@@ -791,6 +772,5 @@ $ph-water: #1f6fb2;
 @media (max-width: 767px) {
   .ph-tool { padding: 0.8rem 0.7rem 1rem; }
   .ph-controls-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-  .ph-readout-grid { grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); }
   .ph-tabs { overflow-x: auto; }
 }

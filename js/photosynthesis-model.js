@@ -80,27 +80,37 @@
   // Limitation flags, same integer meanings as meds_plant_types, plus the plain-language
   // label the page shows. The jargon is kept in parentheses because the lecture uses it.
   var LIM = {
-    NONE:    { id: 0, key: "none",    label: "Losing carbon",            sub: "respiration exceeds photosynthesis" },
-    RUBISCO: { id: 1, key: "rubisco", label: "Not enough enzyme",        sub: "Rubisco-limited" },
-    RUBP:    { id: 2, key: "rubp",    label: "Not enough light energy",  sub: "RuBP-limited" },
-    PRODUCT: { id: 3, key: "product", label: "Sugar export can't keep up", sub: "TPU-limited" },
-    C4_PEP:  { id: 4, key: "pep",     label: "CO2 pump at capacity",     sub: "PEP-limited" }
+    // `label` goes on the chart band (which has room), `short` in the readout tile
+    // (which does not), `sub` carries the technical term the lecture uses.
+    // Note "Rubisco and CO2", not "not enough enzyme": at low internal CO2 this rate is
+    // set by substrate supply, not by how much enzyme the leaf holds.
+    NONE:    { id: 0, key: "none",    label: "Net carbon loss",           short: "Net carbon loss", sub: "respiration exceeds photosynthesis" },
+    RUBISCO: { id: 1, key: "rubisco", label: "Limited by Rubisco and CO₂", short: "Rubisco & CO₂",  sub: "Rubisco-limited" },
+    RUBP:    { id: 2, key: "rubp",    label: "Limited by light",          short: "Light",           sub: "RuBP-limited" },
+    PRODUCT: { id: 3, key: "product", label: "Limited by sugar export",   short: "Sugar export",    sub: "TPU-limited" },
+    C4_PEP:  { id: 4, key: "pep",     label: "Limited by the CO₂ pump",   short: "CO₂ pump",        sub: "PEP-limited" }
   };
 
   // ---------------------------------------------------------------- PRESETS
 
-  // Vcmax25 = 90 for the default sun leaf is a deliberate choice, not the MEDS forest
-  // PFT value (60). Under MEDS's nested quadratic co-limitation, Vcmax25 = 60 gives a
-  // light-saturated rate near 10 umol/m2/s, below the range a student meets in any
-  // textbook figure. 90 puts it at ~15. The canopy-tree preset keeps the model's own
-  // number so the difference is visible rather than hidden.
+  /* The C3 Vcmax25 values below are ABOVE what you would measure on the leaves they
+     name, and deliberately so. MEDS combines the three potential rates with two nested
+     smoothing quadratics that both use theta_j = 0.85 -- the same parameter as the
+     electron-transport hyperbola. (C4 gets its own theta_cj_c4 / theta_ic_c4; C3 does
+     not.) At theta 0.85 that smoothing lands ~30 % BELOW min(Ac, Aj, Ap), and the
+     shortfall is nearly constant in Vcmax, so no measured Vcmax reproduces a measured
+     assimilation rate.
+
+     Calibrating on Vcmax alone gave a C4 leaf 2.4x the peak rate of a C3 leaf and 1.4x
+     its daily water use, when the literature says roughly 1.3-1.7x carbon and about
+     equal water. Calibrating on the RATE instead -- Vcmax25 = 130 -> ~21 umol/m2/s at
+     25 C, ambient CO2, saturating light -- puts both back in range (C4:C3 = 1.7x carbon,
+     1.04x water at Ithaca). See MEDS issue #118. */
   var PRESETS = [
     { key: "sun",    name: "Sun leaf (crop or open canopy)", pathway: "C3",
-      vcmax25: 90, jvRatio: 1.8, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 4.0, thetaJ: 0.85 },
+      vcmax25: 130, jvRatio: 1.8, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 4.0, thetaJ: 0.85 },
     { key: "shade",  name: "Shade leaf (forest understorey)", pathway: "C3",
-      vcmax25: 25, jvRatio: 1.7, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 3.0, thetaJ: 0.90 },
-    { key: "tree",   name: "Canopy tree (the MEDS forest PFT)", pathway: "C3",
-      vcmax25: 60, jvRatio: 1.8, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 4.0, thetaJ: 0.85 },
+      vcmax25: 35, jvRatio: 1.7, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 3.0, thetaJ: 0.90 },
     { key: "c4",     name: "C4 grass (maize, sorghum)", pathway: "C4",
       vcmax25: 40, jvRatio: 4.0, tpuRatio: 0.167, rdRatio: 0.025, g0: 0.04, g1: 1.6, thetaJ: 0.85,
       quantumYield: 0.04, kp25: 0.7, thetaCJ: 0.80, thetaIC: 0.95 },
@@ -112,7 +122,7 @@
       ciDay: 5000,       // [ppm] internal CO2 behind shut stomata during decarboxylation
       ciNight: 100 },    // [ppm] intercellular CO2 during nocturnal PEP fixation
     { key: "custom", name: "Custom", pathway: "C3",
-      vcmax25: 90, jvRatio: 1.8, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 4.0, thetaJ: 0.85 }
+      vcmax25: 130, jvRatio: 1.8, tpuRatio: 0.167, rdRatio: 0.015, g0: 0.01, g1: 4.0, thetaJ: 0.85 }
   ];
 
   function preset(key) {
@@ -162,14 +172,31 @@
   // evaluated 16-20 times per solve, and section 3 runs ~380 solves per redraw. Calling
   // peaked() inside the residual would do ~51,000 exp() per frame instead of ~2,700,
   // for identical answers. MEDS hoists it the same way.
-  function scaleRates(p, tempC, pressure) {
+  /* `o2Frac` overrides the ambient O2 mole fraction (default 0.209).
+     It exists for one purpose: the photorespiration demonstration in section 1, which
+     compares a leaf in air against the same leaf in ~2 % O2 — the low-oxygen experiment
+     by which photorespiration was historically measured.
+
+     ONE DELIBERATE DEVIATION FROM MEDS, and it is confined to this feature. MEDS treats
+     Gamma* as a fixed Pa value that does not depend on O2 (meds_leaf_gas_exchange.f90
+     scales only the Kc(1 + O/Ko) term). Physically Gamma* = 0.5 * O / S(c/o), i.e. it is
+     PROPORTIONAL to O2, and without that the CO2 compensation point would barely move
+     when oxygen is removed — which would make the demonstration show the opposite of the
+     truth. So Gamma* is scaled by o2Frac/0.209 here.
+
+     At the default 0.209 the scale factor is exactly 1, so the verified path is
+     bit-identical to MEDS. tools/check_photosynthesis.py asserts precisely that, so this
+     deviation cannot leak into the curves sections 2 and 3 draw. */
+  function scaleRates(p, tempC, pressure, o2Frac) {
     var tK = tempC + CONST.T0, P = pressure || CONST.P_STD;
+    var o2 = (o2Frac == null) ? CONST.O2 : o2Frac;
     var r = {
       // Pa -> ppm at the ambient pressure, as MEDS does.
       kc:    arrhenius(CONST.KC25,    CONST.EA_KC,    tK) / P * CONST.MOL_2_UMOL,
       ko:    arrhenius(CONST.KO25,    CONST.EA_KO,    tK) / P * CONST.MOL_2_UMOL,
-      gstar: arrhenius(CONST.GSTAR25, CONST.EA_GSTAR, tK) / P * CONST.MOL_2_UMOL,
-      o2:    CONST.O2 * CONST.MOL_2_UMOL,
+      gstar: arrhenius(CONST.GSTAR25, CONST.EA_GSTAR, tK) / P * CONST.MOL_2_UMOL
+             * (o2 / CONST.O2),
+      o2:    o2 * CONST.MOL_2_UMOL,
       vcmax: peaked(p.vcmax25, CONST.EA_VCMAX, CONST.HD_VCMAX, CONST.DS_VCMAX, tK),
       jmax:  peaked(p.jmax25,  CONST.EA_JMAX,  CONST.HD_JMAX,  CONST.DS_JMAX,  tK),
       tpu:   peaked(p.tpu25,   CONST.EA_VCMAX, CONST.HD_VCMAX, CONST.DS_VCMAX, tK),

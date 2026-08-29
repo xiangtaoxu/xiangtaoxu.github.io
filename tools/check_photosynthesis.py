@@ -55,7 +55,7 @@ VPDS = [500.0, 1500.0, 3000.0]
 CIS = [50.0, 100.0, 200.0, 280.0, 400.0, 600.0, 1000.0]
 
 # The two presets the page actually ships as pathway exemplars.
-C3 = dict(vcmax25=90.0, jvRatio=1.8, tpuRatio=0.167, rdRatio=0.015, g0=0.01, g1=4.0,
+C3 = dict(vcmax25=130.0, jvRatio=1.8, tpuRatio=0.167, rdRatio=0.015, g0=0.01, g1=4.0,
           thetaJ=0.85, pathway="C3")
 C4 = dict(vcmax25=40.0, jvRatio=4.0, tpuRatio=0.167, rdRatio=0.025, g0=0.04, g1=1.6,
           thetaJ=0.85, pathway="C4", quantumYield=0.04, kp25=0.7, thetaCJ=0.80,
@@ -259,20 +259,59 @@ const c3day = M.runDay({ params: c3, climate: ith, ca: 400, nStep: 96 });
 // per-climate rather than global. The desert case is the interesting one and is checked
 // through the WUE band below, not here.
 ok(day.water * 5 < c3day.water, "CAM must use >5x less water than C3 at Ithaca");
-ok(Math.abs(c3day.water * 0.018 - 3.95) < 0.2,
-   "C3 at Ithaca should transpire ~3.95 mm/day (mol * 0.018 kg/mol); got " + (c3day.water*0.018));
+ok(Math.abs(c3day.water * 0.018 - 5.34) < 0.2,
+   "C3 at Ithaca should transpire ~5.34 mm/day (mol * 0.018 kg/mol); got " + (c3day.water*0.018));
 const ratio = day.wue / c3day.wue;
 ok(ratio > 1.5 && ratio < 3.0,
    "CAM WUE must land at 1.5-3x C3, NOT the textbook 3-10x (leaf-level, single day): " + ratio);
 
+// ---- the C3:C4 comparison must stay inside the literature band ----
+// This is what the Vcmax25 = 130 calibration is FOR (see PRESETS). If a future edit
+// moves the C3 preset back toward its measured value, these trip rather than silently
+// making C4 look twice as productive and twice as thirsty as it really is.
+{
+  const cl = M.climate("ithaca");
+  const rc3 = M.runDay({ params: M.params({ preset: "sun" }), climate: cl, ca: 400, nStep: 96 });
+  const rc4 = M.runDay({ params: M.params({ preset: "c4" }),  climate: cl, ca: 400, nStep: 96 });
+  const peak = (r) => r.series.reduce((m, p) => Math.max(m, p.An), -1e9);
+  const ratio = peak(rc4) / peak(rc3);
+  ok(ratio > 1.3 && ratio < 1.8,
+     "C4:C3 peak assimilation must be 1.3-1.8x (literature); got " + ratio.toFixed(2));
+  const wratio = rc4.water / rc3.water;
+  ok(wratio > 0.85 && wratio < 1.25,
+     "C4 and C3 should use comparable water in a temperate summer; got " + wratio.toFixed(2));
+}
+
 // ---- anchors quoted in the plan ----
 const r25 = M.scaleRates(M.params({ preset: "sun" }), 25);
 const f = M.solveLeaf({ par: 1500, tempC: 25, ca: 400, vpd: 1500, params: M.params({ preset: "sun" }) });
-ok(Math.abs(f.An - 15.09) < 0.05, "sun leaf A_net at 25C/1500/400/1.5kPa should be 15.09, got " + f.An);
+ok(Math.abs(f.An - 21.42) < 0.05, "sun leaf A_net at 25C/1500/400/1.5kPa should be 21.42, got " + f.An);
 ok(Math.abs(f.ciOverCa - 0.78) < 0.01, "Ci/Ca should be ~0.78, got " + f.ciOverCa);
 ok(f.limitation.key === "rubisco", "should be Rubisco-limited, got " + f.limitation.key);
-const f60 = M.solveLeaf({ par: 1500, tempC: 25, ca: 400, vpd: 1500, params: M.params({ preset: "tree" }) });
-ok(Math.abs(f60.An - 10.19) < 0.05, "MEDS PFT1 A_net should be 10.19, got " + f60.An);
+const f60 = M.solveLeaf({ par: 1500, tempC: 25, ca: 400, vpd: 1500,
+                          params: M.params({ preset: "sun", vcmax25: 60 }) });
+ok(Math.abs(f60.An - 10.19) < 0.05, "Vcmax25=60 (the MEDS forest PFT) A_net should be 10.19, got " + f60.An);
+
+// ---- the O2 override must not touch the default path (see scaleRates) ----
+// Section 1's photorespiration demo scales Gamma* with O2, which MEDS does not. That is
+// physically right and deliberately out of scope for the Fortran diff -- but it must be
+// provably inert at ambient O2, or it would silently alter every verified curve.
+{
+  const pp = M.params({ preset: "sun" });
+  for (const T of [5, 15, 25, 35, 45]) {
+    const a = M.scaleRates(pp, T);              // no o2Frac argument
+    const b = M.scaleRates(pp, T, undefined, 0.209);   // explicit ambient
+    for (const k of ["gstar", "o2", "kc", "ko", "vcmax", "jmax", "tpu", "rd"]) {
+      ok(a[k] === b[k], "O2 override must be exactly inert at 0.209 (" + k + " at " + T + "C)");
+    }
+  }
+  // ...and must actually bite when oxygen is removed.
+  const lo = M.scaleRates(pp, 25, undefined, 0.02);
+  const amb = M.scaleRates(pp, 25);
+  ok(lo.gstar < amb.gstar * 0.2, "Gamma* must fall roughly with O2 when oxygen is removed");
+  const gain = M.demandC3(280, lo, 1500, true).An / M.demandC3(280, amb, 1500, true).An;
+  ok(gain > 1.3 && gain < 1.8, "removing O2 at 25C should raise A by ~50%, got x" + gain);
+}
 
 // ---- section 1 must never call the solver: demand is monotone in Ci ----
 let prev = -1e9;
