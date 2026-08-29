@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="description" content="Interactive photosynthesis simulator">
 
-<title>Orion Hoch – BioM2 Lab</title>
+<title>Photosynthesis – BioM2 Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,6 +37,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
@@ -75,7 +77,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -131,38 +133,188 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-limits-photosynthesis" id="toc-what-limits-photosynthesis" class="nav-link active" data-scroll-target="#what-limits-photosynthesis">1. What limits photosynthesis?</a>
+  <ul class="collapse">
+  <li><a href="#photorespiration" id="toc-photorespiration" class="nav-link" data-scroll-target="#photorespiration">Photorespiration</a></li>
+  </ul></li>
+  <li><a href="#the-price-of-carbon-is-water" id="toc-the-price-of-carbon-is-water" class="nav-link" data-scroll-target="#the-price-of-carbon-is-water">2. The price of carbon is water</a></li>
+  <li><a href="#three-ways-to-pay-that-price" id="toc-three-ways-to-pay-that-price" class="nav-link" data-scroll-target="#three-ways-to-pay-that-price">3. Three ways to pay that price</a></li>
+  <li><a href="#notes-and-further-reading" id="toc-notes-and-further-reading" class="nav-link" data-scroll-target="#notes-and-further-reading">Notes and further reading</a>
+  <ul class="collapse">
+  <li><a href="#what-this-simulation-leaves-out" id="toc-what-this-simulation-leaves-out" class="nav-link" data-scroll-target="#what-this-simulation-leaves-out">What this simulation leaves out</a></li>
+  <li><a href="#where-to-read-more" id="toc-where-to-read-more" class="nav-link" data-scroll-target="#where-to-read-more">Where to read more</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<div class="quarto-about-trestles">
-  <div class="about-entity">
-    <img src="/images/portraits/orion-hoch.jpg" class="about-image
-  round " style="height: 20em; width: 20em;">
+<main class="content column-page-left" id="quarto-document-content">
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Orion Hoch</h1>
-<p class="subtitle lead">Undergraduate</p>
+<h1 class="title">Photosynthesis</h1>
 </div>
-<div class="quarto-title-meta">
+
+<div>
+  <div class="description">
+    Interactive photosynthesis simulator
   </div>
+</div>
+
+
+<div class="quarto-title-meta column-page-left">
+
+    
+  
+    
+  </div>
+  
+
+
 </header>
-    <div class="about-links">
-  <a href="mailto:ogh6@cornell.edu" class="about-link" rel="" target="">
-    <i class="bi bi-envelope"></i>
-     <span class="about-link-text">Email</span>
-  </a>
-</div>
-  </div>
-  <div class="about-contents"><main class="content" id="quarto-document-content">
 
 
-</main></div>
+<p>Every terrestrial plant leaf is running the same trade. It opens tiny pores called stomata, to let carbon dioxide in, at the cost of losing water through the same doorway. Their photosynthesis-stomata systems adapt to environmental conditions to maximize carbon gain, avoid excessive water loss and reduce heat stress.</p>
+<p>The three tools below build that picture one piece at a time. The first focuses on the chlorophyll-level biochemistry. The second adds the pores, and the water cost. The third compares three different pathways over a whole day.</p>
+<section id="what-limits-photosynthesis" class="level2">
+<h2 class="anchored" data-anchor-id="what-limits-photosynthesis">1. What limits photosynthesis?</h2>
+<p>A leaf builds sugar from <strong>CO₂</strong>, using the enzyme <strong>Rubisco</strong> to fix it, <strong>light energy</strong> to drive the reaction, and enough capacity to <strong>export the sugar</strong> once it is made. At any moment one of these is limiting, and which one shifts through the day and the season.</p>
+<div class="ph-tool">
+<div id="ph-limits-controls" class="ph-controls">
+
 </div>
- <!-- /main -->
+<div id="ph-limits-chart" class="ph-chart">
+
+</div>
+<div id="ph-limits-readout" class="ph-readout">
+
+</div>
+</div>
+<p>The heavy red line is the realised rate. The shaded background shows which process is setting the ceiling at each light level, and the leaf is always held to the lowest one. The marked point on the zero line is the <strong>compensation point</strong>: below it the leaf respires faster than it photosynthesises and loses carbon overall.</p>
+<section id="photorespiration" class="level3">
+<h3 class="anchored" data-anchor-id="photorespiration">Photorespiration</h3>
+<p>Rubisco evolved when the atmosphere held almost no oxygen, and it still cannot reliably distinguish CO₂ from O₂. When it fixes oxygen instead, the leaf must spend energy and previously fixed carbon to recover the resulting compound — a process called <strong>photorespiration</strong>. Because the two gases compete for the same site, the cost rises as internal CO₂ falls, and it rises with temperature, since Rubisco’s preference for CO₂ weakens as the leaf warms.</p>
+<p>The green dashed line is the same leaf with the oxygen removed — the low-oxygen condition under which photorespiration was originally measured. The shaded gap between the two curves is carbon the leaf could have kept. At 25 °C it is about a third of the potential rate; at 35 °C, nearly half; by 40 °C, more than two-thirds. That penalty is the selection pressure behind the C4 and CAM pathways in Section 3.</p>
+<div class="ph-try">
+<p>Things to try</p>
+<ul>
+<li><strong>Halve the Rubisco capacity.</strong> The plateau falls sharply while the initial slope barely moves: that slope is set by photon supply, not enzyme. Shade leaves invest accordingly, holding little Rubisco they could never saturate.</li>
+<li><strong>Set internal CO₂ to 150 ppm, then 400 ppm</strong> — approximately stomata nearly closed versus fully open. Watch the shaded regions swap over: at low CO₂ the leaf is held back by Rubisco and its substrate, at high CO₂ by light. This is the range Section 2 explores mechanistically.</li>
+<li><strong>Raise the temperature from 10 °C to 40 °C.</strong> Assimilation collapses while respiration keeps rising, and the compensation point climbs from about 10 to 180 µmol m⁻² s⁻¹: a hot leaf needs far more light merely to break even.</li>
+<li><strong>Vary temperature and watch the shaded gap.</strong> It widens from roughly a seventh of the potential rate at 10 °C to three-quarters at 40 °C. Most of what heat costs a C3 leaf is paid to photorespiration.</li>
+<li><strong>Under advanced parameters, halve the electron-transport ratio.</strong> The slope changes while the plateau holds — the mirror image of the Rubisco experiment above.</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="the-price-of-carbon-is-water" class="level2">
+<h2 class="anchored" data-anchor-id="the-price-of-carbon-is-water">2. The price of carbon is water</h2>
+<p>A real leaf controls internal CO₂ only indirectly, by adjusting its stomata — and water leaves through the same opening.</p>
+<p>Stomata are now part of the model, and the control is <strong>ambient CO₂</strong>. Opening stomata wider raises internal CO₂ and gains carbon, at the cost of water. How steep that cost is depends on the <strong>vapour pressure deficit</strong> — how far the air sits below saturation. Warm air holds far more water vapour, so at a fixed relative humidity its drying power climbs steeply with temperature. The chart below therefore holds humidity constant and varies only temperature.</p>
+<div class="ph-tool">
+<div id="ph-water-controls" class="ph-controls">
+
+</div>
+<div id="ph-water-chart" class="ph-chart">
+
+</div>
+<div id="ph-water-readout" class="ph-readout">
+
+</div>
+</div>
+<p>Water-use efficiency falls across the whole range, and it does so because of the <em>air</em>, not the leaf. Warming raises the drying power of the atmosphere faster than it raises the capacity of the biochemistry, and no amount of enzyme acclimation can change that.</p>
+<p>The purple line on the same strip is the CO₂ the leaf holds inside, as a fraction of the CO₂ outside. It stays remarkably steady — between about 0.7 and 0.9 across this entire temperature range — which is the quantity you were setting by hand in Section 1. What moves it is not light or CO₂ but the dryness of the air: drier air, tighter stomata, lower ratio. Above about 38 °C it climbs again, for an unwelcome reason — assimilation has collapsed faster than the stomata have closed, so the leaf is no longer drawing down the CO₂ it still lets in.</p>
+<div class="ph-try">
+<p>Things to try</p>
+<ul>
+<li><strong>Raise ambient CO₂ to 800 ppm.</strong> Efficiency rises while transpiration falls: the leaf meets its carbon demand at a smaller stomatal opening.</li>
+<li><strong>Halve g₁</strong>, approximating a drought-adapted leaf, and read the carbon cost of that conservatism.</li>
+<li><strong>Lower the humidity to 20 %.</strong> Every curve drops, and the efficiency strip drops hardest. Dry air is expensive at any temperature.</li>
+<li><strong>Watch the internal CO₂ ratio as you move humidity from 90 % to 20 %.</strong> It falls from roughly 0.88 to 0.73 — the stomata closing down in drier air. Light and CO₂ barely move it; humidity moves it immediately.</li>
+</ul>
+</div>
+</section>
+<section id="three-ways-to-pay-that-price" class="level2">
+<h2 class="anchored" data-anchor-id="three-ways-to-pay-that-price">3. Three ways to pay that price</h2>
+<p>Simulation in the last two sections has used the <strong>C3</strong> pathway, which accounts for roughly 85 % of plant species. Two further pathways evolved to meet the same water cost differently. <strong>C4</strong> plants operate a CO₂-concentrating mechanism. At the cost of extra energy, they raise CO₂ around Rubisco, which suppresses photorespiration and allows tighter stomata for the same carbon gain. Maize, sugarcane and most tropical grasses are C4.</p>
+<p><strong>CAM</strong> plants separate the two steps in <em>time</em>. Stomata open at night, when the air is cool and humid, and CO₂ is stored as malic acid; by day the stomata close and that stored carbon is released internally to Rubisco. Cacti and agaves are CAM.</p>
+<p>The chart below follows all three through one simulated day. Carbon and water are drawn separately — switch between them with the tabs — and the daily totals for both sit underneath.</p>
+<div class="ph-tool">
+<div id="ph-pathways-controls" class="ph-controls">
+
+</div>
+<div id="ph-pathways-chart" class="ph-chart">
+
+</div>
+<div id="ph-pathways-budget" class="ph-budget-host">
+
+</div>
+</div>
+<p>The CAM curve is a simplified sketch rather than the model used for C3 and C4 — what it leaves out is set out in the notes at the end of this page.</p>
+<p>On the carbon chart, notice that the C3 curve does not peak at noon. Irradiance peaks at solar noon, assimilation roughly two hours earlier, and — on the water chart — transpiration later still. At equal light, a mid-afternoon leaf yields less carbon for more water than a mid-morning one, because the air has warmed and dried while the sun has not changed. This is the mechanism from Section 2 playing out over a single day.</p>
+<div class="ph-try">
+<p>Things to try</p>
+<ul>
+<li><strong>Select “Hot desert.”</strong> C3 retains under a third of the carbon it gained in Ithaca; CAM retains most of its own. CAM is not the most efficient pathway in a desert, but the one least affected by it.</li>
+<li><strong>Stay in the desert and switch to the water chart.</strong> The C4 leaf transpires <em>more</em> than the C3 leaf despite being the more efficient of the two. Efficiency and conservation are distinct properties, and the difference decides who survives when supply runs out.</li>
+<li><strong>Select “Wet tropics.”</strong> CAM’s efficiency advantage is largest here and least useful, which is a reasonable place to ask where CAM plants actually occur.</li>
+<li><strong>Raise the dewpoint until it approaches the night temperature.</strong> CAM’s water cost falls towards nothing: its whole strategy is to trade at the hour when the air is closest to saturation.</li>
+<li><strong>Raise CO₂ to 800 ppm and compare the water column across all three rows.</strong> Every pathway spends less, but they do not all gain equally.</li>
+</ul>
+</div>
+</section>
+<section id="notes-and-further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
+<section id="what-this-simulation-leaves-out" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-simulation-leaves-out">What this simulation leaves out</h3>
+<div class="ph-howto">
+<p><strong>The leaf is assumed to be the same temperature as the air</strong>, and the air is assumed to be well mixed. A real leaf in still, bright sun runs several degrees warmer than the air around it, which pushes it further along every curve shown here — usually in the unfavourable direction.</p>
+<p><strong>There is no soil.</strong> Water is supplied to the stomata on demand, so no leaf on this page can be droughted. That is worth remembering under the desert setting, where a real plant’s limit is not how efficiently it trades water but how quickly it runs out.</p>
+<p><strong>Nothing here is a whole plant.</strong> Every number is one leaf at one moment, or one leaf over one day. Roots, stems, leaf area, canopy shading, growth and senescence all matter for what a plant actually achieves, and none of them appear.</p>
+<p><strong>The CAM curve is a sketch, not the model.</strong> The C3 and C4 curves come from the same research model as the rest of the page; CAM does not. Real CAM runs on a circadian rhythm that is not simulated here. What is kept is nocturnal stomatal opening, daytime closure, and a ceiling set by overnight malate storage; what is dropped is Phases II and IV, the dawn and dusk windows in which CAM plants do fix CO₂ directly. Its flat daytime line means <em>no net exchange with the atmosphere</em>, not an absence of activity — carboxylation continues inside the leaf all day. Its efficiency figures are also for a single leaf on a single day, which is why they fall short of the three- to ten-fold advantage textbooks quote for CAM; those are whole-plant, whole-season values that include months of dormancy.</p>
+</div>
+</section>
+<section id="where-to-read-more" class="level3">
+<h3 class="anchored" data-anchor-id="where-to-read-more">Where to read more</h3>
+<p>The leaf model behind these simulations — all of Sections 1 and 2, and the C3 and C4 pathways in Section 3 — is the one used in the lab’s ecosystem model. Its full formulation — including the parts left out here, such as the leaf boundary layer, plant hydraulics and drought-driven stomatal closure — is documented in <a href="https://github.com/xiangtaoxu/MEDS/blob/v0.1.0/docs/science/leaf_gas_exchange.md">Leaf gas exchange</a>, which also carries the complete parameter list and its sources. Everything on this page is pinned to <a href="https://github.com/xiangtaoxu/MEDS/releases/tag/v0.1.0">that model’s v0.1.0 release</a>, and the JavaScript here is checked case by case against its Fortran implementation.</p>
+<p><strong>Written to be read</strong>, if you want to go further than this page:</p>
+<ul>
+<li><strong>von Caemmerer, S. (2000).</strong> <em>Biochemical Models of Leaf Photosynthesis.</em> CSIRO Publishing.</li>
+<li><strong>Lambers, H. &amp; Oliveira, R.S. (2019).</strong> <em>Plant Physiological Ecology</em>, 3rd ed., ch.&nbsp;2.</li>
+</ul>
+<p><strong>The papers these simulations implement:</strong></p>
+<ul>
+<li>Farquhar, G.D., von Caemmerer, S. &amp; Berry, J.A. (1980). A biochemical model of photosynthetic CO₂ assimilation in leaves of C3 species. <em>Planta</em> 149:78–90.</li>
+<li>Collatz, G.J., Ribas-Carbo, M. &amp; Berry, J.A. (1992). Coupled photosynthesis–stomatal conductance model for leaves of C4 plants. <em>Australian Journal of Plant Physiology</em> 19:519–538.</li>
+<li>Medlyn, B.E. et al.&nbsp;(2011). Reconciling the optimal and empirical approaches to modelling stomatal conductance. <em>Global Change Biology</em> 17:2134–2144.</li>
+<li>Ehleringer, J. &amp; Björkman, O. (1977). Quantum yields for CO₂ uptake in C3 and C4 plants. <em>Plant Physiology</em> 59:86–90.</li>
+<li>Sage, R.F., Sage, T.L. &amp; Kocacinar, F. (2012). Photorespiration and the evolution of C4 photosynthesis. <em>Annual Review of Plant Biology</em> 63:19–47.</li>
+<li>Osmond, C.B. (1978). Crassulacean acid metabolism: a curiosity in context. <em>Annual Review of Plant Physiology</em> 29:379–414.</li>
+</ul>
+<p>Temperature responses follow Bernacchi et al.&nbsp;(2001) and Medlyn et al.&nbsp;(2002), and the CAM storage figures follow Nobel (1991) and Lüttge (2004); full citations are in the documentation linked above.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
     const isCodeAnnotation = (el) => {
       for (const clz of el.classList) {
         if (clz.startsWith('code-annotation-')) {                     
@@ -573,6 +725,8 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script src="../../js/photosynthesis-model.js" defer=""></script>
+<script src="../../js/photosynthesis.js" defer=""></script>
 
 
 
