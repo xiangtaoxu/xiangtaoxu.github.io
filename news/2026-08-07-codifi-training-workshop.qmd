@@ -1,0 +1,35 @@
+---
+title: "Third annual CoDiFI training workshop"
+date: "2026-08-07"
+description: "Twenty-eight participants from four states spend two days on UAV, terrestrial, and mobile lidar at the third annual CoDiFI digital forestry training workshop."
+image: /images/news/2026-08-07-news.jpg
+image-alt: "Workshop participants seated on a forest clearing for an outdoor session"
+categories: [Lidar, TLS, Outreach]
+---
+
+On August 6th and 7th, 2026, the Cornell Digital Forestry Initiative
+([CoDiFI](../codifi.qmd)) held its third annual training workshop, welcoming 28
+participants from four states — Ohio, Pennsylvania, Maryland, and New York.
+Attendees came from the New York State Department of Environmental Conservation,
+the Cary Institute of Ecosystem Studies, SUNY ESF, Penn State, the Adirondack
+League Club, the University of Maryland, The Nature Conservancy, and Cornell.
+
+The workshop covered the fundamentals of digital forestry tools — uncrewed
+aerial vehicles (UAVs), terrestrial laser scanning (TLS), and mobile laser
+scanning (MLS) — with a particular focus on lidar. Sessions ran from hands-on
+field data collection through data processing to extracting the key biometric
+information that feeds downstream analysis.
+
+<!-- Collage of the remaining three workshop photos, assembled offline into one
+     JPEG so the row needs no page-level layout CSS. Empty caption on purpose:
+     it illustrates the story rather than being a numbered figure, matching the
+     hero inserted by ../_filters/news-image.lua. -->
+![](/images/news/2026-08-07-news-collage.jpg){fig-alt="Workshop participants walking a forest trail, gathering around an instructor, and standing beside marked plot centers"}
+
+Participants left with practical knowledge of how to apply these tools across a
+range of forestry contexts, from ecological research to applied forest
+management.
+
+Registration is already filling for next year. Please reach out to
+[Xiangtao](mailto:xx286@cornell.edu) if you are interested in attending the 2027
+workshop.
