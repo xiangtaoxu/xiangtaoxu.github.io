@@ -24,7 +24,7 @@ listing:
 :::
 
 ::: {.hero-banner}
-# Predicting forests and biosphere under a changing planet
+# Predicting forests and the biosphere on a changing planet
 
 [Principles and solutions integrating *in situ* and *in silico* research]{.lead}
 
