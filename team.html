@@ -43,7 +43,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-14c8ddfb55cc085af2ab7deb2f032e4e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-21edc6db407d19af9b1e8fa7355c84ab.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -248,11 +248,50 @@ window.Quarto = {
 
 <p>We are an interdisciplinary group working at the interface of ecology, Earth system science, and remote sensing.</p>
 <p><strong>Join us!</strong> We welcome undergraduate researchers, prospective graduate students, and postdocs. Reach out to <a href="mailto:xx286@cornell.edu">Xiangtao</a> if our work resonates with you.</p>
+<!--
+  Lab group photos, newest first. The gallery holds the newest photo for 10 s,
+  then flips through the older ones at 3 s each and wraps around (timings live
+  in js/lab-gallery.js).
+
+  To add a photo: crop it to 1.4:1, save it as images/lab/lab-<year>-<month>.jpg
+  at 1600 px wide plus a -800.jpg for phones, and paste a new <figure> at the
+  TOP of this list — moving the `is-active` class onto it, since that slide is
+  the one the gallery starts on and the only one visible without JavaScript.
+-->
+<div class="lab-gallery" role="region" aria-label="Lab group photos through the years">
+<figure class="lab-gallery__slide is-active figure" data-label="August 2026">
+<img src="./images/lab/lab-2026-aug.jpg" srcset="/images/lab/lab-2026-aug-800.jpg 800w, /images/lab/lab-2026-aug.jpg 1600w" sizes="(max-width: 900px) 100vw, 880px" width="1600" height="1143" alt="The BioM2 Lab group photo, August 2026" class="figure-img">
+<figcaption class="lab-gallery__caption">
+August 2026
+</figcaption>
+</figure>
+<figure class="lab-gallery__slide figure" data-label="May 2024">
+<img src="./images/lab/lab-2024-may.jpg" srcset="/images/lab/lab-2024-may-800.jpg 800w, /images/lab/lab-2024-may.jpg 1600w" sizes="(max-width: 900px) 100vw, 880px" width="1600" height="1143" loading="lazy" alt="The BioM2 Lab group photo, May 2024" class="figure-img">
+<figcaption class="lab-gallery__caption">
+May 2024
+</figcaption>
+</figure>
+<figure class="lab-gallery__slide figure" data-label="Fall 2023">
+<img src="./images/lab/lab-2023-fall.jpg" srcset="/images/lab/lab-2023-fall-800.jpg 800w, /images/lab/lab-2023-fall.jpg 1600w" sizes="(max-width: 900px) 100vw, 880px" width="1600" height="1143" loading="lazy" alt="The BioM2 Lab group photo, Fall 2023" class="figure-img">
+<figcaption class="lab-gallery__caption">
+Fall 2023
+</figcaption>
+</figure>
+<figure class="lab-gallery__slide figure" data-label="Fall 2022">
+<img src="./images/lab/lab-2022-fall.jpg" srcset="/images/lab/lab-2022-fall-800.jpg 800w, /images/lab/lab-2022-fall.jpg 1600w" sizes="(max-width: 900px) 100vw, 880px" width="1600" height="1143" loading="lazy" alt="The BioM2 Lab group photo, Fall 2022" class="figure-img">
+<figcaption class="lab-gallery__caption">
+Fall 2022
+</figcaption>
+</figure>
+<div class="lab-gallery__dots">
+
+</div>
+</div>
 <section id="current-members" class="level2">
 <h2 class="anchored" data-anchor-id="current-members">Current members</h2>
 <div id="listing-current-members" class="quarto-listing quarto-listing-container-grid">
 <div class="list grid quarto-listing-cols-4">
-<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="76">
 <a href="./members/current/xiangtao-xu.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -268,7 +307,7 @@ Associate Professor, EEB Cornell
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
+<div class="g-col-1" data-index="1" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="17">
 <a href="./members/current/tao-han.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -284,7 +323,7 @@ Postdoctoral Researcher
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
+<div class="g-col-1" data-index="2" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="27">
 <a href="./members/current/anthony-stewart.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -300,7 +339,7 @@ Atkinson Postdoctoral Fellow
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="3" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./members/current/rong-li.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -316,7 +355,7 @@ Postdoctoral Researcher
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
+<div class="g-col-1" data-index="4" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="28">
 <a href="./members/current/cameron-scholl.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -332,7 +371,7 @@ EEB PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
+<div class="g-col-1" data-index="5" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="24">
 <a href="./members/current/coral-valle-rodriguez.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -348,7 +387,7 @@ EEB PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="30">
+<div class="g-col-1" data-index="6" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="30">
 <a href="./members/current/nicholas-cranmer.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -364,23 +403,7 @@ EEB PhD Candidate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="53">
-<a href="./members/current/yixin-ma.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./images/portraits/yixin-ma.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Yixin Ma
-</h5>
-<div class="card-subtitle listing-subtitle">
-EEB PhD
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="7" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./members/current/cam-reimer.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -396,7 +419,7 @@ EEB PhD Student
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
+<div class="g-col-1" data-index="8" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="1">
 <a href="./members/current/orion-hoch.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -412,7 +435,7 @@ Undergraduate
 </div>
 </div></a>
 </div>
-<div class="g-col-1" data-index="10" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
+<div class="g-col-1" data-index="9" data-listing-file-modified-sort="1788139201136" data-listing-reading-time-sort="1" data-listing-word-count-sort="7">
 <a href="./members/current/finn-ericson.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
 <p class="card-img-top">
@@ -451,7 +474,17 @@ Details
 </thead>
 <tbody class="list">
 
-<tr data-index="0" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Aaron Sams" data-listing-filename-sort="aaron-sams.qmd">
+<tr data-index="0" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="53" data-listing-title-sort="Yixin Ma" data-listing-filename-sort="yixin-ma.qmd">
+<td>
+<a href="./members/alumni/yixin-ma.html" class="title listing-title">Yixin Ma</a>
+</td>
+<td>
+<span class="listing-details">EEB PhD Candidate 2021–2026; Now Postdoctoral Fellow, Harvard University Organismic and Evolutionary Biology</span>
+</td>
+
+</tr>
+
+<tr data-index="1" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="1" data-listing-title-sort="Aaron Sams" data-listing-filename-sort="aaron-sams.qmd">
 <td>
 <a href="./members/alumni/aaron-sams.html" class="title listing-title">Aaron Sams</a>
 </td>
@@ -461,7 +494,7 @@ Details
 
 </tr>
 
-<tr data-index="1" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="119" data-listing-title-sort="Daniel Petticord" data-listing-filename-sort="daniel-petticord.qmd">
+<tr data-index="2" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="119" data-listing-title-sort="Daniel Petticord" data-listing-filename-sort="daniel-petticord.qmd">
 <td>
 <a href="./members/alumni/daniel-petticord.html" class="title listing-title">Daniel Petticord</a>
 </td>
@@ -471,7 +504,7 @@ Details
 
 </tr>
 
-<tr data-index="2" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="70" data-listing-title-sort="Dylan Van Bramer" data-listing-filename-sort="dylan-van-bramer.qmd">
+<tr data-index="3" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="70" data-listing-title-sort="Dylan Van Bramer" data-listing-filename-sort="dylan-van-bramer.qmd">
 <td>
 <a href="./members/alumni/dylan-van-bramer.html" class="title listing-title">Dylan Van Bramer</a>
 </td>
@@ -481,7 +514,7 @@ Details
 
 </tr>
 
-<tr data-index="3" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Sabrina Chow" data-listing-filename-sort="sabrina-chow.qmd">
+<tr data-index="4" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="4" data-listing-title-sort="Sabrina Chow" data-listing-filename-sort="sabrina-chow.qmd">
 <td>
 <a href="./members/alumni/sabrina-chow.html" class="title listing-title">Sabrina Chow</a>
 </td>
@@ -491,7 +524,7 @@ Details
 
 </tr>
 
-<tr data-index="4" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="Xiaoting Li" data-listing-filename-sort="xiaoting-li.qmd">
+<tr data-index="5" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="32" data-listing-title-sort="Xiaoting Li" data-listing-filename-sort="xiaoting-li.qmd">
 <td>
 <a href="./members/alumni/xiaoting-li.html" class="title listing-title">Xiaoting Li</a>
 </td>
@@ -501,7 +534,7 @@ Details
 
 </tr>
 
-<tr data-index="5" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="39" data-listing-title-sort="Donghai Wu" data-listing-filename-sort="donghai-wu.qmd">
+<tr data-index="6" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="39" data-listing-title-sort="Donghai Wu" data-listing-filename-sort="donghai-wu.qmd">
 <td>
 <a href="./members/alumni/donghai-wu.html" class="title listing-title">Donghai Wu</a>
 </td>
@@ -511,7 +544,7 @@ Details
 
 </tr>
 
-<tr data-index="6" data-listing-file-modified-sort="1787968228814" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="Maddie Watson" data-listing-filename-sort="maddie-watson.qmd">
+<tr data-index="7" data-listing-file-modified-sort="1788139201135" data-listing-reading-time-sort="1" data-listing-word-count-sort="30" data-listing-title-sort="Maddie Watson" data-listing-filename-sort="maddie-watson.qmd">
 <td>
 <a href="./members/alumni/maddie-watson.html" class="title listing-title">Maddie Watson</a>
 </td>
@@ -950,6 +983,7 @@ Details
     </div>
   </div>
 </footer>
+<script src="./js/lab-gallery.js" defer=""></script>
 
 
 

@@ -40,6 +40,35 @@
   <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-24-news.jpg" medium="image" type="image/jpeg"/>
 </item>
 <item>
+  <title>Third annual CoDiFI training workshop</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-08-07-codifi-training-workshop.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-07-news.jpg" class="news-hero img-fluid" alt="Workshop participants seated on a forest clearing for an outdoor session"></p>
+<p>On August 6th and 7th, 2026, the Cornell Digital Forestry Initiative (<a href="../codifi.html">CoDiFI</a>) held its third annual training workshop, welcoming 28 participants from four states — Ohio, Pennsylvania, Maryland, and New York. Attendees came from the New York State Department of Environmental Conservation, the Cary Institute of Ecosystem Studies, SUNY ESF, Penn State, the Adirondack League Club, the University of Maryland, The Nature Conservancy, and Cornell.</p>
+<p>The workshop covered the fundamentals of digital forestry tools — uncrewed aerial vehicles (UAVs), terrestrial laser scanning (TLS), and mobile laser scanning (MLS) — with a particular focus on lidar. Sessions ran from hands-on field data collection through data processing to extracting the key biometric information that feeds downstream analysis.</p>
+<!-- Collage of the remaining three workshop photos, assembled offline into one
+     JPEG so the row needs no page-level layout CSS. Empty caption on purpose:
+     it illustrates the story rather than being a numbered figure, matching the
+     hero inserted by ../_filters/news-image.lua. -->
+<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-07-news-collage.jpg" class="img-fluid" alt="Workshop participants walking a forest trail, gathering around an instructor, and standing beside marked plot centers"></p>
+<p>Participants left with practical knowledge of how to apply these tools across a range of forestry contexts, from ecological research to applied forest management.</p>
+<p>Registration is already filling for next year. Please reach out to <a href="mailto:xx286@cornell.edu">Xiangtao</a> if you are interested in attending the 2027 workshop.</p>
+
+
+
+ ]]></description>
+  <category>Lidar</category>
+  <category>TLS</category>
+  <category>Outreach</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-08-07-codifi-training-workshop.html</guid>
+  <pubDate>Fri, 07 Aug 2026 00:00:00 GMT</pubDate>
+  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2026-08-07-news.jpg" medium="image" type="image/jpeg"/>
+</item>
+<item>
   <title>New paper on satellite mapping of spongy moth defoliation published in Forest Ecology and Management</title>
   <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-07-30-spongy-moth-defoliation-paper.html</link>
   <description><![CDATA[ 
@@ -379,25 +408,6 @@
  ]]></description>
   <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-05-09-cary-institute-seminar.html</guid>
   <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Xiangtao Xu gives keynote presentation at ER-DGVM-C</title>
-  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-04-06-erdgvm-keynote.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><img src="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-04-06-news.jpg" class="news-hero img-fluid" alt="Xiangtao Xu gives keynote presentation at ER-DGVM-C"></p>
-<p><strong>Xiangtao Xu</strong> gives a keynote presentation titled “Trait-based modeling of tropical forest structure and dynamics: critical dimensions of plant functional diversity,” kickstarting the two-and-a-half-day East Regional Dynamic Global Vegetation Modeling Conference (<a href="https://aimesproject.org/erdgvmc_2024/">ER-DGVM-C</a>) at MBL, Woods Hole. Lab members <strong>Cameron Scholl</strong>, <strong>Coral Valle-Rodriguez</strong>, and <strong>Tao Han</strong> also presented research talks and posters. <strong>Tao Han</strong> has won the best postdoc poster award!</p>
-
-
-
- ]]></description>
-  <category>Conference</category>
-  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-04-06-erdgvm-keynote.html</guid>
-  <pubDate>Sat, 06 Apr 2024 00:00:00 GMT</pubDate>
-  <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-04-06-news.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
 </rss>
