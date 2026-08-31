@@ -1,9 +1,10 @@
 ---
 title: "Yixin Ma"
-subtitle: "EEB PhD"
+subtitle: "EEB PhD Candidate, 2021–2026"
 image: /images/portraits/yixin-ma.jpg
-role: phd
-weight: 7
+role: alumni
+sort_key: 2026
+details: "EEB PhD Candidate 2021–2026; Now Postdoctoral Fellow, Harvard University Organismic and Evolutionary Biology"
 aliases: ["Yixin Ma", "Y. Ma", "Y Ma"]
 about:
   template: trestles
