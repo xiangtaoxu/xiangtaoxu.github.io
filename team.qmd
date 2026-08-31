@@ -37,6 +37,13 @@ listing:
     sort: "sort_key desc"     # most recent departure first; sort_key: 0 = unknown, sorts last
     sort-ui: false
     filter-ui: false
+
+# Drives the lab-photo gallery below. This page only, loaded after the markup.
+format:
+  html:
+    include-after-body:
+      - text: |
+          <script src="/js/lab-gallery.js" defer></script>
 ---
 
 We are an interdisciplinary group working at the interface of ecology, Earth
@@ -46,6 +53,55 @@ system science, and remote sensing.
 and postdocs. Reach out to [Xiangtao](mailto:xx286@cornell.edu) if our work
 resonates with you.
 
+
+<!--
+  Lab group photos, newest first. The gallery holds the newest photo for 10 s,
+  then flips through the older ones at 3 s each and wraps around (timings live
+  in js/lab-gallery.js).
+
+  To add a photo: crop it to 1.4:1, save it as images/lab/lab-<year>-<month>.jpg
+  at 1600 px wide plus a -800.jpg for phones, and paste a new <figure> at the
+  TOP of this list — moving the `is-active` class onto it, since that slide is
+  the one the gallery starts on and the only one visible without JavaScript.
+-->
+<div class="lab-gallery" role="region" aria-label="Lab group photos through the years">
+  <figure class="lab-gallery__slide is-active" data-label="August 2026">
+    <img src="/images/lab/lab-2026-aug.jpg"
+         srcset="/images/lab/lab-2026-aug-800.jpg 800w, /images/lab/lab-2026-aug.jpg 1600w"
+         sizes="(max-width: 900px) 100vw, 880px"
+         width="1600" height="1143"
+         alt="The BioM2 Lab group photo, August 2026">
+    <figcaption class="lab-gallery__caption">August 2026</figcaption>
+  </figure>
+  <figure class="lab-gallery__slide" data-label="May 2024">
+    <img src="/images/lab/lab-2024-may.jpg"
+         srcset="/images/lab/lab-2024-may-800.jpg 800w, /images/lab/lab-2024-may.jpg 1600w"
+         sizes="(max-width: 900px) 100vw, 880px"
+         width="1600" height="1143"
+         loading="lazy"
+         alt="The BioM2 Lab group photo, May 2024">
+    <figcaption class="lab-gallery__caption">May 2024</figcaption>
+  </figure>
+  <figure class="lab-gallery__slide" data-label="Fall 2023">
+    <img src="/images/lab/lab-2023-fall.jpg"
+         srcset="/images/lab/lab-2023-fall-800.jpg 800w, /images/lab/lab-2023-fall.jpg 1600w"
+         sizes="(max-width: 900px) 100vw, 880px"
+         width="1600" height="1143"
+         loading="lazy"
+         alt="The BioM2 Lab group photo, Fall 2023">
+    <figcaption class="lab-gallery__caption">Fall 2023</figcaption>
+  </figure>
+  <figure class="lab-gallery__slide" data-label="Fall 2022">
+    <img src="/images/lab/lab-2022-fall.jpg"
+         srcset="/images/lab/lab-2022-fall-800.jpg 800w, /images/lab/lab-2022-fall.jpg 1600w"
+         sizes="(max-width: 900px) 100vw, 880px"
+         width="1600" height="1143"
+         loading="lazy"
+         alt="The BioM2 Lab group photo, Fall 2022">
+    <figcaption class="lab-gallery__caption">Fall 2022</figcaption>
+  </figure>
+  <div class="lab-gallery__dots"></div>
+</div>
 
 ## Current members
 

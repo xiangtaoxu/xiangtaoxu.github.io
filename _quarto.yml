@@ -17,6 +17,9 @@ project:
     - data/climate/**
     - js/**
     - images/basemap/**
+    # The gallery's phone-sized photos live only in an `srcset`, which Quarto's
+    # scanner doesn't follow — without this line they 404 on small screens.
+    - images/lab/**
     # CNAME must be copied into every gh-pages publish, or the custom domain breaks
     - CNAME
 

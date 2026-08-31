@@ -150,6 +150,78 @@ $font-size-base:   1.1rem;
 }
 .pub-list .pub-meta { color: #555; font-size: 0.92rem; }
 
+// ---- Team page: auto-cycling lab photo gallery ----
+// The slides are stacked in one box and cross-faded, so the box — not the
+// photos — owns the height: it holds the 1.4:1 ratio every file in images/lab/
+// is cropped to, and the page never reflows as the photos swap. Without
+// JavaScript the first (newest) slide simply stays put and the dots stay
+// hidden; js/lab-gallery.js adds .is-live once they actually do something.
+.lab-gallery {
+  position: relative;
+  max-width: 880px;
+  margin: 0.5rem auto 2.5rem;
+  aspect-ratio: 1.4 / 1;
+  border-radius: $border-radius;
+  overflow: hidden;
+  background: #f2f2f0;                 // shown while the first photo decodes
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.10);
+}
+.lab-gallery__slide {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+.lab-gallery__slide.is-active { opacity: 1; }
+.lab-gallery__slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin: 0;                           // beats Bootstrap's .figure-img bottom margin
+}
+.lab-gallery__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 2.5rem 1.1rem 0.8rem;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  // the gradient is what keeps the date legible over a bright sky or lawn
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0));
+}
+.lab-gallery__dots {
+  position: absolute;
+  right: 0.9rem;
+  bottom: 0.85rem;
+  display: none;
+  gap: 0.4rem;
+  z-index: 2;
+}
+.lab-gallery.is-live .lab-gallery__dots { display: flex; }
+.lab-gallery__dot {
+  width: 0.62rem;
+  height: 0.62rem;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lab-gallery__dot:hover { background: rgba(255, 255, 255, 0.85); }
+.lab-gallery__dot.is-active { background: #fff; transform: scale(1.25); }
+.lab-gallery__dot:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+@media (max-width: 575px) {
+  .lab-gallery { margin-bottom: 1.8rem; }
+  .lab-gallery__caption { font-size: 0.85rem; padding: 2rem 0.8rem 0.6rem; }
+}
+
 // ---- Team listing (the grid of member cards) ----
 .card { border-radius: $border-radius; }
 // Square cards: the portraits are cropped 1:1 (face-centered), so show them
