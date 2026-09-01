@@ -7,6 +7,16 @@
 *~
 
 **/*.quarto_ipynb
+__pycache__/
 
 # One-off download cache for tools/build_climate_grid.py (60 MB of WorldClim zips)
 /.worldclim-cache/
+
+# Local copy of the visitor counts, written by tools/sync_visitor_stats.py.
+# This repo is PUBLIC and the numbers are deliberately private — committing these
+# would publish exactly what the GoatCounter setup was chosen to keep unpublished.
+/analytics/
+
+# An API token must never be committed. Prefer $GOATCOUNTER_API_TOKEN or
+# ~/.config/goatcounter/token; this catches the case where one lands here anyway.
+/.goatcounter-token
