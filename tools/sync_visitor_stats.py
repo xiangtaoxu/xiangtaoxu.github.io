@@ -64,6 +64,15 @@ MAX_LIMIT = 100
 RATE_LIMIT_PAUSE = 0.3  # API allows 4 req/s; we make a handful of calls.
 
 
+def as_datetime(date_str, end_of_day=False):
+    """YYYY-MM-DD -> RFC3339. The API documents start/end as datetimes, not dates."""
+    try:
+        time.strptime(date_str, "%Y-%m-%d")
+    except ValueError:
+        sys.exit(f"Bad date {date_str!r}: expected YYYY-MM-DD.")
+    return date_str + ("T23:59:59Z" if end_of_day else "T00:00:00Z")
+
+
 def read_token(token_file):
     """Token from the environment, else from a file. Never from argv."""
     token = os.environ.get("GOATCOUNTER_API_TOKEN", "").strip()
@@ -108,7 +117,9 @@ def api_get(base, token, endpoint, params=None):
 def fetch_hits(base, token, start, end, limit):
     """Per-path visitor counts with their daily breakdown."""
     data = api_get(base, token, "stats/hits", {
-        "start": start, "end": end, "limit": limit, "group": "daily",
+        # NOT "daily": Group.UnmarshalText accepts only hour|day|week|month, and
+        # anything else falls through to an integer parse and returns HTTP 400.
+        "start": start, "end": end, "limit": limit, "group": "day",
     })
     hits = data.get("hits", [])
     if data.get("more"):
@@ -190,9 +201,10 @@ def main():
         return 0
 
     time.sleep(RATE_LIMIT_PAUSE)
-    totals = api_get(base, token, "stats/total", {"start": args.start, "end": end})
+    start_dt, end_dt = as_datetime(args.start), as_datetime(end, end_of_day=True)
+    totals = api_get(base, token, "stats/total", {"start": start_dt, "end": end_dt})
     time.sleep(RATE_LIMIT_PAUSE)
-    hits, _ = fetch_hits(base, token, args.start, end, min(args.limit, MAX_LIMIT))
+    hits, _ = fetch_hits(base, token, start_dt, end_dt, min(args.limit, MAX_LIMIT))
 
     if not hits:
         print(f"No data in {args.start}..{end}. Nothing written.", file=sys.stderr)
