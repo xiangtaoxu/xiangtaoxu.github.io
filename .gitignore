@@ -17,6 +17,10 @@ __pycache__/
 # would publish exactly what the GoatCounter setup was chosen to keep unpublished.
 /analytics/
 
+# Generated QR codes (tools/make_qr.py). Derived artefacts -- they regenerate in a
+# second, so they don't belong in version history.
+/qr/
+
 # An API token must never be committed. Prefer $GOATCOUNTER_API_TOKEN or
 # ~/.config/goatcounter/token; this catches the case where one lands here anyway.
 /.goatcounter-token
