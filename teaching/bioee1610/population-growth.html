@@ -6,10 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2024-08-19">
-<meta name="description" content="New paper on estimating wood volume in slash walls using terrestrial and airborne LiDAR is published in Forest Ecology and Management.">
+<meta name="description" content="Interactive logistic growth simulator">
 
-<title>New paper published in Forest Ecology and Management – BioM2 Lab</title>
+<title>Population Growth – BioM2 Lab</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -28,22 +27,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6bb73acbf1aac9983b8b0a80778e9dbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-6bb73acbf1aac9983b8b0a80778e9dbc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -85,14 +84,14 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-fixed fullcontent quarto-light">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">BioM2 Lab</span>
     </a>
   </div>
@@ -103,27 +102,27 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../team.html"> 
+    <a class="nav-link" href="../../team.html"> 
 <span class="menu-text">Team</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
+    <a class="nav-link" href="../../research.html"> 
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
+    <a class="nav-link" href="../../teaching.html"> 
 <span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../codifi.html"> 
+    <a class="nav-link" href="../../codifi.html"> 
 <span class="menu-text">CoDiFI</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../news.html"> 
+    <a class="nav-link" href="../../news.html"> 
 <span class="menu-text">News</span></a>
   </li>  
 </ul>
@@ -141,39 +140,45 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#births-deaths-and-where-they-balance" id="toc-births-deaths-and-where-they-balance" class="nav-link active" data-scroll-target="#births-deaths-and-where-they-balance">Births, deaths, and where they balance</a>
+  <ul class="collapse">
+  <li><a href="#what-you-are-looking-at" id="toc-what-you-are-looking-at" class="nav-link" data-scroll-target="#what-you-are-looking-at">What you are looking at</a></li>
+  <li><a href="#now-the-equation" id="toc-now-the-equation" class="nav-link" data-scroll-target="#now-the-equation">Now the equation</a></li>
+  </ul></li>
+  <li><a href="#notes-and-further-reading" id="toc-notes-and-further-reading" class="nav-link" data-scroll-target="#notes-and-further-reading">Notes and further reading</a>
+  <ul class="collapse">
+  <li><a href="#what-this-simulation-leaves-out" id="toc-what-this-simulation-leaves-out" class="nav-link" data-scroll-target="#what-this-simulation-leaves-out">What this simulation leaves out</a></li>
+  <li><a href="#where-to-read-more" id="toc-where-to-read-more" class="nav-link" data-scroll-target="#where-to-read-more">Where to read more</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">New paper published in Forest Ecology and Management</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">Publication</div>
-    <div class="quarto-category">TLS</div>
-    <div class="quarto-category">Arnot</div>
-  </div>
-  </div>
+<h1 class="title">Population Growth</h1>
+</div>
 
 <div>
   <div class="description">
-    New paper on estimating wood volume in slash walls using terrestrial and airborne LiDAR is published in Forest Ecology and Management.
+    Interactive logistic growth simulator
   </div>
 </div>
 
 
-<div class="quarto-title-meta">
+<div class="quarto-title-meta column-page-left">
 
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 19, 2024</p>
-    </div>
-  </div>
   
     
   </div>
@@ -183,10 +188,82 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><img src="../images/news/2024-08-19-news.jpg" class="news-hero img-fluid" alt="New paper published in Forest Ecology and Management"></p>
-<p>New paper titled “Estimating merchantable and non-merchantable wood volume in slash walls using terrestrial and airborne LiDAR” is now published <a href="https://www.sciencedirect.com/science/article/pii/S0378112724005231">online</a> in <em>Forest Ecology and Management</em>! This collaborative work, involving Cornell EEB, DNRE, and SUNY ESF, is led by our PhD student Nick Cranmer. The study investigates the woody volume of slash walls, an effective forest management practice to prevent deer herbivory and promote forest regeneration, using terrestrial and airborne lidar systems (TLS and ALS). Key findings include: (1) TLS tends to underestimate total cross-sectional area due to omission of small stem cross-sections (diameter &lt; 5.08 cm); (2) TLS-based wood volume estimates were similar across both short and tall slash walls in the study, with an average volume of 21.34 m³/30 m for short slash walls and 21.50 m³/30 m for tall slash walls, corresponding to 16.9 t dry biomass/30 m and 17.0 t dry biomass/30 m respectively; and (3) average merchantable (diameter &gt; 15.24 cm) and non-merchantable (diameter &lt; 15.24 cm) timber fraction was 68.75% and 31.35% for short slash walls and 65.04% and 34.96% for tall slash walls. This study provides novel data and methodology to estimate the construction cost of slash walls, which is critical for optimizing slash wall applications.</p>
+<section id="births-deaths-and-where-they-balance" class="level2">
+<h2 class="anchored" data-anchor-id="births-deaths-and-where-they-balance">Births, deaths, and where they balance</h2>
+<p>Set how fast individuals reproduce and die, decide how much crowding matters, and press <strong>Play</strong>. The equation comes later — watch the population first.</p>
+<div class="pd-tool">
+<div id="pd-logistic-controls" class="pd-controls">
+
+</div>
+<div id="pd-logistic-chart" class="pd-chart">
+
+</div>
+<div id="pd-logistic-dots" class="pd-chart">
+
+</div>
+</div>
+<section id="what-you-are-looking-at" class="level3">
+<h3 class="anchored" data-anchor-id="what-you-are-looking-at">What you are looking at</h3>
+<p><strong>The curve</strong> is the population over fifty years — the familiar S-shape, levelling off somewhere, but not smoothly: the birth and death rates are re-drawn every year, because a good year and a bad year are different years to be alive in. Drag the slider under it to move through time.</p>
+<p>The grey band marks a size you can try to aim the population at; it turns green when you land inside it. Where to put it, how variable the years are, and how badly the counting is done are all under <strong>additional parameters</strong>.</p>
+<p><strong>The two bars</strong> are the part the curve cannot show you: the <em>total</em> births and deaths per year at whichever moment you are parked on. The gap between their ends is how fast the population is changing. Drag from year zero to the end and watch the birth bar start far ahead, the two converge, and finally sit <strong>equal and both still long</strong>.</p>
+<p><strong>The square</strong> is those same individuals, one dot each: <strong>green</strong> born this year, <strong>red</strong> died this year, <strong>black</strong> came through it alive. Where the dots sit means nothing — the square is a tally, not a map. What matters is that once the population levels off, green and red keep appearing <em>in equal numbers</em>. A population that has stopped growing has not stopped. It is replacing itself as fast as it can, and the panel tells you how many individuals a year that takes.</p>
+</section>
+<section id="now-the-equation" class="level3">
+<h3 class="anchored" data-anchor-id="now-the-equation">Now the equation</h3>
+<p>Two straight lines are hiding in those sliders. The birth rate falls as it gets crowded and the death rate climbs:</p>
+<blockquote class="blockquote">
+<p><strong>b(N) = b₀ − βN</strong> and <strong>d(N) = d₀ + δN</strong></p>
+</blockquote>
+<p>A population grows at the rate its individuals reproduce, minus the rate they die, so <code>dN/dt = [b(N) − d(N)] N</code>. Substitute the two lines, collect the terms, and out falls the equation from lecture:</p>
+<blockquote class="blockquote">
+<p><strong>dN/dt = r N (1 − N/K)</strong> with <strong>r = b₀ − d₀</strong> and <strong>K = (b₀ − d₀) / (β + δ)</strong></p>
+</blockquote>
+<p>Neither <strong>r</strong> nor <strong>K</strong> is a slider on this page, because neither is a thing an organism has. <strong>r</strong> is the growth rate an individual manages with nobody in the way. <strong>K</strong> is the population size at which the two rate lines cross — where a typical individual has exactly as many offspring as it has chances of dying.</p>
+<p>Below, those theoretical values sit next to the <strong>empirical</strong> ones: what somebody counting this population once a year for fifty years would report, knowing nothing about the rates you set. The two do not match exactly, and that is not a mistake in either. The theoretical numbers describe what an <em>average</em> year does. The empirical ones describe the single history this population actually had — one particular run of good and bad years, seen through one particular set of counts.</p>
+<div class="pd-tool">
+<div id="pd-logistic-readout" class="pd-readout">
+
+</div>
+</div>
+<div class="pd-try">
+<p>Things to try</p>
+<ul>
+<li><strong>Park the slider at the far right and look at the two bars.</strong> They are equal, and neither is anywhere near zero. Then read “turnover at K”: that many individuals are born and die every year, forever, with the total never moving.</li>
+<li><strong>Compare two populations with the same K.</strong> Set <code>b₀ = 0.12, d₀ = 0.02, δ = 0.25</code>, then <code>b₀ = 1.40, d₀ = 0.60, δ = 2.00</code>. Both work out at K = 400 — though the slow one is still climbing towards it at year fifty, which is worth noticing on its own. Now check the mean lifespan: 8.3 years in the first, about eight months in the second. One is a population of trees, the other of voles, and the square shows it: a thin sprinkle of green and red in the first, most of the field turning over in the second. The same carrying capacity says almost nothing about the lives inside it.</li>
+<li><strong>Turn the crowding slider δ down to zero.</strong> K is gone, and the readout says why: with nothing multiplying the bracket, <code>dN/dt = rN</code> is the exponential, and no population obeys that for long.</li>
+<li><strong>Set d₀ above b₀.</strong> Deaths win even in an empty landscape, so there is no positive equilibrium to find at any density. Watch the square: red every year, green almost never.</li>
+<li><strong>Start above your carrying capacity</strong> — leave the rates alone and drag N₀ up to
+<ol start="600" type="1">
+<li>The population <em>falls</em> to the same place it used to climb to. K is not a ceiling that stops growth; it is the level both directions run towards. Above it the death bar is the longer one.</li>
+</ol></li>
+<li><strong>Trade δ for β</strong>, keeping their sum fixed. The curve does not move at all — crowding that suppresses births and crowding that raises deaths give identical trajectories. To find out <em>which</em> one is happening you have to go and measure births and deaths separately, not just count individuals.</li>
+<li><strong>Press “New census” a few times, then “New history” a few times.</strong> They are not the same thing. A new census re-counts the <em>same</em> population: the curve does not move at all, only the dots scattered around it. A new history re-runs the years themselves, and the population goes somewhere genuinely different. Under additional parameters you can turn each source of chance up on its own to see which is which.</li>
+<li><strong>Set year-to-year variation to zero.</strong> The curve goes glassy-smooth and the square settles into a perfectly steady flicker. Nothing in nature looks like this, which is worth a moment’s thought about every textbook figure of this equation you have ever seen.</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="notes-and-further-reading" class="level2">
+<h2 class="anchored" data-anchor-id="notes-and-further-reading">Notes and further reading</h2>
+<section id="what-this-simulation-leaves-out" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-simulation-leaves-out">What this simulation leaves out</h3>
+<div class="pd-howto">
+<p><strong>Every individual is identical.</strong> There are no ages, no sexes, no juveniles too young to breed and no elders past breeding; <code>b₀</code> and <code>d₀</code> apply to everyone equally. Real populations have age structure, and it makes them lag: a population that has just been harvested keeps declining for years afterwards because the breeding adults are gone. Nothing here has that memory.</p>
+<p><strong>The response to crowding is instantaneous and it is a straight line.</strong> Both are choices. Add a delay and the population overshoots K and oscillates around it, which is what deer irruptions and lemming cycles look like; make crowding non-linear and the shape of the curve changes. The logistic is the simplest thing that stops growing, not the most realistic one.</p>
+<p><strong>There is no explicit space or other resources.</strong> No territories, no dispersal, no refuges — and no food, water, light or nutrients either. “Crowding” is a single number standing in for every one of them at once, which means you cannot ask this model <em>what</em> the population ran out of, or where. That is a real limitation rather than a technicality: a carrying capacity is set by some particular resource running short in some particular place, and reducing all of it to one coefficient is what lets the algebra above stay so simple. It is also why the dots in the square drift about at random and their positions carry no information — the square counts individuals, it does not place them. In a real landscape the crowding an individual felt would depend on its neighbours rather than on the total, and none of this would hold.</p>
+</div>
+</section>
+<section id="where-to-read-more" class="level3">
+<h3 class="anchored" data-anchor-id="where-to-read-more">Where to read more</h3>
+<ul>
+<li><strong>Gotelli, N.J. (2008).</strong> <em>A Primer of Ecology</em>, 4th ed., chs.&nbsp;1–2. Sinauer. The clearest short treatment of this model, including the birth-and-death derivation used here.</li>
+<li>Verhulst, P.-F. (1838). Notice sur la loi que la population suit dans son accroissement. <em>Correspondance Mathématique et Physique</em> 10:113–121. Where the equation first appeared.</li>
+</ul>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -608,9 +685,11 @@ ul.task-list li input[type="checkbox"] {
     </div>
   </div>
 </footer>
+<script src="../../js/population-model.js" defer=""></script>
+<script src="../../js/population.js" defer=""></script>
 
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
