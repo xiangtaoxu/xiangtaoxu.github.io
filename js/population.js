@@ -266,22 +266,23 @@
      Because the list is already in random order, colouring by slot (survivors,
      then births, then deaths) scatters the colours across the square for free. */
   var DOT_MAX = 900;
-  var DRIFT = 0.03;                 // per census year, as a fraction of the square
-  var dotCache = { year: -1, pts: null };
+  var DRIFT = 0.02;                 // per census year, as a fraction of the square
+  var walk = { year: -1, prev: null, cur: null };
 
-  /* Where the individual dots sit, and how that changes from one census to the next.
+  /* Where the individual dots sit, and how that changes over time.
 
      Year zero is stratified -- one jittered point per cell of a 30x30 grid, then
      shuffled -- because uniform random points clump and leave holes, which reads as
      structure that is not there, and because shuffling means the first n positions
      are spatially even at any n.
 
-     After that the dots DRIFT: each year every position takes a small random step
-     from where it was. Re-drawing the whole field at random each year (revision 3)
-     was unreadable -- everything teleported at once, so the eye had nothing to hold
-     on to and the panel looked like static rather than a population. A short step
-     keeps each dot recognisable across censuses while still making the field
-     visibly alive.
+     After that each dot takes a small random step per census year, and the drawn
+     position is INTERPOLATED between the two nearest years. That interpolation is
+     what stops the flicker: with positions snapping at year boundaries the whole
+     field jumped several times a second during playback and read as static, even
+     though each individual step was small. Now the dots glide, and only the
+     birth/death colouring changes discretely -- which is honest, since a census is
+     a discrete event and movement is not.
 
      Steps reflect off the walls rather than clamping, so nothing piles up along an
      edge. The walk is cumulative but seeded per year, so it is deterministic:
@@ -308,24 +309,44 @@
     return v < 0 ? 0 : v > 1 ? 1 : v;
   }
 
-  function dotPositions(year) {
-    if (dotCache.year === year && dotCache.pts) return dotCache.pts;
-    if (!dotCache.pts || year < dotCache.year) dotCache = { year: 0, pts: dotBase() };
-    while (dotCache.year < year) {
-      var k = dotCache.year + 1, rand = M.rng(90210 + k * 7919);
-      var pts = dotCache.pts, i;
-      for (i = 0; i < pts.length; i++) {
-        pts[i] = [reflect01(pts[i][0] + DRIFT * (2 * rand() - 1)),
-                  reflect01(pts[i][1] + DRIFT * (2 * rand() - 1))];
-      }
-      dotCache.year = k;
+  // One year's step. Returns a new array, so the previous year stays intact for
+  // interpolation.
+  function driftOnce(pts, year) {
+    var rand = M.rng(90210 + year * 7919), out = [], i;
+    for (i = 0; i < pts.length; i++) {
+      out.push([reflect01(pts[i][0] + DRIFT * (2 * rand() - 1)),
+                reflect01(pts[i][1] + DRIFT * (2 * rand() - 1))]);
     }
-    return dotCache.pts;
+    return out;
+  }
+
+  // Ensures walk.cur holds year `year` and walk.prev holds the year before it.
+  function walkTo(year) {
+    if (walk.year === year) return;
+    if (!walk.cur || year < walk.year) walk = { year: 0, prev: dotBase(), cur: dotBase() };
+    while (walk.year < year) {
+      walk.year += 1;
+      walk.prev = walk.cur;
+      walk.cur = driftOnce(walk.cur, walk.year);
+    }
+  }
+
+  /* Interpolated positions for the first `n` dots at continuous time `t`. */
+  function dotPositions(t, n) {
+    var k = Math.max(0, Math.floor(t)), f = Math.max(0, Math.min(1, t - k));
+    walkTo(k + 1);
+    var a = walk.prev, b = walk.cur, out = [], i;
+    n = Math.min(n, a.length);
+    for (i = 0; i < n; i++) {
+      out.push([a[i][0] + f * (b[i][0] - a[i][0]),
+                a[i][1] + f * (b[i][1] - a[i][1])]);
+    }
+    return out;
   }
 
   /* Which dots are survivors, which are newborns, which are dying -- re-drawn each
-     year, so the roles move around the field even though the dots themselves only
-     drift a little.
+     census year, so the roles move around the field even though the dots themselves
+     only drift a little.
 
      This is the half of the animation that has to keep changing. If the colours were
      pinned to slots, then at K the picture would go almost static -- gently drifting
@@ -349,6 +370,14 @@
   function dotRadius(n) {
     return n <= 50 ? 5 : n <= 150 ? 4 : n <= 350 ? 3.2 : n <= 700 ? 2.6 : 2.2;
   }
+
+  /* Births and deaths are drawn a little larger than survivors.
+
+     A redundant, non-colour cue: "something happened to this individual" reads from
+     size before any hue is decoded, which matters for anyone whose colour vision
+     makes the blue/vermillion pair harder than it is for most people, and on a
+     projector that has crushed the saturation out of everything. */
+  var ROLE_SCALE = { "pd-dot-alive": 0.9, "pd-dot-birth": 1.12, "pd-dot-death": 1.12 };
 
   // ========================================================================
   //  PANEL 1 -- the model
@@ -532,7 +561,10 @@
       function step(ts) {
         if (!self.playing) return;
         if (last != null) {
-          self.cursor = Math.min(self.T, self.cursor + (ts - last) / 1000 * (self.T / 12));
+          // T/30 -- fifty years in thirty seconds, so a census (and with it the
+          // birth/death colouring) lands about 1.5 times a second. At T/12 the
+          // colours changed four times a second and the field strobed.
+          self.cursor = Math.min(self.T, self.cursor + (ts - last) / 1000 * (self.T / 30));
         }
         last = ts;
         self.scrubInput.value = self.cursor;
@@ -688,7 +720,6 @@
       var co = M.cohort(p, this.path, t0, t1);
       var N1 = co.N1, elapsed = co.elapsed;
       var black = co.survived, green = co.born, red = co.died;
-      var pos = dotPositions(Math.max(0, Math.floor(t1)));
 
       // One dot per individual until that stops fitting, then per ten, per
       // hundred, and so on. The caption always says which.
@@ -696,7 +727,9 @@
       while (total / unit > DOT_MAX) unit *= 10;
       var nb = Math.round(black / unit), ng = Math.round(green / unit),
           nr = Math.round(red / unit);
-      var n = Math.min(nb + ng + nr, pos.length);
+      var n = Math.min(nb + ng + nr, DOT_MAX);
+      var pos = dotPositions(t1, n);
+      n = Math.min(n, pos.length);
       var r = dotRadius(n);
 
       svg.appendChild(el("rect", { x: sx, y: sy, width: sq, height: sq, "class": "pd-square" }));
@@ -705,7 +738,7 @@
         var cls = roles[i];
         svg.appendChild(el("circle", {
           cx: fmt(sx + pos[i][0] * sq, 1), cy: fmt(sy + pos[i][1] * sq, 1),
-          r: r, "class": "pd-indiv " + cls
+          r: fmt(r * ROLE_SCALE[cls], 2), "class": "pd-indiv " + cls
         }));
       }
 

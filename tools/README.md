@@ -194,9 +194,18 @@ python tools/make_population_card.py      # needs matplotlib; any env with it wi
 ```
 
 The other two teaching cards are photographs and have no generator. This one is a
-figure, so it does: it draws five vital-rate combinations converging on one carrying
-capacity, the `b(N)`/`d(N)` crossing, and the birth/death flux bars at `K`. Colours
-are the `$pd-*` palette from `theme.scss` — keep them in step if that palette moves.
+figure, so it does — and it has to be **regenerated whenever the tool changes**, or
+the card advertises a page that no longer exists. It draws what the page draws: one
+population over fifty years with the vital rates re-drawn each year, the birth/death
+flux bars at `K`, and the field of individuals with the year's births and deaths
+marked. The logistic stepping and the dot construction mirror
+`js/population-model.js` and `js/population.js` closely enough that a divergence
+shows up as a visibly wrong picture.
+
+Colours are the `$pd-*` palette from `theme.scss` — Okabe-Ito blue for births and
+vermillion for deaths, chosen because they stay distinct under every common form of
+colour-vision deficiency, unlike the green and red they replaced. Keep them in step
+if that palette moves.
 
 ## `sync_visitor_stats.py`
 

@@ -853,15 +853,28 @@ $ph-water: #1f6fb2;
 // so it is shared with @extend rather than copied. If a third tool arrives, lift
 // those into a neutrally named set (.tool-*) instead of extending .ph-*.
 //
-// The palette carries the argument of the page: births green and deaths carnelian,
-// because the whole point is that K is where those two balance. The population
-// itself is slate -- deliberately neither of them, since it is their consequence
-// rather than a third rate. The fit is gold and dashed: an estimate, not a truth.
+// The palette carries the argument of the page: births and deaths are the two things
+// that have to balance for K to exist, so they are the only two saturated hues on it.
+//
+// They are BLUE and VERMILLION from the Okabe-Ito colour-blind-safe palette, not the
+// obvious green and red. Green/red is the one pair that red-green colour blindness --
+// around one man in twelve -- cannot separate at all, and it was doing the most
+// important discrimination job on the page. Blue and vermillion stay distinct under
+// every common form of colour-vision deficiency, and they also differ in luminance by
+// about 1.45x, so a secondary non-colour cue survives greyscale printing. The dots
+// carry a further redundant cue: birth and death dots are drawn larger than
+// survivors, so "something happened here" reads before any colour does.
+//
+// The population itself is near-black -- deliberately neither of them, since it is
+// their consequence rather than a third rate. The fit is purple and dashed: an
+// estimate, not a truth. The scrub cursor is neutral grey, because it is a piece of
+// interface and must not look like data.
 
-$pd-birth: #2f7d4f;
-$pd-death: #b31b1b;
-$pd-pop:   #2c3e50;
-$pd-fit:   #c07a10;
+$pd-birth:  #0072B2;   // Okabe-Ito blue
+$pd-death:  #D55E00;   // Okabe-Ito vermillion
+$pd-pop:    #1a1d21;
+$pd-fit:    #7B5EA7;
+$pd-cursor: #6a6a72;
 
 .pd-tool           { @extend .ph-tool; }
 .pd-controls-grid  { @extend .ph-controls-grid; }
@@ -910,11 +923,11 @@ $pd-fit:   #c07a10;
 .pd-rule        { stroke: #b9b9bf; stroke-width: 1; }
 .pd-rule-target { stroke: #8a8a90; stroke-dasharray: 5 4; }
 .pd-rule-k      { stroke: $pd-pop; stroke-dasharray: 3 3; opacity: 0.75; }
-.pd-rule-cursor { stroke: $pd-fit; stroke-width: 1.4; opacity: 0.85; }
+.pd-rule-cursor { stroke: $pd-cursor; stroke-width: 1.4; opacity: 0.9; }
 
 .pd-dot        { stroke: #fff; stroke-width: 1.2; fill: $pd-pop; }
-.pd-census     { fill: $pd-pop; opacity: 0.5; stroke: none; }
-.pd-cursor-dot { fill: $pd-fit; stroke-width: 1.6; }
+.pd-census     { fill: $pd-pop; opacity: 0.62; stroke: none; }
+.pd-cursor-dot { fill: $pd-cursor; stroke-width: 1.6; }
 
 .pd-note        { font-size: 10.5px; fill: #666; }
 .pd-note-target { font-size: 10.5px; fill: #777; }
@@ -965,7 +978,8 @@ $pd-fit:   #c07a10;
 // The legend swatches are not individuals, so they take their own class -- nothing
 // should be able to count them as population.
 .pd-key-dot   { stroke: none; }
-.pd-dot-alive { fill: #1a1d21; }
+// Survivors recede: lighter, and drawn smaller than the event dots (see dotRadius).
+.pd-dot-alive { fill: #8a8a90; }
 .pd-dot-birth { fill: $pd-birth; }
 .pd-dot-death { fill: $pd-death; }
 
@@ -973,7 +987,7 @@ $pd-fit:   #c07a10;
 .pd-key-name   { font-size: 11.5px; fill: #555; }
 .pd-key-value  { font-size: 16px; fill: #222; font-weight: 700; font-variant-numeric: tabular-nums; }
 .pd-dot-total  { font-size: 20px; fill: $pd-pop; font-weight: 700; font-variant-numeric: tabular-nums; }
-.pd-note-balance { font-size: 11.5px; fill: #276741; font-weight: 600; }
+.pd-note-balance { font-size: 11.5px; fill: #005e93; font-weight: 600; }
 
 // ---- the scrubber ----
 .pd-scrub {
@@ -982,7 +996,7 @@ $pd-fit:   #c07a10;
   gap: 0.7rem;
   margin: 0.3rem 0 0.2rem;
 }
-.pd-scrub-range { flex: 1 1 auto; min-width: 0; accent-color: $pd-fit; margin: 0; }
+.pd-scrub-range { flex: 1 1 auto; min-width: 0; accent-color: $pd-cursor; margin: 0; }
 .pd-scrub-label {
   font-size: 0.82rem;
   color: #555;
@@ -1016,7 +1030,7 @@ $pd-fit:   #c07a10;
 }
 .pd-derived-label { font-size: 0.76rem; color: #777; }
 .pd-derived-value { font-size: 1.05rem; font-weight: 700; color: #222; font-variant-numeric: tabular-nums; }
-.pd-derived-item.is-hit .pd-derived-value { color: #276741; }
+.pd-derived-item.is-hit .pd-derived-value { color: #005e93; }
 
 .pd-state {
   grid-column: 1 / -1;
@@ -1024,7 +1038,7 @@ $pd-fit:   #c07a10;
   color: #555;
   line-height: 1.5;
   margin: 0.3rem 0 0;
-  &.is-hit-note { color: #215838; font-weight: 600; }
+  &.is-hit-note { color: #00517f; font-weight: 600; }
 }
 
 // ---- the scorecard ----
@@ -1055,20 +1069,25 @@ $pd-fit:   #c07a10;
 .pd-swatch { width: 1.1rem; height: 0.2rem; border-radius: 2px; display: inline-block; }
 
 // Eight seats, eight colours, for the class-overlay panel (retained in the JS but
-// not currently mounted on the page). Written out rather than generated in a loop:
-// Sass's global list functions are deprecated, and `@use "sass:list"` would have to
-// be the first statement in this file, which conflicts with how Quarto layers it.
-// Defined after .pd-traj so they win on source order -- the overlay draws each
-// student as `pd-traj pd-seat-N`, sharing the trajectory's stroke weight while
-// taking its own colour.
-.pd-seat-0 { stroke: #2c3e50; }  .pd-seat-bg-0 { background: #2c3e50; }
-.pd-seat-1 { stroke: #b31b1b; }  .pd-seat-bg-1 { background: #b31b1b; }
-.pd-seat-2 { stroke: #1f6fb2; }  .pd-seat-bg-2 { background: #1f6fb2; }
-.pd-seat-3 { stroke: #2f7d4f; }  .pd-seat-bg-3 { background: #2f7d4f; }
-.pd-seat-4 { stroke: #c07a10; }  .pd-seat-bg-4 { background: #c07a10; }
-.pd-seat-5 { stroke: #6b4c9a; }  .pd-seat-bg-5 { background: #6b4c9a; }
-.pd-seat-6 { stroke: #2a7f8f; }  .pd-seat-bg-6 { background: #2a7f8f; }
-.pd-seat-7 { stroke: #a0522d; }  .pd-seat-bg-7 { background: #a0522d; }
+// not currently mounted on the page). The Okabe-Ito qualitative set plus two
+// neutrals, for the same reason the birth/death pair is blue and vermillion: if this
+// panel ever comes back it will be asking a viewer to tell eight lines apart, and a
+// set containing both a mid green and a mid red fails that for a lot of people.
+// Okabe-Ito's yellow is dropped -- too light to read as a line on white.
+//
+// Written out rather than generated in a loop: Sass's global list functions are
+// deprecated, and `@use "sass:list"` would have to be the first statement in this
+// file, which conflicts with how Quarto layers it. Defined after .pd-traj so they
+// win on source order -- the overlay draws each student as `pd-traj pd-seat-N`,
+// sharing the trajectory's stroke weight while taking its own colour.
+.pd-seat-0 { stroke: #1a1d21; }  .pd-seat-bg-0 { background: #1a1d21; }
+.pd-seat-1 { stroke: #0072B2; }  .pd-seat-bg-1 { background: #0072B2; }
+.pd-seat-2 { stroke: #D55E00; }  .pd-seat-bg-2 { background: #D55E00; }
+.pd-seat-3 { stroke: #009E73; }  .pd-seat-bg-3 { background: #009E73; }
+.pd-seat-4 { stroke: #CC79A7; }  .pd-seat-bg-4 { background: #CC79A7; }
+.pd-seat-5 { stroke: #E69F00; }  .pd-seat-bg-5 { background: #E69F00; }
+.pd-seat-6 { stroke: #56B4E9; }  .pd-seat-bg-6 { background: #56B4E9; }
+.pd-seat-7 { stroke: #666666; }  .pd-seat-bg-7 { background: #666666; }
 
 @media (max-width: 767px) {
   .pd-tool { padding: 0.8rem 0.7rem 1rem; }

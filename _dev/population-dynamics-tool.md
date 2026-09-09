@@ -206,6 +206,36 @@ Consequences worth knowing:
   chance are and are not modelled. The year-to-year variation slider's own hint and
   a *Things to try* bullet carry what a student needs.
 
+### The palette is colour-blind-safe, and that was not free
+
+Births and deaths are the only two saturated hues on the page, and they carry the
+most important discrimination job on it -- so they must not be **green and red**.
+Red-green colour blindness affects roughly one man in twelve, and green/red is the
+one pair those viewers cannot separate at all.
+
+They are now **Okabe-Ito blue `#0072B2`** and **vermillion `#D55E00`**, which stay
+distinct under every common form of colour-vision deficiency. Two knock-on changes
+were needed to keep the whole palette legible:
+
+- The **fit** line was gold `#c07a10`, which sits too close to vermillion. It is now
+  purple `#7B5EA7`, still dashed.
+- The **scrub cursor** was the same gold. It is now neutral grey `#6a6a72`, which is
+  better anyway: the cursor is a piece of interface and should not look like data.
+- The **population curve** moved from slate to near-black, and **survivor dots** from
+  near-black to light grey `#8a8a90`, so the field of survivors recedes and the
+  coloured events come forward.
+
+Two redundant, non-colour channels back the hues up, because hue alone is never
+enough:
+
+- Blue and vermillion differ in **relative luminance** by about 1.45x, so they stay
+  separable in greyscale or on a projector that has crushed the saturation.
+- **Birth and death dots are drawn larger than survivors** (1.12x against 0.9x), so
+  "something happened to this individual" reads from size before any hue is decoded.
+
+Birth-versus-death is then the only judgement left to hue alone, and blue/vermillion
+is about the safest pair available for it.
+
 ### The dots move -- positions drift, roles reshuffle
 
 This took three attempts and the split is the point: **positions carry continuity,
@@ -218,22 +248,31 @@ colours carry turnover.**
 - *Revision 3* re-drew the whole field at random each census. Now it was clearly
   active and completely **unreadable**: everything teleported at once, so the eye had
   nothing to hold on to and it read as static noise.
-- *Revision 4* separates the two jobs. Year zero is stratified and shuffled as
-  before. After that each dot takes a **small random step** each census -- 3 % of the
-  square, measured at 7 px mean and 12 px maximum on a 300 px square, about two dot
-  widths -- so it stays recognisable from one census to the next while the field is
-  visibly alive. Meanwhile the survivor / newborn / dying **roles are reshuffled
-  every year**, so which dots are green and red keeps changing. That is the half that
-  has to keep moving: pinning colours to slots would have made the equilibrium
-  picture nearly frozen again.
+- *Revision 4* separated the two jobs. Year zero is stratified and shuffled as
+  before; after that each dot takes a small random step each census, and the
+  survivor / newborn / dying **roles are reshuffled every year** so which dots are
+  coloured keeps changing. That is the half that has to keep moving: pinning colours
+  to slots would have made the equilibrium picture nearly frozen again.
+- *Revision 5* fixed the flicker that was left. The steps were still **discrete** --
+  the whole field snapped to new positions at every year boundary, several times a
+  second during playback, which read as static however small each step was. Three
+  changes: positions are now **interpolated** between the two nearest years, so the
+  dots glide; the step is down from 3 % of the square to **2 %**; and Play is down
+  from `T/12` to `T/30`, fifty years in thirty seconds. Measured after: **0.135 px**
+  of motion per 60 fps frame, **0.008 px** across a census boundary (it was the whole
+  step), 3.1 px across a census, and 18.9 px over twenty censuses -- still a walk.
+
+  Only the birth/death colouring now changes discretely, which is honest: a census is
+  a discrete event and movement is not.
 
 Steps reflect off the walls rather than clamping, so nothing piles up on an edge. The
 walk is cumulative but seeded per year, so it is deterministic -- scrubbing back to
 year twelve always shows the same year twelve, and going backwards just rebuilds from
 year zero (900 points times at most fifty steps, not worth optimising).
 
-Positions hold still while the scrubber is dragged *inside* a year: measured at
-exactly 0 px. Without that, dragging would shimmer at frame rate.
+Because positions interpolate, dragging the scrubber inside a year now moves the dots
+too -- 2.35 px over half a year -- which is the point. It is continuous motion rather
+than a frame-rate shimmer.
 
 What this panel still does not do is track individual identity. A dot that is green
 one year is not the same individual that is black the next -- the roles are drawn
@@ -431,6 +470,11 @@ maths and has no DOM, `population.js` draws and wires. Every colour is a class i
   and bias *directions* from section 4 and the cohort identity from section 3. Every
   regression named in this document has a check standing on it. 66 assertions; run it
   after touching the model.
+- **The listing card is generated and goes stale.** `tools/make_population_card.py`
+  draws it, and it has to be re-run whenever the tool's appearance changes -- it has
+  already been out of date once, advertising a `b(N)`/`d(N)` chart the page no longer
+  has. It mirrors the model's logistic stepping and the dot construction, so a
+  divergence shows up as a visibly wrong picture rather than silently.
 - **Known duplication.** `population.js` carries its own copies of the small helpers
   (`el`, `h`, `niceTicks`, `chart`, `slider`, `scheduler`, ...) that `photosynthesis.js`
   also has. Deliberate for a demo: extracting a shared `chartkit.js` would mean editing
