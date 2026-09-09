@@ -248,12 +248,43 @@ colours carry turnover.**
 - *Revision 3* re-drew the whole field at random each census. Now it was clearly
   active and completely **unreadable**: everything teleported at once, so the eye had
   nothing to hold on to and it read as static noise.
-- *Revision 4* separated the two jobs. Year zero is stratified and shuffled as
-  before; after that each dot takes a small random step each census, and the
-  survivor / newborn / dying **roles are reshuffled every year** so which dots are
-  coloured keeps changing. That is the half that has to keep moving: pinning colours
-  to slots would have made the equilibrium picture nearly frozen again.
-- *Revision 5* fixed the flicker that was left. The steps were still **discrete** --
+- *Revision 4* separated position from role. Year zero is stratified and shuffled as
+  before; after that each dot took a small random step each census, and the
+  survivor / newborn / dying roles were **reshuffled every year**. The reasoning was
+  that pinning colours to slots would leave the equilibrium picture frozen -- true,
+  but the cure was worse: a dot changing colour annually is a strobe, and it is also
+  a lie about how individuals work. Superseded by revision 6.
+- *Revision 6* replaced the reshuffle with **persistent individuals**, which is what
+  the panel should have had all along. Each dot is now somebody: it appears in the
+  year it is born, swells into place over the first 0.6 of that year and then settles
+  into the standing population, and in the year it dies it shrinks away over the same
+  window and is then **gone from the field entirely**. A newborn becomes an ordinary
+  member of the population -- it does not hand its newborn-ness to somebody else,
+  which is what the reshuffle had it doing. Nothing changes colour arbitrarily any
+  more, so there is no flicker left to see.
+
+  `buildCast()` does the bookkeeping and `PopModel.cohort` still supplies the
+  demography, so the maths stays in the model. Three details that matter:
+
+  - **The dot unit is fixed for the whole run**, chosen from the largest population
+    the path reaches. Letting it change mid-run would make every dot on screen pop or
+    vanish at once for a purely cosmetic reason.
+  - **Births are set to whatever closes the books** -- survivors plus births must
+    equal the population the curve reaches -- so the field can never disagree with
+    the chart above it. The legend still prints the model's own numbers, so the two
+    can differ by one dot from rounding; the closure is worth more than the last
+    digit.
+  - **Freed dots go to the back of a queue.** A reused dot inherits the dead one's
+    drifting position, so reusing it immediately would look like the individual that
+    just died coming back.
+
+  Measured: positions are continuous across a census boundary to **0.000 px** -- what
+  jumps there is the *count*, as the new year's births pop in, which is the point.
+  Every newborn is still present as an ordinary member a moment later, the total falls
+  by exactly the number dying, and newborn radius grows 1.1 -> 2.4 px while dying
+  radius shrinks 2.8 -> 1.1 px.
+
+- *Revision 5* fixed the flicker of POSITION. The steps were still **discrete** --
   the whole field snapped to new positions at every year boundary, several times a
   second during playback, which read as static however small each step was. Three
   changes: positions are now **interpolated** between the two nearest years, so the
@@ -274,12 +305,31 @@ Because positions interpolate, dragging the scrubber inside a year now moves the
 too -- 2.35 px over half a year -- which is the point. It is continuous motion rather
 than a frame-rate shimmer.
 
-What this panel still does not do is track individual identity. A dot that is green
-one year is not the same individual that is black the next -- the roles are drawn
-afresh rather than followed. Doing it properly means per-individual bookkeeping
-(pick which of the living die, give newborns free slots, carry it forward), which is
-a real change and has not been asked for. It would make the panel legible at the
-level of a single dot's life history, which nothing currently promises.
+A dot's life history now reads correctly at the level of the single dot, which is
+what the panel had been promising visually since it gained drift and could not
+deliver until revision 6.
+
+### Never re-parent something interactive on a redraw
+
+A real bug, worth recording as a class rather than an incident. `render()` cleared
+the chart host and re-appended its children -- including the scrubber and the
+Play/Stop button -- every time it ran. That is harmless at rest and fatal during
+playback: at sixty frames a second the button was being torn out of the document and
+put back constantly, and a `click` needs its `mousedown` and `mouseup` to land on the
+same attached element. **Stop was unclickable for as long as the animation ran**,
+which is exactly when you need it. Dragging the scrubber to interrupt was dead for
+the same reason.
+
+The fix is structural: the chart host's children are created once in `boot()` and
+only the *contents* of two plain container divs are replaced on redraw. Anything
+interactive stays put forever. The harness asserts that the button is still attached
+mid-playback and that Stop actually halts the cursor.
+
+The same restructure paid for itself twice. `render()` was also re-simulating the
+path, re-taking the census, re-running a 200-sample bootstrap and rebuilding the whole
+cast of individuals on every frame, for parameters that had not changed -- the
+scrubber only moves `cursor`. That work now sits behind `rebuild()`, keyed on a
+signature of the parameters and the two seeds, so playback only redraws.
 
 ## 4. The statistical fit
 

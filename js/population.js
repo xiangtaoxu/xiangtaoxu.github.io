@@ -344,27 +344,72 @@
     return out;
   }
 
-  /* Which dots are survivors, which are newborns, which are dying -- re-drawn each
-     census year, so the roles move around the field even though the dots themselves
-     only drift a little.
+  /* The cast of individuals, built once per population and then just read.
 
-     This is the half of the animation that has to keep changing. If the colours were
-     pinned to slots, then at K the picture would go almost static -- gently drifting
-     dots with a fixed pattern -- which is exactly the "nothing is happening at
-     carrying capacity" misreading the panel exists to break. Positions carry
-     continuity; colours carry turnover. */
-  function dotRoles(n, nBlack, nGreen, year) {
-    var idx = [], col = new Array(n), rand = M.rng(13579 + year * 104729), i, j, t;
-    for (i = 0; i < n; i++) idx.push(i);
-    for (i = n - 1; i > 0; i--) {
-      j = Math.floor(rand() * (i + 1));
-      t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+     Each dot is a PERSISTENT individual, not a slot that gets recoloured. It appears
+     in the year it is born, is drawn as a birth for the first part of that year and
+     then settles into the standing population, and in the year it dies it is drawn as
+     a death for the first part of the year and is then gone for good.
+
+     Revision 5 instead reshuffled the roles every year, so a given dot changed colour
+     annually and the field read as a strobe. Individuals do not work like that: a
+     newborn becomes an ordinary member of the population, it does not hand its
+     newborn-ness to somebody else.
+
+     How many are born and die each year comes from PopModel.cohort -- the demography
+     stays in the model. What is here is only the bookkeeping: which dot is whom.
+     Births are set to whatever makes survivors + births equal the population the
+     curve reaches, so the field can never disagree with the chart above it.
+
+     Freed dots go to the BACK of a queue rather than being reused at once. A reused
+     dot inherits the dead one's drifting position, and reusing it immediately would
+     look like the individual that just died coming back. */
+  function buildCast(p, pa, T) {
+    var maxN = 0, i, k;
+    for (i = 0; i < pa.N.length; i++) maxN = Math.max(maxN, pa.N[i]);
+
+    // One unit for the whole run. Letting it change mid-run would make every dot on
+    // screen pop or vanish at once for a purely cosmetic reason.
+    var unit = 1;
+    while (maxN / unit > DOT_MAX) unit *= 10;
+
+    var free = [], head = 0;
+    for (i = 0; i < DOT_MAX; i++) free.push(i);
+
+    var alive = [], years = [], rand = M.rng(24680), j, t, victims, nd, nb, want;
+
+    function take() { return head < free.length ? free[head++] : -1; }
+
+    var n0 = Math.min(DOT_MAX, Math.round(M.atTime(pa, 0) / unit));
+    for (i = 0; i < n0; i++) { j = take(); if (j >= 0) alive.push(j); }
+    years.push({ plain: alive.slice(), born: [], dying: [], co: null });
+
+    for (k = 1; k <= T; k++) {
+      var co = M.cohort(p, pa, k - 1, k);
+      want = Math.min(DOT_MAX, Math.round(co.N1 / unit));
+      nd = Math.min(Math.round(co.died / unit), alive.length);
+      nb = want - (alive.length - nd);
+      if (nb < 0) { nd = Math.min(alive.length, nd - nb); nb = 0; }
+
+      // Seeded partial shuffle: pick this year's victims out of the living.
+      for (i = alive.length - 1; i > 0; i--) {
+        j = Math.floor(rand() * (i + 1));
+        t = alive[i]; alive[i] = alive[j]; alive[j] = t;
+      }
+      victims = alive.splice(0, nd);
+      for (i = 0; i < victims.length; i++) free.push(victims[i]);
+
+      var babies = [];
+      for (i = 0; i < nb; i++) { j = take(); if (j >= 0) { babies.push(j); alive.push(j); } }
+
+      var bornSet = {};
+      for (i = 0; i < babies.length; i++) bornSet[babies[i]] = 1;
+      var plain = [];
+      for (i = 0; i < alive.length; i++) if (!bornSet[alive[i]]) plain.push(alive[i]);
+
+      years.push({ plain: plain, born: babies, dying: victims, co: co });
     }
-    for (i = 0; i < n; i++) {
-      col[idx[i]] = i < nBlack ? "pd-dot-alive"
-                  : i < nBlack + nGreen ? "pd-dot-birth" : "pd-dot-death";
-    }
-    return col;
+    return { unit: unit, years: years };
   }
 
   function dotRadius(n) {
@@ -531,6 +576,21 @@
       this.scrubLabel = h("span", "pd-scrub-label");
       this.scrubWrap.appendChild(this.scrubLabel);
 
+      /* The chart host's children are created ONCE and only their contents are
+         replaced on redraw.
+
+         This is not tidiness, it is a bug fix. render() used to clear chartHost and
+         re-append the scrubber every frame, so during playback the Stop button was
+         torn out of the document and put back around sixty times a second. A click
+         needs its mousedown and mouseup to land on the same attached element, so
+         Stop almost never fired and the animation could not be halted. Anything
+         interactive has to stay put. */
+      this.trajBox = h("div", "pd-box");
+      this.gaugeBox = h("div", "pd-box");
+      this.chartHost.appendChild(this.trajBox);
+      this.chartHost.appendChild(this.gaugeBox);
+      this.chartHost.appendChild(this.scrubWrap);
+
       this.draw();
     },
 
@@ -543,6 +603,7 @@
       this.sN0.set(this.p.N0);
       this.sProcess.set(this.process); this.sNoise.set(this.noise);
       this.cTarget.set("500");
+      this.sig = null;
       this.stopPlay();
       this.scrubInput.value = 0;
       this.draw();
@@ -580,21 +641,47 @@
       this.playBtn.textContent = "▶ Play";
     },
 
-    render: function () {
-      var p = this.p, D = M.derived(p);
-      // One realised history per render, shared by the curve, the counts, the
-      // scrubber and the dot field -- they must all be describing the same run.
-      var pa = M.simulate(p, this.T, { process: this.process, seed: this.procSeed });
+    /* Everything that depends on the parameters but NOT on the scrubber.
+
+       Moving the scrubber used to re-simulate the path, re-take the census, re-run a
+       200-sample bootstrap and rebuild the whole cast of individuals -- sixty times a
+       second during playback, for numbers that had not changed. Now that work is
+       keyed on the parameters and the two seeds, so playback only redraws. */
+    signature: function () {
+      var p = this.p;
+      return [p.b0, p.d0, p.beta, p.delta, p.N0,
+              this.process, this.noise, this.procSeed, this.obsSeed, this.T].join("|");
+    },
+
+    rebuild: function () {
+      var sig = this.signature();
+      if (this.sig === sig) return;
+      this.sig = sig;
+
+      // One realised history, shared by the curve, the counts, the scrubber and the
+      // dot field -- they must all be describing the same run.
+      var pa = M.simulate(this.p, this.T, { process: this.process, seed: this.procSeed });
+      var traj = [], dataMax = 0, i;
+      for (i = 0; i < pa.t.length; i++) {
+        traj.push([pa.t[i], pa.N[i]]);
+        if (pa.N[i] > dataMax) dataMax = pa.N[i];
+      }
       this.path = pa;
-      var traj = [], i;
-      for (i = 0; i < pa.t.length; i++) traj.push([pa.t[i], pa.N[i]]);
-      var counts = M.censusFromPath(pa, { dt: this.dt, noise: this.noise, seed: this.obsSeed });
-      var f = M.fit(counts, 200);
+      this.traj = traj;
+      this.dataMax = dataMax;
+      this.counts = M.censusFromPath(pa, { dt: this.dt, noise: this.noise, seed: this.obsSeed });
+      this.f = M.fit(this.counts, 200);
+      this.cast = buildCast(this.p, pa, this.T);
+    },
+
+    render: function () {
+      var p = this.p, D = M.derived(p), i;
+      this.rebuild();
+      var pa = this.path, traj = this.traj, counts = this.counts, f = this.f;
 
       // ---- y range. An unbounded run would otherwise put e^15 on the axis and
       // flatten everything worth looking at, so it is clipped and labelled.
-      var dataMax = 0;
-      for (i = 0; i < traj.length; i++) dataMax = Math.max(dataMax, traj[i][1]);
+      var dataMax = this.dataMax;
       var yMax;
       if (D.state === "unbounded") yMax = Math.max(this.target || 0, p.N0 * 4, 100) * 1.2;
       else yMax = Math.max(dataMax, this.target || 0, p.N0) * 1.22;
@@ -640,10 +727,10 @@
                  cls: "pd-note-warn" });
       }
 
-      this.chartHost.textContent = "";
-      this.chartHost.appendChild(c.render());
-      this.chartHost.appendChild(this.gauge(D, Ncur, yMax));
-      this.chartHost.appendChild(this.scrubWrap);
+      this.trajBox.textContent = "";
+      this.trajBox.appendChild(c.render());
+      this.gaugeBox.textContent = "";
+      this.gaugeBox.appendChild(this.gauge(D, Ncur, yMax));
       this.scrubLabel.textContent = "year " + fmt(this.cursor, 1) +
         "   N = " + (isFinite(Ncur) ? sig3(Ncur) : "—");
 
@@ -716,30 +803,57 @@
                             role: "img",
                             "aria-label": "Individuals born, died and surviving in the year shown" });
 
-      var t1 = this.cursor, t0 = Math.max(0, t1 - this.dt);
-      var co = M.cohort(p, this.path, t0, t1);
-      var N1 = co.N1, elapsed = co.elapsed;
-      var black = co.survived, green = co.born, red = co.died;
+      var cast = this.cast, unit = cast.unit;
+      var k = Math.max(0, Math.min(cast.years.length - 1, Math.floor(this.cursor)));
+      var frac = Math.max(0, Math.min(1, this.cursor - k));
+      var yr = cast.years[k];
+      var co = yr.co;
+      var black = co ? co.survived : M.atTime(this.path, 0);
+      var green = co ? co.born : 0;
+      var red = co ? co.died : 0;
+      var N1 = co ? co.N1 : M.atTime(this.path, 0);
 
-      // One dot per individual until that stops fitting, then per ten, per
-      // hundred, and so on. The caption always says which.
-      var total = black + green + red, unit = 1;
-      while (total / unit > DOT_MAX) unit *= 10;
-      var nb = Math.round(black / unit), ng = Math.round(green / unit),
-          nr = Math.round(red / unit);
-      var n = Math.min(nb + ng + nr, DOT_MAX);
-      var pos = dotPositions(t1, n);
-      n = Math.min(n, pos.length);
-      var r = dotRadius(n);
+      // Newborns swell into place and the dying shrink away, over the first part of
+      // the year. HOLD is a fraction of a census interval: at the Play speed of
+      // T/30 that is a little over a third of a second, which is about the shortest
+      // change a room full of people can be expected to catch.
+      var HOLD = 0.6;
+      var phase = Math.min(1, frac / HOLD);
+      var showEvents = frac < HOLD;
+
+      var pos = dotPositions(this.cursor, DOT_MAX);
+      var nDots = yr.plain.length + yr.born.length + (showEvents ? yr.dying.length : 0);
+      var r = dotRadius(nDots);
 
       svg.appendChild(el("rect", { x: sx, y: sy, width: sq, height: sq, "class": "pd-square" }));
-      var roles = dotRoles(n, nb, ng, Math.max(0, Math.floor(t1)));
-      for (var i = 0; i < n; i++) {
-        var cls = roles[i];
+
+      function dot(slot, cls, radius) {
+        if (slot >= pos.length || radius <= 0.15) return;
         svg.appendChild(el("circle", {
-          cx: fmt(sx + pos[i][0] * sq, 1), cy: fmt(sy + pos[i][1] * sq, 1),
-          r: fmt(r * ROLE_SCALE[cls], 2), "class": "pd-indiv " + cls
+          cx: fmt(sx + pos[slot][0] * sq, 1), cy: fmt(sy + pos[slot][1] * sq, 1),
+          r: fmt(radius, 2), "class": "pd-indiv " + cls
         }));
+      }
+      var i;
+      for (i = 0; i < yr.plain.length; i++) {
+        dot(yr.plain[i], "pd-dot-alive", r * ROLE_SCALE["pd-dot-alive"]);
+      }
+      // A newborn is blue and growing while the event lasts, then it is simply one
+      // of the population -- it does not hand its newness on to anybody else.
+      for (i = 0; i < yr.born.length; i++) {
+        if (showEvents) {
+          dot(yr.born[i], "pd-dot-birth",
+              r * ROLE_SCALE["pd-dot-birth"] * (0.35 + 0.65 * phase));
+        } else {
+          dot(yr.born[i], "pd-dot-alive", r * ROLE_SCALE["pd-dot-alive"]);
+        }
+      }
+      // The dying shrink to nothing and are then gone from the field entirely.
+      if (showEvents) {
+        for (i = 0; i < yr.dying.length; i++) {
+          dot(yr.dying[i], "pd-dot-death",
+              r * ROLE_SCALE["pd-dot-death"] * (1 - 0.85 * phase));
+        }
       }
 
       function key(y, cls, name, value) {
@@ -749,7 +863,7 @@
         svg.appendChild(el("text", { x: legend + 20, y: y + 16, "class": "pd-key-value" }, value));
       }
       svg.appendChild(el("text", { x: legend, y: sy + 12, "class": "pd-dot-title" },
-        elapsed <= 1e-9 ? "year 0" : "year " + fmt(t0, 1) + " → " + fmt(t1, 1)));
+        k === 0 ? "year 0" : "year " + (k - 1) + " → " + k));
 
       key(sy + 54, "pd-dot-alive", "survived from last year", sig3(black));
       key(sy + 104, "pd-dot-birth", "born, and still alive", sig3(green));
@@ -765,9 +879,7 @@
         N1 < 1 ? "the population is gone"
                : unit === 1 ? "each dot is one individual"
                             : "each dot is " + unit + " individuals"));
-      // Both counts must be a real individual or more before this claims a balance:
-      // an extinct population has births ~= deaths ~= 0, which is not an equilibrium.
-      if (elapsed > 1e-9 && green >= 1 && red >= 1 && D_K != null &&
+      if (k > 0 && green >= 1 && red >= 1 && D_K != null &&
           Math.abs(N1 - D_K) / D_K < 0.08) {
         svg.appendChild(el("text", { x: legend, y: H - 8, "class": "pd-note-balance" },
                            "at K — births and deaths cancel, on average"));

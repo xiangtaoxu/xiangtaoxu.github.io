@@ -969,6 +969,9 @@ $pd-cursor: #6a6a72;
 // green and red counts are equal and neither is zero -- the field stops changing
 // size without anything stopping.
 .pd-dotfield { margin-top: 0.4rem; }
+// Containers that stay attached across redraws so their contents can be swapped
+// without detaching anything interactive. See the note in population.js boot().
+.pd-box { min-width: 0; }
 .pd-square {
   fill: #fcfcfd;
   stroke: #e7e7e9;
