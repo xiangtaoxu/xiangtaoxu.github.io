@@ -23,10 +23,15 @@
        d(N) = d0 + delta * N       deaths rise as it gets crowded
 
      b(N) is clamped at zero for safety. It never actually binds below K, since
-     beta*K < b0 - d0 < b0 -- but a student can start a run above K. */
-  function rates(p, N) {
-    var b = Math.max(0, p.b0 - p.beta * N);
-    var d = p.d0 + p.delta * N;
+     beta*K < b0 - d0 < b0 -- but a student can start a run above K.
+
+     `yr` optionally supplies the b0 and d0 a particular year actually had, from
+     simulate(). Without it the sliders' averages are used, which is what the
+     theoretical readouts want; with it, what the population actually experienced,
+     which is what anything drawn alongside the realised curve wants. */
+  function rates(p, N, yr) {
+    var b = Math.max(0, (yr ? yr.b0 : p.b0) - p.beta * N);
+    var d = (yr ? yr.d0 : p.d0) + p.delta * N;
     return { b: b, d: d, B: b * N, D: d * N, dNdt: (b - d) * N };
   }
 
@@ -111,6 +116,89 @@
     return D.Kraw * N0 / (N0 + (D.Kraw - N0) * Math.exp(-D.r * t));
   }
 
+  /* One realised history, year by year, with the vital rates re-drawn each year.
+
+     ENVIRONMENTAL stochasticity: a good year and a bad year are different years to
+     be alive in, so b0 and d0 each get an independent multiplicative jolt of size
+     `process` (roughly a coefficient of variation) once per year. Independent rather
+     than shared, because a shared jolt would move births and deaths the same way and
+     mostly cancel in r = b - d, which is the opposite of what a bad year does.
+
+     Within a year the rates are constant, so the year is still exactly logistic and
+     is stepped with the closed-form solution rather than an integrator. The logistic
+     flow composes, so with `process` = 0 this reproduces sizeAt() to machine
+     precision -- asserted in tools/check_population.py. That matters: students tune
+     rates until K reads a round number, and integrator drift would look like a
+     broken target.
+
+     What is NOT here is demographic stochasticity -- births and deaths as
+     whole-number events. That is what kills small populations even when r > 0, and
+     it needs individuals rather than a rate. See the design doc. */
+  function simulate(p, T, o) {
+    o = o || {};
+    var sigma = o.process || 0, sp = o.stepsPerYear || 8;
+    var dd = p.beta + p.delta;
+    var rand = rng(o.seed || 1);
+    var nyr = Math.max(1, Math.ceil(T - 1e-9));
+    var ts = [0], Ns = [p.N0], years = [];
+    var N = p.N0, t = 0, k, i, jb, jd, yb, yd, r, span, h;
+
+    for (k = 0; k < nyr; k++) {
+      jb = 1; jd = 1;
+      if (sigma > 0) {
+        // Clamped at zero: a rate cannot be negative, and at the noise levels this
+        // page offers the clamp never binds.
+        jb = Math.max(0, 1 + sigma * normal(rand));
+        jd = Math.max(0, 1 + sigma * normal(rand));
+      }
+      yb = p.b0 * jb; yd = p.d0 * jd; r = yb - yd;
+      span = Math.min(1, T - k);
+      h = span / sp;
+      years.push({ b0: yb, d0: yd, r: r, K: dd > 0 ? r / dd : null, N0: N });
+      for (i = 0; i < sp; i++) {
+        N = advance(N, r, dd, h);
+        t += h;
+        ts.push(t); Ns.push(N);
+      }
+      years[k].N1 = N;
+    }
+    return { t: ts, N: Ns, years: years, dd: dd, stepsPerYear: sp, T: T, process: sigma };
+  }
+
+  /* One exact logistic step. Handles the r == 0 and no-density-dependence limits,
+     and the negative-K case that a declining year produces (see trajectory()). */
+  function advance(N, r, dd, dt) {
+    if (!(N > 0)) return 0;
+    if (dd <= 0) return N * Math.exp(r * dt);
+    if (Math.abs(r) < 1e-12) return N / (1 + dd * N * dt);
+    var K = r / dd, e = Math.exp(-r * dt), den = N + (K - N) * e;
+    if (!(Math.abs(den) > 1e-300)) return 0;
+    var out = K * N / den;
+    return out > 0 && isFinite(out) ? out : 0;
+  }
+
+  /* N at an arbitrary time on a realised path. The census grid (every year, or
+     every half year) lands exactly on path nodes, so only the scrubber ever
+     interpolates. */
+  function atTime(pa, t) {
+    var n = pa.t.length;
+    if (t <= 0) return pa.N[0];
+    if (t >= pa.t[n - 1]) return pa.N[n - 1];
+    var per = pa.stepsPerYear / Math.min(1, pa.T);
+    var i = Math.min(n - 2, Math.max(0, Math.floor(t * pa.stepsPerYear)));
+    while (i + 1 < n - 1 && pa.t[i + 1] < t) i++;
+    while (i > 0 && pa.t[i] > t) i--;
+    var w = (t - pa.t[i]) / (pa.t[i + 1] - pa.t[i]);
+    return pa.N[i] + w * (pa.N[i + 1] - pa.N[i]);
+  }
+
+  /* The realised per-year rates around time t -- what the population actually
+     experienced, as opposed to the b0 and d0 on the sliders. */
+  function yearAt(pa, t) {
+    var k = Math.max(0, Math.min(pa.years.length - 1, Math.floor(t)));
+    return pa.years[k];
+  }
+
   /* Who was born, who died, and who came through, over the window [t0, t1].
 
      COHORT counts, not rate x window. Of the N individuals alive at t0, a fraction
@@ -132,15 +220,18 @@
 
      At equilibrium survived + born = N0 = N1, so born == died exactly, which is the
      one thing the dot field exists to show. */
-  function cohort(p, t0, t1) {
-    var Nprev = sizeAt(p, t0), N1 = sizeAt(p, t1);
+  function cohort(p, pa, t0, t1) {
+    var Nprev = atTime(pa, t0), N1 = atTime(pa, t1);
     if (!isFinite(N1) || N1 < 0) N1 = 0;
     if (!isFinite(Nprev) || Nprev < 0) Nprev = 0;
     var elapsed = t1 - t0;
     if (!(elapsed > 0)) {
       return { Nprev: N1, N1: N1, survived: N1, born: 0, died: 0, elapsed: 0 };
     }
-    var dBar = rates(p, (Nprev + N1) / 2).d;
+    // The death rate this cohort actually met: the year's realised d0, plus the
+    // crowding term at the average size over the window.
+    var yr = yearAt(pa, (t0 + t1) / 2);
+    var dBar = yr.d0 + p.delta * (Nprev + N1) / 2;
     var survived = Nprev * Math.exp(-Math.max(0, dBar) * elapsed);
     return {
       Nprev: Nprev, N1: N1, elapsed: elapsed,
@@ -180,14 +271,14 @@
      realistic shape for anything you estimate by sampling rather than by counting
      every individual. `noise` is roughly the coefficient of variation.
 
-     This is OBSERVATION error only: the underlying population followed the smooth
-     curve exactly. Process error (the population genuinely going somewhere else)
-     is section 3 and is not built. */
-  function census(p, o) {
-    var dt = o.dt, T = o.T, sigma = o.noise || 0;
+     This is OBSERVATION error, and it is a different thing from the year-to-year
+     variation in simulate(): that one moves the population, this one only moves the
+     observer. Turning this up does not change what the population did. */
+  function censusFromPath(pa, o) {
+    var dt = o.dt, T = pa.T, sigma = o.noise || 0;
     var rand = rng(o.seed || 1), out = [], t, N, C;
     for (t = 0; t <= T + 1e-9; t += dt) {
-      N = sizeAt(p, t);
+      N = atTime(pa, t);
       C = sigma > 0 ? N * Math.exp(sigma * normal(rand)) : N;
       // Floored at zero, not at one: a crashing population really does give you
       // censuses of nobody, and the fit skips those. Flooring at one instead
@@ -196,6 +287,13 @@
       out.push([t, Math.max(0, Math.round(C))]);
     }
     return out;
+  }
+
+  /* Simulate and census in one call: the convenience form, for callers that do not
+     need to draw the path itself. */
+  function census(p, o) {
+    return censusFromPath(simulate(p, o.T, { process: o.process || 0,
+                                             seed: o.procSeed || 1 }), o);
   }
 
   // -------------------------------------------------------------------- fit
@@ -364,7 +462,8 @@
 
   window.PopModel = {
     rates: rates, derived: derived, trajectory: trajectory, sizeAt: sizeAt,
-    census: census, cohort: cohort, fit: fit, fitOnce: fitOnce,
-    logisticAt: logisticAt, rng: rng
+    simulate: simulate, advance: advance, atTime: atTime, yearAt: yearAt,
+    census: census, censusFromPath: censusFromPath, cohort: cohort,
+    fit: fit, fitOnce: fitOnce, logisticAt: logisticAt, rng: rng
   };
 })();

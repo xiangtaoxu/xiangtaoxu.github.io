@@ -266,8 +266,23 @@
      Because the list is already in random order, colouring by slot (survivors,
      then births, then deaths) scatters the colours across the square for free. */
   var DOT_MAX = 900;
-  var DOT_POS = (function () {
-    var g = 30, rand = M.rng(70914), pts = [], i, j;
+  var dotPosCache = { key: null, pts: null };
+
+  /* Positions for the individual dots, re-drawn once per census year.
+
+     Stratified (one jittered point per cell of a 30x30 grid) rather than uniform,
+     because uniform random points clump and leave holes, which reads as structure
+     that is not there. Then shuffled, so taking the first n positions is still
+     spatially even at any n. Because the list is in random order, colouring by slot
+     (survivors, then births, then deaths) scatters the colours for free.
+
+     Keyed on the YEAR, not on the frame: individuals move between censuses, which
+     makes each year read as a fresh snapshot rather than a diagram being edited, but
+     they hold still while the scrubber is dragged inside a single year. Re-drawing
+     every frame instead would shimmer and hide the thing the panel is for. */
+  function dotPositions(year) {
+    if (dotPosCache.key === year) return dotPosCache.pts;
+    var g = 30, rand = M.rng(70914 + year * 7919), pts = [], i, j, t;
     for (i = 0; i < g; i++) {
       for (j = 0; j < g; j++) {
         pts.push([(i + 0.15 + 0.7 * rand()) / g, (j + 0.15 + 0.7 * rand()) / g]);
@@ -275,10 +290,11 @@
     }
     for (i = pts.length - 1; i > 0; i--) {          // Fisher-Yates, seeded
       j = Math.floor(rand() * (i + 1));
-      var t = pts[i]; pts[i] = pts[j]; pts[j] = t;
+      t = pts[i]; pts[i] = pts[j]; pts[j] = t;
     }
+    dotPosCache = { key: year, pts: pts };
     return pts;
-  })();
+  }
 
   function dotRadius(n) {
     return n <= 50 ? 5 : n <= 150 ? 4 : n <= 350 ? 3.2 : n <= 700 ? 2.6 : 2.2;
@@ -289,10 +305,15 @@
   // ========================================================================
 
   var main = {
-    p: { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0006, N0: 20 },
+    // K = 300 at these defaults, with the target band at 500: the page opens with
+    // the population settling somewhere OTHER than the number to aim at, so there
+    // is something to do.
+    p: { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0010, N0: 20 },
     target: 500,
-    noise: 0,
-    seed: 1,
+    process: 0.05,      // year-to-year variation in the vital rates
+    noise: 0.05,        // observation error on the counts
+    procSeed: 1,
+    obsSeed: 1,
     cursor: 0,          // scrub position, in years
     playing: false,
 
@@ -361,28 +382,47 @@
         hint: "marks a band on the chart to aim K at",
         onChange: function (v) { self.target = +v; self.draw(); }
       });
-      this.sNoise = slider({
-        label: "Observation noise", value: 0, min: 0, max: 0.2, step: 0.01,
+      this.sProcess = slider({
+        label: "Year-to-year variation", value: this.process, min: 0, max: 0.2, step: 0.01,
         fmt: function (v) { return v === 0 ? "none" : Math.round(v * 100) + "%"; },
-        hint: "you sample, you don't census. This is measurement error only — " +
-              "the population itself still follows the smooth curve exactly.",
+        hint: "good years and bad years: the birth and death rates themselves are " +
+              "re-drawn each year. This moves the population.",
+        onInput: function (v) { self.process = v; self.draw(); }
+      });
+      this.sNoise = slider({
+        label: "Observation noise", value: this.noise, min: 0, max: 0.2, step: 0.01,
+        fmt: function (v) { return v === 0 ? "none" : Math.round(v * 100) + "%"; },
+        hint: "you sample, you don't census. This moves only the counts — " +
+              "whatever the population did, it did.",
         onInput: function (v) { self.noise = v; self.draw(); }
       });
       adv.grid.appendChild(this.cTarget.node);
+      adv.grid.appendChild(this.sProcess.node);
       adv.grid.appendChild(this.sNoise.node);
 
       var btns = h("div", "pd-btn-row");
       var reset = h("button", "pd-btn", "Reset");
       reset.type = "button";
       reset.addEventListener("click", function () { self.reset(); });
+      // Two buttons, because there are two independent sources of chance and telling
+      // them apart is most of the point: one re-runs history, the other re-runs the
+      // fieldwork on the same history.
+      var newHist = h("button", "pd-btn", "New history");
+      newHist.type = "button";
+      newHist.title = "A different run of good and bad years";
+      newHist.addEventListener("click", function () {
+        self.procSeed = (self.procSeed % 9999) + 1;
+        self.draw();
+      });
       var reseed = h("button", "pd-btn", "New census");
       reseed.type = "button";
-      reseed.title = "Same population, somebody else's field season";
+      reseed.title = "The same population, counted by somebody else";
       reseed.addEventListener("click", function () {
-        self.seed = (self.seed % 9999) + 1;
+        self.obsSeed = (self.obsSeed % 9999) + 1;
         self.draw();
       });
       btns.appendChild(reset);
+      btns.appendChild(newHist);
       btns.appendChild(reseed);
 
       host.appendChild(grid);
@@ -416,11 +456,13 @@
     },
 
     reset: function () {
-      this.p = { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0006, N0: 20 };
-      this.noise = 0; this.target = 500; this.cursor = 0; this.seed = 1;
+      this.p = { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0010, N0: 20 };
+      this.process = 0.05; this.noise = 0.05; this.target = 500;
+      this.cursor = 0; this.procSeed = 1; this.obsSeed = 1;
       this.sB0.set(this.p.b0); this.sD0.set(this.p.d0);
       this.sDelta.set(this.p.delta * 1000); this.sBeta.set(0);
-      this.sN0.set(this.p.N0); this.sNoise.set(0);
+      this.sN0.set(this.p.N0);
+      this.sProcess.set(this.process); this.sNoise.set(this.noise);
       this.cTarget.set("500");
       this.stopPlay();
       this.scrubInput.value = 0;
@@ -458,13 +500,18 @@
 
     render: function () {
       var p = this.p, D = M.derived(p);
-      var traj = M.trajectory(p, this.T, TRAJ_STEPS);
-      var counts = M.census(p, { dt: this.dt, T: this.T, noise: this.noise, seed: this.seed });
+      // One realised history per render, shared by the curve, the counts, the
+      // scrubber and the dot field -- they must all be describing the same run.
+      var pa = M.simulate(p, this.T, { process: this.process, seed: this.procSeed });
+      this.path = pa;
+      var traj = [], i;
+      for (i = 0; i < pa.t.length; i++) traj.push([pa.t[i], pa.N[i]]);
+      var counts = M.censusFromPath(pa, { dt: this.dt, noise: this.noise, seed: this.obsSeed });
       var f = M.fit(counts, 200);
 
       // ---- y range. An unbounded run would otherwise put e^15 on the axis and
       // flatten everything worth looking at, so it is clipped and labelled.
-      var dataMax = 0, i;
+      var dataMax = 0;
       for (i = 0; i < traj.length; i++) dataMax = Math.max(dataMax, traj[i][1]);
       var yMax;
       if (D.state === "unbounded") yMax = Math.max(this.target || 0, p.N0 * 4, 100) * 1.2;
@@ -502,7 +549,7 @@
       c.series({ points: traj, cls: "pd-traj" });
       if (this.noise > 0) c.dots({ points: counts, cls: "pd-census" });
 
-      var Ncur = M.sizeAt(p, this.cursor);
+      var Ncur = M.atTime(pa, this.cursor);
       c.vline({ x: this.cursor, cls: "pd-rule-cursor" });
       if (isFinite(Ncur) && Ncur <= yMax) c.dot({ x: this.cursor, y: Ncur, cls: "pd-cursor-dot" });
 
@@ -538,9 +585,15 @@
                             role: "img", "aria-label": "Total births and deaths per year" });
       // Fixed scale, taken from the top of the visible population axis, so the bars
       // do not rescale while the scrubber is dragged.
+      // The SCALE stays on the sliders' average rates, so the bars do not rescale
+      // while the scrubber is dragged. The bars themselves use the year's realised
+      // rates, so their gap is the actual slope of the curve above -- with
+      // year-to-year variation on, they visibly jump from one year to the next,
+      // which is the whole of what a good year and a bad year mean.
       var ref = M.rates(this.p, yMax);
       var scale = Math.max(ref.B, ref.D, 1e-9);
-      var cur = M.rates(this.p, isFinite(N) ? Math.min(N, yMax) : yMax);
+      var yr = this.path ? M.yearAt(this.path, this.cursor) : null;
+      var cur = M.rates(this.p, isFinite(N) ? Math.min(N, yMax) : yMax, yr);
 
       function bar(y, v, cls, name, label) {
         var w = Math.max(0, Math.min(1, v / scale)) * pw;
@@ -575,16 +628,17 @@
        the S-curve cannot show: at K the green and red counts are EQUAL and neither
        is zero, so the field stops changing size without anything stopping. */
     dotField: function () {
-      var p = this.p, W = 700, H = 344;
+      var p = this.p, W = 700, H = 344, D_K = M.derived(p).K;
       var sq = 300, sx = 12, sy = 16, legend = sx + sq + 42;
       var svg = el("svg", { viewBox: "0 0 " + W + " " + H, "class": "pd-chart pd-dotfield",
                             role: "img",
                             "aria-label": "Individuals born, died and surviving in the year shown" });
 
       var t1 = this.cursor, t0 = Math.max(0, t1 - this.dt);
-      var co = M.cohort(p, t0, t1);
+      var co = M.cohort(p, this.path, t0, t1);
       var N1 = co.N1, elapsed = co.elapsed;
       var black = co.survived, green = co.born, red = co.died;
+      var pos = dotPositions(Math.max(0, Math.floor(t1)));
 
       // One dot per individual until that stops fitting, then per ten, per
       // hundred, and so on. The caption always says which.
@@ -592,14 +646,14 @@
       while (total / unit > DOT_MAX) unit *= 10;
       var nb = Math.round(black / unit), ng = Math.round(green / unit),
           nr = Math.round(red / unit);
-      var n = Math.min(nb + ng + nr, DOT_POS.length);
+      var n = Math.min(nb + ng + nr, pos.length);
       var r = dotRadius(n);
 
       svg.appendChild(el("rect", { x: sx, y: sy, width: sq, height: sq, "class": "pd-square" }));
       for (var i = 0; i < n; i++) {
         var cls = i < nb ? "pd-dot-alive" : (i < nb + ng ? "pd-dot-birth" : "pd-dot-death");
         svg.appendChild(el("circle", {
-          cx: fmt(sx + DOT_POS[i][0] * sq, 1), cy: fmt(sy + DOT_POS[i][1] * sq, 1),
+          cx: fmt(sx + pos[i][0] * sq, 1), cy: fmt(sy + pos[i][1] * sq, 1),
           r: r, "class": "pd-indiv " + cls
         }));
       }
@@ -629,10 +683,10 @@
                             : "each dot is " + unit + " individuals"));
       // Both counts must be a real individual or more before this claims a balance:
       // an extinct population has births ~= deaths ~= 0, which is not an equilibrium.
-      if (elapsed > 1e-9 && green >= 1 && red >= 1 &&
-          Math.abs(green - red) / Math.max(green, red) < 0.02) {
+      if (elapsed > 1e-9 && green >= 1 && red >= 1 && D_K != null &&
+          Math.abs(N1 - D_K) / D_K < 0.08) {
         svg.appendChild(el("text", { x: legend, y: H - 8, "class": "pd-note-balance" },
-                           "births ≈ deaths — the field has stopped growing"));
+                           "at K — births and deaths cancel, on average"));
       }
       return svg;
     },
@@ -676,69 +730,58 @@
       return box;
     },
 
-    /* The payoff: what you set, next to what a statistician could recover from the
-       counts alone. The tick reads whether the truth falls inside the interval. */
+    /* What you set, next to what somebody counting the population would report.
+
+       No tick and no cross. Revision 3 removed them deliberately: the page is about
+       population dynamics, not estimation, and a cross invites twenty minutes on why
+       a fit misses. The two columns are put side by side and left to speak.
+
+       It is also the more honest presentation now that the rates vary year to year.
+       The theoretical values are what the sliders say the AVERAGE year looks like;
+       the empirical ones describe the one history that actually happened. Those two
+       differ for a real reason, not because the arithmetic went wrong, so scoring
+       them against each other would be measuring the wrong thing. */
     scorecard: function (D, f) {
       var wrap = h("div", "pd-scorecard-wrap");
       wrap.appendChild(h("h4", "pd-scorecard-title", "r and K: theory against the counts"));
       var t = h("table", "pd-scorecard");
       var html = "<thead><tr><th scope=\"col\">quantity</th>" +
                  "<th scope=\"col\">theoretical<span class=\"pd-sc-sub\">from your rates</span></th>" +
-                 "<th scope=\"col\">empirical<span class=\"pd-sc-sub\">fitted to the counts</span></th>" +
-                 "<th scope=\"col\"></th></tr></thead><tbody>";
+                 "<th scope=\"col\">empirical<span class=\"pd-sc-sub\">from the counts</span></th>" +
+                 "</tr></thead><tbody>";
 
-      function mark(ok) {
-        return ok == null ? "" :
-          ok ? "<span class=\"pd-ok\">✓</span>" : "<span class=\"pd-bad\">✗</span>";
-      }
       function ci(lo, hi, digits) {
         return "<span class=\"pd-ci\">[" + fmt(lo, digits) + ", " + fmt(hi, digits) + "]</span>";
       }
 
       if (!f) {
-        html += "<tr><td colspan=\"4\">" +
+        html += "<tr><td colspan=\"3\">" +
                 (D.state === "declines"
                   ? "This population went extinct. There is no growth curve left to fit."
                   : "Not enough censuses to fit a line — count more often.") +
                 "</td></tr>";
       } else {
-        var rOk = f.rCI && f.rCI[0] <= D.r && D.r <= f.rCI[1];
         html += "<tr><th scope=\"row\">r <span class=\"pd-sc-sub\">intrinsic growth rate</span></th>" +
                 "<td>" + fmt(D.r, 3) + "</td><td>" + fmt(f.r, 3) + " " +
-                (f.rCI ? ci(f.rCI[0], f.rCI[1], 3) : "") + "</td><td>" + mark(rOk) + "</td></tr>";
+                (f.rCI ? ci(f.rCI[0], f.rCI[1], 3) : "") + "</td></tr>";
 
-        if (D.K == null) {
-          html += "<tr><th scope=\"row\">K <span class=\"pd-sc-sub\">carrying capacity</span></th>" +
-                  "<td>—</td><td>" +
-                  (f.K == null ? "<em>not identifiable</em>" : sig3(f.K)) + "</td><td></td></tr>";
-        } else if (f.K == null) {
-          html += "<tr><th scope=\"row\">K <span class=\"pd-sc-sub\">carrying capacity</span></th>" +
-                  "<td>" + sig3(D.K) + "</td>" +
-                  "<td><em>not identifiable from this census</em></td><td></td></tr>";
-        } else {
-          var kOk = f.KCI && f.KCI[0] <= D.K && D.K <= f.KCI[1];
-          html += "<tr><th scope=\"row\">K <span class=\"pd-sc-sub\">carrying capacity</span></th>" +
-                  "<td>" + sig3(D.K) + "</td><td>" + sig3(f.K) + " " +
-                  (f.KCI ? ci(f.KCI[0], f.KCI[1], 0) : "") + "</td><td>" + mark(kOk) + "</td></tr>";
-        }
+        html += "<tr><th scope=\"row\">K <span class=\"pd-sc-sub\">carrying capacity</span></th>" +
+                "<td>" + (D.K == null ? "—" : sig3(D.K)) + "</td><td>" +
+                (f.K == null ? "<em>not identifiable</em>"
+                             : sig3(f.K) + " " + (f.KCI ? ci(f.KCI[0], f.KCI[1], 0) : "")) +
+                "</td></tr>";
+
         html += "<tr><th scope=\"row\">b₀, d₀ <span class=\"pd-sc-sub\">the rates themselves</span></th>" +
                 "<td>" + fmt(this.p.b0, 2) + ", " + fmt(this.p.d0, 2) + "</td>" +
-                "<td><em>not recoverable — counts see only b − d</em></td><td></td></tr>";
+                "<td><em>not recoverable — counts see only b − d</em></td></tr>";
       }
       t.innerHTML = html + "</tbody>";
       wrap.appendChild(t);
 
       if (f && f.K == null) {
         wrap.appendChild(h("p", "pd-scorecard-note",
-          "The fitted line has not turned over, so these counts carry no information " +
-          "about a carrying capacity. Printing a number here would be a guess with " +
-          "three significant figures — which is the position every invasive-species " +
-          "and early-outbreak projection starts from."));
-      } else if (this.noise > 0) {
-        wrap.appendChild(h("p", "pd-scorecard-note",
-          "Noise here is measurement only — the population still followed the " +
-          "smooth curve exactly. Even so, the recovered numbers drift: sampling error " +
-          "flattens the fitted line, which pulls r̂ down and pushes K̂ up."));
+          "The population has not visibly slowed down yet, so these counts carry no " +
+          "information about a carrying capacity at all."));
       }
       return wrap;
     }

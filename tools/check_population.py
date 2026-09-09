@@ -30,6 +30,10 @@ actually shipped and caught:
                REGRESSION: reflected intervals put r^ = 0.803 inside [0.800, 0.801].
   short_window K is reported as not identifiable from a population that has not
                visibly slowed down, rather than as a number.
+  simulate     with no year-to-year variation, stepping the exact logistic solution
+               year by year reproduces the closed form (the logistic flow composes);
+               with variation on, paths stay finite and wander around K rather than
+               away from it, and observation noise moves only the counts.
   cohort       the dot field's three counts close exactly against the curve, and
                deaths never exceed the cohort they came from.
                REGRESSION: computing deaths as d(N)*N*dt made a fast demography at
@@ -172,8 +176,9 @@ const out = {};
   ];
   for (const cs of cases) {
     const D = M.derived(cs.p);
+    const pa = M.simulate(cs.p, 220, { process: 0, seed: 1 });
     for (const t of [0, 1, 12, 50, 200]) {
-      const co = M.cohort(cs.p, Math.max(0, t - 1), t);
+      const co = M.cohort(cs.p, pa, Math.max(0, t - 1), t);
       rows.push({
         name: cs.name, t, K: D.K, dStar: D.dStar,
         Nprev: co.Nprev, N1: co.N1, survived: co.survived, born: co.born, died: co.died,
@@ -186,8 +191,59 @@ const out = {};
   }
   // and a declining population, which must not report a balance of any kind
   const dec = { ...REF, b0: 0.15, d0: 0.60 };
-  const co = M.cohort(dec, 19, 20);
+  const co = M.cohort(dec, M.simulate(dec, 20, { process: 0, seed: 1 }), 19, 20);
   out.cohort = { rows, declining: { born: co.born, died: co.died, N1: co.N1 } };
+}
+
+// ---- simulate(): the realised path ------------------------------------------
+{
+  // With no year-to-year variation, stepping the exact logistic solution year by
+  // year must reproduce the closed form: the logistic flow composes. If this drifts,
+  // students tuning rates to hit a round K are aiming at a moving target.
+  const pa0 = M.simulate(REF, 50, { process: 0, seed: 1 });
+  let worstNode = 0, worstInterp = 0;
+  for (let i = 0; i < pa0.t.length; i++) {
+    const ex = M.sizeAt(REF, pa0.t[i]);
+    worstNode = Math.max(worstNode, Math.abs(pa0.N[i] - ex) / Math.max(ex, 1e-12));
+  }
+  for (const t of [0.37, 1.5, 7.123, 22.9, 49.6]) {
+    const ex = M.sizeAt(REF, t);
+    worstInterp = Math.max(worstInterp, Math.abs(M.atTime(pa0, t) - ex) / ex);
+  }
+
+  // With variation on, the path must still be a population: finite, non-negative,
+  // and wandering AROUND K rather than away from it.
+  const runs = [];
+  for (let s = 1; s <= 40; s++) {
+    const pa = M.simulate(REF, 50, { process: 0.05, seed: s });
+    const tail = pa.N.slice(-80);                       // last ~10 years
+    const mean = tail.reduce((a, b) => a + b, 0) / tail.length;
+    runs.push({
+      mean, min: Math.min(...tail), max: Math.max(...tail),
+      finite: pa.N.every(Number.isFinite), nonneg: pa.N.every(v => v >= 0),
+      wobbled: new Set(pa.years.map(y => y.r.toFixed(6))).size === pa.years.length,
+    });
+  }
+  const D = M.derived(REF);
+  out.simulate = {
+    K: D.K, worstNode, worstInterp,
+    finite: runs.every(r => r.finite), nonneg: runs.every(r => r.nonneg),
+    wobbled: runs.every(r => r.wobbled),
+    meanOfMeans: runs.reduce((a, r) => a + r.mean, 0) / runs.length,
+    spread: Math.max(...runs.map(r => r.max)) / Math.min(...runs.map(r => r.min)),
+    // observation noise must NOT move the population, only the counts
+    obsIndependent: (() => {
+      const a = M.simulate(REF, 50, { process: 0.05, seed: 3 });
+      const c1 = M.censusFromPath(a, { dt: 1, noise: 0.05, seed: 1 });
+      const c2 = M.censusFromPath(a, { dt: 1, noise: 0.05, seed: 2 });
+      const b = M.simulate(REF, 50, { process: 0.05, seed: 4 });
+      return {
+        counts_differ: c1.some((r, i) => r[1] !== c2[i][1]),
+        path_identical: a.N.every((v, i) => v === M.simulate(REF, 50, { process: 0.05, seed: 3 }).N[i]),
+        other_seed_differs: a.N.some((v, i) => v !== b.N[i]),
+      };
+    })(),
+  };
 }
 
 // ---- the family the activity depends on -------------------------------------
@@ -311,6 +367,28 @@ def main() -> int:
     c.ok(by_T[50] > 0.95, "K identifiable from 50 years", f"{by_T[50]*100:.0f}%")
     c.ok(by_T[5] < by_T[10] < by_T[20], "identifiability rises with window length",
          " < ".join(f"{by_T[t]*100:.0f}%" for t in (5, 10, 20)))
+
+    # -- simulate ------------------------------------------------------------
+    print("simulate  (the realised path, with year-to-year variation)")
+    sm = d["simulate"]
+    c.ok(sm["worstNode"] < 1e-12,
+         "with no variation, year-by-year stepping equals the closed form",
+         f"worst relative difference {sm['worstNode']:.2e}")
+    c.ok(sm["worstInterp"] < 1e-4, "atTime interpolates the path faithfully",
+         f"worst relative error {sm['worstInterp']:.2e}")
+    c.ok(sm["finite"], "every path is finite with variation on")
+    c.ok(sm["nonneg"], "no path goes negative")
+    c.ok(sm["wobbled"], "each year really gets its own rates")
+    rel = sm["meanOfMeans"] / sm["K"] - 1
+    c.ok(abs(rel) < 0.05, "paths wander around K, not away from it",
+         f"mean of 40 runs' tails = {sm['meanOfMeans']:.1f} vs K = {sm['K']:.0f} ({rel*100:+.1f}%)")
+    c.ok(1.0 < sm["spread"] < 1.6, "and the wander is visible but not wild",
+         f"max/min across 40 runs = {sm['spread']:.2f}x")
+    oi = sm["obsIndependent"]
+    c.ok(oi["path_identical"], "a run is reproducible from its seed")
+    c.ok(oi["other_seed_differs"], "a different history seed gives a different history")
+    c.ok(oi["counts_differ"],
+         "observation noise moves the counts without touching the population")
 
     # -- cohort accounting ---------------------------------------------------
     print("cohort  (the dot field's counts: survivors, births, deaths)")

@@ -4,6 +4,12 @@ Status: **demo on branch `population-dynamics-teaching-tool`, revised after revi
 One page section is built: the model, the flux gauge, the dot field, and the fit.
 Sections 5's items are designed here and not built.
 
+Revision 3 added environmental stochasticity, which is the one change that reached
+into the model rather than the page: the vital rates are now re-drawn every year, so
+there is no single closed-form trajectory any more. See "Chance, and what it cost"
+below. It also moved the default off the target, split the chance controls in two,
+gave the dots movement, and took the tick and cross off the scorecard.
+
 Revision 2 (Xiangtao's review) changed the shape of the page substantially, and the
 reasoning is folded in below rather than appended: the curve and the individuals now
 come FIRST and the equation afterwards, the per-capita view is gone, the class
@@ -157,6 +163,54 @@ with the theoretical and empirical values underneath. Feeling the curve before n
 its parameters is the whole ordering principle, and it is why the readout div sits
 *below* the equation prose in the `.qmd` rather than beside the charts.
 
+### Chance, and what it cost
+
+Two independent sources, on two sliders, with a button each -- and keeping them apart
+is most of what they teach:
+
+| | what it moves | button |
+|---|---|---|
+| **Year-to-year variation** (5 %) | the population. `b0` and `d0` are re-drawn each year, so the curve is not smooth and the run genuinely goes somewhere else. | *New history* |
+| **Observation noise** (5 %) | only the counts. Whatever the population did, it did. | *New census* |
+
+The jolts are **independent** draws of the same size, not a shared one. A shared jolt
+would move births and deaths the same way and largely cancel in `r = b - d`, which is
+the opposite of what a bad year does.
+
+**This is the change that cost the closed form.** Revision 1 leaned hard on
+`N(t) = K N0 / (N0 + (K - N0) e^{-rt})` being exact, because students tune rates until
+`K` reads a round number and integrator drift would look like a broken target. Rates
+that change annually break that -- but only between years. *Within* a year the rates
+are constant, so the year is still exactly logistic, and the logistic flow composes:
+stepping the closed-form solution year by year is exact. Measured against `sizeAt()`
+with variation switched off, the worst relative difference over a fifty-year path is
+**3.4e-15**, and `tools/check_population.py` asserts it. So the page gained real
+process noise and lost no precision at all.
+
+Consequences worth knowing:
+
+- **Everything on screen has to come from one path.** `simulate()` is called once per
+  render and the curve, the counts, the scrubber and the dot field all read from it.
+  Two calls would be two different populations drawn on top of each other.
+- **The flux gauge shows the year's REALISED rates**, not the sliders' averages, or
+  its birth-minus-death gap would not equal the slope of the curve above it. Its
+  *scale* stays on the averages, so the bars do not rescale while the scrubber moves.
+  `rates(p, N, yr)` takes the optional year for exactly this.
+- **The dot field's balance note keys off being near K**, not off the two realised
+  counts being equal -- with variation on they never are exactly.
+- **Demographic stochasticity is still absent**, and it is now the only kind that is.
+  It cannot be produced by a rate: you need integer events per individual. It is also
+  the one that matters most in conservation, so it stays at the top of section 5.
+
+### The dots move
+
+Positions are re-drawn once per census year, keyed on the year the scrubber is
+standing in. Within a year they hold still, so dragging does not shimmer; crossing
+into the next year moves everybody, which makes each year read as a fresh snapshot
+rather than a diagram being edited. Revision 2 had them fixed for the whole run, which
+filled the square smoothly but made the panel look static once the population
+levelled off.
+
 ## 4. The statistical fit
 
 The logistic's per-capita growth rate is **linear in N**:
@@ -213,6 +267,15 @@ estimate outside its own interval, which reads as a broken tool.
 The bootstrap also has the nicest one-sentence description of the three, which is not
 a small thing for a first-year course: *we pretended the fitted curve was real and
 censused it again, 200 times.*
+
+**The page does not show any of this.** Revision 3 took the tick and cross off the
+scorecard and deleted the prose about dilution: the course is about population
+dynamics, and a cross invites twenty minutes on why a fit misses. It is also the more
+honest presentation now that rates vary annually -- the theoretical values describe an
+average year and the empirical ones describe the one history that happened, so scoring
+them against each other measures the wrong thing. The intervals are kept, because
+dropping them would make the empirical number look exact. Everything below is
+maintenance documentation, not page content.
 
 **Measured coverage, against a nominal 95 %:**
 
@@ -295,7 +358,13 @@ Two files, following the `photosynthesis-*.js` split: `population-model.js` hold
 maths and has no DOM, `population.js` draws and wires. Every colour is a class in
 `theme.scss`, prefix `pd-`. No build step, no dependencies.
 
-- **The deterministic trajectory is closed-form**, not integrated:
+- **`simulate(p, T, o)` is the realised path** and the object everything else reads.
+  `advance()` is one exact logistic step; `atTime()` interpolates (only the scrubber
+  ever needs it -- the census grid lands on nodes); `yearAt()` returns the rates a
+  given year actually had. `census(p, o)` still exists as a convenience that
+  simulates then samples, which is what the checker uses.
+- **The deterministic trajectory is still closed-form**, and is what the theoretical
+  readouts and the checker compare against:
   `N(t) = K N0 / (N0 + (K - N0) e^{-rt})`, with the `r = 0` and `beta + delta = 0`
   limits handled separately. Exactness matters when students are aiming at 500 —
   integrator drift would read as a broken target.
@@ -321,7 +390,7 @@ maths and has no DOM, `population.js` draws and wires. Every colour is a class i
   violated when the dot field was first written.
 - **`tools/check_population.py`** asserts all of the above, plus the coverage bands
   and bias *directions* from section 4 and the cohort identity from section 3. Every
-  regression named in this document has a check standing on it. 56 assertions; run it
+  regression named in this document has a check standing on it. 66 assertions; run it
   after touching the model.
 - **Known duplication.** `population.js` carries its own copies of the small helpers
   (`el`, `h`, `niceTicks`, `chart`, `slider`, `scheduler`, ...) that `photosynthesis.js`

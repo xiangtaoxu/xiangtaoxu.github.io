@@ -154,7 +154,7 @@ Verifies [`js/population-model.js`](../js/population-model.js), the maths behind
 
 ```bash
 conda activate website                  # for deno
-python tools/check_population.py        # 56 assertions
+python tools/check_population.py        # 66 assertions
 python tools/check_population.py -v     # print every measured number
 ```
 
@@ -172,6 +172,7 @@ or in [`_dev/population-dynamics-tool.md`](../_dev/population-dynamics-tool.md):
 | `coverage` | the bootstrap interval covers the truth as often as the page implies (85–93 %, *not* 95 %) |
 | `sane_ci` | an interval always contains its own point estimate |
 | `short_window` | `K` is refused, not guessed, from a population that has not slowed down |
+| `simulate` | with no year-to-year variation, year-by-year stepping reproduces the closed form (the logistic flow composes); with it on, paths stay finite and wander around `K` |
 | `cohort` | the dot field's counts close exactly against the curve, and deaths never exceed the cohort they came from |
 | `same_K` | the family the in-class activity depends on: one `K`, many demographies |
 

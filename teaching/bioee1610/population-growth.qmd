@@ -34,7 +34,13 @@ press **Play**. The equation comes later — watch the population first.
 ### What you are looking at
 
 **The curve** is the population over fifty years — the familiar S-shape, levelling
-off somewhere. Drag the slider under it to move through time.
+off somewhere, but not smoothly: the birth and death rates are re-drawn every year,
+because a good year and a bad year are different years to be alive in. Drag the
+slider under it to move through time.
+
+The grey band marks a size you can try to aim the population at; it turns green when
+you land inside it. Where to put it, how variable the years are, and how badly the
+counting is done are all under **additional parameters**.
 
 **The two bars** are the part the curve cannot show you: the *total* births and
 deaths per year at whichever moment you are parked on. The gap between their ends
@@ -68,8 +74,11 @@ way. **K** is the population size at which the two rate lines cross — where a
 typical individual has exactly as many offspring as it has chances of dying.
 
 Below, those theoretical values sit next to the **empirical** ones: what somebody
-counting this population once a year for fifty years would estimate, knowing
-nothing about the rates you set.
+counting this population once a year for fifty years would report, knowing nothing
+about the rates you set. The two do not match exactly, and that is not a mistake in
+either. The theoretical numbers describe what an *average* year does. The empirical
+ones describe the single history this population actually had — one particular run
+of good and bad years, seen through one particular set of counts.
 
 ::: {.pd-tool}
 ::: {.pd-readout #pd-logistic-readout}
@@ -82,30 +91,37 @@ Things to try
 - **Park the slider at the far right and look at the two bars.** They are equal, and
   neither is anywhere near zero. Then read "turnover at K": that many individuals
   are born and die every year, forever, with the total never moving.
-- **Compare two populations with the same K.** Set `b₀ = 0.12, d₀ = 0.02, δ = 0.20`,
-  then `b₀ = 1.40, d₀ = 0.60, δ = 1.60`. Both have K = 500 — though the slow one is
-  still climbing towards it at year fifty, which is worth noticing on its own. Now
-  check the mean lifespan: 8.3 years in the first, about eight months in the second.
-  One is a population of trees, the other of voles, and the square shows it: a thin
-  sprinkle of green and red in the first, most of the field turning over in the
-  second. The same carrying capacity says almost nothing about the lives inside it.
+- **Compare two populations with the same K.** Set `b₀ = 0.12, d₀ = 0.02, δ = 0.25`,
+  then `b₀ = 1.40, d₀ = 0.60, δ = 2.00`. Both work out at K = 400 — though the slow
+  one is still climbing towards it at year fifty, which is worth noticing on its own.
+  Now check the mean lifespan: 8.3 years in the first, about eight months in the
+  second. One is a population of trees, the other of voles, and the square shows it:
+  a thin sprinkle of green and red in the first, most of the field turning over in
+  the second. The same carrying capacity says almost nothing about the lives inside
+  it.
 - **Turn the crowding slider δ down to zero.** K is gone, and the readout says why:
   with nothing multiplying the bracket, `dN/dt = rN` is the exponential, and no
   population obeys that for long.
 - **Set d₀ above b₀.** Deaths win even in an empty landscape, so there is no
   positive equilibrium to find at any density. Watch the square: red every year,
   green almost never.
-- **Start above your carrying capacity** — leave the rates alone and drag N₀ past
-  500. The population *falls* to the same place it used to climb to. K is not a
+- **Start above your carrying capacity** — leave the rates alone and drag N₀ up to
+  600. The population *falls* to the same place it used to climb to. K is not a
   ceiling that stops growth; it is the level both directions run towards. Above it
   the death bar is the longer one.
 - **Trade δ for β**, keeping their sum fixed. The curve does not move at all —
   crowding that suppresses births and crowding that raises deaths give identical
   trajectories. To find out *which* one is happening you have to go and measure
   births and deaths separately, not just count individuals.
-- **Under additional parameters, raise observation noise to 10 %** and press
-  "New census" a few times. The population never changed — only the counting did.
-  Watch how far the empirical r and K move anyway, and whether the ✓ survives it.
+- **Press "New census" a few times, then "New history" a few times.** They are not
+  the same thing. A new census re-counts the *same* population: the curve does not
+  move at all, only the dots scattered around it. A new history re-runs the years
+  themselves, and the population goes somewhere genuinely different. Under additional
+  parameters you can turn each source of chance up on its own to see which is which.
+- **Set year-to-year variation to zero.** The curve goes glassy-smooth and the square
+  settles into a perfectly steady flicker. Nothing in nature looks like this, which is
+  worth a moment's thought about every textbook figure of this equation you have
+  ever seen.
 :::
 
 ## Notes and further reading
@@ -114,14 +130,16 @@ Things to try
 
 ::: {.pd-howto}
 
-**Nothing here is random except the counting.** The population follows the smooth
-curve exactly, and the noise setting only blurs the observer's view of it. Real
-populations are pushed around by chance in two further ways this page does not
-simulate: **demographic** stochasticity, because births and deaths are whole-number
-events that can go the wrong way in a small population, and **environmental**
-stochasticity, because good years and bad years move the rates themselves. The
-first is why small populations go extinct even when their growth rate is positive
-— which no curve on this page can show you.
+**One kind of chance is here and one is missing.** The vital rates are re-drawn
+each year, so good years and bad years move the population around — that is
+**environmental** stochasticity, and it is why the curve is not smooth. What is not
+simulated is **demographic** stochasticity: the fact that births and deaths are
+whole-number events happening to particular individuals, so a population of twelve
+can lose four of them to bad luck in a year when the *rates* said it should lose one.
+That is what kills small populations even when their growth rate is comfortably
+positive, and it cannot be produced by a rate at all — you need to roll dice for each
+individual. Nothing on this page can show you a founding population going extinct by
+accident, which is most of what conservation biologists worry about.
 
 **Every individual is identical.** There are no ages, no sexes, no juveniles too
 young to breed and no elders past breeding; `b₀` and `d₀` apply to everyone equally.
