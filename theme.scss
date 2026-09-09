@@ -846,3 +846,211 @@ $ph-water: #1f6fb2;
   .ph-controls-grid { grid-template-columns: 1fr; gap: 0.8rem; }
   .ph-tabs { overflow-x: auto; }
 }
+
+// ---- Teaching: interactive population dynamics page -------------------------
+// Scoped under .pd-* (the ids the script owns). The generic tool chrome -- the
+// card, tabs, slider fields, table -- is identical to the photosynthesis page's,
+// so it is shared with @extend rather than copied. If a third tool arrives, lift
+// those into a neutrally named set (.tool-*) instead of extending .ph-*.
+//
+// The palette carries the argument of the page: births green and deaths carnelian,
+// because the whole point is that K is where those two balance. The population
+// itself is slate -- deliberately neither of them, since it is their consequence
+// rather than a third rate. The fit is gold and dashed: an estimate, not a truth.
+
+$pd-birth: #2f7d4f;
+$pd-death: #b31b1b;
+$pd-pop:   #2c3e50;
+$pd-fit:   #c07a10;
+
+.pd-tool           { @extend .ph-tool; }
+.pd-tabs           { @extend .ph-tabs; }
+.pd-tab            { @extend .ph-tab; }
+.pd-controls-grid  { @extend .ph-controls-grid; }
+.pd-field          { @extend .ph-field; }
+.pd-field-head     { @extend .ph-field-head; }
+.pd-field-name     { @extend .ph-field-name; }
+.pd-field-value    { @extend .ph-field-value; }
+.pd-field-hint     { @extend .ph-field-hint; }
+.pd-advanced       { @extend .ph-advanced; }
+.pd-chart          { @extend .ph-chart; }
+.pd-howto          { @extend .ph-howto; }
+.pd-try            { @extend .ph-try; }
+// @extend rewrites the selector lists it finds, so `.ph-advanced .ph-controls-grid`
+// becomes `.pd-advanced .ph-controls-grid` -- which the pd- markup never matches.
+// Restate it for the pd- pair.
+.pd-advanced .pd-controls-grid { margin-top: 0.8rem; margin-bottom: 0.3rem; }
+.pd-field-wide { grid-column: 1 / -1; }
+
+// ---- buttons ----
+.pd-btn-row { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.2rem 0 0.9rem; }
+.pd-btn {
+  font: inherit;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 1rem;
+  background: #fff;
+  cursor: pointer;
+  &:hover { border-color: #999; }
+}
+.pd-play { min-width: 5.4rem; font-variant-numeric: tabular-nums; }
+
+// ---- the charts ----
+.pd-line  { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.pd-traj  { stroke: $pd-pop; }
+.pd-birth { stroke: $pd-birth; }
+.pd-death { stroke: $pd-death; }
+// The estimate. Dashed and gold so it can never be mistaken for the population
+// itself, which matters most on the trajectory chart where the two nearly coincide.
+.pd-fit   { stroke: $pd-fit; stroke-width: 2; stroke-dasharray: 6 4; }
+.pd-truth { stroke: #b9b9bf; stroke-width: 1.6; }
+
+.pd-band        { stroke: none; }
+.pd-band-target { fill: #6c757d; opacity: 0.10; }
+// The target band turns green the moment K lands inside it, so nobody has to ask
+// whether they are done.
+.pd-band-hit    { fill: $pd-birth; opacity: 0.16; }
+
+.pd-rule        { stroke: #b9b9bf; stroke-width: 1; }
+.pd-rule-target { stroke: #8a8a90; stroke-dasharray: 5 4; }
+.pd-rule-k      { stroke: $pd-pop; stroke-dasharray: 3 3; opacity: 0.75; }
+.pd-rule-cursor { stroke: $pd-fit; stroke-width: 1.4; opacity: 0.85; }
+
+.pd-dot        { stroke: #fff; stroke-width: 1.2; fill: $pd-pop; }
+.pd-census     { fill: $pd-pop; opacity: 0.5; stroke: none; }
+.pd-cursor-dot { fill: $pd-fit; stroke-width: 1.6; }
+.pd-cross-dot  { fill: $pd-pop; }
+.pd-fit-dot    { fill: $pd-fit; }
+
+.pd-note        { font-size: 10.5px; fill: #666; }
+.pd-note-target { font-size: 10.5px; fill: #777; }
+.pd-note-k      { font-size: 11px; fill: $pd-pop; font-weight: 600; }
+.pd-note-birth  { font-size: 12px; fill: $pd-birth; font-weight: 700; }
+.pd-note-death  { font-size: 12px; fill: $pd-death; font-weight: 700; }
+.pd-note-fit    { font-size: 10.5px; fill: darken($pd-fit, 8%); font-weight: 600; }
+.pd-note-warn   { font-size: 12px; fill: #8a5200; font-weight: 600; }
+
+.pd-gridline  { stroke: #eeeef1; stroke-width: 1; }
+.pd-axis      { stroke: #aaa; stroke-width: 1; }
+.pd-axis-zero { stroke: #c4c4ca; stroke-width: 1.2; }
+.pd-tick       { font-size: 11px; fill: #555; }
+.pd-tick-y     { text-anchor: end; }
+.pd-tick-x     { text-anchor: middle; }
+.pd-axis-title { font-size: 11px; fill: #555; text-anchor: middle; }
+
+// ---- the flux gauge ----
+// Two bars, births against deaths, at the scrubbed moment. The only thing on the
+// page that shows the flows rather than the stock: at K the trajectory is flat and
+// these are equal and both long.
+.pd-gauge { margin-top: -0.2rem; }
+.pd-bar-bg    { fill: #f2f2f4; }
+.pd-bar       { stroke: none; }
+.pd-bar-birth { fill: $pd-birth; }
+.pd-bar-death { fill: $pd-death; }
+// The gap between the two bar ends IS dN/dt, so it is drawn rather than left to be
+// measured by eye.
+.pd-gap        { fill: #1a1d21; opacity: 0.07; stroke: none; }
+.pd-bar-name   { font-size: 11px; fill: #555; }
+.pd-bar-value  { font-size: 11px; fill: #333; font-variant-numeric: tabular-nums; }
+.pd-bar-caption { font-size: 11.5px; fill: #444; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+// ---- the scrubber ----
+.pd-scrub {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0.3rem 0 0.2rem;
+}
+.pd-scrub-range { flex: 1 1 auto; min-width: 0; accent-color: $pd-fit; margin: 0; }
+.pd-scrub-label {
+  font-size: 0.82rem;
+  color: #555;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  min-width: 9.5rem;
+}
+
+.pd-view { margin-top: 0.5rem; }
+.pd-empty { color: #666; font-size: 0.9rem; margin: 0.8rem 0; }
+
+// ---- derived readouts: r, K, turnover, lifespan ----
+// These are readouts and never controls. That is the whole design of the page --
+// a student who can drag K learns that K is a ceiling somebody imposed.
+.pd-derived {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.5rem 0.9rem;
+  margin: 1rem 0 0.4rem;
+}
+.pd-derived-item {
+  border: 1px solid #e7e7e9;
+  border-radius: 0.4rem;
+  padding: 0.45rem 0.65rem;
+  background: #fbfbfc;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  &.is-hit  { border-color: $pd-birth; background: rgba($pd-birth, 0.06); }
+  &.is-miss { border-color: #e0e0e4; }
+  &.is-warn { border-color: #e0b070; background: #fdf8f0; }
+}
+.pd-derived-label { font-size: 0.76rem; color: #777; }
+.pd-derived-value { font-size: 1.05rem; font-weight: 700; color: #222; font-variant-numeric: tabular-nums; }
+.pd-derived-item.is-hit .pd-derived-value { color: darken($pd-birth, 6%); }
+
+.pd-state {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  margin: 0.3rem 0 0;
+  &.is-hit-note { color: darken($pd-birth, 10%); font-weight: 600; }
+}
+
+// ---- the scorecard ----
+.pd-scorecard-wrap { margin-top: 1.1rem; overflow-x: auto; }
+.pd-scorecard-title { font-size: 0.95rem; margin: 0 0 0.45rem; }
+.pd-scorecard {
+  @extend .ph-table;
+  min-width: 30rem;
+  font-size: 0.85rem;
+  th[scope="row"] { white-space: normal; }
+}
+.pd-sc-sub { display: block; font-weight: 400; font-size: 0.72rem; color: #888; }
+.pd-ci { color: #777; font-weight: 400; white-space: nowrap; }
+.pd-ok  { color: $pd-birth; font-weight: 700; }
+.pd-bad { color: $pd-death; font-weight: 700; }
+.pd-scorecard-note { font-size: 0.85rem; color: #555; line-height: 1.5; margin: 0.6rem 0 0; }
+
+// ---- the class overlay ----
+.pd-textarea {
+  font: inherit;
+  font-size: 0.9rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  width: 100%;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 0.35rem;
+  resize: vertical;
+}
+.pd-legend-table { min-width: 34rem; margin-top: 0.7rem; }
+.pd-swatch { width: 1.1rem; height: 0.2rem; border-radius: 2px; display: inline-block; }
+
+// Eight seats, eight colours. Defined after .pd-traj so they win on source order:
+// the overlay draws each student as `pd-traj pd-seat-N`, sharing the trajectory's
+// stroke weight while taking its own colour.
+$pd-seats: #2c3e50, #b31b1b, #1f6fb2, #2f7d4f, #c07a10, #6b4c9a, #2a7f8f, #a0522d;
+@each $c in $pd-seats {
+  $i: index($pd-seats, $c) - 1;
+  .pd-seat-#{$i}    { stroke: $c; }
+  .pd-seat-bg-#{$i} { background: $c; }
+}
+
+@media (max-width: 767px) {
+  .pd-tool { padding: 0.8rem 0.7rem 1rem; }
+  .pd-controls-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+  .pd-tabs { overflow-x: auto; }
+  .pd-scrub { flex-wrap: wrap; }
+  .pd-scrub-label { min-width: 0; }
+}

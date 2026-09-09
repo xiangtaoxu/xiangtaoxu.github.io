@@ -147,6 +147,54 @@ Needs `libmeds_plant_c` built from a MEDS **v0.1.0** checkout (see MEDS
 checks, which are a strictly weaker guarantee; it will not pretend otherwise in
 its exit status.
 
+## `check_population.py`
+
+Verifies [`js/population-model.js`](../js/population-model.js), the maths behind the
+[Population Growth](../teaching/bioee1610/population-growth.qmd) page.
+
+```bash
+conda activate website                  # for deno
+python tools/check_population.py        # 44 assertions
+python tools/check_population.py -v     # print every measured number
+```
+
+Unlike `check_photosynthesis.py` there is no Fortran counterpart — the logistic is
+three lines of algebra. What needs checking is not a port but the **claims the page
+makes about it**, so each group of assertions corresponds to a sentence on the page
+or in [`_dev/population-dynamics-tool.md`](../_dev/population-dynamics-tool.md):
+
+| check | what it asserts |
+|---|---|
+| `analytic` | `K = r/(β+δ)`, and the closed-form `N(t)` really solves `dN/dt = rN(1−N/K)` |
+| `degenerate` | the two no-equilibrium states are classified right, and a declining population decays smoothly to zero |
+| `exact_fit` | with no observation error the fit returns `r` and `K` to well under 0.5 % |
+| `bias` | with observation error the bias runs in a **known direction** — `r` low, `K` high |
+| `coverage` | the bootstrap interval covers the truth as often as the page implies (85–93 %, *not* 95 %) |
+| `sane_ci` | an interval always contains its own point estimate |
+| `short_window` | `K` is refused, not guessed, from a population that has not slowed down |
+| `same_K` | the family the in-class activity depends on: one `K`, many demographies |
+
+Several are regressions for bugs that were shipped and caught — a declining
+population rendering as a flat line at zero, intervals three times too wide, and an
+estimate falling outside its own interval. The `bias` group asserts the *sign* of
+each bias, not just its size, because an earlier draft of the design doc had both
+signs backwards.
+
+## `make_population_card.py`
+
+Regenerates [`images/teaching/population-growth-card.jpg`](../images/teaching/population-growth-card.jpg),
+the listing card for the Population Growth page — 1200x600 to match the other two
+teaching cards.
+
+```bash
+python tools/make_population_card.py      # needs matplotlib; any env with it will do
+```
+
+The other two teaching cards are photographs and have no generator. This one is a
+figure, so it does: it draws five vital-rate combinations converging on one carrying
+capacity, the `b(N)`/`d(N)` crossing, and the birth/death flux bars at `K`. Colours
+are the `$pd-*` palette from `theme.scss` — keep them in step if that palette moves.
+
 ## `sync_visitor_stats.py`
 
 Copies the visitor counts from goatcounter.com into local CSVs. The counts live
