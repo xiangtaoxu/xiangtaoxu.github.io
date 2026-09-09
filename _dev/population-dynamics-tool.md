@@ -1,8 +1,16 @@
 # Population dynamics tool — design
 
-Status: **demo on branch `population-dynamics-teaching-tool`.** Section 1 plus the
-statistical fit and the class-overlay box are built. Sections 2 and 3 are designed
-here and not built.
+Status: **demo on branch `population-dynamics-teaching-tool`, revised after review.**
+One page section is built: the model, the flux gauge, the dot field, and the fit.
+Sections 5's items are designed here and not built.
+
+Revision 2 (Xiangtao's review) changed the shape of the page substantially, and the
+reasoning is folded in below rather than appended: the curve and the individuals now
+come FIRST and the equation afterwards, the per-capita view is gone, the class
+overlay is unmounted, and the second diagram is a field of individuals rather than a
+pair of rate lines. Where a decision reverses something argued for in revision 1, both
+sides are kept -- the argument against is still the reason the implementation looks
+the way it does.
 
 Course: BioEE 1610, the lecture that introduces
 
@@ -98,14 +106,56 @@ Autoplay loops compete with the instructor for attention and a student who looks
 mid-loop sees a meaningless middle frame; dragging a scrubber *is* the animation, and
 it can be parked where the argument is. A play button covers the first reveal.
 
-### Deliberately not a 2D spatial distribution
+### The second diagram is a field of individuals
 
-An early idea was a 2D scatter of individuals. Rejected: the logistic has no space, no
-location and no local crowding, so a spatial layout implies structure the model does
-not have — and a bounded box that visibly *fills up* teaches `K` as a container with a
-ceiling, which argues against §1. If individuals are ever drawn, they should be a
-**unit chart** (a packed grid, one dot per individual, no container boundary) so the
-picture reads as a tally rather than a map. Deferred; see §6.
+Revision 1 argued *against* drawing individuals as dots in a 2D square, and the
+argument was not wrong: the logistic has no space, no location and no local crowding,
+so a spatial layout implies structure the model does not have -- and a bounded box
+that visibly *fills up* teaches `K` as a container with a ceiling, which argues
+against section 1.
+
+Overruled, and the panel is better than the rate-line chart it replaced, because
+students **feel** it: one dot per individual over the year ending at the scrubbed
+moment, green born, red died, black came through alive. At `K` the green and red
+counts are equal and neither is zero, so the field visibly stops changing size
+without anything stopping. That is the same lesson as the flux gauge, told in
+individuals rather than rates, and it is the one students remember.
+
+Three things keep the original objection defused:
+
+- **Positions are stratified-random and carry no meaning**, and the page says so
+  twice -- the square is a tally, not a map.
+- **The border is drawn faintly** and the fill level moves with `K`, so it cannot
+  read as the constraint. A student who changes `K` sees the same square fill to a
+  different level.
+- **Positions never move.** A fixed, shuffled, stratified point set means taking the
+  first *n* positions is spatially even at any *n*, so the field fills smoothly
+  instead of shimmering. Colouring by slot then scatters the colours for free,
+  because the list is already in random order.
+
+**The counts are cohort counts, not rate x window**, and this is the part that took a
+second attempt. Of the `N` alive a year ago, a fraction `exp(-d*dt)` survives; the
+rest died; births are whatever makes survivors + births equal the population the
+curve actually reaches. Computing deaths as `d(N) * N * dt` instead breaks the moment
+the per-capita death rate exceeds 1/yr -- which it does for any short-lived species.
+A fast demography at `K` reported **"everyone died and everyone was born this year"**:
+the rate was right and the sentence was wrong, because `d*N*dt` counts deaths among
+individuals born inside the same window, who were never in the starting cohort.
+
+One consequence to be honest about: the dot panel and the flux gauge therefore do
+*not* show the same numbers. The gauge shows rates, including the newborns that die
+before the year is out; the dots show distinct individuals out of last year's
+population. Both are labelled as such, and `PopModel.cohort` carries the reasoning.
+For a class that notices, this is a good question rather than a defect.
+
+### The equation comes after the pictures
+
+The page opens straight into the tool. No intro, no equation, no `r` and no `K` until
+the student has run the thing and watched the square balance. Only then do the two
+rate lines get written down, substituted, and collapsed into `dN/dt = rN(1 - N/K)`,
+with the theoretical and empirical values underneath. Feeling the curve before naming
+its parameters is the whole ordering principle, and it is why the readout div sits
+*below* the equation prose in the `.qmd` rather than beside the charts.
 
 ## 4. The statistical fit
 
@@ -114,17 +164,21 @@ The logistic's per-capita growth rate is **linear in N**:
     (1/N) dN/dt = r - (r/K) N
 
 so the y-intercept is `r`, the x-intercept is `K`, and the slope is the strength of
-density dependence. That makes the fit a straight line a first-year can *see*, rather
-than opaque nonlinear machinery.
+density dependence -- which is what makes the estimate cheap and robust to compute.
+
+Revision 1 also *showed* that line, on the grounds that a fit a first-year can see
+beats opaque nonlinear machinery. That chart is now gone: explaining the estimator
+was costing a diagram and a section of prose in a course whose subject is population
+dynamics, not regression. The fit stays; only its exposition went. What remains
+visible is the fitted curve over the counts on the trajectory chart, which is
+invisible until observation noise is switched on -- the point being that with perfect
+counting there is nothing to estimate.
 
 **Procedure.** From a simulated census at interval `dt`:
 
     y_i = ln(C_{i+1} / C_i) / dt          x_i = (C_i + C_{i+1}) / 2
 
 ordinary least squares gives `r_hat = intercept` and `K_hat = -intercept / slope`.
-
-One fit, shown twice: as a straight line in the per-capita view, and as the implied
-logistic curve over the counts in the time view. Same model, two pictures.
 
 **When `K` is not identifiable, say so.** If the bootstrap's 97.5th-percentile slope
 is not negative, the tool prints *not identifiable from this census* instead of a
@@ -215,6 +269,19 @@ Activities that unlock here: **which noise is which?** (vote on two unlabelled
 50-run ensembles) and **how many should we release?** (reintroduction framing, vote on
 `N0`, watch extinction fraction — a positive growth rate does not mean safe).
 
+**Unmounted, not deleted: the class overlay.** Revision 1 built it as panel 2 and
+revision 2 removed the section. The code is still in `population.js` and its `boot()`
+returns early when its divs are absent, so restoring it costs two divs in the `.qmd`.
+
+This is the one removal worth revisiting, because it was the tool for step 3 of the
+in-class plan in section 2 -- the instructor typing students' pairs in and getting a
+fan of curves with one endpoint. Without it that step has to be done verbally, which
+is faster and may well be the right call for a three-minute slot; but the
+"same K, many demographies" punchline now has **no on-page presence at all**, since
+the activity card and the overlay both went. The nearest survivor is a *Things to try*
+bullet giving two parameter sets with `K = 500` and lifespans of 8.3 years and eight
+months.
+
 **Also deferred:** the static triptych (three unit charts at `N = 25 / 250 / 500` with
 a flux gauge under each — the artifact that ends up on a slide); the animated dot
 field; small multiples of five students' equilibria, identical in size and different
@@ -248,9 +315,14 @@ maths and has no DOM, `population.js` draws and wires. Every colour is a class i
   downstream can print a negative carrying capacity at a student. The trajectory
   solution needs `Kraw`: reading `K` there made every declining run render as a flat
   line at zero, since `null` arithmetic gave `N(0) = 0/0`.
+- **`PopModel.cohort(p, t0, t1)`** holds the dot field's arithmetic, not
+  `population.js`. The rule in that file's header -- all maths in the model, drawing
+  only in the UI -- is what makes the cohort identity checkable, and it was briefly
+  violated when the dot field was first written.
 - **`tools/check_population.py`** asserts all of the above, plus the coverage bands
-  and bias *directions* from section 4. Every regression named in this document has a
-  check standing on it. 44 assertions; run it after touching the model.
+  and bias *directions* from section 4 and the cohort identity from section 3. Every
+  regression named in this document has a check standing on it. 56 assertions; run it
+  after touching the model.
 - **Known duplication.** `population.js` carries its own copies of the small helpers
   (`el`, `h`, `niceTicks`, `chart`, `slider`, `scheduler`, ...) that `photosynthesis.js`
   also has. Deliberate for a demo: extracting a shared `chartkit.js` would mean editing

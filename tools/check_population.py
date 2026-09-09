@@ -30,6 +30,10 @@ actually shipped and caught:
                REGRESSION: reflected intervals put r^ = 0.803 inside [0.800, 0.801].
   short_window K is reported as not identifiable from a population that has not
                visibly slowed down, rather than as a number.
+  cohort       the dot field's three counts close exactly against the curve, and
+               deaths never exceed the cohort they came from.
+               REGRESSION: computing deaths as d(N)*N*dt made a fast demography at
+               K report that every individual died and every individual was born.
   same_K       the family the in-class activity depends on: several very different
                demographies landing on one carrying capacity, differing in
                lifespan and turnover.
@@ -155,6 +159,37 @@ const out = {};
   out.short_window = rows;
 }
 
+// ---- cohort accounting behind the dot field ---------------------------------
+{
+  const rows = [];
+  // Three demographies with the SAME K = 500 but per-capita death rates at K of
+  // 0.5, 0.12 and 1.4 per year. The third is the one that broke the obvious
+  // rate x window arithmetic: it would have reported every individual dying.
+  const cases = [
+    { name: "default", p: REF },
+    { name: "slow",    p: { b0: 0.12, d0: 0.02, beta: 0, delta: 0.0002, N0: 20 } },
+    { name: "fast",    p: { b0: 1.40, d0: 0.60, beta: 0, delta: 0.0016, N0: 20 } },
+  ];
+  for (const cs of cases) {
+    const D = M.derived(cs.p);
+    for (const t of [0, 1, 12, 50, 200]) {
+      const co = M.cohort(cs.p, Math.max(0, t - 1), t);
+      rows.push({
+        name: cs.name, t, K: D.K, dStar: D.dStar,
+        Nprev: co.Nprev, N1: co.N1, survived: co.survived, born: co.born, died: co.died,
+        closes: Math.abs(co.survived + co.born - co.N1),
+        died_le_Nprev: co.died <= co.Nprev + 1e-9,
+        all_nonneg: co.survived >= 0 && co.born >= 0 && co.died >= 0,
+        finite: [co.survived, co.born, co.died, co.N1].every(Number.isFinite),
+      });
+    }
+  }
+  // and a declining population, which must not report a balance of any kind
+  const dec = { ...REF, b0: 0.15, d0: 0.60 };
+  const co = M.cohort(dec, 19, 20);
+  out.cohort = { rows, declining: { born: co.born, died: co.died, N1: co.N1 } };
+}
+
 // ---- the family the activity depends on -------------------------------------
 {
   const rows = [];
@@ -276,6 +311,33 @@ def main() -> int:
     c.ok(by_T[50] > 0.95, "K identifiable from 50 years", f"{by_T[50]*100:.0f}%")
     c.ok(by_T[5] < by_T[10] < by_T[20], "identifiability rises with window length",
          " < ".join(f"{by_T[t]*100:.0f}%" for t in (5, 10, 20)))
+
+    # -- cohort accounting ---------------------------------------------------
+    print("cohort  (the dot field's counts: survivors, births, deaths)")
+    rows = d["cohort"]["rows"]
+    c.ok(all(r["finite"] for r in rows), "every count is finite")
+    c.ok(all(r["all_nonneg"] for r in rows), "no negative counts")
+    worst = max(r["closes"] for r in rows)
+    c.ok(worst < 1e-6, "survivors + births = the population the curve reaches",
+         f"worst mismatch {worst:.2e}")
+    # The regression: rate x window let deaths exceed the cohort they came from.
+    c.ok(all(r["died_le_Nprev"] for r in rows),
+         "deaths never exceed the cohort they came from")
+    at_K = [r for r in rows if r["t"] == 200]
+    for r in at_K:
+        rel = abs(r["born"] - r["died"]) / max(r["born"], r["died"], 1e-9)
+        c.ok(rel < 1e-6, f"at K, births = deaths ({r['name']})",
+             f"{r['born']:.2f} vs {r['died']:.2f}")
+        c.ok(r["died"] < r["Nprev"],
+             f"at K, not everyone dies ({r['name']}, d* = {r['dStar']:.2f}/yr)",
+             f"{r['died']:.0f} of {r['Nprev']:.0f}")
+    growing = [r for r in rows if r["name"] == "default" and r["t"] == 12][0]
+    c.ok(growing["born"] > growing["died"], "while growing, births exceed deaths",
+         f"{growing['born']:.0f} born vs {growing['died']:.0f} died")
+    dec = d["cohort"]["declining"]
+    c.ok(dec["N1"] < 1 and dec["born"] < 1 and dec["died"] < 1,
+         "an extinct population reports no births and no deaths",
+         f"N={dec['N1']:.4f} born={dec['born']:.4f} died={dec['died']:.4f}")
 
     # -- same K --------------------------------------------------------------
     print("same_K  (the family the in-class activity is built on)")

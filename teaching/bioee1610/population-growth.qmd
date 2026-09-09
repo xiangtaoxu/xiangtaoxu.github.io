@@ -17,132 +17,96 @@ format:
           <script src="/js/population.js" defer></script>
 ---
 
-A population grows when births outnumber deaths and shrinks when they do not. That
-is the entire mechanism, and everything else on this page follows from it.
+## Births, deaths, and where they balance
 
-The equation for it is
-
-> **dN/dt = r N (1 − N/K)**
-
-and the two letters in it, **r** and **K**, are the ones you will be asked about in
-every exam question and every management report. Neither of them is something an
-organism has. They are both **consequences** of birth and death rates — which is why
-this page gives you no slider for either one.
-
-## 1. Births, deaths, and where they balance
-
-Set four numbers: how fast individuals reproduce and die when there is plenty of
-room, how much crowding matters, and how many arrive to begin with. Then watch what
-the population does — and watch **r** and **K** appear in the readouts underneath
-without you ever having touched them.
+Set how fast individuals reproduce and die, decide how much crowding matters, and
+press **Play**. The equation comes later — watch the population first.
 
 ::: {.pd-tool}
 ::: {.pd-controls #pd-logistic-controls}
 :::
 ::: {.pd-chart #pd-logistic-chart}
 :::
+::: {.pd-chart #pd-logistic-dots}
+:::
+:::
+
+### What you are looking at
+
+**The curve** is the population over fifty years — the familiar S-shape, levelling
+off somewhere. Drag the slider under it to move through time.
+
+**The two bars** are the part the curve cannot show you: the *total* births and
+deaths per year at whichever moment you are parked on. The gap between their ends
+is how fast the population is changing. Drag from year zero to the end and watch
+the birth bar start far ahead, the two converge, and finally sit **equal and both
+still long**.
+
+**The square** is those same individuals, one dot each: **green** born this year,
+**red** died this year, **black** came through it alive. Where the dots sit means
+nothing — the square is a tally, not a map. What matters is that once the
+population levels off, green and red keep appearing *in equal numbers*. A
+population that has stopped growing has not stopped. It is replacing itself as fast
+as it can, and the panel tells you how many individuals a year that takes.
+
+### Now the equation
+
+Two straight lines are hiding in those sliders. The birth rate falls as it gets
+crowded and the death rate climbs:
+
+> **b(N) = b₀ − βN**    and    **d(N) = d₀ + δN**
+
+A population grows at the rate its individuals reproduce, minus the rate they die,
+so `dN/dt = [b(N) − d(N)] N`. Substitute the two lines, collect the terms, and out
+falls the equation from lecture:
+
+> **dN/dt = r N (1 − N/K)**    with    **r = b₀ − d₀**    and    **K = (b₀ − d₀) / (β + δ)**
+
+Neither **r** nor **K** is a slider on this page, because neither is a thing an
+organism has. **r** is the growth rate an individual manages with nobody in the
+way. **K** is the population size at which the two rate lines cross — where a
+typical individual has exactly as many offspring as it has chances of dying.
+
+Below, those theoretical values sit next to the **empirical** ones: what somebody
+counting this population once a year for fifty years would estimate, knowing
+nothing about the rates you set.
+
+::: {.pd-tool}
 ::: {.pd-readout #pd-logistic-readout}
 :::
-:::
-
-### Reading the two charts
-
-**The trajectory** is the familiar S-curve. The dashed grey line at your target is
-the number to aim at; the band around it turns green when **K** lands inside it.
-
-**The two bars underneath are the part the S-curve cannot show you.** They are the
-*total* births and deaths per year at whichever moment the slider is parked on, and
-the gap between their ends is `dN/dt` — the left-hand side of the equation, drawn.
-Drag the slider from year zero to the end and watch what happens: the birth bar
-starts far ahead, the two converge, and at **K** they are **equal and both still
-long**. A population at carrying capacity is not resting. It is replacing itself as
-fast as it can, and the readout tells you how many individuals per year that costs.
-
-**Births and deaths** (the first tab) shows the same story as two per-capita rates.
-`b(N)` slopes down or stays flat, `d(N)` climbs, and **where the two lines cross is
-K**. Nothing is capping the population from outside; it stops growing because at that
-density a typical individual has exactly as many offspring as it has chances of
-dying.
-
-**How the fit works** (the second tab) is the statistics. Divide the equation by N
-and you get the per-capita growth rate:
-
-> **(1/N) dN/dt = r − (r/K) N**
-
-which is a **straight line** in N. So an ecologist with nothing but a column of
-counts can plot the growth rate against the population size, draw the best line
-through it, and read the answers straight off: the line's **height at zero is r**,
-and the point where it **crosses zero is K**. That is what the gold line is doing,
-and it is the same fit as the dashed curve on the trajectory chart — the same
-estimate, drawn in the coordinates where it happens to be a line.
-
-::: {.pd-try}
-In class: hit 500
-
-1. **Tune the rates until K reads 500.** Any way you like. The band goes green when
-   you are there.
-2. **Write down your b₀ and d₀** — you will be asked for them.
-3. Note what you did *not* do: you never set K, and you never set the lifespan.
-
-Then look around the room. Everybody hit 500 and almost nobody did it with your
-numbers, which is the point of Section 2.
 :::
 
 ::: {.pd-try}
 Things to try
 
-- **Hit 500 twice, once with tiny rates and once with big ones.** Try `b₀ = 0.12,
-  d₀ = 0.02, δ = 0.20`, then `b₀ = 1.40, d₀ = 0.60, δ = 1.60`. Both land on K = 500,
-  and you need all three numbers each time — hitting a target with three knobs
-  leaves you a whole family of ways to do it. Now check the mean lifespan: 8.3 years
-  in the first, about eight months in the second. Same carrying capacity, one a
-  population of trees and the other of voles.
-- **Park the slider at the far right and watch the two bars.** They are equal, and
+- **Park the slider at the far right and look at the two bars.** They are equal, and
   neither is anywhere near zero. Then read "turnover at K": that many individuals
   are born and die every year, forever, with the total never moving.
-- **Turn the crowding slider down to zero.** K is gone, and the readout says why:
+- **Compare two populations with the same K.** Set `b₀ = 0.12, d₀ = 0.02, δ = 0.20`,
+  then `b₀ = 1.40, d₀ = 0.60, δ = 1.60`. Both have K = 500 — though the slow one is
+  still climbing towards it at year fifty, which is worth noticing on its own. Now
+  check the mean lifespan: 8.3 years in the first, about eight months in the second.
+  One is a population of trees, the other of voles, and the square shows it: a thin
+  sprinkle of green and red in the first, most of the field turning over in the
+  second. The same carrying capacity says almost nothing about the lives inside it.
+- **Turn the crowding slider δ down to zero.** K is gone, and the readout says why:
   with nothing multiplying the bracket, `dN/dt = rN` is the exponential, and no
-  population obeys it for long.
-- **Set d₀ above b₀.** Deaths win even in an empty landscape, and there is no
-  positive equilibrium to find at any density.
+  population obeys that for long.
+- **Set d₀ above b₀.** Deaths win even in an empty landscape, so there is no
+  positive equilibrium to find at any density. Watch the square: red every year,
+  green almost never.
 - **Start above your carrying capacity** — leave the rates alone and drag N₀ past
   500. The population *falls* to the same place it used to climb to. K is not a
-  ceiling that stops growth; it is the level both directions run towards. Watch the
-  two bars while you do it: above K the death bar is the longer one.
-- **Raise observation noise to 10 %**, then press "New census" a few times. The
-  population never changed — only the counting did. Watch how far r̂ and K̂ move
-  anyway, and check whether the ✓ in the scorecard survives it.
-- **Set the census interval to 5 years and the target to 1000.** Fewer counts, worse
-  estimate. When you plan a monitoring programme, *how often you count* is a decision
-  with consequences.
-- **Open "Also let crowding reduce births"** and trade δ for β, keeping K at 500.
-  The trajectory does not move at all. The curve cannot tell you *which* vital rate
-  crowding acts on — for that you have to go out and measure births and deaths
-  separately, not just count individuals.
+  ceiling that stops growth; it is the level both directions run towards. Above it
+  the death bar is the longer one.
+- **Trade δ for β**, keeping their sum fixed. The curve does not move at all —
+  crowding that suppresses births and crowding that raises deaths give identical
+  trajectories. To find out *which* one is happening you have to go and measure
+  births and deaths separately, not just count individuals.
+- **Under additional parameters, raise observation noise to 10 %** and press
+  "New census" a few times. The population never changed — only the counting did.
+  Watch how far the empirical r and K move anyway, and whether the ✓ survives it.
 :::
-
-## 2. Everyone's answer at once
-
-Five students who all hit 500, on one chart with a fixed axis.
-
-::: {.pd-tool}
-::: {.pd-controls #pd-overlay-controls}
-:::
-::: {.pd-chart #pd-overlay-chart}
-:::
-:::
-
-Every line ends in the same place, because that is what everyone aimed at. No two
-get there at the same speed, because **nobody was aiming at r** — it came along for
-the ride as `b₀ − d₀`. Read down the table: the K column is constant and every other
-column is not.
-
-This is worth being uncomfortable about for a moment. If many different populations
-share a carrying capacity, then **K is not a fact about a species** — you cannot look
-it up. It is a property of a particular population's birth and death rates in a
-particular environment, and it moves whenever anything moves those rates: a drought,
-a new predator, a fertiliser, a warmer decade. Half of applied ecology is arguing
-about what K is for something, and this is why those arguments are hard.
 
 ## Notes and further reading
 
@@ -151,7 +115,7 @@ about what K is for something, and this is why those arguments are hard.
 ::: {.pd-howto}
 
 **Nothing here is random except the counting.** The population follows the smooth
-curve exactly, and the noise slider only blurs the observer's view of it. Real
+curve exactly, and the noise setting only blurs the observer's view of it. Real
 populations are pushed around by chance in two further ways this page does not
 simulate: **demographic** stochasticity, because births and deaths are whole-number
 events that can go the wrong way in a small population, and **environmental**
@@ -159,50 +123,32 @@ stochasticity, because good years and bad years move the rates themselves. The
 first is why small populations go extinct even when their growth rate is positive
 — which no curve on this page can show you.
 
-**Every individual is identical and immortal until it isn't.** There are no ages, no
-sexes, no juveniles too young to breed and no elders past breeding. `b₀` and `d₀`
-apply to everyone equally. Real populations have age structure, and it makes them
-lag: a population that has just been harvested keeps declining for years afterwards
-because the breeding adults are gone. Nothing here has that memory.
+**Every individual is identical.** There are no ages, no sexes, no juveniles too
+young to breed and no elders past breeding; `b₀` and `d₀` apply to everyone equally.
+Real populations have age structure, and it makes them lag: a population that has
+just been harvested keeps declining for years afterwards because the breeding adults
+are gone. Nothing here has that memory.
 
 **The response to crowding is instantaneous and it is a straight line.** Both are
 choices. Add a delay and the population overshoots K and oscillates around it, which
 is what deer irruptions and lemming cycles look like; make crowding non-linear and
-the shape of the S-curve changes. The logistic is the simplest thing that stops
+the shape of the curve changes. The logistic is the simplest thing that stops
 growing, not the most realistic one.
 
 **There is no space.** No territories, no dispersal, no refuges — crowding is a
-single number that every individual feels equally, no matter where it is. That is
-also why the individuals here are never drawn as dots on a map: it would suggest a
-geography the model does not have.
-
-**The fit is honest about one thing and quietly biased about another.** When the
-counts carry no information about a carrying capacity, it says *not identifiable*
-rather than inventing a number. But sampling error also flattens the fitted line,
-which pushes r̂ down and K̂ up by a few per cent — visible if you raise the noise and
-watch the scorecard. Both behaviours are real properties of real fits to real census
-data.
+single number that every individual feels equally, no matter where it is. This is
+why the dots in the square are scattered at random and their positions carry no
+information: the square counts individuals, it does not place them. If it were a
+real landscape, the crowding an individual felt would depend on its neighbours
+rather than on the total, and none of the algebra above would hold.
 
 :::
 
 ### Where to read more
 
-**Written to be read:**
-
-- **Gotelli, N.J. (2008).** *A Primer of Ecology*, 4th ed., chs. 1–2. The clearest
-  short treatment of exactly this model, including the vital-rate derivation used
-  here.
-- **Hone, J. (2007).** *Wildlife Damage Control.* For what happens when somebody has
-  to act on an estimated K.
-
-**The papers behind the pieces:**
-
+- **Gotelli, N.J. (2008).** *A Primer of Ecology*, 4th ed., chs. 1–2. Sinauer. The
+  clearest short treatment of this model, including the birth-and-death derivation
+  used here.
 - Verhulst, P.-F. (1838). Notice sur la loi que la population suit dans son
-  accroissement. *Correspondance Mathématique et Physique* 10:113–121.
-- Pearl, R. & Reed, L.J. (1920). On the rate of growth of the population of the
-  United States since 1790. *PNAS* 6:275–288.
-- Gause, G.F. (1934). *The Struggle for Existence.* Williams & Wilkins. The
-  *Paramecium* cultures that first fitted this equation to a real population.
-- Efron, B. (1979). Bootstrap methods: another look at the jackknife.
-  *Annals of Statistics* 7:1–26. Where the confidence intervals on this page
-  come from.
+  accroissement. *Correspondance Mathématique et Physique* 10:113–121. Where the
+  equation first appeared.

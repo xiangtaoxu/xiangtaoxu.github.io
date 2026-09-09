@@ -864,8 +864,6 @@ $pd-pop:   #2c3e50;
 $pd-fit:   #c07a10;
 
 .pd-tool           { @extend .ph-tool; }
-.pd-tabs           { @extend .ph-tabs; }
-.pd-tab            { @extend .ph-tab; }
 .pd-controls-grid  { @extend .ph-controls-grid; }
 .pd-field          { @extend .ph-field; }
 .pd-field-head     { @extend .ph-field-head; }
@@ -899,12 +897,9 @@ $pd-fit:   #c07a10;
 // ---- the charts ----
 .pd-line  { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
 .pd-traj  { stroke: $pd-pop; }
-.pd-birth { stroke: $pd-birth; }
-.pd-death { stroke: $pd-death; }
 // The estimate. Dashed and gold so it can never be mistaken for the population
 // itself, which matters most on the trajectory chart where the two nearly coincide.
 .pd-fit   { stroke: $pd-fit; stroke-width: 2; stroke-dasharray: 6 4; }
-.pd-truth { stroke: #b9b9bf; stroke-width: 1.6; }
 
 .pd-band        { stroke: none; }
 .pd-band-target { fill: #6c757d; opacity: 0.10; }
@@ -920,15 +915,10 @@ $pd-fit:   #c07a10;
 .pd-dot        { stroke: #fff; stroke-width: 1.2; fill: $pd-pop; }
 .pd-census     { fill: $pd-pop; opacity: 0.5; stroke: none; }
 .pd-cursor-dot { fill: $pd-fit; stroke-width: 1.6; }
-.pd-cross-dot  { fill: $pd-pop; }
-.pd-fit-dot    { fill: $pd-fit; }
 
 .pd-note        { font-size: 10.5px; fill: #666; }
 .pd-note-target { font-size: 10.5px; fill: #777; }
 .pd-note-k      { font-size: 11px; fill: $pd-pop; font-weight: 600; }
-.pd-note-birth  { font-size: 12px; fill: $pd-birth; font-weight: 700; }
-.pd-note-death  { font-size: 12px; fill: $pd-death; font-weight: 700; }
-.pd-note-fit    { font-size: 10.5px; fill: darken($pd-fit, 8%); font-weight: 600; }
 .pd-note-warn   { font-size: 12px; fill: #8a5200; font-weight: 600; }
 
 .pd-gridline  { stroke: #eeeef1; stroke-width: 1; }
@@ -955,6 +945,36 @@ $pd-fit:   #c07a10;
 .pd-bar-value  { font-size: 11px; fill: #333; font-variant-numeric: tabular-nums; }
 .pd-bar-caption { font-size: 11.5px; fill: #444; font-weight: 600; font-variant-numeric: tabular-nums; }
 
+// ---- the individuals ----
+// One dot per individual (or per ten, or per hundred -- the caption says which),
+// over the year ending at the scrubbed moment. Green born, red died, black came
+// through alive.
+//
+// The square is a TALLY, not a map: this model has no space, so position carries
+// no meaning and the border is drawn faintly so it does not read as a container
+// the population is filling up. What earns the panel its place is that at K the
+// green and red counts are equal and neither is zero -- the field stops changing
+// size without anything stopping.
+.pd-dotfield { margin-top: 0.4rem; }
+.pd-square {
+  fill: #fcfcfd;
+  stroke: #e7e7e9;
+  stroke-width: 1;
+}
+.pd-indiv     { stroke: none; }
+// The legend swatches are not individuals, so they take their own class -- nothing
+// should be able to count them as population.
+.pd-key-dot   { stroke: none; }
+.pd-dot-alive { fill: #1a1d21; }
+.pd-dot-birth { fill: $pd-birth; }
+.pd-dot-death { fill: $pd-death; }
+
+.pd-dot-title  { font-size: 12px; fill: #444; font-weight: 700; }
+.pd-key-name   { font-size: 11.5px; fill: #555; }
+.pd-key-value  { font-size: 16px; fill: #222; font-weight: 700; font-variant-numeric: tabular-nums; }
+.pd-dot-total  { font-size: 20px; fill: $pd-pop; font-weight: 700; font-variant-numeric: tabular-nums; }
+.pd-note-balance { font-size: 11.5px; fill: #276741; font-weight: 600; }
+
 // ---- the scrubber ----
 .pd-scrub {
   display: flex;
@@ -971,7 +991,6 @@ $pd-fit:   #c07a10;
   min-width: 9.5rem;
 }
 
-.pd-view { margin-top: 0.5rem; }
 .pd-empty { color: #666; font-size: 0.9rem; margin: 0.8rem 0; }
 
 // ---- derived readouts: r, K, turnover, lifespan ----
@@ -997,7 +1016,7 @@ $pd-fit:   #c07a10;
 }
 .pd-derived-label { font-size: 0.76rem; color: #777; }
 .pd-derived-value { font-size: 1.05rem; font-weight: 700; color: #222; font-variant-numeric: tabular-nums; }
-.pd-derived-item.is-hit .pd-derived-value { color: darken($pd-birth, 6%); }
+.pd-derived-item.is-hit .pd-derived-value { color: #276741; }
 
 .pd-state {
   grid-column: 1 / -1;
@@ -1005,7 +1024,7 @@ $pd-fit:   #c07a10;
   color: #555;
   line-height: 1.5;
   margin: 0.3rem 0 0;
-  &.is-hit-note { color: darken($pd-birth, 10%); font-weight: 600; }
+  &.is-hit-note { color: #215838; font-weight: 600; }
 }
 
 // ---- the scorecard ----
@@ -1037,20 +1056,25 @@ $pd-fit:   #c07a10;
 .pd-legend-table { min-width: 34rem; margin-top: 0.7rem; }
 .pd-swatch { width: 1.1rem; height: 0.2rem; border-radius: 2px; display: inline-block; }
 
-// Eight seats, eight colours. Defined after .pd-traj so they win on source order:
-// the overlay draws each student as `pd-traj pd-seat-N`, sharing the trajectory's
-// stroke weight while taking its own colour.
-$pd-seats: #2c3e50, #b31b1b, #1f6fb2, #2f7d4f, #c07a10, #6b4c9a, #2a7f8f, #a0522d;
-@each $c in $pd-seats {
-  $i: index($pd-seats, $c) - 1;
-  .pd-seat-#{$i}    { stroke: $c; }
-  .pd-seat-bg-#{$i} { background: $c; }
-}
+// Eight seats, eight colours, for the class-overlay panel (retained in the JS but
+// not currently mounted on the page). Written out rather than generated in a loop:
+// Sass's global list functions are deprecated, and `@use "sass:list"` would have to
+// be the first statement in this file, which conflicts with how Quarto layers it.
+// Defined after .pd-traj so they win on source order -- the overlay draws each
+// student as `pd-traj pd-seat-N`, sharing the trajectory's stroke weight while
+// taking its own colour.
+.pd-seat-0 { stroke: #2c3e50; }  .pd-seat-bg-0 { background: #2c3e50; }
+.pd-seat-1 { stroke: #b31b1b; }  .pd-seat-bg-1 { background: #b31b1b; }
+.pd-seat-2 { stroke: #1f6fb2; }  .pd-seat-bg-2 { background: #1f6fb2; }
+.pd-seat-3 { stroke: #2f7d4f; }  .pd-seat-bg-3 { background: #2f7d4f; }
+.pd-seat-4 { stroke: #c07a10; }  .pd-seat-bg-4 { background: #c07a10; }
+.pd-seat-5 { stroke: #6b4c9a; }  .pd-seat-bg-5 { background: #6b4c9a; }
+.pd-seat-6 { stroke: #2a7f8f; }  .pd-seat-bg-6 { background: #2a7f8f; }
+.pd-seat-7 { stroke: #a0522d; }  .pd-seat-bg-7 { background: #a0522d; }
 
 @media (max-width: 767px) {
   .pd-tool { padding: 0.8rem 0.7rem 1rem; }
   .pd-controls-grid { grid-template-columns: 1fr; gap: 0.8rem; }
-  .pd-tabs { overflow-x: auto; }
   .pd-scrub { flex-wrap: wrap; }
   .pd-scrub-label { min-width: 0; }
 }

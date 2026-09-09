@@ -111,6 +111,45 @@
     return D.Kraw * N0 / (N0 + (D.Kraw - N0) * Math.exp(-D.r * t));
   }
 
+  /* Who was born, who died, and who came through, over the window [t0, t1].
+
+     COHORT counts, not rate x window. Of the N individuals alive at t0, a fraction
+     exp(-d*dt) is still alive at t1; the rest died. Births are then whatever makes
+     survivors + births equal the population the trajectory actually reaches, so the
+     three numbers can never disagree with the curve.
+
+     Doing it the obvious way -- died = d(N) * N * dt -- breaks as soon as the
+     per-capita death rate exceeds 1/yr, which it does for any short-lived species:
+     a fast demography at K reported "everyone died and everyone was born this
+     year". The rate is right and the sentence is wrong, because d*N*dt counts
+     deaths among individuals born inside the same window, who were never part of
+     the starting cohort. Survival probability counts distinct individuals and stays
+     sane at every turnover.
+
+     So these are NOT the numbers on the flux gauge, and must not be labelled as if
+     they were: the gauge shows rates, which include the newborns that die before the
+     window closes. These are individuals out of the starting cohort.
+
+     At equilibrium survived + born = N0 = N1, so born == died exactly, which is the
+     one thing the dot field exists to show. */
+  function cohort(p, t0, t1) {
+    var Nprev = sizeAt(p, t0), N1 = sizeAt(p, t1);
+    if (!isFinite(N1) || N1 < 0) N1 = 0;
+    if (!isFinite(Nprev) || Nprev < 0) Nprev = 0;
+    var elapsed = t1 - t0;
+    if (!(elapsed > 0)) {
+      return { Nprev: N1, N1: N1, survived: N1, born: 0, died: 0, elapsed: 0 };
+    }
+    var dBar = rates(p, (Nprev + N1) / 2).d;
+    var survived = Nprev * Math.exp(-Math.max(0, dBar) * elapsed);
+    return {
+      Nprev: Nprev, N1: N1, elapsed: elapsed,
+      survived: survived,
+      died: Nprev - survived,
+      born: Math.max(0, N1 - survived)
+    };
+  }
+
   // ----------------------------------------------------------------- chance
 
   /* mulberry32 -- a small seeded generator.
@@ -325,6 +364,7 @@
 
   window.PopModel = {
     rates: rates, derived: derived, trajectory: trajectory, sizeAt: sizeAt,
-    census: census, fit: fit, fitOnce: fitOnce, logisticAt: logisticAt, rng: rng
+    census: census, cohort: cohort, fit: fit, fitOnce: fitOnce,
+    logisticAt: logisticAt, rng: rng
   };
 })();

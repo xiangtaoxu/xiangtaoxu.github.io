@@ -1,15 +1,22 @@
 /*
   population.js -- the interactive Population Dynamics page for BioEE 1610.
 
-  All maths lives in population-model.js; this file only draws and wires. Two
-  panels, mounting into empty divs the .qmd owns:
+  All maths lives in population-model.js; this file only draws and wires. It fills
+  four empty divs the .qmd owns:
 
-    #pd-logistic-*   the model: vital-rate knobs in, r and K out, plus the fit
-    #pd-overlay-*    the class overlay -- several students' answers on one chart
+    #pd-logistic-controls   five rate sliders, plus a fold for target and noise
+    #pd-logistic-chart      the trajectory, the birth/death flux gauge, the scrubber
+    #pd-logistic-dots       the individuals: born, died, came through alive
+    #pd-logistic-readout    r and K -- what you set, next to what the counts give back
 
   The organising rule of the page is that there is NO slider for r and none for K.
-  Students set birth and death rates; r and K are readouts. See
-  _dev/population-dynamics-tool.md for why that is the whole design.
+  Students set birth and death rates; r and K are readouts. The page shows the curve
+  and the individuals FIRST and the equation afterwards, so the readout div sits
+  below the equation in the .qmd rather than beside the charts.
+
+  The class-overlay panel (#pd-overlay-*) is still here but is not mounted on the
+  page -- boot() returns early when its divs are absent. Restoring it is two divs in
+  the .qmd. See _dev/population-dynamics-tool.md.
 
   Every colour is a CSS class in theme.scss, never an inline attribute.
   No build step, no bundler, no dependencies.
@@ -235,10 +242,9 @@
     return { node: wrap, select: sel, set: function (v) { sel.value = v; } };
   }
 
-  // Density-dependent BIRTHS start switched off and collapsed. The default page is
-  // then three rate knobs and a b(N)/d(N) chart of one flat line and one rising
-  // line -- the cleanest version of that figure. Opening this is what makes the
-  // "which vital rate is density-dependent?" ambiguity available.
+  // Holds the two knobs that are about the OBSERVER rather than the population --
+  // where to put the target band, and how badly the counting is done. Collapsed so
+  // that the five rate sliders are the whole of the visible interface.
   function advanced(label) {
     var d = h("details", "pd-advanced");
     d.appendChild(h("summary", null, label));
@@ -247,55 +253,69 @@
     return { node: d, grid: grid };
   }
 
-  function tabs(host, items, onPick) {
-    var bar = h("div", "pd-tabs");
-    var btns = items.map(function (it, i) {
-      var b = h("button", "pd-tab" + (i === 0 ? " is-active" : ""), it.label);
-      b.type = "button";
-      b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", i === 0 ? "true" : "false");
-      b.addEventListener("click", function () {
-        btns.forEach(function (o, j) {
-          o.classList.toggle("is-active", j === i);
-          o.setAttribute("aria-selected", j === i ? "true" : "false");
-        });
-        onPick(it.key);
-      });
-      bar.appendChild(b);
-      return b;
-    });
-    bar.setAttribute("role", "tablist");
-    host.appendChild(bar);
+  // ---------------------------------------------------------- the dot field
+
+  /* A fixed, stratified-random set of positions for the individual dots.
+
+     Stratified (one jittered point per cell of a 30x30 grid) rather than uniform,
+     because uniform random points clump and leave holes, which reads as structure
+     that is not there. Then shuffled ONCE, so that taking the first n positions is
+     still spatially even at any n -- the field fills smoothly as the population
+     grows, and no dot ever moves.
+
+     Because the list is already in random order, colouring by slot (survivors,
+     then births, then deaths) scatters the colours across the square for free. */
+  var DOT_MAX = 900;
+  var DOT_POS = (function () {
+    var g = 30, rand = M.rng(70914), pts = [], i, j;
+    for (i = 0; i < g; i++) {
+      for (j = 0; j < g; j++) {
+        pts.push([(i + 0.15 + 0.7 * rand()) / g, (j + 0.15 + 0.7 * rand()) / g]);
+      }
+    }
+    for (i = pts.length - 1; i > 0; i--) {          // Fisher-Yates, seeded
+      j = Math.floor(rand() * (i + 1));
+      var t = pts[i]; pts[i] = pts[j]; pts[j] = t;
+    }
+    return pts;
+  })();
+
+  function dotRadius(n) {
+    return n <= 50 ? 5 : n <= 150 ? 4 : n <= 350 ? 3.2 : n <= 700 ? 2.6 : 2.2;
   }
 
   // ========================================================================
-  //  PANEL 1 -- the model, and the fit
+  //  PANEL 1 -- the model
   // ========================================================================
 
   var main = {
     p: { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0006, N0: 20 },
     target: 500,
-    T: 50,
-    dt: 1,
     noise: 0,
     seed: 1,
     cursor: 0,          // scrub position, in years
-    view: "rates",      // second chart: "rates" | "fit"
     playing: false,
+
+    // Fixed, not controls. One census a year for fifty years is a plausible
+    // monitoring programme and it is not what the page is about; making them
+    // sliders spent two knobs of a student's attention on study design.
+    T: 50,
+    dt: 1,
 
     boot: function () {
       var self = this;
       var host = document.getElementById("pd-logistic-controls");
       if (!host) return;
       this.chartHost = document.getElementById("pd-logistic-chart");
+      this.dotHost = document.getElementById("pd-logistic-dots");
       this.outHost = document.getElementById("pd-logistic-readout");
       this.draw = scheduler(this.render.bind(this));
 
       var grid = h("div", "pd-controls-grid");
 
-      // Rate knobs. delta and beta are exposed per 1000 individuals: the raw
-      // numbers are 0.0006-ish and a slider reading "0.60 per 1000" is something a
-      // student can hold in their head.
+      // delta and beta are exposed per 1000 individuals: the raw numbers are
+      // 0.0006-ish and a slider reading "0.60 per 1000" is something a student can
+      // hold in their head.
       this.sB0 = slider({
         label: "Birth rate b₀", value: this.p.b0, min: 0.02, max: 2, step: 0.01,
         unit: "/yr", fmt: function (v) { return fmt(v, 2); },
@@ -314,54 +334,32 @@
         hint: "each extra 1000 individuals raises the death rate by this much",
         onInput: function (v) { self.p.delta = v / 1000; self.draw(); }
       });
+      // Starts at zero, but visible: crowding acting on births instead of deaths
+      // gives an identical trajectory, and that is only discoverable if the slider
+      // is in front of you.
+      this.sBeta = slider({
+        label: "Crowding → births β", value: this.p.beta * 1000, min: 0, max: 3, step: 0.01,
+        unit: "per 1000", fmt: function (v) { return fmt(v, 2); },
+        hint: "each extra 1000 individuals lowers the birth rate by this much",
+        onInput: function (v) { self.p.beta = v / 1000; self.draw(); }
+      });
       this.sN0 = slider({
         label: "Starting population N₀", value: this.p.N0, min: 2, max: 1000, step: 1,
         fmt: function (v) { return String(Math.round(v)); },
         hint: "how many individuals arrive at year zero",
         onInput: function (v) { self.p.N0 = v; self.draw(); }
       });
-      [this.sB0, this.sD0, this.sDelta, this.sN0].forEach(function (s) {
+      [this.sB0, this.sD0, this.sDelta, this.sBeta, this.sN0].forEach(function (s) {
         grid.appendChild(s.node);
       });
 
-      var adv = advanced("Also let crowding reduce births");
-      this.sBeta = slider({
-        label: "Crowding → births β", value: this.p.beta * 1000, min: 0, max: 3, step: 0.01,
-        unit: "per 1000", fmt: function (v) { return fmt(v, 2); },
-        hint: "each extra 1000 individuals lowers the birth rate by this much. " +
-              "Two populations with the same r and K but different β and δ " +
-              "give the same trajectory — the curve cannot tell you which rate " +
-              "the crowding acts on.",
-        onInput: function (v) { self.p.beta = v / 1000; self.draw(); }
-      });
-      adv.grid.appendChild(this.sBeta.node);
-
-      // Study-design knobs: how the imaginary ecologist counted.
-      var grid2 = h("div", "pd-controls-grid");
+      var adv = advanced("Additional parameters");
       this.cTarget = chooser({
         label: "Target equilibrium", value: "500",
         options: [{ value: "0", label: "no target" }, { value: "250", label: "250" },
                   { value: "500", label: "500" }, { value: "1000", label: "1000" }],
-        hint: "tune the rates until K lands in the band",
+        hint: "marks a band on the chart to aim K at",
         onChange: function (v) { self.target = +v; self.draw(); }
-      });
-      this.cT = chooser({
-        label: "Years to follow", value: "50",
-        options: [{ value: "25", label: "25" }, { value: "50", label: "50" },
-                  { value: "100", label: "100" }],
-        onChange: function (v) {
-          self.T = +v;
-          self.cursor = Math.min(self.cursor, self.T);
-          self.rebuildScrub();
-          self.draw();
-        }
-      });
-      this.cDt = chooser({
-        label: "Census every", value: "1",
-        options: [{ value: "0.5", label: "6 months" }, { value: "1", label: "1 year" },
-                  { value: "2", label: "2 years" }, { value: "5", label: "5 years" }],
-        hint: "how often somebody goes out and counts",
-        onChange: function (v) { self.dt = +v; self.draw(); }
       });
       this.sNoise = slider({
         label: "Observation noise", value: 0, min: 0, max: 0.2, step: 0.01,
@@ -370,9 +368,8 @@
               "the population itself still follows the smooth curve exactly.",
         onInput: function (v) { self.noise = v; self.draw(); }
       });
-      [this.cTarget, this.cT, this.cDt, this.sNoise].forEach(function (s) {
-        grid2.appendChild(s.node);
-      });
+      adv.grid.appendChild(this.cTarget.node);
+      adv.grid.appendChild(this.sNoise.node);
 
       var btns = h("div", "pd-btn-row");
       var reset = h("button", "pd-btn", "Reset");
@@ -390,7 +387,6 @@
 
       host.appendChild(grid);
       host.appendChild(adv.node);
-      host.appendChild(grid2);
       host.appendChild(btns);
 
       // ---- scrubber, under the trajectory
@@ -402,7 +398,11 @@
       this.scrubInput = document.createElement("input");
       this.scrubInput.type = "range";
       this.scrubInput.className = "pd-scrub-range";
-      this.scrubInput.setAttribute("aria-label", "Year shown in the flux gauge");
+      this.scrubInput.setAttribute("aria-label", "Year shown in the flux gauge and the dot field");
+      this.scrubInput.min = 0;
+      this.scrubInput.max = this.T;
+      this.scrubInput.step = this.T / 200;
+      this.scrubInput.value = 0;
       this.scrubInput.addEventListener("input", function () {
         self.stopPlay();
         self.cursor = +self.scrubInput.value;
@@ -411,36 +411,20 @@
       this.scrubWrap.appendChild(this.scrubInput);
       this.scrubLabel = h("span", "pd-scrub-label");
       this.scrubWrap.appendChild(this.scrubLabel);
-      this.rebuildScrub();
-
-      tabs(this.outHost, [{ key: "rates", label: "Births and deaths" },
-                          { key: "fit", label: "How the fit works" }],
-           function (k) { self.view = k; self.draw(); });
-      this.viewHost = h("div", "pd-view");
-      this.outHost.appendChild(this.viewHost);
-      this.cardHost = h("div", "pd-card-host");
-      this.outHost.appendChild(this.cardHost);
 
       this.draw();
     },
 
     reset: function () {
       this.p = { b0: 0.50, d0: 0.20, beta: 0, delta: 0.0006, N0: 20 };
-      this.noise = 0; this.dt = 1; this.T = 50; this.cursor = 0; this.seed = 1;
+      this.noise = 0; this.target = 500; this.cursor = 0; this.seed = 1;
       this.sB0.set(this.p.b0); this.sD0.set(this.p.d0);
       this.sDelta.set(this.p.delta * 1000); this.sBeta.set(0);
       this.sN0.set(this.p.N0); this.sNoise.set(0);
-      this.cDt.set("1"); this.cT.set("50");
+      this.cTarget.set("500");
       this.stopPlay();
-      this.rebuildScrub();
+      this.scrubInput.value = 0;
       this.draw();
-    },
-
-    rebuildScrub: function () {
-      this.scrubInput.min = 0;
-      this.scrubInput.max = this.T;
-      this.scrubInput.step = this.T / 200;
-      this.scrubInput.value = this.cursor;
     },
 
     togglePlay: function () {
@@ -455,7 +439,9 @@
       // meaningless middle frame. Scrubbing is the real control.
       function step(ts) {
         if (!self.playing) return;
-        if (last != null) self.cursor = Math.min(self.T, self.cursor + (ts - last) / 1000 * (self.T / 12));
+        if (last != null) {
+          self.cursor = Math.min(self.T, self.cursor + (ts - last) / 1000 * (self.T / 12));
+        }
         last = ts;
         self.scrubInput.value = self.cursor;
         self.draw();
@@ -471,7 +457,7 @@
     },
 
     render: function () {
-      var p = this.p, D = M.derived(p), self = this;
+      var p = this.p, D = M.derived(p);
       var traj = M.trajectory(p, this.T, TRAJ_STEPS);
       var counts = M.census(p, { dt: this.dt, T: this.T, noise: this.noise, seed: this.seed });
       var f = M.fit(counts, 200);
@@ -502,9 +488,9 @@
         c.hline({ y: D.K, cls: "pd-rule-k", label: "K = " + sig3(D.K), labelCls: "pd-note-k" });
       }
 
-      // The fit, shown here as the logistic curve it implies. When K is not
-      // identifiable, logisticAt falls back to the exponential -- which is exactly
-      // what the fit is claiming in that case.
+      // The counts, and the curve fitted to them. Invisible under the trajectory
+      // until observation noise is turned on, which is the point: with perfect
+      // counting there is nothing to estimate.
       if (f) {
         var fitPts = [];
         for (i = 0; i <= TRAJ_STEPS; i++) {
@@ -532,22 +518,20 @@
       this.scrubLabel.textContent = "year " + fmt(this.cursor, 1) +
         "   N = " + (isFinite(Ncur) ? sig3(Ncur) : "—");
 
-      // ---- second chart
-      this.viewHost.textContent = "";
-      this.viewHost.appendChild(this.view === "rates" ? this.ratesChart(D, Ncur, yMax)
-                                                      : this.fitChart(f, D));
-      // ---- readouts
-      this.cardHost.textContent = "";
-      this.cardHost.appendChild(this.derivedCard(D));
-      this.cardHost.appendChild(this.scorecard(D, f));
+      this.dotHost.textContent = "";
+      this.dotHost.appendChild(this.dotField());
+
+      this.outHost.textContent = "";
+      this.outHost.appendChild(this.derivedCard(D));
+      this.outHost.appendChild(this.scorecard(D, f));
     },
 
     /* Two bars: total births against total deaths, at the scrubbed moment.
 
        This is the only thing on the page that shows the FLOWS rather than the
-       stock. At K the trajectory is flat and boring, and students read that as
-       nothing happening; here the two bars are equal and both long. The gap
-       between them is dN/dt -- the lecture equation as a picture. */
+       stock. At K the trajectory is flat and students read that as nothing
+       happening; here the two bars are equal and both long. The gap between them
+       is dN/dt -- the lecture equation as a picture. */
     gauge: function (D, N, yMax) {
       var W = 700, H = 96, left = 62, right = 150, pw = W - left - right;
       var svg = el("svg", { viewBox: "0 0 " + W + " " + H, "class": "pd-chart pd-gauge",
@@ -573,80 +557,84 @@
       // The gap between the two bar ends, drawn as the quantity it is.
       var x0 = Math.min(xb, xd), x1 = Math.max(xb, xd);
       if (x1 - x0 > 1) {
-        svg.appendChild(el("rect", { x: x0, y: 16, width: x1 - x0, height: 50,
-                                     "class": "pd-gap" }));
+        svg.appendChild(el("rect", { x: x0, y: 16, width: x1 - x0, height: 50, "class": "pd-gap" }));
       }
       svg.appendChild(el("text", { x: left, y: 84, "class": "pd-bar-caption" },
-        "dN/dt = births − deaths = " + (cur.dNdt >= 0 ? "+" : "") + sig3(cur.dNdt) + " individuals/yr"));
+        "dN/dt = births − deaths = " + (cur.dNdt >= 0 ? "+" : "") + sig3(cur.dNdt) +
+        " individuals/yr"));
       return svg;
     },
 
-    /* Per-capita b(N) and d(N). Where they cross IS K -- nothing caps the
-       population from outside. */
-    ratesChart: function (D, Ncur, yMax) {
-      var p = this.p, i, N, pts = [], bp = [], dp = [];
-      var xMax = yMax;
-      for (i = 0; i <= 160; i++) {
-        N = xMax * i / 160;
-        var rr = M.rates(p, N);
-        bp.push([N, rr.b]);
-        dp.push([N, rr.d]);
-      }
-      var yTop = Math.max(p.b0, p.d0 + p.delta * xMax) * 1.1;
-      var c = chart({
-        xDomain: [0, xMax], yDomain: [0, yTop],
-        xLabel: "population size N", yLabel: "per-capita rate (/yr)",
-        ariaLabel: "Per-capita birth and death rates against population size",
-        height: 260, yTickFmt: function (v) { return fmt(v, 2); }
-      });
-      if (this.target > 0) c.vline({ x: this.target, cls: "pd-rule-target" });
-      c.series({ points: bp, cls: "pd-birth" });
-      c.series({ points: dp, cls: "pd-death" });
-      if (D.K != null && D.K <= xMax) {
-        c.vline({ x: D.K, cls: "pd-rule-k", label: "K", labelCls: "pd-note-k" });
-        c.dot({ x: D.K, y: D.dStar, cls: "pd-cross-dot" });
-        c.note({ x: D.K, y: D.dStar, dy: -12, text: "births = deaths", cls: "pd-note-k" });
-      }
-      if (isFinite(Ncur) && Ncur <= xMax) c.vline({ x: Ncur, cls: "pd-rule-cursor" });
-      c.note({ x: xMax * 0.06, y: p.b0, dy: -8, text: "b(N)", cls: "pd-note-birth", anchor: "start" });
-      c.note({ x: xMax * 0.06, y: p.d0, dy: 14, text: "d(N)", cls: "pd-note-death", anchor: "start" });
-      return c.render();
-    },
+    /* The individuals themselves, over the year ending at the scrubbed moment:
+       green born, red died, black came through it alive. The three counts come from
+       PopModel.cohort, which documents why they are survival-based rather than
+       rate x window, and why they deliberately do not match the flux gauge above.
 
-    /* The fit, made visible. The logistic's per-capita growth rate is LINEAR in N,
-       so the estimate is a straight line: y-intercept r, x-intercept K. Same fit as
-       the dashed curve on the trajectory chart, drawn in the coordinates where it
-       is a line rather than a curve. */
-    fitChart: function (f, D) {
-      if (!f) return h("p", "pd-empty", "Not enough censuses to fit a line. Count more often.");
-      var i, xs = 0, pts = f.points;
-      for (i = 0; i < pts.length; i++) xs = Math.max(xs, pts[i][0]);
-      var xMax = Math.max(xs, D.K || 0, this.target || 0) * 1.12;
-      var yLo = 0, yHi = 0;
-      for (i = 0; i < pts.length; i++) { yLo = Math.min(yLo, pts[i][1]); yHi = Math.max(yHi, pts[i][1]); }
-      yHi = Math.max(yHi, f.r, D.r) * 1.15;
-      yLo = Math.min(yLo, 0) * 1.15;
+       Position carries no meaning -- there is no space in this model, and the square
+       is a tally rather than a map. What earns the panel its place is the one thing
+       the S-curve cannot show: at K the green and red counts are EQUAL and neither
+       is zero, so the field stops changing size without anything stopping. */
+    dotField: function () {
+      var p = this.p, W = 700, H = 344;
+      var sq = 300, sx = 12, sy = 16, legend = sx + sq + 42;
+      var svg = el("svg", { viewBox: "0 0 " + W + " " + H, "class": "pd-chart pd-dotfield",
+                            role: "img",
+                            "aria-label": "Individuals born, died and surviving in the year shown" });
 
-      var c = chart({
-        xDomain: [0, xMax], yDomain: [yLo, yHi],
-        xLabel: "population size N", yLabel: "per-capita growth rate (/yr)",
-        ariaLabel: "Per-capita growth rate against population size, with the fitted line",
-        height: 260, yTickFmt: function (v) { return fmt(v, 2); }
-      });
-      // truth
-      if (D.state === "ok") {
-        c.series({ points: [[0, D.r], [xMax, D.r - D.dd * xMax]], cls: "pd-truth" });
+      var t1 = this.cursor, t0 = Math.max(0, t1 - this.dt);
+      var co = M.cohort(p, t0, t1);
+      var N1 = co.N1, elapsed = co.elapsed;
+      var black = co.survived, green = co.born, red = co.died;
+
+      // One dot per individual until that stops fitting, then per ten, per
+      // hundred, and so on. The caption always says which.
+      var total = black + green + red, unit = 1;
+      while (total / unit > DOT_MAX) unit *= 10;
+      var nb = Math.round(black / unit), ng = Math.round(green / unit),
+          nr = Math.round(red / unit);
+      var n = Math.min(nb + ng + nr, DOT_POS.length);
+      var r = dotRadius(n);
+
+      svg.appendChild(el("rect", { x: sx, y: sy, width: sq, height: sq, "class": "pd-square" }));
+      for (var i = 0; i < n; i++) {
+        var cls = i < nb ? "pd-dot-alive" : (i < nb + ng ? "pd-dot-birth" : "pd-dot-death");
+        svg.appendChild(el("circle", {
+          cx: fmt(sx + DOT_POS[i][0] * sq, 1), cy: fmt(sy + DOT_POS[i][1] * sq, 1),
+          r: r, "class": "pd-indiv " + cls
+        }));
       }
-      // fit
-      c.series({ points: [[0, f.r], [xMax, f.r + f.slope * xMax]], cls: "pd-fit" });
-      c.dots({ points: pts, cls: "pd-census", r: 3 });
-      c.dot({ x: 0, y: f.r, cls: "pd-fit-dot" });
-      c.note({ x: 0, y: f.r, dx: 6, dy: -9, text: "intercept = r̂", cls: "pd-note-fit", anchor: "start" });
-      if (f.K != null && f.K <= xMax) {
-        c.dot({ x: f.K, y: 0, cls: "pd-fit-dot" });
-        c.note({ x: f.K, y: 0, dy: 18, text: "crosses zero at K̂", cls: "pd-note-fit" });
+
+      function key(y, cls, name, value) {
+        svg.appendChild(el("circle", { cx: legend + 6, cy: y - 4, r: 5,
+                                       "class": "pd-key-dot " + cls }));
+        svg.appendChild(el("text", { x: legend + 20, y: y, "class": "pd-key-name" }, name));
+        svg.appendChild(el("text", { x: legend + 20, y: y + 16, "class": "pd-key-value" }, value));
       }
-      return c.render();
+      svg.appendChild(el("text", { x: legend, y: sy + 12, "class": "pd-dot-title" },
+        elapsed <= 1e-9 ? "year 0" : "year " + fmt(t0, 1) + " → " + fmt(t1, 1)));
+
+      key(sy + 54, "pd-dot-alive", "survived from last year", sig3(black));
+      key(sy + 104, "pd-dot-birth", "born, and still alive", sig3(green));
+      key(sy + 154, "pd-dot-death", "died, of last year's N", sig3(red));
+
+      svg.appendChild(el("line", { x1: legend, x2: W - 12, y1: sy + 178, y2: sy + 178,
+                                   "class": "pd-axis" }));
+      svg.appendChild(el("text", { x: legend, y: sy + 200, "class": "pd-key-name" },
+                         "population now"));
+      svg.appendChild(el("text", { x: legend, y: sy + 220, "class": "pd-dot-total" }, sig3(N1)));
+
+      svg.appendChild(el("text", { x: sx, y: H - 8, "class": "pd-bar-caption" },
+        N1 < 1 ? "the population is gone"
+               : unit === 1 ? "each dot is one individual"
+                            : "each dot is " + unit + " individuals"));
+      // Both counts must be a real individual or more before this claims a balance:
+      // an extinct population has births ~= deaths ~= 0, which is not an equilibrium.
+      if (elapsed > 1e-9 && green >= 1 && red >= 1 &&
+          Math.abs(green - red) / Math.max(green, red) < 0.02) {
+        svg.appendChild(el("text", { x: legend, y: H - 8, "class": "pd-note-balance" },
+                           "births ≈ deaths — the field has stopped growing"));
+      }
+      return svg;
     },
 
     derivedCard: function (D) {
@@ -682,8 +670,8 @@
       box.appendChild(row("mean lifespan at K", fmt(D.lifespan, 2) + " yr"));
       if (this.target > 0 && hit) {
         box.appendChild(h("p", "pd-state is-hit-note",
-          "On target. Write down your b₀ and d₀ — note that you never " +
-          "set K, or the lifespan."));
+          "On target — and you never set K. It came out of the rates, and so did " +
+          "the lifespan beside it."));
       }
       return box;
     },
@@ -692,10 +680,12 @@
        counts alone. The tick reads whether the truth falls inside the interval. */
     scorecard: function (D, f) {
       var wrap = h("div", "pd-scorecard-wrap");
-      wrap.appendChild(h("h4", "pd-scorecard-title", "What the counts give back"));
+      wrap.appendChild(h("h4", "pd-scorecard-title", "r and K: theory against the counts"));
       var t = h("table", "pd-scorecard");
-      var html = "<thead><tr><th scope=\"col\">quantity</th><th scope=\"col\">you set</th>" +
-                 "<th scope=\"col\">recovered from the counts</th><th scope=\"col\"></th></tr></thead><tbody>";
+      var html = "<thead><tr><th scope=\"col\">quantity</th>" +
+                 "<th scope=\"col\">theoretical<span class=\"pd-sc-sub\">from your rates</span></th>" +
+                 "<th scope=\"col\">empirical<span class=\"pd-sc-sub\">fitted to the counts</span></th>" +
+                 "<th scope=\"col\"></th></tr></thead><tbody>";
 
       function mark(ok) {
         return ok == null ? "" :

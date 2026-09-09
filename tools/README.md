@@ -154,7 +154,7 @@ Verifies [`js/population-model.js`](../js/population-model.js), the maths behind
 
 ```bash
 conda activate website                  # for deno
-python tools/check_population.py        # 44 assertions
+python tools/check_population.py        # 56 assertions
 python tools/check_population.py -v     # print every measured number
 ```
 
@@ -172,11 +172,13 @@ or in [`_dev/population-dynamics-tool.md`](../_dev/population-dynamics-tool.md):
 | `coverage` | the bootstrap interval covers the truth as often as the page implies (85–93 %, *not* 95 %) |
 | `sane_ci` | an interval always contains its own point estimate |
 | `short_window` | `K` is refused, not guessed, from a population that has not slowed down |
+| `cohort` | the dot field's counts close exactly against the curve, and deaths never exceed the cohort they came from |
 | `same_K` | the family the in-class activity depends on: one `K`, many demographies |
 
 Several are regressions for bugs that were shipped and caught — a declining
-population rendering as a flat line at zero, intervals three times too wide, and an
-estimate falling outside its own interval. The `bias` group asserts the *sign* of
+population rendering as a flat line at zero, intervals three times too wide, an
+estimate falling outside its own interval, and a fast demography reporting that
+every individual died and every individual was born in the same year. The `bias` group asserts the *sign* of
 each bias, not just its size, because an earlier draft of the design doc had both
 signs backwards.
 
