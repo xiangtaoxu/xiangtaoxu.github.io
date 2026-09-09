@@ -190,7 +190,7 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="births-deaths-and-where-they-balance" class="level2">
 <h2 class="anchored" data-anchor-id="births-deaths-and-where-they-balance">Births, deaths, and where they balance</h2>
-<p>Set how fast individuals reproduce and die, decide how much crowding matters, and press <strong>Play</strong>. The equation comes later — watch the population first.</p>
+<p>Set how fast individuals reproduce and die when nothing is in their way, decide how much crowding matters, and press <strong>Play</strong>. The equation comes later — watch the population first.</p>
 <div class="pd-tool">
 <div id="pd-logistic-controls" class="pd-controls">
 
@@ -204,22 +204,23 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <section id="what-you-are-looking-at" class="level3">
 <h3 class="anchored" data-anchor-id="what-you-are-looking-at">What you are looking at</h3>
-<p><strong>The curve</strong> is the population over fifty years — the familiar S-shape, levelling off somewhere, but not smoothly: the birth and death rates are re-drawn every year, because a good year and a bad year are different years to be alive in. Drag the slider under it to move through time.</p>
+<p><strong>The curve</strong> is the population over fifty years — the familiar S-shape, levelling off somewhere, but not smoothly: the baseline birth and death rates are re-drawn every year, because a good year and a bad year are different years to be alive in. Drag the slider under it to move through time.</p>
 <p>The grey band marks a size you can try to aim the population at; it turns green when you land inside it. Where to put it, how variable the years are, and how badly the counting is done are all under <strong>additional parameters</strong>.</p>
 <p><strong>The two bars</strong> are the part the curve cannot show you: the <em>total</em> births and deaths per year at whichever moment you are parked on. The gap between their ends is how fast the population is changing. Drag from year zero to the end and watch the birth bar start far ahead, the two converge, and finally sit <strong>equal and both still long</strong>.</p>
 <p><strong>The square</strong> is those same individuals, one dot each: <strong>green</strong> born this year, <strong>red</strong> died this year, <strong>black</strong> came through it alive. Where the dots sit means nothing — the square is a tally, not a map. What matters is that once the population levels off, green and red keep appearing <em>in equal numbers</em>. A population that has stopped growing has not stopped. It is replacing itself as fast as it can, and the panel tells you how many individuals a year that takes.</p>
 </section>
 <section id="now-the-equation" class="level3">
 <h3 class="anchored" data-anchor-id="now-the-equation">Now the equation</h3>
-<p>Two straight lines are hiding in those sliders. The birth rate falls as it gets crowded and the death rate climbs:</p>
+<p>Two straight lines are hiding in those sliders. Each rate starts from a <strong>baseline</strong> — what an individual manages when there is no crowding at all — and crowding moves it from there: births fall, deaths climb.</p>
 <blockquote class="blockquote">
 <p><strong>b(N) = b₀ − βN</strong> and <strong>d(N) = d₀ + δN</strong></p>
 </blockquote>
+<p>So <strong>b₀</strong> is the birth rate <em>without crowding</em> and <strong>d₀</strong> the death rate without crowding: the two numbers on the first pair of sliders, and the rates an individual would experience in an empty landscape.</p>
 <p>A population grows at the rate its individuals reproduce, minus the rate they die, so <code>dN/dt = [b(N) − d(N)] N</code>. Substitute the two lines, collect the terms, and out falls the equation from lecture:</p>
 <blockquote class="blockquote">
-<p><strong>dN/dt = r N (1 − N/K)</strong> with <strong>r = b₀ − d₀</strong> and <strong>K = (b₀ − d₀) / (β + δ)</strong></p>
+<p><strong>dN/dt = rₘ N (1 − N/K)</strong> with <strong>rₘ = b₀ − d₀</strong> and <strong>K = (b₀ − d₀) / (β + δ)</strong></p>
 </blockquote>
-<p>Neither <strong>r</strong> nor <strong>K</strong> is a slider on this page, because neither is a thing an organism has. <strong>r</strong> is the growth rate an individual manages with nobody in the way. <strong>K</strong> is the population size at which the two rate lines cross — where a typical individual has exactly as many offspring as it has chances of dying.</p>
+<p>Neither <strong>rₘ</strong> nor <strong>K</strong> is a slider on this page, because neither is a thing an organism has. <strong>rₘ</strong> is the <strong>maximum intrinsic growth rate</strong> — the fastest this population can ever grow per individual, which it manages only when nobody is in the way. It is a <em>maximum</em> because crowding can only subtract from it: the bracket (1 − N/K) is at most 1, and it falls to zero at K. <strong>K</strong> is the population size at which the two rate lines cross — where a typical individual has exactly as many offspring as it has chances of dying.</p>
 <p>Below, those theoretical values sit next to the <strong>empirical</strong> ones: what somebody counting this population once a year for fifty years would report, knowing nothing about the rates you set. The two do not match exactly, and that is not a mistake in either. The theoretical numbers describe what an <em>average</em> year does. The empirical ones describe the single history this population actually had — one particular run of good and bad years, seen through one particular set of counts.</p>
 <div class="pd-tool">
 <div id="pd-logistic-readout" class="pd-readout">
@@ -231,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li><strong>Park the slider at the far right and look at the two bars.</strong> They are equal, and neither is anywhere near zero. Then read “turnover at K”: that many individuals are born and die every year, forever, with the total never moving.</li>
 <li><strong>Compare two populations with the same K.</strong> Set <code>b₀ = 0.12, d₀ = 0.02, δ = 0.25</code>, then <code>b₀ = 1.40, d₀ = 0.60, δ = 2.00</code>. Both work out at K = 400 — though the slow one is still climbing towards it at year fifty, which is worth noticing on its own. Now check the mean lifespan: 8.3 years in the first, about eight months in the second. One is a population of trees, the other of voles, and the square shows it: a thin sprinkle of green and red in the first, most of the field turning over in the second. The same carrying capacity says almost nothing about the lives inside it.</li>
-<li><strong>Turn the crowding slider δ down to zero.</strong> K is gone, and the readout says why: with nothing multiplying the bracket, <code>dN/dt = rN</code> is the exponential, and no population obeys that for long.</li>
+<li><strong>Turn the crowding slider δ down to zero.</strong> K is gone, and the readout says why: with nothing multiplying the bracket, <code>dN/dt = rₘN</code> is the exponential, and no population obeys that for long.</li>
 <li><strong>Set d₀ above b₀.</strong> Deaths win even in an empty landscape, so there is no positive equilibrium to find at any density. Watch the square: red every year, green almost never.</li>
 <li><strong>Start above your carrying capacity</strong> — leave the rates alone and drag N₀ up to
 <ol start="600" type="1">
