@@ -7,8 +7,8 @@ page makes about it. Each check below corresponds to a sentence on the page or i
 _dev/population-dynamics-tool.md, and several are regressions for bugs that were
 actually shipped and caught:
 
-  analytic     K = r/(beta+delta), and the closed-form N(t) really solves
-               dN/dt = rN(1 - N/K). If this drifts, students aiming at 500 are
+  analytic     K = rm/(beta+delta), and the closed-form N(t) really solves
+               dN/dt = rm N(1 - N/K). If this drifts, students aiming at 500 are
                aiming at a lie.
   degenerate   the two no-equilibrium states are classified correctly, AND a
                declining population decays smoothly to zero.
@@ -307,10 +307,10 @@ def main() -> int:
     c = Checker(args.verbose)
 
     # -- analytic ------------------------------------------------------------
-    print("analytic  (does the closed form solve dN/dt = rN(1-N/K)?)")
+    print("analytic  (does the closed form solve dN/dt = rm N(1-N/K)?)")
     a = d["analytic"]
-    c.ok(abs(a["r"] - 0.30) < 1e-12, "r = b0 - d0", f"{a['r']:.6f}")
-    c.ok(abs(a["K"] - 500.0) < 1e-9, "K = r/(beta+delta)", f"{a['K']:.6f}")
+    c.ok(abs(a["r"] - 0.30) < 1e-12, "rm = b0 - d0", f"{a['r']:.6f}")
+    c.ok(abs(a["K"] - 500.0) < 1e-9, "K = rm/(beta+delta)", f"{a['K']:.6f}")
     c.ok(abs(a["lifespan"] - 2.0) < 1e-9, "mean lifespan = 1/d*", f"{a['lifespan']:.4f} yr")
     c.ok(abs(a["turnover"] - 250.0) < 1e-6, "turnover at K = d* K", f"{a['turnover']:.3f}/yr")
     worst = max(r["rel"] for r in a["rows"])

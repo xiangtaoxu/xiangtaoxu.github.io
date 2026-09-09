@@ -26,13 +26,13 @@ Course: BioEE 1610, the lecture that introduces
 
 ## 1. The one design decision
 
-Students are given knobs for **vital rates**, never for `r` or `K`. Those two are
+Students are given knobs for **vital rates**, never for `rm` or `K`. Those two are
 *outputs*, displayed as readouts:
 
 | knob | meaning | |
 |---|---|---|
-| `b0` | births per individual per year, uncrowded | |
-| `d0` | deaths per individual per year, uncrowded | |
+| `b0` | **baseline** birth rate: births per individual per year with no crowding at all | |
+| `d0` | **baseline** death rate: deaths per individual per year with no crowding at all | |
 | `delta` | how much each extra individual **raises** the death rate | `d(N) = d0 + delta*N` |
 | `beta` | how much each extra individual **lowers** the birth rate | `b(N) = b0 - beta*N` |
 | `N0` | starting population | |
@@ -40,14 +40,23 @@ Students are given knobs for **vital rates**, never for `r` or `K`. Those two ar
 Because `dN/dt = [b(N) - d(N)] N`, substituting the two lines gives the equation on
 the lecture slide exactly, with
 
-    r = b0 - d0            K = (b0 - d0) / (beta + delta)
+    rm = b0 - d0           K = (b0 - d0) / (beta + delta)
+
+**Notation.** The page writes the growth rate as `rm` -- Xiangtao's lecture symbol,
+rendered `rₘ` -- and calls it the **maximum intrinsic growth rate**, because `b0` and
+`d0` are baseline rates and crowding can only subtract from their difference: the
+bracket `(1 - N/K)` is at most 1 and falls to zero at `K`. The code keeps the bare
+name `r` throughout, since that is the conventional symbol and what the fitted
+quantity is universally called; only the user-facing strings carry the subscript.
+Calling `b0`/`d0` plain "birth rate" and "death rate" was the earlier phrasing and
+was genuinely confusing, since `b(N)` and `d(N)` are also birth and death rates.
 
 `beta` starts at zero and lives behind an "advanced" disclosure, so the default page
 has three rate knobs and the `b(N)`/`d(N)` chart is one flat line and one rising line
 — the cleanest version of that figure. Opening `beta` is what makes the
 "which vital rate is density-dependent?" ambiguity available (see §5).
 
-**Why no `r` and `K` knobs.** Handing a student a `K` slider teaches `K` as a ceiling
+**Why no `rm` and `K` knobs.** Handing a student a `K` slider teaches `K` as a ceiling
 imposed from outside. Deriving it teaches what is true and much more useful: `K` is
 where births and deaths balance, so it is a property of the whole demography and of
 the environment that sets those rates — which is why you cannot look up a carrying
@@ -506,7 +515,7 @@ maths and has no DOM, `population.js` draws and wires. Every colour is a class i
   instead manufactures a run of `ln(1/1) = 0` growth rates pinned at `N = 1`, which
   drags the fitted line.
 - **`derived()` reports two carrying capacities.** `Kraw` is the bare ratio
-  `r/(beta+delta)` and exists whenever there is any density dependence -- *including
+  `rm/(beta+delta)` and exists whenever there is any density dependence -- *including
   when it is negative*, which is the declining case. `K` is the ecologically
   meaningful one and stays null unless there is a positive equilibrium, so nothing
   downstream can print a negative carrying capacity at a student. The trajectory

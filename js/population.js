@@ -9,8 +9,10 @@
     #pd-logistic-dots       the individuals: born, died, came through alive
     #pd-logistic-readout    r and K -- what you set, next to what the counts give back
 
-  The organising rule of the page is that there is NO slider for r and none for K.
-  Students set birth and death rates; r and K are readouts. The page shows the curve
+  The organising rule of the page is that there is NO slider for rm and none for K.
+  Students set BASELINE birth and death rates -- the rates an individual meets with
+  no crowding at all -- and rm, the maximum intrinsic growth rate, and K are
+  readouts. The page shows the curve
   and the individuals FIRST and the equation afterwards, so the readout div sits
   below the equation in the .qmd rather than beside the charts.
 
@@ -462,15 +464,15 @@
       // 0.0006-ish and a slider reading "0.60 per 1000" is something a student can
       // hold in their head.
       this.sB0 = slider({
-        label: "Birth rate b₀", value: this.p.b0, min: 0.02, max: 2, step: 0.01,
+        label: "Baseline birth rate b₀", value: this.p.b0, min: 0.02, max: 2, step: 0.01,
         unit: "/yr", fmt: function (v) { return fmt(v, 2); },
-        hint: "births per individual per year, when uncrowded",
+        hint: "births per individual per year, with no crowding at all",
         onInput: function (v) { self.p.b0 = v; self.draw(); }
       });
       this.sD0 = slider({
-        label: "Death rate d₀", value: this.p.d0, min: 0, max: 1.5, step: 0.01,
+        label: "Baseline death rate d₀", value: this.p.d0, min: 0, max: 1.5, step: 0.01,
         unit: "/yr", fmt: function (v) { return fmt(v, 2); },
-        hint: "deaths per individual per year, when uncrowded",
+        hint: "deaths per individual per year, with no crowding at all",
         onInput: function (v) { self.p.d0 = v; self.draw(); }
       });
       this.sDelta = slider({
@@ -509,7 +511,7 @@
       this.sProcess = slider({
         label: "Year-to-year variation", value: this.process, min: 0, max: 0.2, step: 0.01,
         fmt: function (v) { return v === 0 ? "none" : Math.round(v * 100) + "%"; },
-        hint: "good years and bad years: the birth and death rates themselves are " +
+        hint: "good years and bad years: the baseline birth and death rates are " +
               "re-drawn each year. This moves the population.",
         onInput: function (v) { self.process = v; self.draw(); }
       });
@@ -895,7 +897,7 @@
         d.appendChild(h("span", "pd-derived-value", v));
         return d;
       }
-      box.appendChild(row("r = b₀ − d₀", fmt(D.r, 3) + " /yr"));
+      box.appendChild(row("rₘ = b₀ − d₀", fmt(D.r, 3) + " /yr"));
 
       if (D.state === "declines") {
         box.appendChild(row("K", "no positive equilibrium", "is-warn"));
@@ -908,13 +910,13 @@
         box.appendChild(row("K", "unbounded", "is-warn"));
         box.appendChild(h("p", "pd-state",
           "With no density dependence there is nothing in the equation to stop it: " +
-          "this is dN/dt = rN, the exponential, and the bracket (1 − N/K) never " +
+          "this is dN/dt = rₘN, the exponential, and the bracket (1 − N/K) never " +
           "bites. Give crowding some effect on deaths."));
         return box;
       }
 
       var hit = this.target > 0 && D.K >= this.target * 0.98 && D.K <= this.target * 1.02;
-      box.appendChild(row("K = r / (β + δ)", sig3(D.K) + " individuals",
+      box.appendChild(row("K = rₘ / (β + δ)", sig3(D.K) + " individuals",
                           hit ? "is-hit" : (this.target > 0 ? "is-miss" : "")));
       box.appendChild(row("turnover at K", sig3(D.turnover) + " replaced /yr"));
       box.appendChild(row("mean lifespan at K", fmt(D.lifespan, 2) + " yr"));
@@ -939,7 +941,7 @@
        them against each other would be measuring the wrong thing. */
     scorecard: function (D, f) {
       var wrap = h("div", "pd-scorecard-wrap");
-      wrap.appendChild(h("h4", "pd-scorecard-title", "r and K: theory against the counts"));
+      wrap.appendChild(h("h4", "pd-scorecard-title", "rₘ and K: theory against the counts"));
       var t = h("table", "pd-scorecard");
       var html = "<thead><tr><th scope=\"col\">quantity</th>" +
                  "<th scope=\"col\">theoretical<span class=\"pd-sc-sub\">from your rates</span></th>" +
@@ -957,7 +959,7 @@
                   : "Not enough censuses to fit a line — count more often.") +
                 "</td></tr>";
       } else {
-        html += "<tr><th scope=\"row\">r <span class=\"pd-sc-sub\">intrinsic growth rate</span></th>" +
+        html += "<tr><th scope=\"row\">rₘ <span class=\"pd-sc-sub\">maximum intrinsic growth rate</span></th>" +
                 "<td>" + fmt(D.r, 3) + "</td><td>" + fmt(f.r, 3) + " " +
                 (f.rCI ? ci(f.rCI[0], f.rCI[1], 3) : "") + "</td></tr>";
 
@@ -967,7 +969,7 @@
                              : sig3(f.K) + " " + (f.KCI ? ci(f.KCI[0], f.KCI[1], 0) : "")) +
                 "</td></tr>";
 
-        html += "<tr><th scope=\"row\">b₀, d₀ <span class=\"pd-sc-sub\">the rates themselves</span></th>" +
+        html += "<tr><th scope=\"row\">b₀, d₀ <span class=\"pd-sc-sub\">the baseline rates</span></th>" +
                 "<td>" + fmt(this.p.b0, 2) + ", " + fmt(this.p.d0, 2) + "</td>" +
                 "<td><em>not recoverable — counts see only b − d</em></td></tr>";
       }

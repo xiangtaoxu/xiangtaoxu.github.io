@@ -19,8 +19,9 @@ format:
 
 ## Births, deaths, and where they balance
 
-Set how fast individuals reproduce and die, decide how much crowding matters, and
-press **Play**. The equation comes later — watch the population first.
+Set how fast individuals reproduce and die when nothing is in their way, decide how
+much crowding matters, and press **Play**. The equation comes later — watch the
+population first.
 
 ::: {.pd-tool}
 ::: {.pd-controls #pd-logistic-controls}
@@ -34,8 +35,8 @@ press **Play**. The equation comes later — watch the population first.
 ### What you are looking at
 
 **The curve** is the population over fifty years — the familiar S-shape, levelling
-off somewhere, but not smoothly: the birth and death rates are re-drawn every year,
-because a good year and a bad year are different years to be alive in. Drag the
+off somewhere, but not smoothly: the baseline birth and death rates are re-drawn
+every year, because a good year and a bad year are different years to be alive in. Drag the
 slider under it to move through time.
 
 The grey band marks a size you can try to aim the population at; it turns green when
@@ -57,21 +58,29 @@ as it can, and the panel tells you how many individuals a year that takes.
 
 ### Now the equation
 
-Two straight lines are hiding in those sliders. The birth rate falls as it gets
-crowded and the death rate climbs:
+Two straight lines are hiding in those sliders. Each rate starts from a **baseline**
+— what an individual manages when there is no crowding at all — and crowding moves it
+from there: births fall, deaths climb.
 
 > **b(N) = b₀ − βN**    and    **d(N) = d₀ + δN**
+
+So **b₀** is the birth rate *without crowding* and **d₀** the death rate without
+crowding: the two numbers on the first pair of sliders, and the rates an individual
+would experience in an empty landscape.
 
 A population grows at the rate its individuals reproduce, minus the rate they die,
 so `dN/dt = [b(N) − d(N)] N`. Substitute the two lines, collect the terms, and out
 falls the equation from lecture:
 
-> **dN/dt = r N (1 − N/K)**    with    **r = b₀ − d₀**    and    **K = (b₀ − d₀) / (β + δ)**
+> **dN/dt = rₘ N (1 − N/K)**    with    **rₘ = b₀ − d₀**    and    **K = (b₀ − d₀) / (β + δ)**
 
-Neither **r** nor **K** is a slider on this page, because neither is a thing an
-organism has. **r** is the growth rate an individual manages with nobody in the
-way. **K** is the population size at which the two rate lines cross — where a
-typical individual has exactly as many offspring as it has chances of dying.
+Neither **rₘ** nor **K** is a slider on this page, because neither is a thing an
+organism has. **rₘ** is the **maximum intrinsic growth rate** — the fastest this
+population can ever grow per individual, which it manages only when nobody is in the
+way. It is a *maximum* because crowding can only subtract from it: the bracket
+(1 − N/K) is at most 1, and it falls to zero at K. **K** is the population size at
+which the two rate lines cross — where a typical individual has exactly as many
+offspring as it has chances of dying.
 
 Below, those theoretical values sit next to the **empirical** ones: what somebody
 counting this population once a year for fifty years would report, knowing nothing
@@ -100,7 +109,7 @@ Things to try
   the second. The same carrying capacity says almost nothing about the lives inside
   it.
 - **Turn the crowding slider δ down to zero.** K is gone, and the readout says why:
-  with nothing multiplying the bracket, `dN/dt = rN` is the exponential, and no
+  with nothing multiplying the bracket, `dN/dt = rₘN` is the exponential, and no
   population obeys that for long.
 - **Set d₀ above b₀.** Deaths win even in an empty landscape, so there is no
   positive equilibrium to find at any density. Watch the square: red every year,

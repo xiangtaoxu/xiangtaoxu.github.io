@@ -165,10 +165,10 @@ or in [`_dev/population-dynamics-tool.md`](../_dev/population-dynamics-tool.md):
 
 | check | what it asserts |
 |---|---|
-| `analytic` | `K = r/(β+δ)`, and the closed-form `N(t)` really solves `dN/dt = rN(1−N/K)` |
+| `analytic` | `K = rₘ/(β+δ)`, and the closed-form `N(t)` really solves `dN/dt = rₘN(1−N/K)` |
 | `degenerate` | the two no-equilibrium states are classified right, and a declining population decays smoothly to zero |
 | `exact_fit` | with no observation error the fit returns `r` and `K` to well under 0.5 % |
-| `bias` | with observation error the bias runs in a **known direction** — `r` low, `K` high |
+| `bias` | with observation error the bias runs in a **known direction** — `rₘ` low, `K` high |
 | `coverage` | the bootstrap interval covers the truth as often as the page implies (85–93 %, *not* 95 %) |
 | `sane_ci` | an interval always contains its own point estimate |
 | `short_window` | `K` is refused, not guessed, from a population that has not slowed down |

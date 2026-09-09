@@ -39,10 +39,14 @@
 
      Substituting the two lines above into dN/dt = [b(N) - d(N)] N gives
 
-       dN/dt = [(b0 - d0) - (beta + delta) N] N  =  r N (1 - N/K)
+       dN/dt = [(b0 - d0) - (beta + delta) N] N  =  rm N (1 - N/K)
 
-     which is the equation on the lecture slide, with r = b0 - d0 and
-     K = r / (beta + delta). `state` names the two degenerate cases, because both
+     which is the equation on the lecture slide, with rm = b0 - d0 and
+     K = rm / (beta + delta). b0 and d0 are the BASELINE rates -- what an individual
+     meets with no crowding at all -- and rm is therefore the MAXIMUM intrinsic
+     growth rate: crowding only ever subtracts from it, since (1 - N/K) <= 1.
+     The code calls it `r`, which is the conventional symbol and what the fitted
+     quantity is universally called; the page writes it rm. `state` names the two degenerate cases, because both
      are worth stumbling into rather than being hidden behind a clamp. */
   function derived(p) {
     var r = p.b0 - p.d0;
@@ -84,7 +88,7 @@
      because the logistic solution divides by r and by (beta + delta):
 
        normal      N = K N0 / (N0 + (K - N0) e^{-rt})
-       r == 0      pure crowding, no intrinsic growth:  N = N0 / (1 + dd N0 t)
+       rm == 0     pure crowding, no intrinsic growth:  N = N0 / (1 + dd N0 t)
        dd == 0     no density dependence:               N = N0 e^{rt}   (exponential)
 
      K here is Kraw, which is negative when the population is declining. The first

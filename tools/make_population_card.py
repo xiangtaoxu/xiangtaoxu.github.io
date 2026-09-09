@@ -92,7 +92,9 @@ ax.set_xlim(0, T)
 ax.set_ylim(0, K * 1.32)
 ax.set_xlabel("years", fontsize=11.5, color="#555")
 ax.set_ylabel("population size N", fontsize=11.5, color="#555")
-ax.set_title("Set birth and death rates — r and K come out",
+# mathtext rather than the Unicode subscript: matplotlib's default font has no
+# U+2098, and a tofu box on the listing card would be worse than a plain "r".
+ax.set_title("Set baseline birth and death rates — $r_m$ and K come out",
              fontsize=14.5, fontweight="bold", color="#222", pad=11, loc="left")
 
 # ---- left bottom: the flux bars at K ----------------------------------------
