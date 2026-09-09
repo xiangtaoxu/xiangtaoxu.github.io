@@ -201,15 +201,46 @@ Consequences worth knowing:
 - **Demographic stochasticity is still absent**, and it is now the only kind that is.
   It cannot be produced by a rate: you need integer events per individual. It is also
   the one that matters most in conservation, so it stays at the top of section 5.
+  Revision 4 removed the paragraph about it from the page -- too much detail for a
+  first-year course -- so the page no longer says anything about which kinds of
+  chance are and are not modelled. The year-to-year variation slider's own hint and
+  a *Things to try* bullet carry what a student needs.
 
-### The dots move
+### The dots move -- positions drift, roles reshuffle
 
-Positions are re-drawn once per census year, keyed on the year the scrubber is
-standing in. Within a year they hold still, so dragging does not shimmer; crossing
-into the next year moves everybody, which makes each year read as a fresh snapshot
-rather than a diagram being edited. Revision 2 had them fixed for the whole run, which
-filled the square smoothly but made the panel look static once the population
-levelled off.
+This took three attempts and the split is the point: **positions carry continuity,
+colours carry turnover.**
+
+- *Revision 2* pinned every position for the whole run. The field filled smoothly and
+  never shimmered, but once the population levelled off the panel looked static --
+  which is precisely the "nothing is happening at carrying capacity" misreading it
+  exists to break.
+- *Revision 3* re-drew the whole field at random each census. Now it was clearly
+  active and completely **unreadable**: everything teleported at once, so the eye had
+  nothing to hold on to and it read as static noise.
+- *Revision 4* separates the two jobs. Year zero is stratified and shuffled as
+  before. After that each dot takes a **small random step** each census -- 3 % of the
+  square, measured at 7 px mean and 12 px maximum on a 300 px square, about two dot
+  widths -- so it stays recognisable from one census to the next while the field is
+  visibly alive. Meanwhile the survivor / newborn / dying **roles are reshuffled
+  every year**, so which dots are green and red keeps changing. That is the half that
+  has to keep moving: pinning colours to slots would have made the equilibrium
+  picture nearly frozen again.
+
+Steps reflect off the walls rather than clamping, so nothing piles up on an edge. The
+walk is cumulative but seeded per year, so it is deterministic -- scrubbing back to
+year twelve always shows the same year twelve, and going backwards just rebuilds from
+year zero (900 points times at most fifty steps, not worth optimising).
+
+Positions hold still while the scrubber is dragged *inside* a year: measured at
+exactly 0 px. Without that, dragging would shimmer at frame rate.
+
+What this panel still does not do is track individual identity. A dot that is green
+one year is not the same individual that is black the next -- the roles are drawn
+afresh rather than followed. Doing it properly means per-individual bookkeeping
+(pick which of the living die, give newborns free slots, carry it forward), which is
+a real change and has not been asked for. It would make the panel legible at the
+level of a single dot's life history, which nothing currently promises.
 
 ## 4. The statistical fit
 
@@ -344,6 +375,14 @@ is faster and may well be the right call for a three-minute slot; but the
 the activity card and the overlay both went. The nearest survivor is a *Things to try*
 bullet giving two parameter sets with `K = 500` and lifespans of 8.3 years and eight
 months.
+
+**Worth knowing about the caveats section:** "There is no space" became "There is no
+explicit space or other resources" in revision 4. The stronger version is the more
+useful one -- a carrying capacity in the field is set by some particular resource
+running short in some particular place, and this model reduces all of it to one
+coefficient, so you cannot ask it *what* the population ran out of. That is the
+honest boundary of the logistic, and it is a better last word than a list of missing
+spatial features.
 
 **Also deferred:** the static triptych (three unit charts at `N = 25 / 250 / 500` with
 a flux gauge under each — the artifact that ends up on a slide); the animated dot

@@ -266,23 +266,30 @@
      Because the list is already in random order, colouring by slot (survivors,
      then births, then deaths) scatters the colours across the square for free. */
   var DOT_MAX = 900;
-  var dotPosCache = { key: null, pts: null };
+  var DRIFT = 0.03;                 // per census year, as a fraction of the square
+  var dotCache = { year: -1, pts: null };
 
-  /* Positions for the individual dots, re-drawn once per census year.
+  /* Where the individual dots sit, and how that changes from one census to the next.
 
-     Stratified (one jittered point per cell of a 30x30 grid) rather than uniform,
-     because uniform random points clump and leave holes, which reads as structure
-     that is not there. Then shuffled, so taking the first n positions is still
-     spatially even at any n. Because the list is in random order, colouring by slot
-     (survivors, then births, then deaths) scatters the colours for free.
+     Year zero is stratified -- one jittered point per cell of a 30x30 grid, then
+     shuffled -- because uniform random points clump and leave holes, which reads as
+     structure that is not there, and because shuffling means the first n positions
+     are spatially even at any n.
 
-     Keyed on the YEAR, not on the frame: individuals move between censuses, which
-     makes each year read as a fresh snapshot rather than a diagram being edited, but
-     they hold still while the scrubber is dragged inside a single year. Re-drawing
-     every frame instead would shimmer and hide the thing the panel is for. */
-  function dotPositions(year) {
-    if (dotPosCache.key === year) return dotPosCache.pts;
-    var g = 30, rand = M.rng(70914 + year * 7919), pts = [], i, j, t;
+     After that the dots DRIFT: each year every position takes a small random step
+     from where it was. Re-drawing the whole field at random each year (revision 3)
+     was unreadable -- everything teleported at once, so the eye had nothing to hold
+     on to and the panel looked like static rather than a population. A short step
+     keeps each dot recognisable across censuses while still making the field
+     visibly alive.
+
+     Steps reflect off the walls rather than clamping, so nothing piles up along an
+     edge. The walk is cumulative but seeded per year, so it is deterministic:
+     scrubbing back to year twelve always shows the same year twelve. Going backwards
+     rebuilds from year zero, which is 900 points times at most fifty steps and not
+     worth optimising. */
+  function dotBase() {
+    var g = 30, rand = M.rng(70914), pts = [], i, j, t;
     for (i = 0; i < g; i++) {
       for (j = 0; j < g; j++) {
         pts.push([(i + 0.15 + 0.7 * rand()) / g, (j + 0.15 + 0.7 * rand()) / g]);
@@ -292,8 +299,51 @@
       j = Math.floor(rand() * (i + 1));
       t = pts[i]; pts[i] = pts[j]; pts[j] = t;
     }
-    dotPosCache = { key: year, pts: pts };
     return pts;
+  }
+
+  function reflect01(v) {
+    if (v < 0) v = -v;
+    if (v > 1) v = 2 - v;
+    return v < 0 ? 0 : v > 1 ? 1 : v;
+  }
+
+  function dotPositions(year) {
+    if (dotCache.year === year && dotCache.pts) return dotCache.pts;
+    if (!dotCache.pts || year < dotCache.year) dotCache = { year: 0, pts: dotBase() };
+    while (dotCache.year < year) {
+      var k = dotCache.year + 1, rand = M.rng(90210 + k * 7919);
+      var pts = dotCache.pts, i;
+      for (i = 0; i < pts.length; i++) {
+        pts[i] = [reflect01(pts[i][0] + DRIFT * (2 * rand() - 1)),
+                  reflect01(pts[i][1] + DRIFT * (2 * rand() - 1))];
+      }
+      dotCache.year = k;
+    }
+    return dotCache.pts;
+  }
+
+  /* Which dots are survivors, which are newborns, which are dying -- re-drawn each
+     year, so the roles move around the field even though the dots themselves only
+     drift a little.
+
+     This is the half of the animation that has to keep changing. If the colours were
+     pinned to slots, then at K the picture would go almost static -- gently drifting
+     dots with a fixed pattern -- which is exactly the "nothing is happening at
+     carrying capacity" misreading the panel exists to break. Positions carry
+     continuity; colours carry turnover. */
+  function dotRoles(n, nBlack, nGreen, year) {
+    var idx = [], col = new Array(n), rand = M.rng(13579 + year * 104729), i, j, t;
+    for (i = 0; i < n; i++) idx.push(i);
+    for (i = n - 1; i > 0; i--) {
+      j = Math.floor(rand() * (i + 1));
+      t = idx[i]; idx[i] = idx[j]; idx[j] = t;
+    }
+    for (i = 0; i < n; i++) {
+      col[idx[i]] = i < nBlack ? "pd-dot-alive"
+                  : i < nBlack + nGreen ? "pd-dot-birth" : "pd-dot-death";
+    }
+    return col;
   }
 
   function dotRadius(n) {
@@ -650,8 +700,9 @@
       var r = dotRadius(n);
 
       svg.appendChild(el("rect", { x: sx, y: sy, width: sq, height: sq, "class": "pd-square" }));
+      var roles = dotRoles(n, nb, ng, Math.max(0, Math.floor(t1)));
       for (var i = 0; i < n; i++) {
-        var cls = i < nb ? "pd-dot-alive" : (i < nb + ng ? "pd-dot-birth" : "pd-dot-death");
+        var cls = roles[i];
         svg.appendChild(el("circle", {
           cx: fmt(sx + pos[i][0] * sq, 1), cy: fmt(sy + pos[i][1] * sq, 1),
           r: r, "class": "pd-indiv " + cls

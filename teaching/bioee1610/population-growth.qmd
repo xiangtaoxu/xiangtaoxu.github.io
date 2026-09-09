@@ -130,17 +130,6 @@ Things to try
 
 ::: {.pd-howto}
 
-**One kind of chance is here and one is missing.** The vital rates are re-drawn
-each year, so good years and bad years move the population around — that is
-**environmental** stochasticity, and it is why the curve is not smooth. What is not
-simulated is **demographic** stochasticity: the fact that births and deaths are
-whole-number events happening to particular individuals, so a population of twelve
-can lose four of them to bad luck in a year when the *rates* said it should lose one.
-That is what kills small populations even when their growth rate is comfortably
-positive, and it cannot be produced by a rate at all — you need to roll dice for each
-individual. Nothing on this page can show you a founding population going extinct by
-accident, which is most of what conservation biologists worry about.
-
 **Every individual is identical.** There are no ages, no sexes, no juveniles too
 young to breed and no elders past breeding; `b₀` and `d₀` apply to everyone equally.
 Real populations have age structure, and it makes them lag: a population that has
@@ -153,12 +142,17 @@ is what deer irruptions and lemming cycles look like; make crowding non-linear a
 the shape of the curve changes. The logistic is the simplest thing that stops
 growing, not the most realistic one.
 
-**There is no space.** No territories, no dispersal, no refuges — crowding is a
-single number that every individual feels equally, no matter where it is. This is
-why the dots in the square are scattered at random and their positions carry no
-information: the square counts individuals, it does not place them. If it were a
-real landscape, the crowding an individual felt would depend on its neighbours
-rather than on the total, and none of the algebra above would hold.
+**There is no explicit space or other resources.** No territories, no dispersal, no
+refuges — and no food, water, light or nutrients either. "Crowding" is a single
+number standing in for every one of them at once, which means you cannot ask this
+model *what* the population ran out of, or where. That is a real limitation rather
+than a technicality: a carrying capacity is set by some particular resource running
+short in some particular place, and reducing all of it to one coefficient is what
+lets the algebra above stay so simple. It is also why the dots in the square drift
+about at random and their positions carry no information — the square counts
+individuals, it does not place them. In a real landscape the crowding an individual
+felt would depend on its neighbours rather than on the total, and none of this would
+hold.
 
 :::
 
