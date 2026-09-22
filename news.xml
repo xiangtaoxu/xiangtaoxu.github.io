@@ -9,8 +9,31 @@
 <link>https://xiangtaoxu.eeb.cornell.edu/news.html</link>
 <atom:link href="https://xiangtaoxu.eeb.cornell.edu/news.xml" rel="self" type="application/rss+xml"/>
 <description>Biosphere Modeling &amp; Monitoring — Xiangtao Xu Lab, Cornell EEB</description>
+<image>
+<url>https://xiangtaoxu.eeb.cornell.edu/images/og/biom2-card.jpg</url>
+<title>BioM2 Lab</title>
+<link>https://xiangtaoxu.eeb.cornell.edu/news.html</link>
+</image>
 <generator>quarto-1.9.38</generator>
-<lastBuildDate>Mon, 24 Aug 2026 00:00:00 GMT</lastBuildDate>
+<lastBuildDate>Tue, 08 Sep 2026 00:00:00 GMT</lastBuildDate>
+<item>
+  <title>Welcome Dr. Sophie Zwartsenberg to BioM2</title>
+  <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-09-08-welcome-sophie-zwartsenberg.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<p><strong>Sophie Zwartsenberg</strong> is a dendrochronologist and tropical ecologist from Prof.&nbsp;Pieter Zuidema’s lab at Wageningen University in the Netherlands. She is visiting the BioM2 Lab for three months, working on developing a process-based wood growth module for ED2 and other models. Welcome Sophie!</p>
+
+
+
+ ]]></description>
+  <category>Team</category>
+  <category>Collaboration</category>
+  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2026-09-08-welcome-sophie-zwartsenberg.html</guid>
+  <pubDate>Tue, 08 Sep 2026 00:00:00 GMT</pubDate>
+</item>
 <item>
   <title>Collaborative research spotlights August 2026</title>
   <link>https://xiangtaoxu.eeb.cornell.edu/news/2026-08-24-collaborative-research-spotlights.html</link>
@@ -392,22 +415,6 @@
   <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-06-27-first-drone-lidar-flight.html</guid>
   <pubDate>Thu, 27 Jun 2024 00:00:00 GMT</pubDate>
   <media:content url="https://xiangtaoxu.eeb.cornell.edu/images/news/2024-06-27-news.jpg" medium="image" type="image/jpeg"/>
-</item>
-<item>
-  <title>Xiangtao Xu gives seminar at Cary Institute</title>
-  <link>https://xiangtaoxu.eeb.cornell.edu/news/2024-05-09-cary-institute-seminar.html</link>
-  <description><![CDATA[ 
-
-
-
-
-<p><strong>Xiangtao Xu</strong> gives an invited seminar at <a href="https://www.caryinstitute.org/">Cary Institute of Ecosystem Studies</a> titled “Predicting tropical forest growth and mortality under global change.”</p>
-
-
-
- ]]></description>
-  <guid>https://xiangtaoxu.eeb.cornell.edu/news/2024-05-09-cary-institute-seminar.html</guid>
-  <pubDate>Thu, 09 May 2024 00:00:00 GMT</pubDate>
 </item>
 </channel>
 </rss>

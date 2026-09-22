@@ -1,7 +1,41 @@
 [
   {
+    "listing": "/team.html",
+    "items": [
+      "/members/current/xiangtao-xu.html",
+      "/members/current/tao-han.html",
+      "/members/current/anthony-stewart.html",
+      "/members/current/rong-li.html",
+      "/members/current/sophie-zwartsenberg.html",
+      "/members/current/cameron-scholl.html",
+      "/members/current/coral-valle-rodriguez.html",
+      "/members/current/nicholas-cranmer.html",
+      "/members/current/cam-reimer.html",
+      "/members/current/orion-hoch.html",
+      "/members/current/finn-ericson.html",
+      "/members/current/mateo-aparicio.html",
+      "/members/alumni/yixin-ma.html",
+      "/members/alumni/aaron-sams.html",
+      "/members/alumni/daniel-petticord.html",
+      "/members/alumni/dylan-van-bramer.html",
+      "/members/alumni/sabrina-chow.html",
+      "/members/alumni/xiaoting-li.html",
+      "/members/alumni/donghai-wu.html",
+      "/members/alumni/maddie-watson.html"
+    ]
+  },
+  {
+    "listing": "/teaching.html",
+    "items": [
+      "/teaching/bioee1610/climate-diagram.html",
+      "/teaching/bioee1610/photosynthesis.html",
+      "/teaching/bioee1610/population-growth.html"
+    ]
+  },
+  {
     "listing": "/index.html",
     "items": [
+      "/news/2026-09-08-welcome-sophie-zwartsenberg.html",
       "/news/2026-08-24-collaborative-research-spotlights.html",
       "/news/2026-08-07-codifi-training-workshop.html",
       "/news/2026-07-30-spongy-moth-defoliation-paper.html",
@@ -26,39 +60,9 @@
     ]
   },
   {
-    "listing": "/teaching.html",
-    "items": [
-      "/teaching/bioee1610/climate-diagram.html",
-      "/teaching/bioee1610/photosynthesis.html",
-      "/teaching/bioee1610/population-growth.html"
-    ]
-  },
-  {
-    "listing": "/team.html",
-    "items": [
-      "/members/current/xiangtao-xu.html",
-      "/members/current/tao-han.html",
-      "/members/current/anthony-stewart.html",
-      "/members/current/rong-li.html",
-      "/members/current/cameron-scholl.html",
-      "/members/current/coral-valle-rodriguez.html",
-      "/members/current/nicholas-cranmer.html",
-      "/members/current/cam-reimer.html",
-      "/members/current/orion-hoch.html",
-      "/members/current/finn-ericson.html",
-      "/members/alumni/yixin-ma.html",
-      "/members/alumni/aaron-sams.html",
-      "/members/alumni/daniel-petticord.html",
-      "/members/alumni/dylan-van-bramer.html",
-      "/members/alumni/sabrina-chow.html",
-      "/members/alumni/xiaoting-li.html",
-      "/members/alumni/donghai-wu.html",
-      "/members/alumni/maddie-watson.html"
-    ]
-  },
-  {
     "listing": "/news.html",
     "items": [
+      "/news/2026-09-08-welcome-sophie-zwartsenberg.html",
       "/news/2026-08-24-collaborative-research-spotlights.html",
       "/news/2026-08-07-codifi-training-workshop.html",
       "/news/2026-07-30-spongy-moth-defoliation-paper.html",
