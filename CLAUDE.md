@@ -58,8 +58,19 @@ with [Quarto](https://quarto.org) and served via GitHub Pages.
   `images/news/`), and `categories`. Posts with no `image` render text-only.
 - **Bold names** in publication lists (`research.qmd`) mark lab members at time
   of publication — keep that convention when adding papers.
+- **Lab guidelines**: the prose lives in `_guidelines/lab-guidelines-vX.Y.md`, one
+  file per version. `lab-guidelines.qmd` `include`s the current one and is the only
+  copy that publishes — the folder is underscore-prefixed so Quarto never renders
+  the others. `_guidelines/` is also ignored by `.gitignore` except for an explicit
+  allow-list, so **drafts are private by default**: earlier versions stay on disk
+  and out of this public repo. Releasing a new version is three edits — add the
+  file, bump the `include` in `lab-guidelines.qmd`, and add its `!` line to
+  `.gitignore`. `tools/build_guidelines_pdf.py` reads the same folder.
 - **Images** live under `images/` by kind: `portraits/`, `news/`, `banners/`,
-  `hero/`, `projects/`. Reference them with site-absolute paths (`/images/...`).
+  `hero/`, `projects/`, `logo/`, `og/`. Reference them with site-absolute paths
+  (`/images/...`). The logo lockup and the link-preview card are brand assets:
+  `images/logo/biom2-horizontal.svg` (hero), `images/logo/biom2-mark.svg` (favicon),
+  `images/og/biom2-card.jpg` (Open Graph, built by `tools/make_og_card.py`).
 - Any asset referenced *only* from `theme.scss` (banner, hero GIF) must also be
   listed under `project.resources` in `_quarto.yml`, or Quarto won't copy it
   into the build.

@@ -21,6 +21,21 @@ __pycache__/
 # second, so they don't belong in version history.
 /qr/
 
+# Lab guidelines. ONLY the version the site publishes is tracked; earlier drafts
+# stay on disk and out of the repo. This repo is PUBLIC, and a superseded
+# "what to expect" document left in git history is one a prospective student can
+# still find and quote back at us.
+#
+# Allow-listed rather than ignored one by one, so a new draft is private BY
+# DEFAULT -- you have to opt a version in. When you publish a new one, add its
+# `!` line here alongside bumping the `include` in lab-guidelines.qmd.
+#
+# The rule also covers the generated PDFs: tools/build_guidelines_pdf.py writes
+# them next to their source, and a committed PDF only goes stale against the
+# Markdown the website renders.
+/_guidelines/*
+!/_guidelines/lab-guidelines-v3.3.md
+
 # An API token must never be committed. Prefer $GOATCOUNTER_API_TOKEN or
 # ~/.config/goatcounter/token; this catches the case where one lands here anyway.
 /.goatcounter-token

@@ -1,0 +1,27 @@
+---
+# The canonical web home of the lab guidelines.
+#
+# This page holds NO prose of its own. The text lives in _guidelines/, one file
+# per version, and this file just includes the current one -- so there is exactly
+# one source to edit and tools/build_guidelines_pdf.py reads that same file.
+# To publish a new version, bump the filename on the `include` line below.
+#
+# _guidelines/ is underscore-prefixed on purpose: Quarto skips those folders, so
+# the superseded drafts sitting next to the current one never become pages. They
+# used to live at the repo root, where all three rendered as /lab-guidelines-vX.Y.html
+# and went into sitemap.xml -- three competing versions of the same document.
+pagetitle: "Lab Guidelines — BioM2 Lab"
+description: "What to expect in the BioM2 Lab: how we work, what members can expect from the PI and from each other, and how to join."
+page-layout: article
+toc: true
+toc-title: "Contents"
+toc-depth: 2          # sections only; the 2.1/3.2-style subsections would triple its length
+# The included file opens with its own H1, version line and byline, because it is
+# also read straight from GitHub. Here that block would sit directly under
+# Quarto's own title block and repeat it, so the filter strips it -- the same cut
+# tools/build_guidelines_pdf.py makes before handing the body to Typst.
+filters:
+  - _filters/guidelines-title.lua
+---
+
+{{< include _guidelines/lab-guidelines-v3.3.md >}}
