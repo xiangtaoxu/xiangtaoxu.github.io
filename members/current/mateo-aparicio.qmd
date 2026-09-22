@@ -1,0 +1,15 @@
+---
+title: "Mateo Aparicio"
+subtitle: "Undergraduate"
+image: /images/portraits/mateo-aparicio.jpg
+role: undergrad
+weight: 11
+aliases: ["Mateo Aparicio", "M. Aparicio", "M Aparicio"]
+about:
+  template: trestles
+  image-shape: round
+  # links: add an email (and GitHub/website) once we have them
+---
+
+I'm an Environment and Sustainability major interested in learning about
+applications for remote sensing in environmental monitoring and conservation.

@@ -1,6 +1,6 @@
 ---
 title: "Rong Li"
-subtitle: "Postdoctoral Researcher"
+subtitle: "Schmidt AI4S Postdoc"
 image: /images/portraits/rong-li.jpg
 role: postdoc
 weight: 2.5

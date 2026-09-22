@@ -1,0 +1,22 @@
+---
+title: "Sophie Zwartsenberg"
+subtitle: "Visiting Postdoctoral Scholar"
+image: /images/portraits/sophie-zwartsenberg.jpg
+role: postdoc
+weight: 3
+aliases: ["Sophie Zwartsenberg", "S. Zwartsenberg", "S Zwartsenberg"]
+about:
+  template: trestles
+  image-shape: round
+  # links: add an email (and ORCID/website) once we have them
+---
+
+I work as a post doc at Wageningen University with Pieter Zuidema, and I'm
+excited to be at Cornell for three months, visiting the Xu lab. I'm a tropical
+ecologist, interested in tree growth and physiology. Specifically, I work on how
+tropical canopy trees respond to fluctuations in weather, climate change and
+rising CO~2~. I study this using tree rings, isotopes and modeling. I am
+currently working on developing a new module for ED2 in which we try to capture
+the mechanism of wood formation. I am from the Netherlands and in my free time I
+enjoy drawing, painting, cycling, kayaking, camping and last but not least,
+cuddling my cat!

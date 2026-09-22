@@ -1,0 +1,11 @@
+---
+title: "Welcome Dr. Sophie Zwartsenberg to BioM2"
+date: "2026-09-08"
+description: "Sophie Zwartsenberg, a dendrochronologist and tropical ecologist from Prof. Pieter Zuidema's lab at Wageningen University, joins the lab for a three-month visit."
+categories: [Team, Collaboration]
+---
+
+**Sophie Zwartsenberg** is a dendrochronologist and tropical ecologist from
+Prof. Pieter Zuidema's lab at Wageningen University in the Netherlands. She is
+visiting the BioM2 Lab for three months, working on developing a process-based
+wood growth module for ED2 and other models. Welcome Sophie!

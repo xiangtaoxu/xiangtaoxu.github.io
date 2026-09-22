@@ -17,7 +17,7 @@ listing:
   - id: current-members
     contents: "members/current/*.qmd"
     type: grid
-    grid-columns: 4            # smaller cards -> 8 current members fit in 2 rows
+    grid-columns: 4            # smaller cards -> 4 members per row (12 current = 3 rows)
     # No image-height: the portraits are square-cropped and theme.scss renders
     # the card image 1:1 (see ".quarto-grid-item .card-img-top"). A fixed height
     # here would letterbox them back into short cards.
@@ -51,7 +51,8 @@ system science, and remote sensing.
 
 **Join us!** We welcome undergraduate researchers, prospective graduate students,
 and postdocs. Reach out to [Xiangtao](mailto:xx286@cornell.edu) if our work
-resonates with you.
+resonates with you — and read our [lab guidelines](lab-guidelines.qmd) first, which
+set out how we work and what you can expect here.
 
 
 <!--
