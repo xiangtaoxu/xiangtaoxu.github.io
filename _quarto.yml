@@ -28,6 +28,18 @@ website:
   description: "Biosphere Modeling & Monitoring — Xiangtao Xu Lab, Cornell EEB"
   # site-url is only needed for deployment / sitemaps; harmless to keep now.
   site-url: "https://xiangtaoxu.eeb.cornell.edu"
+  # Browser-tab icon: the lab mark on its own (no wordmark, no tagline -- neither
+  # survives 32 px). Quarto copies this itself, so it needs no `resources` entry.
+  favicon: images/logo/biom2-mark.svg
+  # Link-preview ("Open Graph") card: the thumbnail Slack, LinkedIn, X, Bluesky,
+  # iMessage and mail clients show when someone pastes a link to this site. The
+  # scraper is not on our domain, so the URL has to be absolute -- Quarto builds
+  # that from `site-url` above, which is why this cannot move out of `website:`.
+  # Regenerate with tools/make_og_card.py if the logo or the banner photo changes.
+  image: /images/og/biom2-card.jpg
+  image-alt: "BioM2 Lab — Biosphere Modeling and Monitoring. Xiangtao Xu Lab, Cornell EEB."
+  open-graph: true
+  twitter-card: true
 
   navbar:
     background: dark      # dark navbar -> white text/icons (legible on the dark banner)

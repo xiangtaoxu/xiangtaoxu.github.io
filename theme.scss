@@ -74,7 +74,30 @@ $font-size-base:   1.1rem;
   padding: 1.4rem 2rem 1.7rem;
   text-align: center;
 }
-.hero-banner h1 { color: #1a1d21; font-size: 2.6rem; margin-bottom: 0.3rem; border: none; }
+// The lockup's forest green (#3E6D4B) is a SECOND brand colour beside carnelian.
+// The two have almost no contrast against each other (1.1:1), so keep them in
+// separate zones: green stays inside the logo, carnelian owns the links and the
+// button below it.
+.hero-banner .hero-logo {
+  display: block;
+  // Sized to read as the headline's PEER, not its label: at 24rem the lockup was
+  // 28% of the card width against a headline spanning ~79%, and it looked like a
+  // caption. 30rem also puts the tagline near 11 px cap height, so "Biosphere
+  // Modeling and Monitoring" is legible rather than texture -- it is only 6% of
+  // the lockup's height. On a phone it shrinks with the card.
+  width: min(30rem, 72%);
+  height: auto;
+  margin: 0 auto;
+}
+// Pandoc wraps a lone image in its own <p>. Left alone, that <p>'s 1rem bottom
+// margin stacks on top of the heading's 2rem top margin (litera's, overridden
+// just below) and pushes the headline half a card away. Zero it and let the
+// heading own the gap.
+.hero-banner p:has(> .hero-logo) { margin-bottom: 0; }
+// 2.3rem, down from 2.6rem: the other half of balancing the headline against the
+// lockup above it. margin-top is ours, not litera's 2rem -- that spacing was
+// tuned for the headline sitting directly under the animation.
+.hero-banner h1 { color: #1a1d21; font-size: 2.3rem; margin-top: 1.2rem; margin-bottom: 0.3rem; border: none; }
 .hero-banner .lead { color: #555; opacity: 1; font-size: 1.25rem; margin-bottom: 0.4rem; }
 .hero-banner .btn { margin-top: 0.9rem; }
 

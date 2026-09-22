@@ -11,6 +11,8 @@ no build step. Run them by hand when you need them.
 | [`check_photosynthesis.py`](#check_photosynthesispy) | verifies the JS leaf model against the Fortran it was ported from | none (exit status) | n/a |
 | [`sync_visitor_stats.py`](#sync_visitor_statspy) | copies visitor counts off goatcounter.com | `analytics/` | **no** — this repo is public and the numbers are private |
 | [`make_qr.py`](#make_qrpy) | generates a static QR code for the site | `qr/` | **no** — derived, regenerates in a second |
+| [`build_guidelines_pdf.py`](#build_guidelines_pdfpy) | renders the lab guidelines Markdown to a print-ready PDF | `_guidelines/*.pdf` | **no** — derived, and `_guidelines/` is ignored but for the published version |
+| [`make_og_card.py`](#make_og_cardpy) | builds the link-preview card the whole site shares | `images/og/` | **yes** — every shared link points at it |
 
 Each `no` is enforced by a rule in `.gitignore`, with the reason written next to it.
 
@@ -183,6 +185,29 @@ every individual died and every individual was born in the same year. The `bias`
 each bias, not just its size, because an earlier draft of the design doc had both
 signs backwards.
 
+## `make_og_card.py`
+
+Regenerates [`images/og/biom2-card.jpg`](../images/og/biom2-card.jpg), the
+link-preview card wired up as `website: image:` in `_quarto.yml` — the thumbnail
+Slack, LinkedIn, X, Bluesky, iMessage and mail clients show when someone pastes a
+link to the site.
+
+```bash
+python tools/make_og_card.py              # needs pillow + cairosvg
+```
+
+**Rerun it whenever the logo or the navbar banner changes**, or the card goes on
+advertising the old brand. 1200x630 is the size every platform crops from, and the
+URL it resolves to has to be absolute — Quarto builds that from `site-url`, which
+is why `image:` cannot move out of the `website:` block.
+
+The composition is the site's own: the canopy banner behind an **opaque** white
+card, the way every page puts white content over that photo. Translucency is the
+thing to avoid — the canopy comes through and the panel reads as mottled, and the
+lockup's green has nowhere near enough contrast to sit on the photo directly. It
+is saved as JPEG rather than PNG because it is mostly a photograph: ~150 KB
+against ~510 KB, and some scrapers give up on a slow fetch.
+
 ## `make_population_card.py`
 
 Regenerates [`images/teaching/population-growth-card.jpg`](../images/teaching/population-growth-card.jpg),
@@ -318,3 +343,58 @@ What matters is the encoded content, which is scale-invariant.
 `cv2` is optional; without it the script says the code is unverified rather than
 implying it passed. Either way, **scan the result with a phone once before sending
 it to a printer.** That takes five seconds and is the only check that fully counts.
+
+## `build_guidelines_pdf.py`
+
+Renders `_guidelines/lab-guidelines-vX.Y.md` to a PDF for people who want the
+guidelines as a document rather than a web page.
+
+```bash
+conda activate website                        # pandoc and typst live here
+python tools/build_guidelines_pdf.py          # newest _guidelines/lab-guidelines-v*.md
+python tools/build_guidelines_pdf.py _guidelines/lab-guidelines-v3.2.md -o /tmp/draft.pdf
+```
+
+Re-run it after every edit to the Markdown — the PDF is a snapshot, not a live
+render, and nothing in CI regenerates it.
+
+### Why the sources sit in `_guidelines/`
+
+Quarto renders every `.md` in the project, so while these lived at the repo root
+**all three versions were being published** — `/lab-guidelines-v3.1.html` through
+`v3.3`, each one listed in `sitemap.xml`, three competing copies of the same
+document for search engines to pick between. Folders starting with `_` are skipped,
+which is why `_filters/`, `_plans/` and `_citations/` are named the way they are.
+The one published copy is [`lab-guidelines.qmd`](../lab-guidelines.qmd), which
+`include`s the current version and is linked from the Team page.
+
+The folder is also **git-ignored but for an allow-list**, so superseded and
+in-progress drafts stay local: this repo is public, and an old "what to expect"
+document left in its history is one a prospective student can still find and quote.
+Publishing a version means opting it in — see the block in `.gitignore`.
+
+### Why Typst and not LaTeX
+
+Pandoc converts the Markdown to Typst, and Typst sets the pages. The system TeX on
+this machine is a minimal install with no `fontspec`, `xcolor` or `titlesec`, so a
+styled `pdflatex` run would mean installing a few hundred MB of TeX Live. Typst is
+a single binary that already ships everything the template uses, and it is already
+in the `website` env because Quarto bundles it.
+
+### What the script changes before rendering
+
+The Markdown repeats its title, version and byline in the body so that it reads
+properly on GitHub, where there is no title page. In print that block would sit
+directly under the PDF's own title, so the script lifts it into metadata, promotes
+the numbered sections to top level, and drops the `---` rules — the section
+headings already separate them once they are set in carnelian.
+
+### The page design
+
+`guidelines.typ` is a Pandoc template, so it is Typst with `$title$`-style holes in
+it. It follows the site: Cornell carnelian accent, Lato, the same link colour.
+
+Links are **underlined rather than coloured**. Colouring the words was the first
+attempt and it fails on this document specifically — §4.1 and §6.3 are lists whose
+every item is a link, so the page turns into a block of red. The underline carries
+the same signal and survives grayscale printing.

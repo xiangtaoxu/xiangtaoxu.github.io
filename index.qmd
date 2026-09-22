@@ -2,6 +2,10 @@
 # No `title:` here on purpose — we want a custom hero instead of the default
 # page title block. `pagetitle` only sets the browser tab text.
 pagetitle: "BioM2 Lab — Home"
+# Pinned on purpose: with no `image:` here Quarto uses the FIRST image in the page
+# body for the link preview, which is the hero logo -- and it is an SVG, which the
+# social platforms do not render. Keep this pointing at the card.
+image: /images/og/biom2-card.jpg
 page-layout: full
 toc: false
 # Show the most recent news posts below the hero.
@@ -24,6 +28,11 @@ listing:
 :::
 
 ::: {.hero-banner}
+<!-- Lab lockup: mark + wordmark + tagline. Empty alt on purpose -- a non-empty
+     one would make Quarto render this as a figure and print the text as a
+     visible caption; `fig-alt` carries it for screen readers instead. -->
+![](/images/logo/biom2-horizontal.svg){.hero-logo fig-alt="BioM2 Lab — Biosphere Modeling and Monitoring"}
+
 # Predicting forests and the biosphere on a changing planet
 
 [Principles and solutions integrating *in situ* and *in silico* research]{.lead}
